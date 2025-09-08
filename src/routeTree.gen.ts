@@ -9,6 +9,7 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as NewsletterRouteImport } from './routes/newsletter'
 import { Route as HomeRouteImport } from './routes/_home'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as HomeLivresRouteImport } from './routes/_home/livres'
@@ -16,6 +17,11 @@ import { Route as HomeContactRouteImport } from './routes/_home/contact'
 import { Route as HomeBoutiqueRouteImport } from './routes/_home/boutique'
 import { Route as HomeAProposRouteImport } from './routes/_home/a-propos'
 
+const NewsletterRoute = NewsletterRouteImport.update({
+  id: '/newsletter',
+  path: '/newsletter',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const HomeRoute = HomeRouteImport.update({
   id: '/_home',
   getParentRoute: () => rootRouteImport,
@@ -48,6 +54,7 @@ const HomeAProposRoute = HomeAProposRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/newsletter': typeof NewsletterRoute
   '/a-propos': typeof HomeAProposRoute
   '/boutique': typeof HomeBoutiqueRoute
   '/contact': typeof HomeContactRoute
@@ -55,6 +62,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/newsletter': typeof NewsletterRoute
   '/a-propos': typeof HomeAProposRoute
   '/boutique': typeof HomeBoutiqueRoute
   '/contact': typeof HomeContactRoute
@@ -64,6 +72,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/_home': typeof HomeRouteWithChildren
+  '/newsletter': typeof NewsletterRoute
   '/_home/a-propos': typeof HomeAProposRoute
   '/_home/boutique': typeof HomeBoutiqueRoute
   '/_home/contact': typeof HomeContactRoute
@@ -71,13 +80,20 @@ export interface FileRoutesById {
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/a-propos' | '/boutique' | '/contact' | '/livres'
+  fullPaths:
+    | '/'
+    | '/newsletter'
+    | '/a-propos'
+    | '/boutique'
+    | '/contact'
+    | '/livres'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/a-propos' | '/boutique' | '/contact' | '/livres'
+  to: '/' | '/newsletter' | '/a-propos' | '/boutique' | '/contact' | '/livres'
   id:
     | '__root__'
     | '/'
     | '/_home'
+    | '/newsletter'
     | '/_home/a-propos'
     | '/_home/boutique'
     | '/_home/contact'
@@ -87,10 +103,18 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   HomeRoute: typeof HomeRouteWithChildren
+  NewsletterRoute: typeof NewsletterRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/newsletter': {
+      id: '/newsletter'
+      path: '/newsletter'
+      fullPath: '/newsletter'
+      preLoaderRoute: typeof NewsletterRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/_home': {
       id: '/_home'
       path: ''
@@ -155,6 +179,7 @@ const HomeRouteWithChildren = HomeRoute._addFileChildren(HomeRouteChildren)
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   HomeRoute: HomeRouteWithChildren,
+  NewsletterRoute: NewsletterRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

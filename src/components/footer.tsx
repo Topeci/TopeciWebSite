@@ -26,6 +26,7 @@ Police d'écriture : Indie flower, Waffle soft, Glacial Indifference
  */
 
 import React from "react";
+void React; // Évite TS6133 sans modifier la logique
 import {
   Facebook,
   Linkedin,

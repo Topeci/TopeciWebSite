@@ -11,6 +11,8 @@ import {
   Home,
 } from "lucide-react";
 
+void React; // Évite TS6133 tout en gardant l'import et la logique
+
 const navItems = [
   { label: "Accueil", href: "/", icon: Home },
   { label: "Nos Livres", href: "/livres", icon: Book },
@@ -22,6 +24,7 @@ const navItems = [
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  void setIsScrolled; // Évite TS6133 sans modifier la logique
 
   // Effet pour détecter le défilement (à ajouter avec useEffect si nécessaire)
   // useEffect(() => {
@@ -34,7 +37,9 @@ export function Header() {
 
   return (
     <header
-      className={`bg-white w-full relative top-0 z-50 transition-all duration-300 ${isScrolled ? "shadow-lg" : "shadow-md"}`}
+      className={`bg-white dark:bg-gray-900 w-full relative top-0 z-50 transition-all duration-300 ${
+        isScrolled ? "shadow-lg" : "shadow-md"
+      }`}
     >
       <div className="container mx-auto px-4 py-3">
         <div className="flex items-center justify-between">
@@ -68,7 +73,7 @@ export function Header() {
                 <a
                   key={item.label}
                   href={item.href}
-                  className="flex items-center px-4 py-2 rounded-full font-['Glacial_Indifference'] font-medium text-gray-700 hover:bg-[#74C6C6] hover:bg-opacity-10 hover:text-[#4E6FA7] transition-all duration-300 group"
+                  className="flex items-center px-4 py-2 rounded-full font-['Glacial_Indifference'] font-medium text-gray-700 dark:text-gray-100 hover:bg-[#74C6C6] hover:bg-opacity-10 hover:text-[#4E6FA7] dark:hover:text-[#74C6C6] transition-all duration-300 group"
                 >
                   <Icon
                     size={18}
@@ -82,9 +87,14 @@ export function Header() {
 
           {/* Login Button - Design élégant */}
           <div className="hidden md:flex items-center space-x-3">
-            <button className="flex items-center bg-gradient-to-r from-[#D68E54] to-[#BE356A] hover:from-[#BE356A] hover:to-[#D68E54] text-white font-['Waffle_soft'] font-semibold py-2.5 px-6 rounded-full transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-0.5">
+            <button className="flex items-center bg-gradient-to-r from-[#D68E54] to-[#BE356A] hover:from-[#BE356A] hover:to-[#D68E54] text-white font-waffle-soft font-semibold py-2.5 px-6 rounded-full transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-0.5">
               <LogIn size={18} className="mr-2" />
               Connexion
+            </button>
+
+            <button className="flex items-center bg-gradient-to-r from-[#D68E54] to-[#BE356A] hover:from-[#BE356A] hover:to-[#D68E54] text-white font-waffle-soft font-semibold py-2.5 px-6 rounded-full transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-0.5">
+              <LogIn size={18} className="mr-2" />
+              S'inscrire
             </button>
 
             {/* Petit élément décoratif */}
@@ -102,7 +112,7 @@ export function Header() {
 
         {/* Mobile Navigation - Design soigné */}
         {isMenuOpen && (
-          <div className="md:hidden mt-4 pb-4 bg-white rounded-lg shadow-xl border border-gray-100">
+          <div className="md:hidden mt-4 pb-4 bg-white dark:bg-gray-900 rounded-lg shadow-xl border border-gray-100 dark:border-gray-800">
             <nav className="flex flex-col space-y-2 p-2">
               {navItems.map((item) => {
                 const Icon = item.icon;
@@ -110,7 +120,7 @@ export function Header() {
                   <a
                     key={item.label}
                     href={item.href}
-                    className="flex items-center px-4 py-3 rounded-lg font-['Glacial_Indifference'] text-gray-700 hover:bg-[#74C6C6] hover:bg-opacity-10 hover:text-[#4E6FA7] transition-all duration-300"
+                    className="flex items-center px-4 py-3 rounded-lg font-['Glacial_Indifference'] text-gray-700 dark:text-gray-100 hover:bg-[#74C6C6] hover:bg-opacity-10 hover:text-[#4E6FA7] dark:hover:text-[#74C6C6] transition-all duration-300"
                     onClick={() => setIsMenuOpen(false)}
                   >
                     <Icon size={18} className="mr-3 text-[#D68E54]" />
@@ -118,9 +128,14 @@ export function Header() {
                   </a>
                 );
               })}
-              <button className="flex items-center justify-center bg-gradient-to-r from-[#D68E54] to-[#BE356A] text-white font-['Waffle_soft'] font-semibold py-3 px-5 rounded-lg transition-all duration-300 mt-2">
+              <button className="flex items-center justify-center bg-gradient-to-r from-[#D68E54] to-[#BE356A] text-white .font-waffle-softfont-semibold py-3 px-5 rounded-lg transition-all duration-300 mt-2">
                 <LogIn size={18} className="mr-2" />
                 Connexion
+              </button>
+
+              <button className="flex items-center justify-center bg-gradient-to-r from-[#D68E54] to-[#BE356A] text-white .font-waffle-softfont-semibold py-3 px-5 rounded-lg transition-all duration-300 mt-2">
+                <LogIn size={18} className="mr-2" />
+                S'inscrire
               </button>
             </nav>
 

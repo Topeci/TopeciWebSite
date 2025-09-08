@@ -30,7 +30,7 @@ export const Route = createFileRoute("/")({
 
 function Index() {
   return (
-    <div className="flex flex-col min-h-screen ">
+    <div className="flex flex-col max-h-screen w-full">
       <Header />
 
       {/* Suppression de absolute et ajout de flex-1 pour que main prenne l'espace disponible */}
