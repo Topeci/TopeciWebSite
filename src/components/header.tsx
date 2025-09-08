@@ -45,22 +45,22 @@ export function Header() {
         <div className="flex items-center justify-between">
           {/* Logo coloré élégant */}
           <div className="flex items-center">
-            <span className="font-['Indie_Flower'] text-3xl font-bold text-[#DCCC41]">
+            <span className="font-indie-flower  text-3xl font-bold text-[#DCCC41]">
               T
             </span>
             <div>
               <Sun className="text-orange-500"></Sun>
             </div>
-            <span className="font-['Indie_Flower'] text-3xl font-bold text-[#BE356A]">
+            <span className="font-indie-flower  text-3xl font-bold text-[#BE356A]">
               P
             </span>
-            <span className="font-['Indie_Flower'] text-3xl font-bold text-[#4E6FA7]">
+            <span className="font-indie-flower  text-3xl font-bold text-[#4E6FA7]">
               E
             </span>
-            <span className="font-['Indie_Flower'] text-3xl font-bold text-[#D68E54]">
+            <span className="font-indie-flower  text-3xl font-bold text-[#D68E54]">
               C
             </span>
-            <span className="font-['Indie_Flower'] text-3xl font-bold text-[purple]">
+            <span className="font-indie-flower  text-3xl font-bold text-[purple]">
               I
             </span>
           </div>

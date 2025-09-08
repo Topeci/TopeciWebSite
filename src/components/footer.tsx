@@ -49,22 +49,22 @@ export function Footer() {
           <div className="lg:col-span-1">
             <a href="/" className="flex items-center mb-4">
               <div className="flex items-center">
-                <span className=".font-waffle-soft text-3xl font-bold text-[#DCCC41]">
+                <span className="font-waffle-soft text-3xl font-bold text-[#DCCC41]">
                   T
                 </span>
                 <div>
                   <Sun className="text-orange-500"></Sun>
                 </div>
-                <span className=".font-waffle-soft text-3xl font-bold text-[#BE356A]">
+                <span className="font-waffle-soft text-3xl font-bold text-[#BE356A]">
                   P
                 </span>
-                <span className=".font-waffle-soft text-3xl font-bold text-[#4E6FA7]">
+                <span className="font-waffle-soft text-3xl font-bold text-[#4E6FA7]">
                   E
                 </span>
-                <span className=".font-waffle-soft text-3xl font-bold text-[#D68E54]">
+                <span className="font-waffle-soft text-3xl font-bold text-[#D68E54]">
                   C
                 </span>
-                <span className=".font-waffle-soft text-3xl font-bold text-[purple]">
+                <span className="font-waffle-soft text-3xl font-bold text-[purple]">
                   I
                 </span>
               </div>
@@ -99,7 +99,7 @@ export function Footer() {
 
           {/* Liens utiles */}
           <div>
-            <h3 className=".font-waffle-soft text-lg font-semibold mb-6 text-[#DCCC41]">
+            <h3 className="font-waffle-soft text-lg font-semibold mb-6 text-[#DCCC41]">
               Liens utiles
             </h3>
             <ul className="space-y-3 .font-glacial-indifference ">
@@ -135,7 +135,7 @@ export function Footer() {
 
           {/* Rejoignez-nous */}
           <div className="md:text-left">
-            <h3 className=".font-waffle-soft text-lg font-semibold mb-4 text-[#DCCC41]">
+            <h3 className="font-waffle-soft text-lg font-semibold mb-4 text-[#DCCC41]">
               Rejoignez-nous
             </h3>
             <div className="flex justify-center md:justify-start mb-3">
@@ -144,7 +144,7 @@ export function Footer() {
             <p className=".font-indie-flower text-lg">
               Faites partie de la tribu TOPECI
             </p>
-            <p className=".font-glacial-indifference  mt-2 text-sm">
+            <p className="font-glacial-indifference  mt-2 text-sm">
               Découvrez une communauté de passionnés et bénéficiez d'avantages
               exclusifs.
             </p>
@@ -152,10 +152,10 @@ export function Footer() {
 
           {/* Newsletter */}
           <div className=" md:text-left">
-            <h3 className=".font-waffle-soft text-lg font-semibold mb-4 text-[#DCCC41]">
+            <h3 className="font-waffle-soft text-lg font-semibold mb-4 text-[#DCCC41]">
               Newsletter
             </h3>
-            <p className=".font-glacial-indifference  mb-4 ">
+            <p className="font-glacial-indifference  mb-4 ">
               Inscrivez-vous pour être le premier à découvrir les nouveautés,
               produits exclusifs et promotions TOPECI
             </p>
@@ -172,10 +172,10 @@ export function Footer() {
       {/* Copyright */}
       <div className="border-t border-black border-opacity-20 py-4">
         <div className="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center">
-          <p className="font-['Glacial_Indifference'] text-sm md:text-base">
+          <p className="font-glacial-indifference text-sm md:text-base">
             &copy; {new Date().getFullYear()} TOPECI. Tous droits réservés.
           </p>
-          <p className="font-['Glacial_Indifference'] text-sm md:text-base mt-2 md:mt-0">
+          <p className="font-glacial-indifference text-sm md:text-base mt-2 md:mt-0">
             Assistance : +225 01 72 61 61 33 • +225 01 72 37 37 32
           </p>
         </div>
