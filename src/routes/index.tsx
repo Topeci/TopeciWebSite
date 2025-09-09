@@ -30,11 +30,11 @@ export const Route = createFileRoute("/")({
 
 function Index() {
   return (
-    <div className="flex flex-col max-h-screen w-full">
+    <div className="flex flex-col min-h-screen w-full mx-0">
       <Header />
 
       {/* Suppression de absolute et ajout de flex-1 pour que main prenne l'espace disponible */}
-      <main className="flex-1 w-full">
+      <main className="flex-1 w-full mx">
         {/* HERO SECTION */}
         <section className="w-full bg-gradient-to-br from-[#74C6C6] to-[#3a5a8a] py-16 md:py-20 mt-0">
           <div className="container mx-auto px-4 flex flex-col md:flex-row items-center justify-between">
@@ -45,11 +45,11 @@ function Index() {
               </h1>
 
               <ul className="hero-bullets space-y-3 mb-8">
-                <li className="flex items-center text-white font-['Glacial_Indifference']">
+                <li className="flex items-center text-white font-glacial-indifference">
                   <Sparkles size={20} className="mr-2 text-purple-600" />
                   Livres audio interactifs en baoulé et dioula
                 </li>
-                <li className="flex items-center text-white font-['Glacial_Indifference']">
+                <li className="flex items-center text-white font-glacial-indifference">
                   <Sparkles size={20} className="mr-2 text-purple-600" />
                   Enrichis avec voix, chants et illustrations animées
                 </li>
@@ -57,7 +57,7 @@ function Index() {
 
               <Link
                 to="/livres"
-                className="inline-block bg-[#D68E54] hover:bg-[#c57f4a] text-white font-bold py-3 px-8 rounded-full transition duration-300 font-['Waffle_soft'] shadow-lg"
+                className="inline-block bg-[#D68E54] hover:bg-[#c57f4a] text-white font-bold py-3 px-8 rounded-full transition duration-300 font-waffle-soft shadow-lg"
               >
                 Découvrir nos livres
               </Link>
@@ -279,68 +279,3 @@ function Index() {
     </div>
   );
 }
-
-/*
-
-// Icônes supplémentaires nécessaires
-function BookOpen(props) {
-  return (
-    <svg
-      {...props}
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" />
-      <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" />
-    </svg>
-  );
-}
-
-function Headphones(props) {
-  return (
-    <svg
-      {...props}
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path d="M3 14h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-7a9 9 0 0 1 18 0v7a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3" />
-    </svg>
-  );
-}
-
-function Package(props) {
-  return (
-    <svg
-      {...props}
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path d="m7.5 4.27 9 5.15" />
-      <path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z" />
-      <path d="m3.3 7 8.7 5 8.7-5" />
-      <path d="M12 22V12" />
-    </svg>
-  );
-}
-**/

@@ -12,9 +12,15 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as NewsletterRouteImport } from './routes/newsletter'
 import { Route as HomeRouteImport } from './routes/_home'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as HomeTermsRouteImport } from './routes/_home/terms'
+import { Route as HomeSignupRouteImport } from './routes/_home/signup'
+import { Route as HomePrivacyRouteImport } from './routes/_home/privacy'
+import { Route as HomePanierRouteImport } from './routes/_home/panier'
+import { Route as HomeLoginRouteImport } from './routes/_home/login'
 import { Route as HomeLivresRouteImport } from './routes/_home/livres'
 import { Route as HomeContactRouteImport } from './routes/_home/contact'
 import { Route as HomeBoutiqueRouteImport } from './routes/_home/boutique'
+import { Route as HomeAideFaqRouteImport } from './routes/_home/aide-faq'
 import { Route as HomeAProposRouteImport } from './routes/_home/a-propos'
 
 const NewsletterRoute = NewsletterRouteImport.update({
@@ -31,6 +37,31 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const HomeTermsRoute = HomeTermsRouteImport.update({
+  id: '/terms',
+  path: '/terms',
+  getParentRoute: () => HomeRoute,
+} as any)
+const HomeSignupRoute = HomeSignupRouteImport.update({
+  id: '/signup',
+  path: '/signup',
+  getParentRoute: () => HomeRoute,
+} as any)
+const HomePrivacyRoute = HomePrivacyRouteImport.update({
+  id: '/privacy',
+  path: '/privacy',
+  getParentRoute: () => HomeRoute,
+} as any)
+const HomePanierRoute = HomePanierRouteImport.update({
+  id: '/panier',
+  path: '/panier',
+  getParentRoute: () => HomeRoute,
+} as any)
+const HomeLoginRoute = HomeLoginRouteImport.update({
+  id: '/login',
+  path: '/login',
+  getParentRoute: () => HomeRoute,
+} as any)
 const HomeLivresRoute = HomeLivresRouteImport.update({
   id: '/livres',
   path: '/livres',
@@ -46,6 +77,11 @@ const HomeBoutiqueRoute = HomeBoutiqueRouteImport.update({
   path: '/boutique',
   getParentRoute: () => HomeRoute,
 } as any)
+const HomeAideFaqRoute = HomeAideFaqRouteImport.update({
+  id: '/aide-faq',
+  path: '/aide-faq',
+  getParentRoute: () => HomeRoute,
+} as any)
 const HomeAProposRoute = HomeAProposRouteImport.update({
   id: '/a-propos',
   path: '/a-propos',
@@ -56,17 +92,29 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/newsletter': typeof NewsletterRoute
   '/a-propos': typeof HomeAProposRoute
+  '/aide-faq': typeof HomeAideFaqRoute
   '/boutique': typeof HomeBoutiqueRoute
   '/contact': typeof HomeContactRoute
   '/livres': typeof HomeLivresRoute
+  '/login': typeof HomeLoginRoute
+  '/panier': typeof HomePanierRoute
+  '/privacy': typeof HomePrivacyRoute
+  '/signup': typeof HomeSignupRoute
+  '/terms': typeof HomeTermsRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/newsletter': typeof NewsletterRoute
   '/a-propos': typeof HomeAProposRoute
+  '/aide-faq': typeof HomeAideFaqRoute
   '/boutique': typeof HomeBoutiqueRoute
   '/contact': typeof HomeContactRoute
   '/livres': typeof HomeLivresRoute
+  '/login': typeof HomeLoginRoute
+  '/panier': typeof HomePanierRoute
+  '/privacy': typeof HomePrivacyRoute
+  '/signup': typeof HomeSignupRoute
+  '/terms': typeof HomeTermsRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -74,9 +122,15 @@ export interface FileRoutesById {
   '/_home': typeof HomeRouteWithChildren
   '/newsletter': typeof NewsletterRoute
   '/_home/a-propos': typeof HomeAProposRoute
+  '/_home/aide-faq': typeof HomeAideFaqRoute
   '/_home/boutique': typeof HomeBoutiqueRoute
   '/_home/contact': typeof HomeContactRoute
   '/_home/livres': typeof HomeLivresRoute
+  '/_home/login': typeof HomeLoginRoute
+  '/_home/panier': typeof HomePanierRoute
+  '/_home/privacy': typeof HomePrivacyRoute
+  '/_home/signup': typeof HomeSignupRoute
+  '/_home/terms': typeof HomeTermsRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -84,20 +138,44 @@ export interface FileRouteTypes {
     | '/'
     | '/newsletter'
     | '/a-propos'
+    | '/aide-faq'
     | '/boutique'
     | '/contact'
     | '/livres'
+    | '/login'
+    | '/panier'
+    | '/privacy'
+    | '/signup'
+    | '/terms'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/newsletter' | '/a-propos' | '/boutique' | '/contact' | '/livres'
+  to:
+    | '/'
+    | '/newsletter'
+    | '/a-propos'
+    | '/aide-faq'
+    | '/boutique'
+    | '/contact'
+    | '/livres'
+    | '/login'
+    | '/panier'
+    | '/privacy'
+    | '/signup'
+    | '/terms'
   id:
     | '__root__'
     | '/'
     | '/_home'
     | '/newsletter'
     | '/_home/a-propos'
+    | '/_home/aide-faq'
     | '/_home/boutique'
     | '/_home/contact'
     | '/_home/livres'
+    | '/_home/login'
+    | '/_home/panier'
+    | '/_home/privacy'
+    | '/_home/signup'
+    | '/_home/terms'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -129,6 +207,41 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/_home/terms': {
+      id: '/_home/terms'
+      path: '/terms'
+      fullPath: '/terms'
+      preLoaderRoute: typeof HomeTermsRouteImport
+      parentRoute: typeof HomeRoute
+    }
+    '/_home/signup': {
+      id: '/_home/signup'
+      path: '/signup'
+      fullPath: '/signup'
+      preLoaderRoute: typeof HomeSignupRouteImport
+      parentRoute: typeof HomeRoute
+    }
+    '/_home/privacy': {
+      id: '/_home/privacy'
+      path: '/privacy'
+      fullPath: '/privacy'
+      preLoaderRoute: typeof HomePrivacyRouteImport
+      parentRoute: typeof HomeRoute
+    }
+    '/_home/panier': {
+      id: '/_home/panier'
+      path: '/panier'
+      fullPath: '/panier'
+      preLoaderRoute: typeof HomePanierRouteImport
+      parentRoute: typeof HomeRoute
+    }
+    '/_home/login': {
+      id: '/_home/login'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof HomeLoginRouteImport
+      parentRoute: typeof HomeRoute
+    }
     '/_home/livres': {
       id: '/_home/livres'
       path: '/livres'
@@ -150,6 +263,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof HomeBoutiqueRouteImport
       parentRoute: typeof HomeRoute
     }
+    '/_home/aide-faq': {
+      id: '/_home/aide-faq'
+      path: '/aide-faq'
+      fullPath: '/aide-faq'
+      preLoaderRoute: typeof HomeAideFaqRouteImport
+      parentRoute: typeof HomeRoute
+    }
     '/_home/a-propos': {
       id: '/_home/a-propos'
       path: '/a-propos'
@@ -162,16 +282,28 @@ declare module '@tanstack/react-router' {
 
 interface HomeRouteChildren {
   HomeAProposRoute: typeof HomeAProposRoute
+  HomeAideFaqRoute: typeof HomeAideFaqRoute
   HomeBoutiqueRoute: typeof HomeBoutiqueRoute
   HomeContactRoute: typeof HomeContactRoute
   HomeLivresRoute: typeof HomeLivresRoute
+  HomeLoginRoute: typeof HomeLoginRoute
+  HomePanierRoute: typeof HomePanierRoute
+  HomePrivacyRoute: typeof HomePrivacyRoute
+  HomeSignupRoute: typeof HomeSignupRoute
+  HomeTermsRoute: typeof HomeTermsRoute
 }
 
 const HomeRouteChildren: HomeRouteChildren = {
   HomeAProposRoute: HomeAProposRoute,
+  HomeAideFaqRoute: HomeAideFaqRoute,
   HomeBoutiqueRoute: HomeBoutiqueRoute,
   HomeContactRoute: HomeContactRoute,
   HomeLivresRoute: HomeLivresRoute,
+  HomeLoginRoute: HomeLoginRoute,
+  HomePanierRoute: HomePanierRoute,
+  HomePrivacyRoute: HomePrivacyRoute,
+  HomeSignupRoute: HomeSignupRoute,
+  HomeTermsRoute: HomeTermsRoute,
 }
 
 const HomeRouteWithChildren = HomeRoute._addFileChildren(HomeRouteChildren)
