@@ -187,7 +187,7 @@ export function Footer() {
       </div>
 
       {/* Copyright */}
-      <div className="border-t border-black border-opacity-20 py-4 w-full">
+      <div className="border-t border-black border-opacity-20 py-4 w-full justify-center">
         <div className="flex flex-col md:flex-row justify-between items-center px-4">
           <p className="font-glacial-indifference text-sm md:text-base">
             &copy; {new Date().getFullYear()} TOPECI. Tous droits réservés.

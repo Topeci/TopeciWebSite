@@ -107,7 +107,7 @@ function RouteComponent() {
           {/* Lien mot de passe oublié */}
           <div className="text-right mt-5">
             <Link
-              to="/forgot-password"
+              to="/"
               className="text-sm text-[#74C6C6] hover:text-[#4E6FA7] transition font-glacial-indifference"
             >
               Mot de passe oublié ?
