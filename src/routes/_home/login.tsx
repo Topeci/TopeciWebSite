@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { Eye, EyeOff, Mail, Lock} from "lucide-react";
+import { Eye, EyeOff, Mail, Lock } from "lucide-react";
 import { useState } from "react";
 
 export const Route = createFileRoute("/_home/login")({
@@ -7,7 +7,7 @@ export const Route = createFileRoute("/_home/login")({
 });
 
 function RouteComponent() {
-  const [showPassword, setShowPassword] = useState(false); 
+  const [showPassword, setShowPassword] = useState(false);
   const [formData, setFormData] = useState({
     username: "",
     password: "",
@@ -28,20 +28,20 @@ function RouteComponent() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br flex items-center justify-center p-4">
-      <div className="max-w-md w-full bg-white rounded-2xl shadow-lg overflow-hidden">
+    <div className="min-h-screen bg-gradient-to-br from-[#f9f9f9] to-[#eaeaea] dark:from-gray-900 dark:to-gray-800 flex items-center justify-center p-4">
+      <div className="max-w-md w-full bg-white dark:bg-gray-900 rounded-2xl shadow-lg overflow-hidden">
         {/* En-tête */}
 
         {/* Formulaire */}
         <form
           onSubmit={handleSubmit}
-          className="p-6 space-y-6  from-[#74C6C6]/20 to-[#4E6FA7]/30"
+          className="p-6 space-y-6 from-[#74C6C6]/20 to-[#4E6FA7]/30"
         >
           {/* Champ identifiant */}
           <div>
             <label
               htmlFor="username"
-              className="block text-sm font-medium text-gray-700 mb-2 font-glacial-indifference"
+              className="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-2 font-glacial-indifference"
             >
               Nom d'utilisateur ou email
             </label>
@@ -56,7 +56,7 @@ function RouteComponent() {
                 required
                 value={formData.username}
                 onChange={handleInputChange}
-                className="w-full pl-10 pr-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#74C6C6] focus:border-[#74C6C6] outline-none transition font-['Glacial_Indifference']"
+                className="w-full pl-10 pr-3 py-3 border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-[#74C6C6] focus:border-[#74C6C6] outline-none transition font-['Glacial_Indifference'] bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100"
                 placeholder="Entrez votre identifiant"
               />
             </div>
@@ -66,7 +66,7 @@ function RouteComponent() {
           <div>
             <label
               htmlFor="password"
-              className="block text-sm font-medium text-gray-700 mb-2 font-glacial-indifference"
+              className="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-2 font-glacial-indifference"
             >
               Mot de passe
             </label>
@@ -81,7 +81,7 @@ function RouteComponent() {
                 required
                 value={formData.password}
                 onChange={handleInputChange}
-                className="w-full pl-10 pr-10 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#74C6C6] focus:border-[#74C6C6] outline-none transition font-glacial-indifference"
+                className="w-full pl-10 pr-10 py-3 border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-[#74C6C6] focus:border-[#74C6C6] outline-none transition font-glacial-indifference bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100"
                 placeholder="Entrez votre mot de passe"
               />
               <button
@@ -92,12 +92,12 @@ function RouteComponent() {
                 {showPassword ? (
                   <EyeOff
                     size={18}
-                    className="text-gray-400 hover:text-gray-600"
+                    className="text-gray-400 hover:text-gray-600 dark:hover:text-gray-300"
                   />
                 ) : (
                   <Eye
                     size={18}
-                    className="text-gray-400 hover:text-gray-600"
+                    className="text-gray-400 hover:text-gray-600 dark:hover:text-gray-300"
                   />
                 )}
               </button>
@@ -107,7 +107,7 @@ function RouteComponent() {
           {/* Lien mot de passe oublié */}
           <div className="text-right mt-5">
             <Link
-              to="/"
+              to="/aide-faq"
               className="text-sm text-[#74C6C6] hover:text-[#4E6FA7] transition font-glacial-indifference"
             >
               Mot de passe oublié ?
@@ -125,10 +125,10 @@ function RouteComponent() {
           {/* Séparateur */}
           <div className="relative">
             <div className="absolute inset-0 flex items-center">
-              <div className="w-full border-t border-gray-300" />
+              <div className="w-full border-t border-gray-300 dark:border-gray-700" />
             </div>
             <div className="relative flex justify-center text-sm">
-              <span className="px-2 bg-white text-gray-500 font-glacial-indifference">
+              <span className="px-2 bg-white dark:bg-gray-900 text-gray-500 dark:text-gray-400 font-glacial-indifference">
                 Ou continuer avec
               </span>
             </div>
@@ -138,7 +138,7 @@ function RouteComponent() {
           <div className="grid grid-cols-2 gap-4">
             <button
               type="button"
-              className="w-full inline-flex justify-center items-center py-3 px-4 border border-gray-300 rounded-lg shadow-sm bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#74C6C6] transition font-glacial-indifference"
+              className="w-full inline-flex justify-center items-center py-3 px-4 border border-gray-300 dark:border-gray-700 rounded-lg shadow-sm bg-white dark:bg-gray-800 text-sm font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#74C6C6] transition font-glacial-indifference"
             >
               <svg
                 className="w-5 h-5 mr-2"
@@ -167,7 +167,7 @@ function RouteComponent() {
 
             <button
               type="button"
-              className="w-full inline-flex justify-center items-center py-3 px-4 border border-gray-300 rounded-lg shadow-sm bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#74C6C6] transition font-glacial-indifference"
+              className="w-full inline-flex justify-center items-center py-3 px-4 border border-gray-300 dark:border-gray-700 rounded-lg shadow-sm bg-white dark:bg-gray-800 text-sm font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#74C6C6] transition font-glacial-indifference"
             >
               <svg
                 className="w-5 h-5 mr-2 text-blue-600"
@@ -182,8 +182,8 @@ function RouteComponent() {
         </form>
 
         {/* Pied de formulaire */}
-        <div className="bg-gray-50 px-6 py-4 text-center">
-          <p className="text-sm text-gray-600 font-glacial-indifference">
+        <div className="bg-gray-50 dark:bg-gray-800 px-6 py-4 text-center">
+          <p className="text-sm text-gray-600 dark:text-gray-300 font-glacial-indifference">
             Nouveau sur TOPECI ?{" "}
             <Link
               to="/signup"
