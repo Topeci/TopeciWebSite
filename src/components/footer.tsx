@@ -10,22 +10,22 @@ export function Footer() {
           <div className="flex flex-col items-center md:items-start">
             <a href="/" className="flex items-center mb-4">
               <div className="flex items-center">
-                <span className="font-waffle-soft text-3xl font-bold text-[#DCCC41]">
+                <span className="font-indie-flower text-3xl font-bold text-[#DCCC41]">
                   T
                 </span>
                 <div>
                   <Sun className="text-orange-500" />
                 </div>
-                <span className="font-waffle-soft text-3xl font-bold text-[#BE356A]">
+                <span className="font-indie-flower text-3xl font-bold text-[#BE356A]">
                   P
                 </span>
-                <span className="font-waffle-soft text-3xl font-bold text-[#4E6FA7]">
+                <span className="font-indie-flower text-3xl font-bold text-[#4E6FA7]">
                   E
                 </span>
-                <span className="font-waffle-soft text-3xl font-bold text-[#D68E54]">
+                <span className="font-indie-flower text-3xl font-bold text-[#D68E54]">
                   C
                 </span>
-                <span className="font-waffle-soft text-3xl font-bold text-[purple]">
+                <span className="font-indie-flower text-3xl font-bold text-[purple]">
                   I
                 </span>
               </div>
@@ -40,7 +40,7 @@ export function Footer() {
 
           {/* Colonne 2 : Navigation */}
           <div>
-            <h3 className="font-waffle-soft text-lg font-semibold mb-4 text-[#DCCC41]">
+            <h3 className="font-indie-flower text-lg font-semibold mb-4 text-[#DCCC41]">
               Navigation
             </h3>
             <ul className="space-y-2 font-glacial-indifference">
@@ -86,13 +86,13 @@ export function Footer() {
 
           {/* Colonne 3 : Légal */}
           <div>
-            <h3 className="font-waffle-soft text-lg font-semibold mb-4 text-[#DCCC41]">
+            <h3 className="font-indie-flower text-lg font-semibold mb-4 text-[#DCCC41]">
               Légal
             </h3>
             <ul className="space-y-2 font-glacial-indifference">
               <li>
                 <a
-                  href="/politique-confidentialite"
+                  href="/privacy"
                   className="hover:text-[#D68E54] transition-colors"
                 >
                   Politique de confidentialité
@@ -100,7 +100,7 @@ export function Footer() {
               </li>
               <li>
                 <a
-                  href="/conditions-utilisation"
+                  href="/terms"
                   className="hover:text-[#D68E54] transition-colors"
                 >
                   Conditions d'utilisation
@@ -108,7 +108,7 @@ export function Footer() {
               </li>
               <li>
                 <a
-                  href="/politique-cookies"
+                  href="/cookies"
                   className="hover:text-[#D68E54] transition-colors"
                 >
                   Politique cookies
@@ -116,7 +116,7 @@ export function Footer() {
               </li>
               <li>
                 <a
-                  href="/mentions-legales"
+                  href="/mentions-legal"
                   className="hover:text-[#D68E54] transition-colors"
                 >
                   Mentions légales
@@ -135,7 +135,7 @@ export function Footer() {
 
           {/* Colonne 4 : Rejoignez-nous */}
           <div>
-            <h3 className="font-waffle-soft text-lg font-semibold mb-4 text-[#DCCC41]">
+            <h3 className="font-indie-flower text-lg font-semibold mb-4 text-[#DCCC41]">
               Rejoignez-nous
             </h3>
 

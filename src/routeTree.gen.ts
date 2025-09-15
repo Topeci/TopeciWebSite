@@ -16,12 +16,15 @@ import { Route as HomeTermsRouteImport } from './routes/_home/terms'
 import { Route as HomeSignupRouteImport } from './routes/_home/signup'
 import { Route as HomePrivacyRouteImport } from './routes/_home/privacy'
 import { Route as HomePanierRouteImport } from './routes/_home/panier'
+import { Route as HomeMentionsLegalRouteImport } from './routes/_home/mentions-legal'
 import { Route as HomeLoginRouteImport } from './routes/_home/login'
 import { Route as HomeLivresRouteImport } from './routes/_home/livres'
+import { Route as HomeCookiesRouteImport } from './routes/_home/cookies'
 import { Route as HomeContactRouteImport } from './routes/_home/contact'
 import { Route as HomeBoutiqueRouteImport } from './routes/_home/boutique'
 import { Route as HomeAideFaqRouteImport } from './routes/_home/aide-faq'
 import { Route as HomeAProposRouteImport } from './routes/_home/a-propos'
+import { Route as HomeProduitProductIdRouteImport } from './routes/_home/produit/$productId'
 
 const NewsletterRoute = NewsletterRouteImport.update({
   id: '/newsletter',
@@ -57,6 +60,11 @@ const HomePanierRoute = HomePanierRouteImport.update({
   path: '/panier',
   getParentRoute: () => HomeRoute,
 } as any)
+const HomeMentionsLegalRoute = HomeMentionsLegalRouteImport.update({
+  id: '/mentions-legal',
+  path: '/mentions-legal',
+  getParentRoute: () => HomeRoute,
+} as any)
 const HomeLoginRoute = HomeLoginRouteImport.update({
   id: '/login',
   path: '/login',
@@ -65,6 +73,11 @@ const HomeLoginRoute = HomeLoginRouteImport.update({
 const HomeLivresRoute = HomeLivresRouteImport.update({
   id: '/livres',
   path: '/livres',
+  getParentRoute: () => HomeRoute,
+} as any)
+const HomeCookiesRoute = HomeCookiesRouteImport.update({
+  id: '/cookies',
+  path: '/cookies',
   getParentRoute: () => HomeRoute,
 } as any)
 const HomeContactRoute = HomeContactRouteImport.update({
@@ -87,6 +100,11 @@ const HomeAProposRoute = HomeAProposRouteImport.update({
   path: '/a-propos',
   getParentRoute: () => HomeRoute,
 } as any)
+const HomeProduitProductIdRoute = HomeProduitProductIdRouteImport.update({
+  id: '/produit/$productId',
+  path: '/produit/$productId',
+  getParentRoute: () => HomeRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -95,12 +113,15 @@ export interface FileRoutesByFullPath {
   '/aide-faq': typeof HomeAideFaqRoute
   '/boutique': typeof HomeBoutiqueRoute
   '/contact': typeof HomeContactRoute
+  '/cookies': typeof HomeCookiesRoute
   '/livres': typeof HomeLivresRoute
   '/login': typeof HomeLoginRoute
+  '/mentions-legal': typeof HomeMentionsLegalRoute
   '/panier': typeof HomePanierRoute
   '/privacy': typeof HomePrivacyRoute
   '/signup': typeof HomeSignupRoute
   '/terms': typeof HomeTermsRoute
+  '/produit/$productId': typeof HomeProduitProductIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -109,12 +130,15 @@ export interface FileRoutesByTo {
   '/aide-faq': typeof HomeAideFaqRoute
   '/boutique': typeof HomeBoutiqueRoute
   '/contact': typeof HomeContactRoute
+  '/cookies': typeof HomeCookiesRoute
   '/livres': typeof HomeLivresRoute
   '/login': typeof HomeLoginRoute
+  '/mentions-legal': typeof HomeMentionsLegalRoute
   '/panier': typeof HomePanierRoute
   '/privacy': typeof HomePrivacyRoute
   '/signup': typeof HomeSignupRoute
   '/terms': typeof HomeTermsRoute
+  '/produit/$productId': typeof HomeProduitProductIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -125,12 +149,15 @@ export interface FileRoutesById {
   '/_home/aide-faq': typeof HomeAideFaqRoute
   '/_home/boutique': typeof HomeBoutiqueRoute
   '/_home/contact': typeof HomeContactRoute
+  '/_home/cookies': typeof HomeCookiesRoute
   '/_home/livres': typeof HomeLivresRoute
   '/_home/login': typeof HomeLoginRoute
+  '/_home/mentions-legal': typeof HomeMentionsLegalRoute
   '/_home/panier': typeof HomePanierRoute
   '/_home/privacy': typeof HomePrivacyRoute
   '/_home/signup': typeof HomeSignupRoute
   '/_home/terms': typeof HomeTermsRoute
+  '/_home/produit/$productId': typeof HomeProduitProductIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -141,12 +168,15 @@ export interface FileRouteTypes {
     | '/aide-faq'
     | '/boutique'
     | '/contact'
+    | '/cookies'
     | '/livres'
     | '/login'
+    | '/mentions-legal'
     | '/panier'
     | '/privacy'
     | '/signup'
     | '/terms'
+    | '/produit/$productId'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -155,12 +185,15 @@ export interface FileRouteTypes {
     | '/aide-faq'
     | '/boutique'
     | '/contact'
+    | '/cookies'
     | '/livres'
     | '/login'
+    | '/mentions-legal'
     | '/panier'
     | '/privacy'
     | '/signup'
     | '/terms'
+    | '/produit/$productId'
   id:
     | '__root__'
     | '/'
@@ -170,12 +203,15 @@ export interface FileRouteTypes {
     | '/_home/aide-faq'
     | '/_home/boutique'
     | '/_home/contact'
+    | '/_home/cookies'
     | '/_home/livres'
     | '/_home/login'
+    | '/_home/mentions-legal'
     | '/_home/panier'
     | '/_home/privacy'
     | '/_home/signup'
     | '/_home/terms'
+    | '/_home/produit/$productId'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -235,6 +271,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof HomePanierRouteImport
       parentRoute: typeof HomeRoute
     }
+    '/_home/mentions-legal': {
+      id: '/_home/mentions-legal'
+      path: '/mentions-legal'
+      fullPath: '/mentions-legal'
+      preLoaderRoute: typeof HomeMentionsLegalRouteImport
+      parentRoute: typeof HomeRoute
+    }
     '/_home/login': {
       id: '/_home/login'
       path: '/login'
@@ -247,6 +290,13 @@ declare module '@tanstack/react-router' {
       path: '/livres'
       fullPath: '/livres'
       preLoaderRoute: typeof HomeLivresRouteImport
+      parentRoute: typeof HomeRoute
+    }
+    '/_home/cookies': {
+      id: '/_home/cookies'
+      path: '/cookies'
+      fullPath: '/cookies'
+      preLoaderRoute: typeof HomeCookiesRouteImport
       parentRoute: typeof HomeRoute
     }
     '/_home/contact': {
@@ -277,6 +327,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof HomeAProposRouteImport
       parentRoute: typeof HomeRoute
     }
+    '/_home/produit/$productId': {
+      id: '/_home/produit/$productId'
+      path: '/produit/$productId'
+      fullPath: '/produit/$productId'
+      preLoaderRoute: typeof HomeProduitProductIdRouteImport
+      parentRoute: typeof HomeRoute
+    }
   }
 }
 
@@ -285,12 +342,15 @@ interface HomeRouteChildren {
   HomeAideFaqRoute: typeof HomeAideFaqRoute
   HomeBoutiqueRoute: typeof HomeBoutiqueRoute
   HomeContactRoute: typeof HomeContactRoute
+  HomeCookiesRoute: typeof HomeCookiesRoute
   HomeLivresRoute: typeof HomeLivresRoute
   HomeLoginRoute: typeof HomeLoginRoute
+  HomeMentionsLegalRoute: typeof HomeMentionsLegalRoute
   HomePanierRoute: typeof HomePanierRoute
   HomePrivacyRoute: typeof HomePrivacyRoute
   HomeSignupRoute: typeof HomeSignupRoute
   HomeTermsRoute: typeof HomeTermsRoute
+  HomeProduitProductIdRoute: typeof HomeProduitProductIdRoute
 }
 
 const HomeRouteChildren: HomeRouteChildren = {
@@ -298,12 +358,15 @@ const HomeRouteChildren: HomeRouteChildren = {
   HomeAideFaqRoute: HomeAideFaqRoute,
   HomeBoutiqueRoute: HomeBoutiqueRoute,
   HomeContactRoute: HomeContactRoute,
+  HomeCookiesRoute: HomeCookiesRoute,
   HomeLivresRoute: HomeLivresRoute,
   HomeLoginRoute: HomeLoginRoute,
+  HomeMentionsLegalRoute: HomeMentionsLegalRoute,
   HomePanierRoute: HomePanierRoute,
   HomePrivacyRoute: HomePrivacyRoute,
   HomeSignupRoute: HomeSignupRoute,
   HomeTermsRoute: HomeTermsRoute,
+  HomeProduitProductIdRoute: HomeProduitProductIdRoute,
 }
 
 const HomeRouteWithChildren = HomeRoute._addFileChildren(HomeRouteChildren)

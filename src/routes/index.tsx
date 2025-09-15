@@ -17,6 +17,7 @@ import "../index.css";
 
 import { Header } from "../components/header";
 import { Footer } from "../components/footer";
+import CookiesBanner from '../components/CookieBanner';
 import { Play, Sparkles, Truck, MessageCircle, Star } from "lucide-react";
 import KidTopeci from "../images/kidtopeci.png";
 import LivreBaoule from "../images/livrebaoule.png";
@@ -56,8 +57,8 @@ function Index() {
               </ul>
 
               <Link
-                to="/livres"
-                className="inline-block bg-[#D68E54] hover:bg-[#c57f4a] text-white font-bold py-3 px-8 rounded-full transition duration-300 font-waffle-soft shadow-lg"
+                to="/boutique"
+                className="inline-block bg-[#D68E54] hover:bg-[#c57f4a] text-white font-extrabold py-3 px-8 rounded-full transition duration-300 font-waffle-soft shadow-lg"
               >
                 Découvrir nos livres
               </Link>
@@ -275,6 +276,7 @@ function Index() {
         </section>
       </main>
 
+        <CookiesBanner />
       <Footer />
     </div>
   );
