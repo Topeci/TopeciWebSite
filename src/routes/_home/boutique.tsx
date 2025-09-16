@@ -26,7 +26,7 @@ import {
   ChevronDown,
 } from "lucide-react";
 
-import Kid1 from "../../images/kid1.jpg";
+import kid1 from "../../images/kid1.jpg";
 import LivreBaoule from "../../images/livrebaoule.png";
 import LivreDioula from "../../images/livredioula.webp";
 
@@ -165,7 +165,7 @@ function RouteComponent() {
       {/* Bannière */}
       <section
         className="relative py-16 md:py-24 bg-cover bg-center"
-        style={{ backgroundImage: `url(${Kid1})` }}
+        style={{ backgroundImage: `url(${kid1})` }}
       >
         {/* Overlay gradient */}
         <div className="absolute inset-0 bg-gradient-to-br from-[#74C6C6]/40 via-[#4E6FA7]/40 to-[#3a5a8a]/40"></div>
