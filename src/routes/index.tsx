@@ -52,7 +52,10 @@ import { useState, useRef, useEffect } from "react";
 
 import livreBaoule from "../images/livrebaoule.png";
 import livreDioula from "../images/livredioula.webp";
-import kidAkan from "../images/kidAkan.jpg";
+import kidAkan from "../images/KidAkan.jpg";
+// import LivreBaoule from "../images/livrebaoule.png"; --- IGNORE ---
+// import LivreDioula from "../images/livredioula.webp"; --- IGNORE ---
+// import KidAkan from "../images/KidAkan.jpg"; --- IGNORE ---
 
 import VideoTopeci from "../videos/topeci_video.mp4";
 
