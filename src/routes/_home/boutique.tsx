@@ -26,7 +26,7 @@ import {
   ChevronDown,
 } from "lucide-react";
 
-import Kid1 from "../../images/kid1.jpg";
+import Kid1 from "../../images/Kid1.jpg";
 import LivreBaoule from "../../images/livrebaoule.png";
 import LivreDioula from "../../images/livredioula.webp";
 
