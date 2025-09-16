@@ -1,3 +1,18 @@
+/**
+ * 
+
+Charte graphique : 
+blanc
+vert vif #DCCC41
+Magenta #BE356A
+Bleu #4E6FA7
+Bleu cian #74C6C6
+Orange #D68E54
+
+Police d'écriture : Indie flower, Waffle soft, Glacial Indifference
+ */
+
+
 @import "tailwindcss";
 @import "tw-animate-css";
 
@@ -64,7 +79,7 @@
   --sidebar-ring: oklch(0.708 0 0);
 }
 
-
+/*
 a {
   font-weight: 500;
   color: #BE356A;
@@ -72,7 +87,7 @@ a {
 }
 a:hover {
   color: #ffffff;
-}
+}*/
 
 /* CORRECTION: Suppression des styles qui causent le problème de centrage */
 body {
@@ -126,9 +141,10 @@ button:focus-visible {
     color: #213547;
     background-color: #ffffff;
   }
+  /*
   a:hover {
     color: #ffffff;
-  }
+  }*/
 }
 
 @theme inline {

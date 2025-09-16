@@ -6,8 +6,11 @@
  */
 
 import { createFileRoute } from "@tanstack/react-router";
-import { Heart, Users, BookOpen, Globe, Star } from "lucide-react";
+import { Heart, Users, BookOpen, Globe} from "lucide-react";
 import Education from "../../images/education.jpg";
+import KidTopeci from "../../images/kidtopeci.png";
+import BookTopeci from "../../images/bookTopeci.jpg";
+
 
 export const Route = createFileRoute("/_home/a-propos")({
   component: RouteComponent,
@@ -17,12 +20,19 @@ function RouteComponent() {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-[#74C6C6] via-[#4E6FA7] to-[#3a5a8a] py-16 md:py-24">
-        <div className="container mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 font-['Waffle_soft']">
+      <section
+        className="relative py-16 md:py-24 bg-cover bg-center"
+        style={{ backgroundImage: `url(${KidTopeci})` }}
+      >
+        {/* Overlay gradient */}
+        <div className="absolute inset-0 bg-gradient-to-br from-[#74C6C6]/40 via-[#4E6FA7]/40 to-[#3a5a8a]/40"></div>
+
+        {/* Contenu */}
+        <div className="container mx-auto px-4 text-center relative z-10">
+          <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 font-waffle-soft">
             À propos de TOPECI
           </h1>
-          <p className="text-xl md:text-2xl text-white opacity-90 max-w-3xl mx-auto font-['Glacial_Indifference']">
+          <p className="text-xl md:text-2xl text-white opacity-90 max-w-3xl mx-auto font-glacial-indifference">
             Passionnés par la préservation et la promotion de l'identité
             culturelle africaine
           </p>
@@ -63,10 +73,7 @@ function RouteComponent() {
             <div className="bg-white rounded-2xl shadow-lg p-6">
               <div className="bg-gradient-to-br from-[#74C6C6] to-[#4E6FA7] h-64 rounded-xl flex items-center justify-center">
                 <div className="text-white text-center">
-                  <BookOpen size={64} className="mx-auto mb-4" />
-                  <p className="text-lg font-['Indie_Flower']">
-                    <img src={Education} alt="Image Ministre de l'éducation" />
-                  </p>
+                  <img src={Education} alt="Image Ministre de l'éducation" />
                 </div>
               </div>
             </div>
@@ -129,18 +136,11 @@ function RouteComponent() {
       </section>
 
       {/* Nos Produits Section */}
-      <section className="py-16 bg-gray-50">
-        <div className="container mx-auto px-4">
+      <section className="py-10 bg-gray-50">
+        <div className="container mx-auto px-3">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div className="bg-white rounded-2xl shadow-lg p-6">
-              <div className="bg-gradient-to-br from-[#DCCC41] to-[#D68E54] h-64 rounded-xl flex items-center justify-center">
-                <div className="text-white text-center">
-                  <Star size={64} className="mx-auto mb-4" />
-                  <p className="text-lg font-['Indie_Flower']">
-                    [Photos des produits TOPECI]
-                  </p>
-                </div>
-              </div>
+            <div className="bg-white rounded-2xl shadow-lg p-4">
+              <img src={BookTopeci} alt="Image Livre Topeci" />
             </div>
             <div>
               <h2 className="text-3xl md:text-4xl font-bold text-[#4E6FA7] mb-6 font-['Waffle_soft']">
@@ -245,7 +245,7 @@ function RouteComponent() {
               Nos Valeurs
             </h2>
             <div className="bg-white bg-opacity-10 rounded-2xl p-8 mb-8">
-              <p className="text-xl text-white font-['Glacial_Indifference'] leading-relaxed mb-6">
+              <p className="text-xl text-gray-600 font-['Glacial_Indifference'] leading-relaxed mb-6">
                 Chez TOPECI, nous sommes engagés dans la{" "}
                 <span className="font-bold text-[#DCCC41]">diversité</span> et
                 l'<span className="font-bold text-[#DCCC41]">inclusion</span>.
@@ -254,9 +254,9 @@ function RouteComponent() {
               </p>
               <div className="flex items-center justify-center space-x-4">
                 <div className="bg-white bg-opacity-20 p-3 rounded-full">
-                  <Heart className="text-white" size={24} />
+                  <Heart className="text-red-400" size={24} />
                 </div>
-                <span className="text-white font-bold text-lg font-['Waffle_soft']">
+                <span className="text-[#BE356A] font-bold text-lg font-waffle-soft">
                   Diversité • Inclusion • Culture
                 </span>
               </div>

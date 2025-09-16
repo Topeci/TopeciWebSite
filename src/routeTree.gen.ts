@@ -10,14 +10,17 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as NewsletterRouteImport } from './routes/newsletter'
+import { Route as LoginRouteImport } from './routes/login'
+import { Route as CommandeRouteImport } from './routes/commande'
 import { Route as HomeRouteImport } from './routes/_home'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as HomeTermsRouteImport } from './routes/_home/terms'
 import { Route as HomeSignupRouteImport } from './routes/_home/signup'
+import { Route as HomeSettingRouteImport } from './routes/_home/setting'
+import { Route as HomeProfilRouteImport } from './routes/_home/profil'
 import { Route as HomePrivacyRouteImport } from './routes/_home/privacy'
 import { Route as HomePanierRouteImport } from './routes/_home/panier'
 import { Route as HomeMentionsLegalRouteImport } from './routes/_home/mentions-legal'
-import { Route as HomeLoginRouteImport } from './routes/_home/login'
 import { Route as HomeLivresRouteImport } from './routes/_home/livres'
 import { Route as HomeCookiesRouteImport } from './routes/_home/cookies'
 import { Route as HomeContactRouteImport } from './routes/_home/contact'
@@ -29,6 +32,16 @@ import { Route as HomeProduitProductIdRouteImport } from './routes/_home/produit
 const NewsletterRoute = NewsletterRouteImport.update({
   id: '/newsletter',
   path: '/newsletter',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LoginRoute = LoginRouteImport.update({
+  id: '/login',
+  path: '/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CommandeRoute = CommandeRouteImport.update({
+  id: '/commande',
+  path: '/commande',
   getParentRoute: () => rootRouteImport,
 } as any)
 const HomeRoute = HomeRouteImport.update({
@@ -50,6 +63,16 @@ const HomeSignupRoute = HomeSignupRouteImport.update({
   path: '/signup',
   getParentRoute: () => HomeRoute,
 } as any)
+const HomeSettingRoute = HomeSettingRouteImport.update({
+  id: '/setting',
+  path: '/setting',
+  getParentRoute: () => HomeRoute,
+} as any)
+const HomeProfilRoute = HomeProfilRouteImport.update({
+  id: '/profil',
+  path: '/profil',
+  getParentRoute: () => HomeRoute,
+} as any)
 const HomePrivacyRoute = HomePrivacyRouteImport.update({
   id: '/privacy',
   path: '/privacy',
@@ -63,11 +86,6 @@ const HomePanierRoute = HomePanierRouteImport.update({
 const HomeMentionsLegalRoute = HomeMentionsLegalRouteImport.update({
   id: '/mentions-legal',
   path: '/mentions-legal',
-  getParentRoute: () => HomeRoute,
-} as any)
-const HomeLoginRoute = HomeLoginRouteImport.update({
-  id: '/login',
-  path: '/login',
   getParentRoute: () => HomeRoute,
 } as any)
 const HomeLivresRoute = HomeLivresRouteImport.update({
@@ -108,6 +126,8 @@ const HomeProduitProductIdRoute = HomeProduitProductIdRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/commande': typeof CommandeRoute
+  '/login': typeof LoginRoute
   '/newsletter': typeof NewsletterRoute
   '/a-propos': typeof HomeAProposRoute
   '/aide-faq': typeof HomeAideFaqRoute
@@ -115,16 +135,19 @@ export interface FileRoutesByFullPath {
   '/contact': typeof HomeContactRoute
   '/cookies': typeof HomeCookiesRoute
   '/livres': typeof HomeLivresRoute
-  '/login': typeof HomeLoginRoute
   '/mentions-legal': typeof HomeMentionsLegalRoute
   '/panier': typeof HomePanierRoute
   '/privacy': typeof HomePrivacyRoute
+  '/profil': typeof HomeProfilRoute
+  '/setting': typeof HomeSettingRoute
   '/signup': typeof HomeSignupRoute
   '/terms': typeof HomeTermsRoute
   '/produit/$productId': typeof HomeProduitProductIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/commande': typeof CommandeRoute
+  '/login': typeof LoginRoute
   '/newsletter': typeof NewsletterRoute
   '/a-propos': typeof HomeAProposRoute
   '/aide-faq': typeof HomeAideFaqRoute
@@ -132,10 +155,11 @@ export interface FileRoutesByTo {
   '/contact': typeof HomeContactRoute
   '/cookies': typeof HomeCookiesRoute
   '/livres': typeof HomeLivresRoute
-  '/login': typeof HomeLoginRoute
   '/mentions-legal': typeof HomeMentionsLegalRoute
   '/panier': typeof HomePanierRoute
   '/privacy': typeof HomePrivacyRoute
+  '/profil': typeof HomeProfilRoute
+  '/setting': typeof HomeSettingRoute
   '/signup': typeof HomeSignupRoute
   '/terms': typeof HomeTermsRoute
   '/produit/$productId': typeof HomeProduitProductIdRoute
@@ -144,6 +168,8 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/_home': typeof HomeRouteWithChildren
+  '/commande': typeof CommandeRoute
+  '/login': typeof LoginRoute
   '/newsletter': typeof NewsletterRoute
   '/_home/a-propos': typeof HomeAProposRoute
   '/_home/aide-faq': typeof HomeAideFaqRoute
@@ -151,10 +177,11 @@ export interface FileRoutesById {
   '/_home/contact': typeof HomeContactRoute
   '/_home/cookies': typeof HomeCookiesRoute
   '/_home/livres': typeof HomeLivresRoute
-  '/_home/login': typeof HomeLoginRoute
   '/_home/mentions-legal': typeof HomeMentionsLegalRoute
   '/_home/panier': typeof HomePanierRoute
   '/_home/privacy': typeof HomePrivacyRoute
+  '/_home/profil': typeof HomeProfilRoute
+  '/_home/setting': typeof HomeSettingRoute
   '/_home/signup': typeof HomeSignupRoute
   '/_home/terms': typeof HomeTermsRoute
   '/_home/produit/$productId': typeof HomeProduitProductIdRoute
@@ -163,6 +190,8 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/commande'
+    | '/login'
     | '/newsletter'
     | '/a-propos'
     | '/aide-faq'
@@ -170,16 +199,19 @@ export interface FileRouteTypes {
     | '/contact'
     | '/cookies'
     | '/livres'
-    | '/login'
     | '/mentions-legal'
     | '/panier'
     | '/privacy'
+    | '/profil'
+    | '/setting'
     | '/signup'
     | '/terms'
     | '/produit/$productId'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/commande'
+    | '/login'
     | '/newsletter'
     | '/a-propos'
     | '/aide-faq'
@@ -187,10 +219,11 @@ export interface FileRouteTypes {
     | '/contact'
     | '/cookies'
     | '/livres'
-    | '/login'
     | '/mentions-legal'
     | '/panier'
     | '/privacy'
+    | '/profil'
+    | '/setting'
     | '/signup'
     | '/terms'
     | '/produit/$productId'
@@ -198,6 +231,8 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/_home'
+    | '/commande'
+    | '/login'
     | '/newsletter'
     | '/_home/a-propos'
     | '/_home/aide-faq'
@@ -205,10 +240,11 @@ export interface FileRouteTypes {
     | '/_home/contact'
     | '/_home/cookies'
     | '/_home/livres'
-    | '/_home/login'
     | '/_home/mentions-legal'
     | '/_home/panier'
     | '/_home/privacy'
+    | '/_home/profil'
+    | '/_home/setting'
     | '/_home/signup'
     | '/_home/terms'
     | '/_home/produit/$productId'
@@ -217,6 +253,8 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   HomeRoute: typeof HomeRouteWithChildren
+  CommandeRoute: typeof CommandeRoute
+  LoginRoute: typeof LoginRoute
   NewsletterRoute: typeof NewsletterRoute
 }
 
@@ -227,6 +265,20 @@ declare module '@tanstack/react-router' {
       path: '/newsletter'
       fullPath: '/newsletter'
       preLoaderRoute: typeof NewsletterRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/login': {
+      id: '/login'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof LoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/commande': {
+      id: '/commande'
+      path: '/commande'
+      fullPath: '/commande'
+      preLoaderRoute: typeof CommandeRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/_home': {
@@ -257,6 +309,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof HomeSignupRouteImport
       parentRoute: typeof HomeRoute
     }
+    '/_home/setting': {
+      id: '/_home/setting'
+      path: '/setting'
+      fullPath: '/setting'
+      preLoaderRoute: typeof HomeSettingRouteImport
+      parentRoute: typeof HomeRoute
+    }
+    '/_home/profil': {
+      id: '/_home/profil'
+      path: '/profil'
+      fullPath: '/profil'
+      preLoaderRoute: typeof HomeProfilRouteImport
+      parentRoute: typeof HomeRoute
+    }
     '/_home/privacy': {
       id: '/_home/privacy'
       path: '/privacy'
@@ -276,13 +342,6 @@ declare module '@tanstack/react-router' {
       path: '/mentions-legal'
       fullPath: '/mentions-legal'
       preLoaderRoute: typeof HomeMentionsLegalRouteImport
-      parentRoute: typeof HomeRoute
-    }
-    '/_home/login': {
-      id: '/_home/login'
-      path: '/login'
-      fullPath: '/login'
-      preLoaderRoute: typeof HomeLoginRouteImport
       parentRoute: typeof HomeRoute
     }
     '/_home/livres': {
@@ -344,10 +403,11 @@ interface HomeRouteChildren {
   HomeContactRoute: typeof HomeContactRoute
   HomeCookiesRoute: typeof HomeCookiesRoute
   HomeLivresRoute: typeof HomeLivresRoute
-  HomeLoginRoute: typeof HomeLoginRoute
   HomeMentionsLegalRoute: typeof HomeMentionsLegalRoute
   HomePanierRoute: typeof HomePanierRoute
   HomePrivacyRoute: typeof HomePrivacyRoute
+  HomeProfilRoute: typeof HomeProfilRoute
+  HomeSettingRoute: typeof HomeSettingRoute
   HomeSignupRoute: typeof HomeSignupRoute
   HomeTermsRoute: typeof HomeTermsRoute
   HomeProduitProductIdRoute: typeof HomeProduitProductIdRoute
@@ -360,10 +420,11 @@ const HomeRouteChildren: HomeRouteChildren = {
   HomeContactRoute: HomeContactRoute,
   HomeCookiesRoute: HomeCookiesRoute,
   HomeLivresRoute: HomeLivresRoute,
-  HomeLoginRoute: HomeLoginRoute,
   HomeMentionsLegalRoute: HomeMentionsLegalRoute,
   HomePanierRoute: HomePanierRoute,
   HomePrivacyRoute: HomePrivacyRoute,
+  HomeProfilRoute: HomeProfilRoute,
+  HomeSettingRoute: HomeSettingRoute,
   HomeSignupRoute: HomeSignupRoute,
   HomeTermsRoute: HomeTermsRoute,
   HomeProduitProductIdRoute: HomeProduitProductIdRoute,
@@ -374,6 +435,8 @@ const HomeRouteWithChildren = HomeRoute._addFileChildren(HomeRouteChildren)
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   HomeRoute: HomeRouteWithChildren,
+  CommandeRoute: CommandeRoute,
+  LoginRoute: LoginRoute,
   NewsletterRoute: NewsletterRoute,
 }
 export const routeTree = rootRouteImport

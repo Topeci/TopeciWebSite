@@ -200,9 +200,7 @@ function RouteComponent() {
             <ArrowLeft size={20} className="mr-2" />
             Continuer mes achats
           </Link>
-          <h1 className="text-3xl font-bold text-gray-900 font-['Waffle_soft']">
-            Mon Panier
-          </h1>
+          
           <div className="w-10"></div> {/* Pour l'équilibrage */}
         </div>
 

@@ -26,6 +26,11 @@ import {
   ChevronDown,
 } from "lucide-react";
 
+import Kid1 from "../../images/kid1.jpg";
+import LivreBaoule from "../../images/livrebaoule.png";
+import LivreDioula from "../../images/livredioula.webp";
+
+
 // Données de produits fictifs
 const products = [
   {
@@ -33,7 +38,7 @@ const products = [
     name: "Livre Audio Baoulé",
     description: "Livre interactif avec audio pour apprendre le baoulé",
     price: "8000 CFA",
-    image: "https://placehold.co/300x400/74C6C6/white?text=Livre+Baoulé",
+    image: LivreBaoule,
     category: "livre-audio",
     isNew: true,
     rating: 4.8,
@@ -43,7 +48,7 @@ const products = [
     name: "Livre Audio Dioula",
     description: "Livre interactif avec audio pour apprendre le dioula",
     price: "8000 CFA",
-    image: "https://placehold.co/300x400/4E6FA7/white?text=Livre+Dioula",
+    image: LivreDioula,
     category: "livre-audio",
     isNew: true,
     rating: 4.7,
@@ -158,12 +163,19 @@ function RouteComponent() {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Bannière */}
-      <section className="bg-gradient-to-r from-[#74C6C6] to-[#4E6FA7] py-12 text-white">
-        <div className="container mx-auto px-4 text-center">
-          <h1 className="text-4xl font-bold mb-4 font-['Waffle_soft']">
+      <section
+        className="relative py-16 md:py-24 bg-cover bg-center"
+        style={{ backgroundImage: `url(${Kid1})` }}
+      >
+        {/* Overlay gradient */}
+        <div className="absolute inset-0 bg-gradient-to-br from-[#74C6C6]/40 via-[#4E6FA7]/40 to-[#3a5a8a]/40"></div>
+
+        {/* Contenu */}
+        <div className="container mx-auto px-4 text-center text-white ">
+          <h1 className="text-4xl font-bold mb-4 font-waffle-soft text-white">
             Notre Boutique
           </h1>
-          <p className="text-xl max-w-2xl mx-auto font-['Glacial_Indifference']">
+          <p className="text-xl max-w-2xl mx-auto font-glacial-indifference text-white">
             Découvrez tous nos produits pour apprendre les langues africaines de
             façon ludique et interactive
           </p>
