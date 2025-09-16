@@ -114,8 +114,8 @@ function RouteComponent() {
             </Link>
             <span>/</span>
             <Link
-              to={`/boutique?category=${product.category.toLowerCase()}`}
-              className="hover:text-[#74C6C6] transition-colors"
+              to="/boutique"
+              search={{ category: product.category.toLowerCase() }}
             >
               {product.category}
             </Link>
@@ -376,7 +376,8 @@ function RouteComponent() {
                     )}
                   </div>
                   <Link
-                    to={`/produit/${relatedProduct.id}`}
+                    to="/produit/$productId"
+                    params={{ productId: relatedProduct.id.toString() }}
                     className="mt-3 inline-block w-full bg-gray-100 hover:bg-gray-200 text-center py-2 rounded-lg transition-colors"
                   >
                     Voir le produit

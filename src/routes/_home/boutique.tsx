@@ -347,7 +347,8 @@ function RouteComponent() {
                     Ajouter
                   </button>
                   <Link
-                    to={`/produit/${product.id}`}
+                    to="/produit/$productId"
+                    params={{ productId: product.id.toString() }}
                     className="bg-gray-100 hover:bg-gray-200 text-gray-700 py-2 px-4 rounded-lg transition-colors duration-300 flex items-center justify-center"
                   >
                     <Eye size={16} />
