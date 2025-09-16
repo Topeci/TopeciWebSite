@@ -7,9 +7,9 @@
 
 import { createFileRoute } from "@tanstack/react-router";
 import { Heart, Users, BookOpen, Globe} from "lucide-react";
-import Education from "../../images/education.jpg";
-import KidTopeci from "../../images/kidtopeci.png";
-import BookTopeci from "../../images/bookTopeci.jpg";
+import education from "../../images/education.jpg";
+import kidTopeci from "../../images/kidtopeci.png";
+import bookTopeci from "../../images/bookTopeci.jpg";
 
 
 export const Route = createFileRoute("/_home/a-propos")({
@@ -22,7 +22,7 @@ function RouteComponent() {
       {/* Hero Section */}
       <section
         className="relative py-16 md:py-24 bg-cover bg-center"
-        style={{ backgroundImage: `url(${KidTopeci})` }}
+        style={{ backgroundImage: `url(${kidTopeci})` }}
       >
         {/* Overlay gradient */}
         <div className="absolute inset-0 bg-gradient-to-br from-[#74C6C6]/40 via-[#4E6FA7]/40 to-[#3a5a8a]/40"></div>
@@ -73,7 +73,7 @@ function RouteComponent() {
             <div className="bg-white rounded-2xl shadow-lg p-6">
               <div className="bg-gradient-to-br from-[#74C6C6] to-[#4E6FA7] h-64 rounded-xl flex items-center justify-center">
                 <div className="text-white text-center">
-                  <img src={Education} alt="Image Ministre de l'éducation" />
+                  <img src={education} alt="Image Ministre de l'éducation" />
                 </div>
               </div>
             </div>
@@ -140,7 +140,7 @@ function RouteComponent() {
         <div className="container mx-auto px-3">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="bg-white rounded-2xl shadow-lg p-4">
-              <img src={BookTopeci} alt="Image Livre Topeci" />
+              <img src={bookTopeci} alt="Image Livre Topeci" />
             </div>
             <div>
               <h2 className="text-3xl md:text-4xl font-bold text-[#4E6FA7] mb-6 font-['Waffle_soft']">

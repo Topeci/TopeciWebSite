@@ -50,9 +50,9 @@ import { Button } from "../components/ui/button";
 import { useState, useRef, useEffect } from "react";
 
 
-import LivreBaoule from "../images/livrebaoule.png";
-import LivreDioula from "../images/livredioula.webp";
-import KidAkan from "../images/kidAkan.jpg";
+import livreBaoule from "../images/livrebaoule.png";
+import livreDioula from "../images/livredioula.webp";
+import kidAkan from "../images/kidAkan.jpg";
 
 import VideoTopeci from "../videos/topeci_video.mp4";
 
@@ -347,7 +347,7 @@ function Index() {
                 <div className="w-80 h-80 md:w-96 md:h-96 bg-gradient-to-br from-[#74C6C6] to-[#4E6FA7] p-1 rounded-full">
                   <div className="w-full h-full bg-white rounded-full flex items-center justify-center shadow-2xl p-3">
                     <img
-                      src={KidAkan}
+                      src={kidAkan}
                       alt="Kid Akan"
                       className="w-full h-full object-cover rounded-full"
                     />
@@ -373,7 +373,7 @@ function Index() {
               <div className="bg-white rounded-2xl shadow-md overflow-hidden transition-transform duration-300 hover:scale-105 flex flex-col">
                 <div className="h-64 overflow-hidden">
                   <img
-                    src={LivreBaoule}
+                    src={livreBaoule}
                     alt="Mon Premier Livre Audio Baoulé"
                     className="w-full h-full object-cover"
                   />
@@ -398,7 +398,7 @@ function Index() {
               <div className="bg-white rounded-2xl shadow-md overflow-hidden transition-transform duration-300 hover:scale-105 flex flex-col">
                 <div className="h-64 overflow-hidden">
                   <img
-                    src={LivreDioula}
+                    src={livreDioula}
                     alt="Mon Premier Livre Audio Dioula"
                     className="w-full h-full object-cover"
                   />
@@ -423,7 +423,7 @@ function Index() {
               <div className="bg-white rounded-2xl shadow-md overflow-hidden transition-transform duration-300 hover:scale-105 flex flex-col">
                 <div className="h-64 overflow-hidden">
                   <img
-                    src={LivreBaoule}
+                    src={livreBaoule}
                     alt="Contes Africains Baoulé"
                     className="w-full h-full object-cover"
                   />
