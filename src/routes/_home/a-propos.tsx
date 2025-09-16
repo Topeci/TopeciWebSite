@@ -9,7 +9,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Heart, Users, BookOpen, Globe} from "lucide-react";
 import Education from "../../images/education.jpg";
 import KidTopeci from "../../images/kidtopeci.png";
-import BookTopeci from "../../images/BookTopeci.jpg";
+import BookTopeci from "../../images/bookTopeci.jpg";
 
 
 export const Route = createFileRoute("/_home/a-propos")({
