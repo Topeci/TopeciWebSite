@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Mail, Phone, Lock } from "lucide-react";
-import TopeciLogo from "../images/LogoTopeci.png";
+import TopeciLogo from "../images/logoTopeci.png";
 import { useState } from "react";
 
 export const Route = createFileRoute("/login")({
