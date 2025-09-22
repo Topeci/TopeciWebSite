@@ -2,27 +2,26 @@
  * Page À propos de TOPECI
  * Description de l'entreprise TOPECI
  * Nom des fondateurs : Jean-Marc Koffi et Cindy-Ornella Kouakou (Tu peux corriger la zone d'image des fondateurs pour qu'il soit plus visible)
- * Arrange la section "Nos Valeurs" pour que l'image rentre dans le cadre 
+ * Arrange la section "Nos Valeurs" pour que l'image rentre dans le cadre
  * Utilise des polices comme "Indie Flower" pour le texte courant et "Waffle Soft" pour les titres
- * pour le texte en puce 
+ * pour le texte en puce
  */
 /**
  * Page À propos de TOPECI
  * Description de l'entreprise TOPECI
  * Nom des fondateurs : Jean-Marc Koffi et Cindy-Ornella Kouakou (Tu peux corriger la zone d'image des fondateurs pour qu'il soit plus visible)
- * Arrange la section "Nos Valeurs" pour que l'image rentre dans le cadre 
+ * Arrange la section "Nos Valeurs" pour que l'image rentre dans le cadre
  * Utilise des polices comme "Indie Flower" pour le texte courant et "Waffle Soft" pour les titres
- * pour le texte en puce  
+ * pour le texte en puce
  */
 
 import { createFileRoute } from "@tanstack/react-router";
 import { Heart, Users, BookOpen, Globe } from "lucide-react";
 import education from "../../images/education.jpg";
 import bookTopeci from "../../images/bookTopeci.jpg";
-import jeanMarc from "../../images/jean_marc.jpg";
+import jeanMarc from "../../images/jeanMarc.jpg";
 import cindyOrnella from "../../images/ornella.jpg";
 import parisKid from "../../images/parisKid.jpg";
-
 
 export const Route = createFileRoute("/_home/a-propos")({
   component: RouteComponent,
