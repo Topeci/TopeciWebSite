@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Mail, Phone, Lock } from "lucide-react";
 // Correction du chemin du logo (majuscule cohérente avec le fichier réel)
-import TopeciLogo from "../images/LogoTopeci.png";
+import TopeciLogo from "../images/logoTopeci.png";
 import { useState } from "react";
 
 export const Route = createFileRoute("/login")({
