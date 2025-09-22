@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { Mail, Sun, Phone, Lock } from "lucide-react";
+import { Mail, Phone, Lock } from "lucide-react";
+import TopeciLogo from "../images/LogoTopeci.png";
 import { useState } from "react";
 
 export const Route = createFileRoute("/login")({
@@ -56,26 +57,13 @@ function RouteComponent() {
         {/* En-tête */}
         <a
           href="/"
-          className="flex justify-center items-center hover:opacity-80 transition-opacity duration-300 mt-3"
+          className="flex items-center justify-center mt-5 hover:opacity-80 transition-opacity duration-300"
         >
-          <span className="font-indie-flower text-3xl font-bold text-[#DCCC41]">
-            T
-          </span>
-          <div>
-            <Sun className="text-orange-500"></Sun>
-          </div>
-          <span className="font-indie-flower text-3xl font-bold text-[#BE356A]">
-            P
-          </span>
-          <span className="font-indie-flower text-3xl font-bold text-[#4E6FA7]">
-            E
-          </span>
-          <span className="font-indie-flower text-3xl font-bold text-[#D68E54]">
-            C
-          </span>
-          <span className="font-indie-flower text-3xl font-bold text-[purple]">
-            I
-          </span>
+          <img
+            src={TopeciLogo}
+            alt="Logo topeci"
+            className="h-10 w-auto md:h-12"
+          />
         </a>
 
         {/* Formulaire */}
@@ -99,14 +87,14 @@ function RouteComponent() {
                 <button
                   type="button"
                   onClick={switchToEmail}
-                  className={`flex-1 py-2 text-center font-medium ${loginMethod === `email` ? `text-[#74C6C6] border-b-2 border-[#74C6C6]` : `text-gray-500 dark:text-gray-400`}`}
+                  className={`flex-1 py-2 text-center font-medium ${loginMethod === `email` ? `text-[#4E6FA7] border-b-2 border-[#4E6FA7]` : `text-gray-500 dark:text-gray-400`}`}
                 >
                   E-mail
                 </button>
                 <button
                   type="button"
                   onClick={switchToPhone}
-                  className={`flex-1 py-2 text-center font-medium ${loginMethod === `phone` ? `text-[#74C6C6] border-b-2 border-[#74C6C6]` : `text-gray-500 dark:text-gray-400`}`}
+                  className={`flex-1 py-2 text-center font-medium ${loginMethod === `phone` ? `text-[#4E6FA7] border-b-2 border-[#4E6FA7]` : `text-gray-500 dark:text-gray-400`}`}
                 >
                   Téléphone
                 </button>
@@ -139,7 +127,7 @@ function RouteComponent() {
                       loginMethod === "email" ? formData.email : formData.phone
                     }
                     onChange={handleInputChange}
-                    className="w-full pl-10 pr-3 py-3 border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-[#74C6C6] focus:border-[#74C6C6] outline-none transition font-glacial-indifference bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100"
+                    className="w-full pl-10 pr-3 py-3 border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-[#4E6FA7]  focus:border-[#4E6FA7]  outline-none transition font-glacial-indifference bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100"
                     placeholder={
                       loginMethod === "email"
                         ? "Adresse e-mail"
@@ -159,7 +147,7 @@ function RouteComponent() {
                     required
                     checked={formData.acceptTerms}
                     onChange={handleInputChange}
-                    className="w-4 h-4 text-[#74C6C6] border-gray-300 rounded focus:ring-[#74C6C6]"
+                    className="w-4 h-4 text-[#4E6FA7] border-gray-300 rounded focus:ring-[#74C6C6]"
                   />
                 </div>
                 <label
@@ -169,14 +157,14 @@ function RouteComponent() {
                   J'accepte les{" "}
                   <Link
                     to="/terms"
-                    className="text-[#74C6C6] hover:text-[#4E6FA7]"
+                    className="text-[#4E6FA7] hover:text-[#74C6C6]"
                   >
                     conditions d'utilisation
                   </Link>{" "}
                   et la{" "}
                   <Link
                     to="/privacy"
-                    className="text-[#74C6C6] hover:text-[#4E6FA7]"
+                    className="text-[#4E6FA7] hover:text-[#74C6C6]"
                   >
                     politique de confidentialité
                   </Link>
@@ -185,7 +173,7 @@ function RouteComponent() {
             </>
           ) : (
             /* Étape 2: Code de vérification */
-            (<div>
+            <div>
               <label
                 htmlFor="verificationCode"
                 className="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-2 font-glacial-indifference"
@@ -203,7 +191,7 @@ function RouteComponent() {
                   required
                   value={formData.verificationCode}
                   onChange={handleInputChange}
-                  className="w-full pl-10 pr-3 py-3 border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-[#74C6C6] focus:border-[#74C6C6] outline-none transition font-glacial-indifference bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100"
+                  className="w-full pl-10 pr-3 py-3 border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-[#4E6FA7] focus:border-[#4E6FA7] outline-none transition font-glacial-indifference bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100"
                   placeholder="Saisissez le code reçu"
                   maxLength={6}
                 />
@@ -212,19 +200,19 @@ function RouteComponent() {
                 Vous n'avez pas reçu le code?{" "}
                 <button
                   type="button"
-                  className="text-[#74C6C6] hover:text-[#4E6FA7]"
+                  className="text-[#4E6FA7] hover:text-[#74C6C6]"
                   onClick={() => console.log("Renvoyer le code")}
                 >
                   Renvoyer
                 </button>
               </p>
-            </div>)
+            </div>
           )}
 
           {/* Bouton de soumission */}
           <button
             type="submit"
-            className="w-full bg-gradient-to-r from-[#74C6C6] to-[#4E6FA7] text-white py-3 px-4 rounded-lg font-semibold hover:from-[#5cb0b0] hover:to-[#3a5a8a] transition shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#74C6C6] font-glacial-indifference"
+            className="w-full bg-gradient-to-r bg-[#BE356A] text-white py-3 px-4 rounded-lg font-semibold transition shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  font-glacial-indifference"
           >
             {step === 1 ? "Continuer" : "Soumettre"}
           </button>
@@ -233,7 +221,7 @@ function RouteComponent() {
             <button
               type="button"
               onClick={() => setStep(1)}
-              className="w-full text-[#74C6C6] py-2 px-4 rounded-lg font-medium hover:bg-gray-100 dark:hover:bg-gray-800 transition font-glacial-indifference"
+              className="w-full text-[#4E6FA7] py-2 px-4 rounded-lg font-medium hover:bg-gray-100 dark:hover:bg-gray-800 transition font-glacial-indifference"
             >
               ← Retour
             </button>
@@ -241,5 +229,5 @@ function RouteComponent() {
         </form>
       </div>
     </div>
-  )
+  );
 }

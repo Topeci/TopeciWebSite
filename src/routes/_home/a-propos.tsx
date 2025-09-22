@@ -1,15 +1,27 @@
 /**
  * Page À propos de TOPECI
  * Description de l'entreprise TOPECI
- * Nom des fondateurs : Jean-Marc Koffi et Cindy-Ornella Kouakou
- * Des zones sur la page pour insérer des photos liées aux produits et à l'équipe
+ * Nom des fondateurs : Jean-Marc Koffi et Cindy-Ornella Kouakou (Tu peux corriger la zone d'image des fondateurs pour qu'il soit plus visible)
+ * Arrange la section "Nos Valeurs" pour que l'image rentre dans le cadre 
+ * Utilise des polices comme "Indie Flower" pour le texte courant et "Waffle Soft" pour les titres
+ * pour le texte en puce 
+ */
+/**
+ * Page À propos de TOPECI
+ * Description de l'entreprise TOPECI
+ * Nom des fondateurs : Jean-Marc Koffi et Cindy-Ornella Kouakou (Tu peux corriger la zone d'image des fondateurs pour qu'il soit plus visible)
+ * Arrange la section "Nos Valeurs" pour que l'image rentre dans le cadre 
+ * Utilise des polices comme "Indie Flower" pour le texte courant et "Waffle Soft" pour les titres
+ * pour le texte en puce  
  */
 
 import { createFileRoute } from "@tanstack/react-router";
-import { Heart, Users, BookOpen, Globe} from "lucide-react";
+import { Heart, Users, BookOpen, Globe } from "lucide-react";
 import education from "../../images/education.jpg";
-import kidTopeci from "../../images/kidtopeci.png";
 import bookTopeci from "../../images/bookTopeci.jpg";
+import jeanMarc from "../../images/jean_marc.jpg";
+import cindyOrnella from "../../images/ornella.jpg";
+import parisKid from "../../images/parisKid.jpg";
 
 
 export const Route = createFileRoute("/_home/a-propos")({
@@ -18,36 +30,16 @@ export const Route = createFileRoute("/_home/a-propos")({
 
 function RouteComponent() {
   return (
-    <div className="min-h-screen bg-white">
-      {/* Hero Section */}
-      <section
-        className="relative py-16 md:py-24 bg-cover bg-center"
-        style={{ backgroundImage: `url(${kidTopeci})` }}
-      >
-        {/* Overlay gradient */}
-        <div className="absolute inset-0 bg-gradient-to-br from-[#74C6C6]/40 via-[#4E6FA7]/40 to-[#3a5a8a]/40"></div>
-
-        {/* Contenu */}
-        <div className="container mx-auto px-4 text-center relative z-10">
-          <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 font-waffle-soft">
-            À propos de TOPECI
-          </h1>
-          <p className="text-xl md:text-2xl text-white opacity-90 max-w-3xl mx-auto font-glacial-indifference">
-            Passionnés par la préservation et la promotion de l'identité
-            culturelle africaine
-          </p>
-        </div>
-      </section>
-
+    <div className="min-h-screen bg-white dark:bg-gray-900">
       {/* Notre Histoire Section */}
-      <section className="py-16 bg-gray-50">
+      <section className="py-16 bg-gray-50 dark:bg-gray-800">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 className="text-3xl md:text-4xl font-bold text-[#4E6FA7] mb-6 font-['Waffle_soft']">
-                Notre Histoire
+              <h2 className="text-2xl md:text-3xl font-bold font-waffle-soft text-[#D68E54] mb-6 ">
+                NOTRE HISTOIRE
               </h2>
-              <div className="space-y-6 text-gray-700 font-['Glacial_Indifference'] text-lg leading-relaxed">
+              <div className="space-y-6 text-black dark:text-gray-200 text-lg leading-relaxed font-indie-flower">
                 <p>
                   Fondée en{" "}
                   <span className="text-[#BE356A] font-bold">2024</span>, TOPECI
@@ -70,11 +62,13 @@ function RouteComponent() {
                 </div>
               </div>
             </div>
-            <div className="bg-white rounded-2xl shadow-lg p-6">
-              <div className="bg-gradient-to-br from-[#74C6C6] to-[#4E6FA7] h-64 rounded-xl flex items-center justify-center">
-                <div className="text-white text-center">
-                  <img src={education} alt="Image Ministre de l'éducation" />
-                </div>
+            <div className="bg-white dark:bg-gray-700 rounded-2xl shadow-lg p-6">
+              <div className="bg-gradient-to-br from-[#74C6C6] to-[#4E6FA7] h-64 rounded-xl flex items-center justify-center overflow-hidden">
+                <img
+                  src={education}
+                  alt="Image Ministre de l'éducation"
+                  className="object-cover w-full h-full rounded-xl"
+                />
               </div>
             </div>
           </div>
@@ -82,13 +76,13 @@ function RouteComponent() {
       </section>
 
       {/* Notre Mission Section */}
-      <section className="py-16 bg-white">
+      <section className="py-16 bg-white dark:bg-gray-900">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-[#4E6FA7] mb-6 font-['Waffle_soft']">
+            <h2 className="text-3xl md:text-4xl font-bold text-[#D68E54] mb-6 font-waffle-soft ">
               Notre Mission
             </h2>
-            <p className="text-xl text-gray-700 font-['Glacial_Indifference'] leading-relaxed">
+            <p className="text-xl text-black dark:text-gray-200 font-indie-flower leading-relaxed">
               Notre mission est de créer des outils éducatifs innovants qui
               permettent aux plus jeunes de découvrir et d'apprécier la richesse
               culturelle de la Côte d'Ivoire et du continent africain.
@@ -100,10 +94,10 @@ function RouteComponent() {
               <div className="bg-[#74C6C6] w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                 <BookOpen className="text-white" size={32} />
               </div>
-              <h3 className="text-xl font-bold text-[#BE356A] mb-3 font-['Waffle_soft']">
+              <h3 className="text-xl font-bold text-[#BE356A] mb-3 font-waffle-soft">
                 Éducation Ludique
               </h3>
-              <p className="text-gray-600 font-['Glacial_Indifference']">
+              <p className="text-black dark:text-gray-200 font-indie-flower">
                 Des livres audio interactifs pour apprendre en s'amusant
               </p>
             </div>
@@ -112,10 +106,10 @@ function RouteComponent() {
               <div className="bg-[#BE356A] w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                 <Globe className="text-white" size={32} />
               </div>
-              <h3 className="text-xl font-bold text-[#BE356A] mb-3 font-['Waffle_soft']">
+              <h3 className="text-xl font-bold text-[#BE356A] mb-3 font-waffle-soft">
                 Culture Africaine
               </h3>
-              <p className="text-gray-600 font-['Glacial_Indifference']">
+              <p className="text-black dark:text-gray-200 font-indie-flower">
                 Préservation des langues et traditions locales
               </p>
             </div>
@@ -124,10 +118,10 @@ function RouteComponent() {
               <div className="bg-[#D68E54] w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                 <Users className="text-white" size={32} />
               </div>
-              <h3 className="text-xl font-bold text-[#BE356A] mb-3 font-['Waffle_soft']">
+              <h3 className="text-xl font-bold text-[#BE356A] mb-3 font-waffle-soft">
                 Nouvelle Génération
               </h3>
-              <p className="text-gray-600 font-['Glacial_Indifference']">
+              <p className="text-black dark:text-gray-200 font-indie-flower ">
                 Connecter les enfants à leurs racines culturelles
               </p>
             </div>
@@ -136,17 +130,21 @@ function RouteComponent() {
       </section>
 
       {/* Nos Produits Section */}
-      <section className="py-10 bg-gray-50">
+      <section className="py-10 bg-gray-50 dark:bg-gray-800">
         <div className="container mx-auto px-3">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div className="bg-white rounded-2xl shadow-lg p-4">
-              <img src={bookTopeci} alt="Image Livre Topeci" />
+            <div className="bg-white dark:bg-gray-700 rounded-2xl shadow-lg p-4">
+              <img
+                src={bookTopeci}
+                alt="Image Livre Topeci"
+                className="object-cover w-full h-80 rounded-xl"
+              />
             </div>
             <div>
-              <h2 className="text-3xl md:text-4xl font-bold text-[#4E6FA7] mb-6 font-['Waffle_soft']">
+              <h2 className="text-3xl md:text-4xl font-extrabold text-black dark:text-gray-200 mb-6 font-waffle-soft">
                 Nos Produits
               </h2>
-              <div className="space-y-6 text-gray-700 font-['Glacial_Indifference'] text-lg leading-relaxed">
+              <div className="space-y-6 text-black dark:text-gray-200 font-indie-flower text-lg leading-relaxed">
                 <p>
                   À travers{" "}
                   <span className="text-[#BE356A] font-bold">
@@ -176,36 +174,74 @@ function RouteComponent() {
         </div>
       </section>
 
+      {/* Nos Valeurs Section */}
+      <section className="py-16 bg-gray-50 dark:bg-gray-800">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <h2 className="text-2xl md:text-3xl font-bold font-waffle-soft text-[#D68E54] mb-6 ">
+                NOS VALEURS
+              </h2>
+              <div className="space-y-6 text-black dark:text-gray-200 text-lg leading-relaxed font-indie-flower">
+                <ul className="list-disc pl-6 space-y-3">
+                  <li>Sauvegarde des cultures africaines</li>
+                  <li>
+                    Respect des identités plurielles – pour que chaque enfant se
+                    sente vu, compris et valorisé.
+                  </li>
+                  <li>
+                    Transmission avec douceur et authenticité – parce
+                    qu’apprendre une langue, c’est aussi recevoir une histoire.
+                  </li>
+                  <li>
+                    Inclusion, fierté, éveil – pour nourrir l’estime de soi, la
+                    curiosité et le sentiment d’appartenance.
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div className="bg-white dark:bg-gray-700 rounded-2xl shadow-lg p-6">
+              <div className="bg-gradient-to-br from-[#74C6C6] to-[#4E6FA7] h-64 rounded-xl flex items-center justify-center overflow-hidden">
+                <img
+                  src={parisKid}
+                  alt="Image Enfant Akan"
+                  className="object-cover w-full h-full rounded-xl"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Nos Fondateurs Section */}
-      <section className="py-16 bg-white">
+      <section className="py-16 bg-white dark:bg-gray-900">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-[#4E6FA7] mb-6 font-['Waffle_soft']">
-              Nos Fondateurs
+            <h2 className="text-3xl md:text-4xl font-bold text-[#D68E54] mb-4 font-waffle-soft">
+              Notre Équipe
             </h2>
-            <p className="text-xl text-gray-700 font-['Glacial_Indifference']">
+            <p className="text-xl text-black dark:text-gray-200 font-indie-flower">
               Les visionnaires derrière TOPECI
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             {/* Fondateur 1 */}
-            <div className="bg-gray-50 rounded-2xl p-8 text-center">
-              <div className="bg-gradient-to-br from-[#74C6C6] to-[#4E6FA7] w-32 h-32 rounded-full flex items-center justify-center mx-auto mb-6">
-                <div className="text-white text-center">
-                  <Users size={48} />
-                  <p className="text-sm font-['Indie_Flower'] mt-2">
-                    [Photo JM]
-                  </p>
-                </div>
+            <div className="bg-gray-50 dark:bg-gray-800 rounded-2xl p-8 text-center">
+              <div className="w-40 h-40 mx-auto mb-6 rounded-full overflow-hidden border-4 border-[#74C6C6] shadow-md">
+                <img
+                  src={jeanMarc}
+                  alt="Jean-Marc Koffi"
+                  className="object-cover w-full h-full"
+                />
               </div>
-              <h3 className="text-2xl font-bold text-[#BE356A] mb-2 font-['Waffle_soft']">
+              <h3 className="text-2xl font-bold text-[#BE356A] mb-2 font-waffle-soft">
                 Jean-Marc Koffi
               </h3>
-              <p className="text-[#74C6C6] font-bold mb-4 font-['Glacial_Indifference']">
+              <p className="text-[#74C6C6] font-bold mb-4 font-glacial-indifference ">
                 Co-Fondateur
               </p>
-              <p className="text-gray-600 font-['Glacial_Indifference']">
+              <p className="text-black dark:text-gray-200 font-glacial-indifference ">
                 Passionné par l'éducation et la technologie, Jean-Marc apporte
                 son expertise pour créer des expériences d'apprentissage
                 innovantes.
@@ -213,22 +249,21 @@ function RouteComponent() {
             </div>
 
             {/* Fondateur 2 */}
-            <div className="bg-gray-50 rounded-2xl p-8 text-center">
-              <div className="bg-gradient-to-br from-[#BE356A] to-[#D68E54] w-32 h-32 rounded-full flex items-center justify-center mx-auto mb-6">
-                <div className="text-white text-center">
-                  <Users size={48} />
-                  <p className="text-sm font-['Indie_Flower'] mt-2">
-                    [Photo CO]
-                  </p>
-                </div>
+            <div className="bg-gray-50 dark:bg-gray-800 rounded-2xl p-8 text-center">
+              <div className="w-40 h-40 mx-auto mb-6 rounded-full overflow-hidden border-4 border-[#BE356A] shadow-md">
+                <img
+                  src={cindyOrnella}
+                  alt="Cindy-Ornella Kouakou"
+                  className="object-cover w-full h-full"
+                />
               </div>
-              <h3 className="text-2xl font-bold text-[#BE356A] mb-2 font-['Waffle_soft']">
+              <h3 className="text-2xl font-bold text-[#BE356A] mb-2 font-waffle-soft">
                 Cindy-Ornella Kouakou
               </h3>
-              <p className="text-[#74C6C6] font-bold mb-4 font-['Glacial_Indifference']">
+              <p className="text-[#74C6C6] font-bold mb-4 font-glacial-indifference ">
                 Co-Fondatrice
               </p>
-              <p className="text-gray-600 font-['Glacial_Indifference']">
+              <p className="text-black dark:text-gray-200 font-glacial-indifference ">
                 Experte en culture africaine et en développement de contenu
                 éducatif, Cindy-Ornella guide notre mission culturelle.
               </p>
@@ -237,51 +272,23 @@ function RouteComponent() {
         </div>
       </section>
 
-      {/* Nos Valeurs Section */}
-      <section className="py-16 bg-gradient-to-r from-[#74C6C6] to-[#4E6FA7]">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-8 font-['Waffle_soft']">
-              Nos Valeurs
-            </h2>
-            <div className="bg-white bg-opacity-10 rounded-2xl p-8 mb-8">
-              <p className="text-xl text-gray-600 font-['Glacial_Indifference'] leading-relaxed mb-6">
-                Chez TOPECI, nous sommes engagés dans la{" "}
-                <span className="font-bold text-[#DCCC41]">diversité</span> et
-                l'<span className="font-bold text-[#DCCC41]">inclusion</span>.
-                Nous croyons que chaque enfant a le droit de s'épanouir dans sa
-                propre culture et de s'ouvrir au monde qui l'entoure.
-              </p>
-              <div className="flex items-center justify-center space-x-4">
-                <div className="bg-white bg-opacity-20 p-3 rounded-full">
-                  <Heart className="text-red-400" size={24} />
-                </div>
-                <span className="text-[#BE356A] font-bold text-lg font-waffle-soft">
-                  Diversité • Inclusion • Culture
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* Call to Action Section */}
-      <section className="py-16 bg-white">
+      <section className="py-16 bg-white dark:bg-gray-900">
         <div className="container mx-auto px-4 text-center">
           <div className="max-w-3xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-bold text-[#4E6FA7] mb-6 font-['Waffle_soft']">
+            <h2 className="text-3xl md:text-4xl font-bold text-[#4E6FA7] mb-6 font-waffle-soft">
               Rejoignez notre aventure
             </h2>
-            <p className="text-xl text-gray-700 mb-8 font-['Glacial_Indifference']">
+            <p className="text-xl text-gray-700 dark:text-gray-300 mb-8 font-glacial-indifference">
               Rejoignez-nous dans cette aventure éducative et culturelle pour
               préserver, partager et célébrer l'héritage africain avec les
               générations futures.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="bg-[#74C6C6] hover:bg-[#5fb3b3] text-white font-bold py-3 px-8 rounded-full transition duration-300 font-['Waffle_soft']">
+              <button className="bg-[#74C6C6] hover:bg-[#5fb3b3] text-white font-bold py-3 px-8 rounded-full transition duration-300 font-waffle-soft">
                 Découvrir nos produits
               </button>
-              <button className="border-2 border-[#74C6C6] text-[#74C6C6] hover:bg-[#74C6C6] hover:text-white font-bold py-3 px-8 rounded-full transition duration-300 font-['Waffle_soft']">
+              <button className="border-2 border-[#74C6C6] text-[#74C6C6] hover:bg-[#74C6C6] hover:text-white font-bold py-3 px-8 rounded-full transition duration-300 font-waffle-soft">
                 Nous contacter
               </button>
             </div>

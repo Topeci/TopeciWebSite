@@ -12,28 +12,36 @@ Orange #D68E54
 Police d'écriture : Indie flower, Waffle soft, Glacial Indifference
  */
 
-
 @import "tailwindcss";
 @import "tw-animate-css";
 
 /* Import des polices Google Fonts si nécessaire */
-@import url('https://fonts.googleapis.com/css2?family=Indie+Flower:wght@400&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Indie+Flower:wght@600&display=swap");
 
 /* Styles pour les polices personnalisées - vous devrez ajuster selon vos polices */
 .font-indie-flower {
-  font-family: 'Indie Flower', cursive;
+  font-family: "Indie Flower", cursive;
+  font-weight: 300;
+  font-style: normal;
+  letter-spacing: 0.5px; /* léger espacement, plus lisible et aéré */
+  line-height: 1.4; /* plus vivant que le standard */
+  font-size: 1.2em; /* un peu plus grand par défaut */
 }
 
 .font-waffle-soft {
-  font-family: 'Waffle Soft', sans-serif; /* Remplacez par la police réelle */
+  font-family: "Waffle Soft", sans-serif; /* Remplacez par la police réelle */
+  font-weight: 800;
 }
 
 .font-glacial-indifference {
-  font-family: 'Glacial Indifference', sans-serif; /* Remplacez par la police réelle */
+  font-family:
+    "Glacial Indifference", sans-serif; /* Remplacez par la police réelle */
 }
 
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif, Indie_Flower, Waffle_soft, Glacial_Indifference;
+  font-family:
+    system-ui, Avenir, Helvetica, Arial, sans-serif, Indie_Flower, Waffle_soft,
+    Glacial_Indifference;
   line-height: 1.5;
   font-weight: 400;
 
@@ -99,7 +107,8 @@ body {
   /* Suppression de: display: flex; place-items: center; */
 }
 
-html, body {
+html,
+body {
   height: 100%;
   width: 100%;
   margin: 0;
@@ -225,5 +234,36 @@ button:focus-visible {
   }
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+/* Responsive design */
+@media screen and (max-width: 1024px) {
+  body {
+    font-size: 1rem;
+    padding: 0.5rem;
+  }
+  h1 {
+    font-size: 2.2em;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  body {
+    font-size: 0.95rem;
+    padding: 0.5rem;
+  }
+  h1 {
+    font-size: 1.8em;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  body {
+    font-size: 0.9rem;
+    padding: 0.4rem;
+  }
+  h1 {
+    font-size: 1.5em;
   }
 }

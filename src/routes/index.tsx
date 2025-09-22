@@ -1,33 +1,41 @@
 /**
- * Nous allons apporter des modifications à cette page au niveau de section VIDÉO + AVIS
- * Nous allons faire deux sections, une section vidéo et une section avis
- * La section vidéo en haut suivie de la section avis en dessous
+ * Nous allons apporter des modifications importantes au niveau de Hero Section
+ * elle aura une image en arriere plan import kidTopeci from "../../images/kidtopeci.png";
+ * et le texte actuel sera conservé avec le bouton "Découvrir nos livres"
+ * le cercle avec l'enfant sera supprimé et l'etoile supra supprimée aussi
  *
- * La section vidéo doit avoir un titre "Découvrez TOPECI en vidéo", centré, en gras, font-waffle-soft
- * n'affiche pas le texte topeci video, la video doit être dejà visible avant de cliquer sur play
+ * la section boutique
+ * un titre "NOS JOUETS" en font-waffle-soft
+ * sous-titre "Qui nous rendent fiers" en font-indie-flower
+ * les 3 carte simple sans ombre le texte en noir centré et le prix centré en gras
+ * le bouton ajouter au panier en bas de chaque carte en #DCCC41 bg avec hover #c4b33c
  *
+ * la section video
+ * titre "DECOUVRE NOS JOUETS" en font-waffle-soft
+ * sous-titre "en vidéo " en font-indie-flower
  *
- * La section avis doit avoir un titre "Avis Clients", centré, en gras, font-waffle-soft
- * La section avis doit être divisée en trois parties et disposée en grille de 3 colonnes sur desktop:
- * À gauche, une note moyenne en étoiles (5 étoiles) avec le nombre d'avis en dessous et une petite icone check
- * Au centre, l'histogramme des avis (5 étoiles, 4 étoiles, 3 étoiles, 2 étoiles, 1 étoile), il doit sous forme de liens qui
- * affichent les avis correspondants
+ * la section avis clients
+ * titre "VOS TEMOIGNAGES" en font-waffle-soft
+ * sous-titre "Nous motivent !" en font-indie-flower
+ * un menu deroulant horizontal qui affichera toutes les captures photo des temoignages
+ * un bouton "Écrire un avis" en #D68E54 bg avec hover #c57f4a
  *
- * À droite, un bouton "Ecrire un avis" qui affiche un formulaire en slide-in (de la droite vers la gauche)
+ * La section Nos engagements
+ * titre "NOS ENGAGEMENTS" en font-waffle-soft
+ * sous-titre "Toujours plus proche de vous" en font-indie-flower
+ * 3 cercles avec des icones et texte en dessous
+ * icone 1 : livraison , texte : Livraison partout dans le monde
+ * icone 2 :  , texte : Paiement securisé
+ * icone 3 : store, texte : Nos points de vente
+ * icone 4 : , texte : Assistance client whatsapp / email
  *
- * Le formulaire doit contenir les éléments suivants :
- * Titre : Ecrire un avis
- * En bas : Evaluation par étoiles (5 étoiles)
- * Contenu : Un formulaire avec un champ texte pour l'avis
- * Section ajout video ou image (optionnel)
- * Nom d'affichage (texte : affiché publiquement "Marie D.")
- * Adresse Mail (texte : ne sera pas affiché publiquement)
- * Texte : Comment nous utilisons vos données : Nous vous contacterons uniquement à propos de l'avis que vous avez laissé, et seulement
- *  si nécessaire. En soumettant votre avis, vous acceptez les conditions, la politique de confidentialité.
- * bouton "soumettre l'avis" et "annuler"
+ * La section TOPECI OPEN CLASSROOM
+ * sous-titre : Bientot, une application pour apprendre de facon ludique
  *
- * En bas de la section centrale, un lien "Voir tous les avis" qui affiche tous les avis
- */
+ * NB: Evite le degradé from-[#74C6C6] to-[#3a5a8a] utilise les couleurs uniforme de la charte graphique
+ * garde à l'esprit que le site doit etre ludique, coloré et enfantin
+ *  */
+
 import { createFileRoute, Link } from "@tanstack/react-router";
 import "../index.css";
 
@@ -39,23 +47,23 @@ import {
   Play,
   Sparkles,
   Star,
-  Check,
+  //Check,
   Camera,
   X,
-  ChevronDown,
-  ChevronUp,
+  //ChevronDown,
+  //ChevronUp,
   Send,
+  Truck,
+  CreditCard,
+  Store,
+  MessageCircle,
 } from "lucide-react";
 import { Button } from "../components/ui/button";
 import { useState, useRef, useEffect } from "react";
 
-
 import livreBaoule from "../images/livrebaoule.png";
 import livreDioula from "../images/livredioula.webp";
-import kidAkan from "../images/KidAkan.jpg";
-// import LivreBaoule from "../images/livrebaoule.png"; --- IGNORE ---
-// import LivreDioula from "../images/livredioula.webp"; --- IGNORE ---
-// import KidAkan from "../images/KidAkan.jpg"; --- IGNORE ---
+import kidTopeci from "../images/kidtopeci.png";
 
 import VideoTopeci from "../videos/topeci_video.mp4";
 
@@ -68,7 +76,7 @@ function Index() {
   const [showReviewForm, setShowReviewForm] = useState(false);
   const [rating, setRating] = useState(0);
   const [hoverRating, setHoverRating] = useState(0);
-  const [showAllReviews, setShowAllReviews] = useState(false);
+  // const [showAllReviews, setShowAllReviews] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
   const formRef = useRef<HTMLDivElement>(null);
 
@@ -101,7 +109,7 @@ function Index() {
   }, [showReviewForm]);
 
   // Données d'avis fictifs
-  const reviews = {
+  /* const reviews = {
     average: 4.8,
     total: 47,
     distribution: [
@@ -111,7 +119,7 @@ function Index() {
       { stars: 2, count: 1, percentage: 2 },
       { stars: 1, count: 0, percentage: 0 },
     ],
-  };
+  };*/
 
   const sampleReviews = [
     {
@@ -313,26 +321,32 @@ function Index() {
   );
 
   return (
-    <div className="flex flex-col min-h-screen w-full mx-0">
+    <div className="flex flex-col min-h-screen w-full mx-0 text-brown-800 ">
       <Header />
 
       <main className="flex-1 w-full mx">
-        {/* HERO SECTION */}
-        <section className="w-full bg-gradient-to-br from-[#74C6C6] to-[#3a5a8a] py-16 md:py-20 mt-0">
-          <div className="container mx-auto px-4 flex flex-col md:flex-row items-center justify-between">
-            <div className="hero-text text-center md:text-left md:w-1/2 mb-10 md:mb-0">
-              <h1 className="text-3xl md:text-5xl font-bold text-[#DCCC41] mb-6 font-waffle-soft">
-                Apprendre les langues africaines
-                <br /> dès le plus jeune âge
+        {/* HERO SECTION - MODIFIÉE */}
+        <section
+          className="w-full py-16 md:py-20 mt-0 relative bg-cover bg-center"
+          style={{ backgroundImage: `url(${kidTopeci})` }}
+        >
+          <div className="absolute inset-0 "></div>
+          <div className="container mx-auto px-4 relative z-10">
+            <div className="max-w-3xl">
+              <h1 className="text-7xl md:text-5xl font-bold text-[#4E6FA7] mb-6 font-waffle-soft">
+                Apprendre, <br />
+                Jouer <br />
+                et grandir <br />
+                dans la culture africaine
               </h1>
 
               <ul className="hero-bullets space-y-3 mb-8">
-                <li className="flex items-center text-white font-glacial-indifference">
-                  <Sparkles size={20} className="mr-2 text-purple-600" />
+                <li className="flex items-center text-white font-bold font-glacial-indifference">
+                  <Sparkles size={20} className="mr-2 text-[#DCCC41]" />
                   Livres audio interactifs en baoulé et dioula
                 </li>
-                <li className="flex items-center text-white font-glacial-indifference">
-                  <Sparkles size={20} className="mr-2 text-purple-600" />
+                <li className="flex items-center text-white font-bold font-glacial-indifference">
+                  <Sparkles size={20} className="mr-2 text-[#DCCC41]" />
                   Enrichis avec voix, chants et illustrations animées
                 </li>
               </ul>
@@ -344,121 +358,109 @@ function Index() {
                 Découvrir nos livres
               </Link>
             </div>
-
-            <div className="md:w-1/2 flex justify-center">
-              <div className="relative">
-                <div className="w-80 h-80 md:w-96 md:h-96 bg-gradient-to-br from-[#74C6C6] to-[#4E6FA7] p-1 rounded-full">
-                  <div className="w-full h-full bg-white rounded-full flex items-center justify-center shadow-2xl p-3">
-                    <img
-                      src={kidAkan}
-                      alt="Kid Akan"
-                      className="w-full h-full object-cover rounded-full"
-                    />
-                  </div>
-                </div>
-                <div className="absolute -top-6 -right-6 bg-[#BE356A] text-white p-3 rounded-full shadow-xl">
-                  <Star size={32} fill="white" />
-                </div>
-              </div>
-            </div>
           </div>
         </section>
 
-        {/* BOUTIQUE SECTION */}
-        <section className="w-full py-16 bg-gray-50">
+        {/* BOUTIQUE SECTION - MODIFIÉE */}
+        <section className="w-full py-16 bg-white">
           <div className="container mx-auto px-4">
-            <h2 className="text-3xl font-bold text-center text-[#4E6FA7] mb-12 font-waffle-soft">
-              Notre Boutique
+            <h2 className="text-3xl font-bold text-center text-black mb-2 font-waffle-soft">
+              NOS JOUETS
             </h2>
+            <p className="text-center text-black mb-12 font-indie-flower text-lg">
+              Qui rendent fiers
+            </p>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {/* Card 1 */}
-              <div className="bg-white rounded-2xl shadow-md overflow-hidden transition-transform duration-300 hover:scale-105 flex flex-col">
-                <div className="h-64 overflow-hidden">
+              <div className="bg-white rounded-2xl overflow-hidden transition-transform duration-300 hover:scale-105 flex flex-col border border-gray-200 h-full">
+                <div className="h-48 overflow-hidden">
                   <img
                     src={livreBaoule}
                     alt="Mon Premier Livre Audio Baoulé"
                     className="w-full h-full object-cover"
                   />
                 </div>
-                <div className="p-6 flex flex-col flex-grow">
-                  <h3 className="text-xl font-bold text-[#BE356A] mb-3 min-h-[3rem] flex items-center">
-                    Mon Premier Livre Audio
+                <div className="p-4 flex flex-col flex-grow text-center">
+                  <h3 className="text-lg  text-black mb-2">
+                    Mon Premier Livre Audio <br />
+                    Baoulé - Francais
                   </h3>
-                  <p className="text-blue-500 mb-2 font-bold text-lg">BAOULÉ</p>
-                  <p className="text-gray-600 mb-6 font-bold text-xl">
-                    8000 CFA
+                  <p className="text-black mb-3 font-bold text-lg">
+                    15 000 FCFA
                   </p>
-                  <div className="mt-auto">
-                    <Button className="w-full text-white bg-[#74C6C6] hover:bg-[#5fb3b3] font-medium py-3 px-6 rounded-full transition duration-300">
-                      Voir le livre
-                    </Button>
+                  <div className="mt-auto pt-2">
+                    <button className="w-full bg-[#DCCC41] hover:bg-[#c4b33c] text-black font-bold py-2 px-4 rounded-full transition duration-300 text-sm uppercase">
+                      AJOUTER AU PANIER
+                    </button>
                   </div>
                 </div>
               </div>
 
               {/* Card 2 */}
-              <div className="bg-white rounded-2xl shadow-md overflow-hidden transition-transform duration-300 hover:scale-105 flex flex-col">
-                <div className="h-64 overflow-hidden">
+              <div className="bg-white rounded-2xl overflow-hidden transition-transform duration-300 hover:scale-105 flex flex-col border border-gray-200 h-full">
+                <div className="h-48 overflow-hidden">
                   <img
                     src={livreDioula}
                     alt="Mon Premier Livre Audio Dioula"
                     className="w-full h-full object-cover"
                   />
                 </div>
-                <div className="p-6 flex flex-col flex-grow">
-                  <h3 className="text-xl font-bold text-[#BE356A] mb-3 min-h-[3rem] flex items-center">
-                    Mon Premier Livre Audio
+                <div className="p-4 flex flex-col flex-grow text-center">
+                  <h3 className="text-lg text-black mb-2">
+                    Mon Premier Livre Audio <br />
+                    Dioula - Francais
                   </h3>
-                  <p className="text-blue-500 mb-2 font-bold text-lg">DIOULA</p>
-                  <p className="text-gray-600 mb-6 font-bold text-xl">
-                    8000 CFA
+                  <p className="text-black mb-3 font-bold text-lg">
+                    15 000 FCFA
                   </p>
-                  <div className="mt-auto">
-                    <Button className="w-full text-white bg-[#74C6C6] hover:bg-[#5fb3b3] font-medium py-3 px-6 rounded-full transition duration-300">
-                      Voir le livre
-                    </Button>
+                  <div className="mt-auto pt-2">
+                    <button className="w-full bg-[#DCCC41] hover:bg-[#c4b33c] text-black font-bold py-2 px-4 rounded-full transition duration-300 text-sm uppercase">
+                      AJOUTER AU PANIER
+                    </button>
                   </div>
                 </div>
               </div>
 
               {/* Card 3 */}
-              <div className="bg-white rounded-2xl shadow-md overflow-hidden transition-transform duration-300 hover:scale-105 flex flex-col">
-                <div className="h-64 overflow-hidden">
+              <div className="bg-white rounded-2xl overflow-hidden transition-transform duration-300 hover:scale-105 flex flex-col border border-gray-200 h-full">
+                <div className="h-48 overflow-hidden">
                   <img
                     src={livreBaoule}
-                    alt="Contes Africains Baoulé"
+                    alt="Mes cartes parlantes Bété"
                     className="w-full h-full object-cover"
                   />
                 </div>
-                <div className="p-6 flex flex-col flex-grow">
-                  <h3 className="text-xl font-bold text-[#BE356A] mb-3 min-h-[3rem] flex items-center">
-                    Contes Africains
+                <div className="p-4 flex flex-col flex-grow text-center">
+                  <h3 className="text-lg text-black mb-2">
+                    Mes cartes parlantes <br />
+                    Bété - Francais
                   </h3>
-                  <p className="text-blue-500 mb-2 font-bold text-lg">BAOULÉ</p>
-                  <p className="text-gray-600 mb-6 font-bold text-xl">
-                    3000 CFA
+                  <p className="text-black mb-3 font-bold text-lg">
+                    10 000 FCFA
                   </p>
-                  <div className="mt-auto">
-                    <Button className="w-full text-white bg-[#74C6C6] hover:bg-[#5fb3b3] font-medium py-3 px-6 rounded-full transition duration-300">
-                      Voir le livre
-                    </Button>
+                  <div className="mt-auto pt-2">
+                    <button className="w-full bg-[#DCCC41] hover:bg-[#c4b33c] text-black font-bold py-2 px-4 rounded-full transition duration-300 text-sm uppercase">
+                      AJOUTER AU PANIER
+                    </button>
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </section>
-
-        {/* SECTION VIDÉO */}
-        <section className="w-full py-16 bg-white">
+        {/* SECTION VIDÉO - MODIFIÉE */}
+        <section className="w-full py-16 bg-gray-50">
           <div className="container mx-auto px-4">
-            <h2 className="text-3xl font-bold text-center text-[purple] mb-12 font-waffle-soft">
-              Découvrez TOPECI en vidéo
+            <h2 className="text-3xl font-bold text-center text-black mb-2 font-waffle-soft mt-[-25px]">
+              DÉCOUVRE NOS JOUETS
             </h2>
+            <p className="text-center text-black mb-5  font-indie-flower text-xl">
+              en vidéo
+            </p>
 
             <div className="max-w-4xl mx-auto">
-              <div className="relative rounded-xl overflow-hidden shadow-lg ">
+              <div className="relative rounded-xl overflow-hidden shadow-lg">
                 <video
                   ref={videoRef}
                   className="w-full h-auto max-h-96 object-cover"
@@ -472,7 +474,7 @@ function Index() {
 
                 {/* Overlay de contrôle */}
                 {!isPlaying && (
-                  <div className="absolute inset-0 flex items-center justify-center bg-opacity-30">
+                  <div className="absolute inset-0 flex items-center justify-center">
                     <button
                       onClick={togglePlay}
                       className="bg-white bg-opacity-90 w-20 h-20 rounded-full flex items-center justify-center shadow-2xl hover:scale-110 transition-transform duration-300"
@@ -486,163 +488,137 @@ function Index() {
           </div>
         </section>
 
-        {/* SECTION AVIS CLIENTS */}
-        <section className="w-full py-16 bg-gray-50">
+        {/* SECTION AVIS CLIENTS - MODIFIÉE */}
+        <section className="w-full py-16 bg-white">
           <div className="container mx-auto px-4">
-            <h2 className="text-3xl font-bold text-center text-[#4E6FA7] mb-2 font-waffle-soft">
-              Avis Clients
+            <h2 className="text-3xl font-bold text-center text-black mb-2 font-waffle-soft">
+              VOS TEMOIGNAGES
             </h2>
+            <p className="text-center text-black mb-12 font-indie-flower text-xl">
+              Nous motivent !
+            </p>
 
-            <div className="bg-white rounded-xl p-3 shadow-md mb-5">
-              <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                {/* Colonne gauche - Note moyenne */}
-                <div className="text-center p-4 border-r border-gray-100 last:border-r-0">
-                  <div className="text-3xl font-bold text-[#4E6FA7] mb-4">
-                    {reviews.average}
-                  </div>
-                  <div className="flex justify-center mb-4">
-                    {[1, 2, 3, 4, 5].map((star) => (
-                      <Star
-                        key={star}
-                        size={24}
-                        className={
-                          star <= Math.floor(reviews.average)
-                            ? "text-yellow-400 fill-current mx-1"
-                            : "text-gray-300 mx-1"
-                        }
-                      />
-                    ))}
-                  </div>
-                  <div className="flex items-center justify-center text-gray-600">
-                    <Check size={18} className="text-green-500 mr-2" />
-                    <span className="text-lg">{reviews.total} avis</span>
-                  </div>
-                </div>
-
-                {/* Colonne centrale - Histogramme */}
-                <div className="p-3 border-r border-gray-100 last:border-r-0">
-                  <div className="space-y-0 ">
-                    {reviews.distribution.map((item) => (
-                      <button
-                        key={item.stars}
-                        className="flex items-center w-full p-2 rounded-lg hover:bg-gray-50 transition-colors group"
-                        onClick={() =>
-                          console.log(`Filtrer les avis ${item.stars} étoiles`)
-                        }
-                      >
-                        <div className="w-16 text-sm font-semibold text-gray-700">
-                          {item.stars} étoiles
-                        </div>
-                        <div className="flex-1 bg-gray-200 rounded-full h-2 mx-3">
-                          <div
-                            className="bg-[#74C6C6] h-2 rounded-full transition-all duration-300 group-hover:bg-[#5fb3b3]"
-                            style={{ width: `${item.percentage}%` }}
-                          ></div>
-                        </div>
-                        <div className="w-16 text-sm text-gray-600 text-right">
-                          ({item.count})
-                        </div>
-                      </button>
-                    ))}
-                  </div>
-                  <button className="w-full mt-0 text-[#74C6C6] hover:text-[#5fb3b3] font-semibold transition-colors text-center">
-                    Voir tous les avis →
-                  </button>
-                </div>
-
-                {/* Colonne droite - Bouton écrire un avis */}
-                <div className="text-center p-2">
-                  <div className="flex flex-col justify-center items-center h-full">
-                    <button
-                      onClick={() => setShowReviewForm(true)}
-                      className="bg-[#D68E54] hover:bg-[#c57f4a] text-white font-semibold py-3 px-8 rounded-full transition duration-300"
-                    >
-                      Écrire un avis
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Avis récents */}
-            <div className="bg-white rounded-xl p-6 shadow-md">
-              <h3 className="text-xl font-semibold mb-6">Avis récents</h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {(showAllReviews
-                  ? sampleReviews
-                  : sampleReviews.slice(0, 2)
-                ).map((review) => (
+            {/* Menu déroulant horizontal des témoignages */}
+            <div className="mb-8 overflow-x-auto">
+              <div className="flex space-x-4 pb-4">
+                {sampleReviews.map((review) => (
                   <div
                     key={review.id}
-                    className="border border-gray-200 rounded-lg p-4 hover:shadow-md transition-shadow"
+                    className="flex-shrink-0 w-64 bg-white rounded-lg shadow-md p-4 border border-gray-200"
                   >
-                    <div className="flex items-start mb-3">
-                      <div className="w-10 h-10 bg-[#74C6C6] rounded-full flex items-center justify-center text-white font-bold mr-3 flex-shrink-0">
+                    <div className="flex items-center mb-3">
+                      <div className="w-10 h-10 bg-[#74C6C6] rounded-full flex items-center justify-center text-white font-bold mr-3">
                         {review.author.charAt(0)}
                       </div>
-                      <div className="flex-1">
-                        <div className="flex justify-between items-start">
-                          <div>
-                            <h4 className="font-semibold">{review.author}</h4>
-                            <p className="text-sm text-gray-500">
-                              {review.location}
-                            </p>
-                          </div>
-                          <div className="flex">
-                            {[1, 2, 3, 4, 5].map((star) => (
-                              <Star
-                                key={star}
-                                size={16}
-                                className={
-                                  star <= review.rating
-                                    ? "text-yellow-400 fill-current"
-                                    : "text-gray-300"
-                                }
-                              />
-                            ))}
-                          </div>
-                        </div>
-                        <p className="text-gray-700 mt-2">{review.comment}</p>
-                        <p className="text-sm text-gray-500 mt-2">
-                          {new Date(review.date).toLocaleDateString("fr-FR")}
+                      <div>
+                        <h4 className="font-semibold text-sm">
+                          {review.author}
+                        </h4>
+                        <p className="text-xs text-gray-500">
+                          {review.location}
                         </p>
                       </div>
                     </div>
+                    <div className="flex mb-2">
+                      {[1, 2, 3, 4, 5].map((star) => (
+                        <Star
+                          key={star}
+                          size={14}
+                          className={
+                            star <= review.rating
+                              ? "text-yellow-400 fill-current mr-1"
+                              : "text-gray-300 mr-1"
+                          }
+                        />
+                      ))}
+                    </div>
+                    <p className="text-sm text-gray-700 line-clamp-3">
+                      {review.comment}
+                    </p>
                   </div>
                 ))}
               </div>
+            </div>
 
-              {sampleReviews.length > 4 && (
-                <button
-                  onClick={() => setShowAllReviews(!showAllReviews)}
-                  className="flex items-center justify-center w-full mt-6 text-[#74C6C6] hover:text-[#5fb3b3] transition-colors font-semibold"
-                >
-                  {showAllReviews ? (
-                    <>
-                      <ChevronUp size={20} className="mr-2" />
-                      Voir moins d'avis
-                    </>
-                  ) : (
-                    <>
-                      <ChevronDown size={20} className="mr-2" />
-                      Voir tous les avis ({sampleReviews.length})
-                    </>
-                  )}
-                </button>
-              )}
+            {/* Bouton Écrire un avis */}
+            <div className="text-center">
+              <button
+                onClick={() => setShowReviewForm(true)}
+                className="bg-[#D68E54] hover:bg-[#c57f4a] text-white font-semibold py-3 px-8 rounded-full transition duration-300"
+              >
+                Écrire un avis
+              </button>
             </div>
           </div>
         </section>
 
-        {/* BANNIÈRE VIOLET SECTION */}
-        <section className="w-full py-8 bg-white">
-          <div className="max-w-2xl mx-auto px-8">
-            <div className="bg-[#800080] rounded-3xl py-8 px-6 text-center">
-              <div className="text-xl font-bold text-white mb-3 font-waffle-soft">
+        {/* SECTION NOS ENGAGEMENTS - AJOUTÉE */}
+        <section className="w-full py-16 bg-gray-50">
+          <div className="container mx-auto px-4">
+            <h2 className="text-3xl font-bold text-center text-black mb-2 font-waffle-soft">
+              NOS ENGAGEMENTS
+            </h2>
+            <p className="text-center text-black mb-12 font-indie-flower text-xl">
+              Toujours plus proche de vous
+            </p>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+              {/* Engagement 1 */}
+              <div className="text-center">
+                <div className="w-24 h-24 bg-[#D68E54] rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Truck size={40} className="text-black" />
+                </div>
+                <h3 className="text-lg font-semibold mb-2">
+                  Livraison partout <br />
+                  dans le monde
+                </h3>
+              </div>
+
+              {/* Engagement 2 */}
+              <div className="text-center">
+                <div className="w-24 h-24 bg-[#D68E54] rounded-full flex items-center justify-center mx-auto mb-4">
+                  <CreditCard size={40} className="text-black" />
+                </div>
+                <h3 className="text-lg font-semibold mb-2 ">
+                  Paiement sécurisé
+                </h3>
+              </div>
+
+              {/* Engagement 3 */}
+              <div className="text-center">
+                <div className="w-24 h-24 bg-[#D68E54] rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Store size={40} className="text-black" />
+                </div>
+                <h3 className="text-lg font-semibold mb-2">
+                  Nos points de <br />
+                  vente
+                </h3>
+              </div>
+
+              {/* Engagement 4 */}
+              <div className="text-center">
+                <div className="w-24 h-24 bg-[#D68E54] rounded-full flex items-center justify-center mx-auto mb-4">
+                  <MessageCircle size={40} className="text-black" />
+                </div>
+                <h3 className="text-lg font-semibold mb-2">
+                  Assistance client <br />
+                  WhatsApp / Email
+                </h3>
+                <p className="text-gray-600"></p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* SECTION TOPECI OPEN CLASSROOM - MODIFIÉE */}
+        <section className="w-full py-16 bg-white">
+          <div className="container mx-auto px-4 text-center">
+            <div className="max-w-2xl mx-auto bg-[#c2326c] rounded-3xl py-8 px-6">
+              <div className="text-xl font-bold  mb-3 font-waffle-soft">
                 TOPECI Openclassroom arrive bientôt !
               </div>
-              <div className="text-base text-white mb-6 font-glacial-indifference">
-                Une appli pour apprendre de façon ludique.
+              <div className="text-base mb-6 font-indie-flower">
+                Bientôt, une application pour apprendre de façon ludique
               </div>
               <Button className="inline-block bg-white text-[#74C6C6] hover:bg-gray-100 font-medium py-2 px-6 rounded-full transition duration-300 font-waffle-soft">
                 En savoir plus

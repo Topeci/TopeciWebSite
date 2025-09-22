@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { Menu, X, User, ShoppingCart, Sun } from "lucide-react";
+import { Menu, X, CircleUser, ShoppingCart } from "lucide-react";
+import TopeciLogo from "../images/logoTopeci.png";
 
 void React;
 
@@ -29,24 +30,11 @@ export function Header() {
             href="/"
             className="flex items-center hover:opacity-80 transition-opacity duration-300"
           >
-            <span className="font-indie-flower text-3xl font-bold text-[#DCCC41]">
-              T
-            </span>
-            <div>
-              <Sun className="text-orange-500"></Sun>
-            </div>
-            <span className="font-indie-flower text-3xl font-bold text-[#BE356A]">
-              P
-            </span>
-            <span className="font-indie-flower text-3xl font-bold text-[#4E6FA7]">
-              E
-            </span>
-            <span className="font-indie-flower text-3xl font-bold text-[#D68E54]">
-              C
-            </span>
-            <span className="font-indie-flower text-3xl font-bold text-[purple]">
-              I
-            </span>
+            <img
+              src={TopeciLogo}
+              alt="Logo topeci"
+              className="h-10 w-auto md:h-12"
+            />
           </a>
 
           {/* Desktop Navigation */}
@@ -56,7 +44,7 @@ export function Header() {
                 <a
                   key={item.label}
                   href={item.href}
-                  className="flex items-center px-4 py-2 rounded-full font-['Glacial_Indifference'] font-medium text-[#BE356A] dark:text-white hover:bg-[#74C6C6] hover:bg-opacity-10 hover:text-white dark:hover:text-white transition-all duration-300 group"
+                  className="flex items-center px-4 py-2 rounded-full font-indie-flower font-medium text-[#BE356A] dark:text-white hover:bg-[#74C6C6] hover:bg-opacity-10 hover:text-white dark:hover:text-white transition-all duration-300 group"
                 >
                   {item.label}
                 </a>
@@ -69,30 +57,32 @@ export function Header() {
             {/* Icône panier */}
             <a
               href="/panier"
-              className="p-2.5 text-[#4E6FA7] hover:text-[#d65454] transition-all duration-300 hover:scale-105 relative"
+              className="p-2.5 text-[#DCCC41] hover:text-[#BE356A] transition-all duration-300 hover:scale-105 relative"
             >
-              <ShoppingCart size={20} />
-              
+              <ShoppingCart
+                size={29} // taille de l'icône
+                strokeWidth={2.5}
+              />
             </a>
 
             {/* Icône utilisateur - lien direct vers la page de connexion */}
             <a
               href="/login"
-              className="p-2.5 text-[#4E6FA7] hover:text-[#D68E54] transition-all duration-300 hover:scale-105"
+              className="p-2.5 text-[#DCCC41] hover:text-[#BE356A] transition-all duration-300 hover:scale-105"
             >
-              <User size={20} />
+              <CircleUser size={29} strokeWidth={2.5} />
             </a>
 
             {/* Élément décoratif */}
-            <div className="h-8 w-1 bg-gradient-to-b from-[#DCCC41] to-[#74C6C6] rounded-full opacity-70"></div>
+            <div className="h-8 w-1 bg-gradient-to-b from-[#BE356A] to-[#DCCC41]  rounded-full opacity-70"></div>
           </div>
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden p-2 rounded-full text-[#4E6FA7] hover:text-[#D68E54] transition-colors duration-300"
+            className="md:hidden p-2  text-[#DCCC41] hover:text-white transition-colors duration-300"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
           >
-            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            {isMenuOpen ? <X size={29} /> : <Menu size={29} />}
           </button>
         </div>
 
@@ -105,7 +95,7 @@ export function Header() {
                   <a
                     key={item.label}
                     href={item.href}
-                    className="flex items-center px-4 py-3 rounded-lg font-['Glacial_Indifference'] text-gray-700 dark:text-gray-100 hover:bg-[#74C6C6] hover:bg-opacity-10 hover:text-[#4E6FA7] dark:hover:text-[#74C6C6] transition-all duration-300"
+                    className="flex items-center px-4 py-3 rounded-lg font-indie-flower text-black dark:text-gray-100 hover:bg-[#74C6C6] hover:bg-opacity-10 hover:text-[#4E6FA7] dark:hover:text-[#74C6C6] transition-all duration-300"
                     onClick={() => setIsMenuOpen(false)}
                   >
                     {item.label}
@@ -121,14 +111,13 @@ export function Header() {
                 >
                   <ShoppingCart size={20} />
                   <span className="text-xs mt-1">Panier</span>
-                  
                 </a>
 
                 <a
                   href="/login"
                   className="flex flex-col items-center p-2 text-[#4E6FA7] hover:text-[#D68E54] transition-colors duration-300"
                 >
-                  <User size={20} />
+                  <CircleUser size={20} />
                   <span className="text-xs mt-1">Connexion</span>
                 </a>
               </div>

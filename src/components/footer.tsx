@@ -1,192 +1,186 @@
 import React from "react";
-import {
-  Facebook,
-  Linkedin,
-  Instagram,
-  Heart,
-  Sun,
-  Music2,
-} from "lucide-react";
+import { Facebook, Linkedin, Instagram, Music2 } from "lucide-react";
+import TopeciLogo from "../images/LogoTopeci.png";
 void React;
 
 export function Footer() {
   return (
-    <footer className="bg-[#74C6C6] text-black w-full mx-0 mt-auto">
+    <footer className="bg-[#74C6C6] text-black w-full mx-0 mt-auto mb-0 dark:bg-[#2a2a2a] dark:text-white">
       <div className="w-full py-8">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 px-4">
-          {/* Colonne 1 : Logo et slogan */}
-          <div className="flex flex-col items-center sm:items-start">
-            <a href="/" className="flex items-center mb-4">
-              <div className="flex items-center">
-                <span className="font-indie-flower text-4xl font-bold text-[#DCCC41]">
-                  T
-                </span>
-                <div>
-                  <Sun className="text-orange-500" />
-                </div>
-                <span className="font-indie-flower text-4xl font-bold text-[#BE356A]">
-                  P
-                </span>
-                <span className="font-indie-flower text-4xl font-bold text-[#4E6FA7]">
-                  E
-                </span>
-                <span className="font-indie-flower text-4xl font-bold text-[#D68E54]">
-                  C
-                </span>
-                <span className="font-indie-flower text-4xl font-bold text-[purple]">
-                  I
-                </span>
-              </div>
-            </a>
-            <div className="flex items-center mt-1">
-              <p className="font-indie-flower text-base">
-                Faites partie de la tribu TOPECI{" "}
-                <span>
-                  <Heart className="text-[#BE356A] mr-2" size={20} />
-                </span>
-              </p>
-            </div>
-          </div>
-
-          {/* Colonne 2 : Navigation */}
+          {/* Colonne 1 : LA MARQUE */}
           <div>
-            <h3 className="font-indie-flower text-lg font-semibold mb-4 text-[#DCCC41]">
-              NAVIGATION
+            <h3 className="font-waffle-soft text-base font-bold mb-1 text-[#BE356A]  dark:text-[#FFD700]">
+              LA MARQUE
             </h3>
-            <ul className="space-y-2 font-glacial-indifference">
+            <ul className="space-y-2 font-indie-flower">
               <li>
                 <a
                   href="/"
-                  className="text-[#BE356A] hover:text-[#D68E54] transition-colors"
-                >
-                  Accueil
-                </a>
-              </li>
-              <li>
-                <a
-                  href="/boutique"
-                  className="text-[#BE356A] hover:text-[#D68E54] transition-colors"
-                >
-                  Boutique
-                </a>
-              </li>
-              <li>
-                <a
-                  href="/contact"
-                  className="text-[#BE356A] hover:text-[#D68E54] transition-colors"
-                >
-                  Contact
-                </a>
-              </li>
-              <li>
-                <a
-                  href="/a-propos"
-                  className="text-[#BE356A] hover:text-[#D68E54] transition-colors"
+                  className=" hover:text-[#D68E54] transition-colors text-base dark:text-pink-400 dark:hover:text-orange-300"
                 >
                   À propos
                 </a>
               </li>
               <li>
                 <a
-                  href="/aide-faq"
-                  className="text-[#BE356A] hover:text-[#D68E54] transition-colors"
+                  href="/boutique"
+                  className=" hover:text-[#D68E54] transition-colors text-base dark:text-pink-400 dark:hover:text-orange-300"
                 >
-                  Aide & FAQ
+                  Boutique
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/espace-pro"
+                  className=" hover:text-[#D68E54] transition-colors text-base dark:text-pink-400 dark:hover:text-orange-300"
+                >
+                  Espace pro
                 </a>
               </li>
             </ul>
           </div>
 
-          {/* Colonne 3 : Légal */}
+          {/* Colonne 2 : Légal */}
           <div>
-            <h3 className="font-indie-flower text-lg font-semibold mb-4 text-[#DCCC41]">
+            <h3 className="font-waffle-soft text-base font-bold mb-1 text-[#BE356A] dark:text-[#BE356A] ">
               LEGAL
             </h3>
-            <ul className="space-y-2 font-glacial-indifference">
+            <ul className="space-y-2 font-indie-flower">
               <li>
                 <a
-                  href="/privacy"
-                  className="text-[#BE356A] hover:text-[#D68E54] transition-colors"
+                  href="cgv"
+                  className=" hover:underline transition-colors text-base dark:text-pink-400 dark:hover:underline"
                 >
-                  Politique de confidentialité
-                </a>
-              </li>
-              <li>
-                <a
-                  href="/terms"
-                  className="text-[#BE356A] hover:text-[#D68E54] transition-colors"
-                >
-                  Conditions d'utilisation
+                  CGV
                 </a>
               </li>
               <li>
                 <a
                   href="/cookies"
-                  className="text-[#BE356A] hover:text-[#D68E54] transition-colors"
+                  className=" hover:text-[#D68E54] transition-colors text-base dark:text-pink-400 dark:hover:text-orange-300"
                 >
                   Politique cookies
                 </a>
               </li>
               <li>
                 <a
-                  href="/mentions-legal"
-                  className="text-[#BE356A] hover:text-[#D68E54] transition-colors"
+                  href="/mentions-legales"
+                  className=" hover:text-[#D68E54] transition-colors text-base dark:text-pink-400 dark:hover:text-orange-300"
                 >
-                  Mentions légales
+                  Mentions légales & CGU
                 </a>
               </li>
+
               <li>
                 <a
-                  href="/cgv"
-                  className="text-[#BE356A] hover:text-[#D68E54] transition-colors"
+                  href="/privacy"
+                  className=" hover:text-[#D68E54] transition-colors text-base dark:text-pink-400 dark:hover:text-orange-300"
                 >
-                  CGV
+                  Politique de confidentialité
                 </a>
               </li>
             </ul>
           </div>
 
-          {/* Colonne 4 : Rejoignez-nous */}
+          {/* Colonne 3 : Besoin d'aide ? */}
           <div>
-            <h3 className="font-indie-flower text-lg font-semibold mb-4 text-[#DCCC41]">
-              REJOIGNEZ-NOUS
+            <h3 className="font-waffle-soft text-base font-bold mb-1 text-[#BE356A]  dark:text-[#BE356A] ">
+              BESOIN D'AIDE ?
             </h3>
 
+            <ul className="space-y-2 font-indie-flower">
+              <li>
+                <a
+                  href="/aide-faq"
+                  className=" hover:text-[#D68E54] transition-colors text-base dark:text-gray-200 dark:hover:text-orange-300"
+                >
+                  FAQ
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/contact"
+                  className=" hover:text-[#D68E54] transition-colors text-base dark:text-gray-200 dark:hover:text-orange-300"
+                >
+                  Nous contacter
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/shipping-policy"
+                  className=" hover:text-[#D68E54] transition-colors text-base dark:text-gray-200 dark:hover:text-orange-300"
+                >
+                  Politique de livraison
+                </a>
+              </li>
+
+              <li>
+                <a
+                  href="/"
+                  className=" hover:text-[#D68E54] transition-colors text-base dark:text-gray-200 dark:hover:text-orange-300"
+                >
+                  Politique remboursement & retour
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          {/* Colonne 4 : contact */}
+          <div>
+            <h3 className="font-waffle-soft text-base font-bold mb-1 text-[#BE356A]  dark:text-[#BE356A] ">
+              CONTACT
+            </h3>
+            <ul className="text-white space-y-2 font-indie-flower mb-4 dark:text-gray-200">
+              <li className="text-base">SAV & autres questions ?</li>
+              <li className="text-base">Email : contact@mon-topeci.com</li>
+              <li className="text-base">Du lundi au vendredi de 8h à 18h</li>
+            </ul>
+
+            {/* Champ email et bouton */}
+            <div className="mb-4">
+              <div className="flex items-center gap-2 flex-wrap">
+                <input
+                  id="email"
+                  name="email"
+                  type="email"
+                  placeholder="Email"
+                  className="font-indie-flower text-gray-400 px-3 py-2 bg-transparent focus:outline-none text-sm border-b border-gray-300 focus:border-white max-w-[250px] dark:border-gray-500 dark:focus:border-white"
+                />
+                <a
+                  href="#"
+                  className="text-white font-semibold py-2 transition duration-300 text-sm whitespace-nowrap underline dark:text-gray-200"
+                >
+                  Obtenir un code →
+                </a>
+              </div>
+            </div>
+
             {/* Réseaux sociaux */}
-            <div className="flex space-x-3 mb-6">
+            <div className="flex space-x-3 mb-[-15px]">
               <a
                 href="https://www.facebook.com/share/1Nv84yCbEV/?mibextid=wwXIfr"
-                className="text-[#BE356A] bg-white bg-opacity-20 p-2 rounded-full hover:bg-opacity-30 transition"
+                className="text-[#BE356A]  bg-opacity-20 p-2 rounded-full hover:bg-opacity-30 transition dark:bg-gray-700 dark:hover:bg-gray-600"
               >
                 <Facebook size={20} />
               </a>
               <a
                 href="https://www.linkedin.com/company/topeci/"
-                className="text-[#BE356A] bg-white bg-opacity-20 p-2 rounded-full hover:bg-opacity-30 transition"
+                className="text-[#BE356A]  bg-opacity-20 p-2 rounded-full hover:bg-opacity-30 transition dark:bg-gray-700 dark:hover:bg-gray-600"
               >
                 <Linkedin size={20} />
               </a>
               <a
                 href="https://www.instagram.com/topeci__?igsh=MTd5ZjljOGF2Z3JxMw=="
-                className="text-[#BE356A] bg-white bg-opacity-20 p-2 rounded-full hover:bg-opacity-30 transition"
+                className="text-[#BE356A] bg-opacity-20 p-2 rounded-full hover:bg-opacity-30 transition dark:bg-gray-700 dark:hover:bg-gray-600"
               >
                 <Instagram size={20} />
               </a>
               <a
                 href="https://www.facebook.com/share/1Nv84yCbEV/?mibextid=wwXIfr"
-                className="text-[#BE356A] bg-white bg-opacity-20 p-2 rounded-full hover:bg-opacity-30 transition flex items-center justify-center"
+                className="text-[#BE356A]  bg-opacity-20 p-2 rounded-full hover:bg-opacity-30 transition flex items-center justify-center dark:bg-gray-700 dark:hover:bg-gray-600"
               >
                 <Music2 size={20} />
-              </a>
-            </div>
-
-            {/* Boutons connexion/inscription */}
-            <div className="flex space-x-3">
-              <a
-                href="/login"
-                className="bg-white text-[#74C6C6] px-4 py-2 rounded-full text-sm font-semibold hover:bg-gray-100 transition flex-1 text-center"
-              >
-                Connexion
               </a>
             </div>
           </div>
@@ -194,9 +188,27 @@ export function Footer() {
       </div>
 
       {/* Copyright */}
-      <div className="border-t border-black border-opacity-20 py-4 w-full justify-center items-center">
-        <div className="flex flex-col md:flex-row justify-center items-center px-4">
-          <p className="font-glacial-indifference text-sm md:text-base">
+      <div className="border-t border-black border-opacity-20 py-4 w-full dark:border-gray-600">
+        <div className="flex flex-col sm:flex-row justify-between items-center px-4">
+          {/* Logo et slogan à gauche */}
+          <div className="flex items-center mb-3 sm:mb-0">
+            <a
+              href="/"
+              className="flex items-center hover:opacity-80 transition-opacity duration-300"
+            >
+              <img
+                src={TopeciLogo}
+                alt="Logo topeci"
+                className="h-8 w-auto mr-3"
+              />
+              <p className="font-indie-flower text-sm text-black dark:text-gray-200">
+                Un jeu, une culture, un monde à découvrir
+              </p>
+            </a>
+          </div>
+
+          {/* Copyright à droite */}
+          <p className="font-glacial-indifference text-xs text-black dark:text-gray-400">
             &copy; {new Date().getFullYear()} TOPECI. Tous droits réservés.
           </p>
         </div>
