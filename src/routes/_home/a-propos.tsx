@@ -18,10 +18,10 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Heart, Users, BookOpen, Globe } from "lucide-react";
 import education from "../../images/education.jpg";
-import bookTopeci from "../../images/bookTopeci.jpg";
-import jeanMarc from "../../images/jeanMarc.jpg";
+import bookTopeci from "../../images/booktopeci.jpg";
+import jeanMarc from "../../images/jeanmarc.jpg";
 import cindyOrnella from "../../images/ornella.jpg";
-import parisKid from "../../images/parisKid.jpg";
+import parisKid from "../../images/pariskid.jpg";
 
 export const Route = createFileRoute("/_home/a-propos")({
   component: RouteComponent,

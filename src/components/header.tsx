@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Menu, X, CircleUser, ShoppingCart } from "lucide-react";
-import TopeciLogo from "../images/logoTopeci.png";
+import TopeciLogo from "../images/logotopeci.png";
 
 void React;
 
