@@ -64,6 +64,7 @@ import { useState, useRef, useEffect } from "react";
 import livreBaoule from "../images/livrebaoule.png";
 import livreDioula from "../images/livredioula.webp";
 import kidTopeci from "../images/kidtopeci.png";
+import jouetFiere from "../images/jouetfiere.png";
 
 import VideoTopeci from "../videos/topeci_video.mp4";
 
@@ -364,12 +365,21 @@ function Index() {
         {/* BOUTIQUE SECTION - MODIFIÉE */}
         <section className="w-full py-16 bg-white">
           <div className="container mx-auto px-4">
+            {/*
             <h2 className="text-3xl font-bold text-center text-black mb-2 font-waffle-soft">
               NOS JOUETS
             </h2>
             <p className="text-center text-black mb-12 font-indie-flower text-lg">
               Qui rendent fiers
             </p>
+            */}
+            <div className="flex flex-col items-center text-center px-4">
+              <img
+                src={jouetFiere}
+                alt="Jouet Fière"
+                className="mb-4 h-20 w-auto sm:h-32 md:h-40 lg:h-48 object-contain"
+              />
+            </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {/* Card 1 */}
@@ -382,7 +392,7 @@ function Index() {
                   />
                 </div>
                 <div className="p-4 flex flex-col flex-grow text-center">
-                  <h3 className="text-lg  text-black mb-2">
+                  <h3 className="text-lg  text-black mb-2 font-block-bold">
                     Mon Premier Livre Audio <br />
                     Baoulé - Francais
                   </h3>

@@ -7,7 +7,7 @@ void React;
 const navItems = [
   { label: "Accueil", href: "/" },
   { label: "Boutique", href: "/boutique" },
-  { label: "À propos", href: "/a-propos" },
+  { label: "Notre Histoire", href: "/a-propos" },
   { label: "Contact", href: "/contact" },
 ];
 
@@ -44,7 +44,7 @@ export function Header() {
                 <a
                   key={item.label}
                   href={item.href}
-                  className="flex items-center px-4 py-2 rounded-full font-indie-flower font-medium text-[#BE356A] dark:text-white hover:bg-[#74C6C6] hover:bg-opacity-10 hover:text-white dark:hover:text-white transition-all duration-300 group"
+                  className="flex items-center px-4 py-2 rounded-full font-waffle-soft font-light text-[#BE356A] dark:text-white hover:bg-[#74C6C6] hover:bg-opacity-10 hover:text-white dark:hover:text-white transition-all duration-300 group"
                 >
                   {item.label}
                 </a>
@@ -95,7 +95,7 @@ export function Header() {
                   <a
                     key={item.label}
                     href={item.href}
-                    className="flex items-center px-4 py-3 rounded-lg font-indie-flower text-black dark:text-gray-100 hover:bg-[#74C6C6] hover:bg-opacity-10 hover:text-[#4E6FA7] dark:hover:text-[#74C6C6] transition-all duration-300"
+                    className="flex items-center px-4 py-3 rounded-lg font-waffle-soft text-black dark:text-gray-100 hover:bg-[#74C6C6] hover:bg-opacity-10 hover:text-[#4E6FA7] dark:hover:text-[#74C6C6] transition-all duration-300"
                     onClick={() => setIsMenuOpen(false)}
                   >
                     {item.label}

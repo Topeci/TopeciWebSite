@@ -13,7 +13,7 @@ export function Footer() {
             <h3 className="font-waffle-soft text-base font-bold mb-1 text-[#BE356A]  dark:text-[#FFD700]">
               LA MARQUE
             </h3>
-            <ul className="space-y-2 font-indie-flower">
+            <ul className="space-y-2 font-glacial-indifference">
               <li>
                 <a
                   href="/"
@@ -46,7 +46,7 @@ export function Footer() {
             <h3 className="font-waffle-soft text-base font-bold mb-1 text-[#BE356A] dark:text-[#BE356A] ">
               LEGAL
             </h3>
-            <ul className="space-y-2 font-indie-flower">
+            <ul className="space-y-2 font-glacial-indifference">
               <li>
                 <a
                   href="cgv"
@@ -89,7 +89,7 @@ export function Footer() {
               BESOIN D'AIDE ?
             </h3>
 
-            <ul className="space-y-2 font-indie-flower">
+            <ul className="space-y-2 font-glacial-indifference">
               <li>
                 <a
                   href="/aide-faq"
@@ -131,7 +131,7 @@ export function Footer() {
             <h3 className="font-waffle-soft text-base font-bold mb-1 text-[#BE356A]  dark:text-[#BE356A] ">
               CONTACT
             </h3>
-            <ul className="text-white space-y-2 font-indie-flower mb-4 dark:text-gray-200">
+            <ul className="text-white space-y-2 font-glacial-indifference mb-4 dark:text-gray-200">
               <li className="text-base">SAV & autres questions ?</li>
               <li className="text-base">Email : contact@mon-topeci.com</li>
               <li className="text-base">Du lundi au vendredi de 8h à 18h</li>
@@ -145,7 +145,7 @@ export function Footer() {
                   name="email"
                   type="email"
                   placeholder="Email"
-                  className="font-indie-flower text-gray-400 px-3 py-2 bg-transparent focus:outline-none text-sm border-b border-gray-300 focus:border-white max-w-[250px] dark:border-gray-500 dark:focus:border-white"
+                  className="font-glacial-indifference text-gray-400 px-3 py-2 bg-transparent focus:outline-none text-sm border-b border-gray-300 focus:border-white max-w-[250px] dark:border-gray-500 dark:focus:border-white"
                 />
                 <a
                   href="#"

@@ -35,10 +35,10 @@ function RouteComponent() {
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 className="text-2xl md:text-3xl font-bold font-waffle-soft text-[#D68E54] mb-6 ">
+              <h2 className="text-2xl md:text-3xl font-extrabold font-waffle-soft text-[#D68E54] mb-6 ">
                 NOTRE HISTOIRE
               </h2>
-              <div className="space-y-6 text-black dark:text-gray-200 text-lg leading-relaxed font-indie-flower">
+              <div className="space-y-6 text-black dark:text-gray-200 text-lg leading-relaxed font-glacial-indifference">
                 <p>
                   Fondée en{" "}
                   <span className="text-[#BE356A] font-bold">2024</span>, TOPECI
