@@ -22,6 +22,7 @@ import bookTopeci from "../../images/booktopeci.jpg";
 import jeanMarc from "../../images/jeanmarc.jpg";
 import cindyOrnella from "../../images/ornella.jpg";
 import parisKid from "../../images/pariskid.jpg";
+import imgMotive from "../../images/imgMotive.png";
 
 export const Route = createFileRoute("/_home/a-propos")({
   component: RouteComponent,
@@ -32,6 +33,13 @@ function RouteComponent() {
     <div className="min-h-screen bg-white dark:bg-gray-900">
       {/* Notre Histoire Section */}
       <section className="py-16 bg-gray-50 dark:bg-gray-800">
+        <div className="flex flex-col items-center text-center px-3 mt-[-40px]">
+          <img
+            src={imgMotive}
+            alt="Jouet Fière"
+            className="mb-4 h-20 w-auto sm:h-32 md:h-40 lg:h-48 object-contain"
+          />
+        </div>
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>

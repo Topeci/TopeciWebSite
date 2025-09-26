@@ -27,7 +27,8 @@ Police d'écriture : Indie flower, Waffle soft, Glacial Indifference
   line-height: 1.4; /* plus vivant que le standard */
   font-size: 1.2em; /* un peu plus grand par défaut */
 }
- .font-block-bold {
+
+.font-block-bold {
             font-family: "Arial Black", sans-serif; 
             font-weight: 900;
         }
