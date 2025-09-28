@@ -1,57 +1,16 @@
-/**
- * Nous allons apporter des modifications importantes au niveau de Hero Section
- * elle aura une image en arriere plan import kidTopeci from "../../images/kidtopeci.png";
- * et le texte actuel sera conservé avec le bouton "Découvrir nos livres"
- * le cercle avec l'enfant sera supprimé et l'etoile supra supprimée aussi
- *
- * la section boutique
- * un titre "NOS JOUETS" en font-waffle-soft
- * sous-titre "Qui nous rendent fiers" en font-indie-flower
- * les 3 carte simple sans ombre le texte en noir centré et le prix centré en gras
- * le bouton ajouter au panier en bas de chaque carte en #DCCC41 bg avec hover #c4b33c
- *
- * la section video
- * titre "DECOUVRE NOS JOUETS" en font-waffle-soft
- * sous-titre "en vidéo " en font-indie-flower
- *
- * la section avis clients
- * titre "VOS TEMOIGNAGES" en font-waffle-soft
- * sous-titre "Nous motivent !" en font-indie-flower
- * un menu deroulant horizontal qui affichera toutes les captures photo des temoignages
- * un bouton "Écrire un avis" en #D68E54 bg avec hover #c57f4a
- *
- * La section Nos engagements
- * titre "NOS ENGAGEMENTS" en font-waffle-soft
- * sous-titre "Toujours plus proche de vous" en font-indie-flower
- * 3 cercles avec des icones et texte en dessous
- * icone 1 : livraison , texte : Livraison partout dans le monde
- * icone 2 :  , texte : Paiement securisé
- * icone 3 : store, texte : Nos points de vente
- * icone 4 : , texte : Assistance client whatsapp / email
- *
- * La section TOPECI OPEN CLASSROOM
- * sous-titre : Bientot, une application pour apprendre de facon ludique
- *
- * NB: Evite le degradé from-[#74C6C6] to-[#3a5a8a] utilise les couleurs uniforme de la charte graphique
- * garde à l'esprit que le site doit etre ludique, coloré et enfantin
- *  */
-
 import { createFileRoute, Link } from "@tanstack/react-router";
 import "../index.css";
 
-import { Header } from "../components/header";
-import { Footer } from "../components/footer";
-import CookiesBanner from "../components/CookieBanner";
+import { Header } from "../components/layout/header";
+import { Footer } from "../components/layout/footer";
+import CookiesBanner from "../components/layout/CookieBanner";
 
 import {
   Play,
   Sparkles,
   Star,
-  //Check,
   Camera,
   X,
-  //ChevronDown,
-  //ChevronUp,
   Send,
   Truck,
   CreditCard,
@@ -64,7 +23,10 @@ import { useState, useRef, useEffect } from "react";
 import livreBaoule from "../images/livrebaoule.png";
 import livreDioula from "../images/livredioula.webp";
 import kidTopeci from "../images/kidtopeci.png";
-import jouetFiere from "../images/jouetfiere.png";
+import jouetFiere from "../images/jouetFiere.png";
+import imgVideo from "../images/imgVideo.png";
+import imgAvis from "../images/imgavis.png";
+import imgEngagement from "../images/imgengagement.png";
 
 import VideoTopeci from "../videos/topeci_video.mp4";
 
@@ -77,9 +39,10 @@ function Index() {
   const [showReviewForm, setShowReviewForm] = useState(false);
   const [rating, setRating] = useState(0);
   const [hoverRating, setHoverRating] = useState(0);
-  // const [showAllReviews, setShowAllReviews] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
   const formRef = useRef<HTMLDivElement>(null);
+  const reviewsContainerRef = useRef<HTMLDivElement>(null);
+  const [isPaused, setIsPaused] = useState(false);
 
   const togglePlay = () => {
     if (videoRef.current) {
@@ -109,18 +72,46 @@ function Index() {
     };
   }, [showReviewForm]);
 
-  // Données d'avis fictifs
-  /* const reviews = {
-    average: 4.8,
-    total: 47,
-    distribution: [
-      { stars: 5, count: 35, percentage: 74 },
-      { stars: 4, count: 8, percentage: 17 },
-      { stars: 3, count: 3, percentage: 6 },
-      { stars: 2, count: 1, percentage: 2 },
-      { stars: 1, count: 0, percentage: 0 },
-    ],
-  };*/
+  // Défilement automatique des avis
+  useEffect(() => {
+    if (!reviewsContainerRef.current || isPaused) return;
+
+    const container = reviewsContainerRef.current;
+    const scrollWidth = container.scrollWidth;
+    const clientWidth = container.clientWidth;
+    const maxScroll = scrollWidth - clientWidth;
+
+    if (maxScroll <= 0) return;
+
+    let scrollPosition = 0;
+    let direction = 1; // 1 pour droite, -1 pour gauche
+    const scrollSpeed = 0.5; // pixels par frame
+
+    const scroll = () => {
+      if (!container || isPaused) return;
+
+      scrollPosition += scrollSpeed * direction;
+
+      // Changement de direction si on atteint les bords
+      if (scrollPosition >= maxScroll) {
+        scrollPosition = maxScroll;
+        direction = -1;
+      } else if (scrollPosition <= 0) {
+        scrollPosition = 0;
+        direction = 1;
+      }
+
+      container.scrollLeft = scrollPosition;
+
+      requestAnimationFrame(scroll);
+    };
+
+    const animationId = requestAnimationFrame(scroll);
+
+    return () => {
+      cancelAnimationFrame(animationId);
+    };
+  }, [isPaused]);
 
   const sampleReviews = [
     {
@@ -165,6 +156,22 @@ function Index() {
       rating: 4,
       comment: "Très bon produit, je recommande vivement !",
       date: "2024-01-03",
+    },
+    {
+      id: 6,
+      author: "Paul B.",
+      location: "Abidjan, Côte d'Ivoire",
+      rating: 5,
+      comment: "Produit de qualité exceptionnelle, mes enfants sont ravis !",
+      date: "2024-01-20",
+    },
+    {
+      id: 7,
+      author: "Sarah T.",
+      location: "Lyon, France",
+      rating: 5,
+      comment: "Service client excellent et livraison rapide. Merci TOPECI !",
+      date: "2024-01-18",
     },
   ];
 
@@ -240,7 +247,6 @@ function Index() {
                 onChange={(e) => {
                   if (e.target.files && e.target.files[0]) {
                     console.log("Fichier sélectionné:", e.target.files[0].name);
-                    // Ici vous pouvez gérer l'upload du fichier
                   }
                 }}
               />
@@ -322,19 +328,19 @@ function Index() {
   );
 
   return (
-    <div className="flex flex-col min-h-screen w-full mx-0 text-brown-800 ">
+    <div className="flex flex-col min-h-screen w-full mx-0 text-brown-800">
       <Header />
 
-      <main className="flex-1 w-full mx">
-        {/* HERO SECTION - MODIFIÉE */}
+      <main className="flex-1 w-full mx-auto">
+        {/* HERO SECTION */}
         <section
           className="w-full py-16 md:py-20 mt-0 relative bg-cover bg-center"
           style={{ backgroundImage: `url(${kidTopeci})` }}
         >
-          <div className="absolute inset-0 "></div>
+          <div className="absolute inset-0"></div>
           <div className="container mx-auto px-4 relative z-10">
             <div className="max-w-3xl">
-              <h1 className="text-7xl md:text-5xl font-bold text-[#4E6FA7] mb-6 font-waffle-soft">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#4E6FA7] mb-6 font-waffle-soft">
                 Apprendre, <br />
                 Jouer <br />
                 et grandir <br />
@@ -362,26 +368,18 @@ function Index() {
           </div>
         </section>
 
-        {/* BOUTIQUE SECTION - MODIFIÉE */}
+        {/* BOUTIQUE SECTION */}
         <section className="w-full py-16 bg-white">
           <div className="container mx-auto px-4">
-            {/*
-            <h2 className="text-3xl font-bold text-center text-black mb-2 font-waffle-soft">
-              NOS JOUETS
-            </h2>
-            <p className="text-center text-black mb-12 font-indie-flower text-lg">
-              Qui rendent fiers
-            </p>
-            */}
-            <div className="flex flex-col items-center text-center px-4">
+            <div className="flex flex-col items-center text-center mb-12">
               <img
                 src={jouetFiere}
                 alt="Jouet Fière"
-                className="mb-4 h-20 w-auto sm:h-32 md:h-40 lg:h-48 object-contain"
+                className="mb-4 h-24 w-auto object-contain"
               />
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {/* Card 1 */}
               <div className="bg-white rounded-2xl overflow-hidden transition-transform duration-300 hover:scale-105 flex flex-col border border-gray-200 h-full">
                 <div className="h-48 overflow-hidden">
@@ -391,16 +389,16 @@ function Index() {
                     className="w-full h-full object-cover"
                   />
                 </div>
-                <div className="p-4 flex flex-col flex-grow text-center">
-                  <h3 className="text-lg  text-black mb-2 font-block-bold">
+                <div className="p-6 flex flex-col flex-grow text-center">
+                  <h3 className="text-lg font-semibold text-black mb-3">
                     Mon Premier Livre Audio <br />
-                    Baoulé - Francais
+                    Baoulé - Français
                   </h3>
-                  <p className="text-black mb-3 font-bold text-lg">
+                  <p className="text-black mb-4 font-bold text-lg">
                     15 000 FCFA
                   </p>
                   <div className="mt-auto pt-2">
-                    <button className="w-full bg-[#DCCC41] hover:bg-[#c4b33c] text-black font-bold py-2 px-4 rounded-full transition duration-300 text-sm uppercase">
+                    <button className="w-full bg-[#DCCC41] hover:bg-[#c4b33c] text-black font-bold py-3 px-4 rounded-full transition duration-300 text-sm uppercase">
                       AJOUTER AU PANIER
                     </button>
                   </div>
@@ -416,16 +414,16 @@ function Index() {
                     className="w-full h-full object-cover"
                   />
                 </div>
-                <div className="p-4 flex flex-col flex-grow text-center">
-                  <h3 className="text-lg text-black mb-2">
+                <div className="p-6 flex flex-col flex-grow text-center">
+                  <h3 className="text-lg font-semibold text-black mb-3">
                     Mon Premier Livre Audio <br />
-                    Dioula - Francais
+                    Dioula - Français
                   </h3>
-                  <p className="text-black mb-3 font-bold text-lg">
+                  <p className="text-black mb-4 font-bold text-lg">
                     15 000 FCFA
                   </p>
                   <div className="mt-auto pt-2">
-                    <button className="w-full bg-[#DCCC41] hover:bg-[#c4b33c] text-black font-bold py-2 px-4 rounded-full transition duration-300 text-sm uppercase">
+                    <button className="w-full bg-[#DCCC41] hover:bg-[#c4b33c] text-black font-bold py-3 px-4 rounded-full transition duration-300 text-sm uppercase">
                       AJOUTER AU PANIER
                     </button>
                   </div>
@@ -441,16 +439,16 @@ function Index() {
                     className="w-full h-full object-cover"
                   />
                 </div>
-                <div className="p-4 flex flex-col flex-grow text-center">
-                  <h3 className="text-lg text-black mb-2">
+                <div className="p-6 flex flex-col flex-grow text-center">
+                  <h3 className="text-lg font-semibold text-black mb-3">
                     Mes cartes parlantes <br />
-                    Bété - Francais
+                    Bété - Français
                   </h3>
-                  <p className="text-black mb-3 font-bold text-lg">
+                  <p className="text-black mb-4 font-bold text-lg">
                     10 000 FCFA
                   </p>
                   <div className="mt-auto pt-2">
-                    <button className="w-full bg-[#DCCC41] hover:bg-[#c4b33c] text-black font-bold py-2 px-4 rounded-full transition duration-300 text-sm uppercase">
+                    <button className="w-full bg-[#DCCC41] hover:bg-[#c4b33c] text-black font-bold py-3 px-4 rounded-full transition duration-300 text-sm uppercase">
                       AJOUTER AU PANIER
                     </button>
                   </div>
@@ -459,15 +457,17 @@ function Index() {
             </div>
           </div>
         </section>
-        {/* SECTION VIDÉO - MODIFIÉE */}
-        <section className="w-full py-16 bg-gray-50">
+
+        {/* SECTION VIDÉO */}
+        <section className="w-full py-20 bg-gray-50">
           <div className="container mx-auto px-4">
-            <h2 className="text-3xl font-bold text-center text-black mb-2 font-waffle-soft mt-[-25px]">
-              DÉCOUVRE NOS JOUETS
-            </h2>
-            <p className="text-center text-black mb-5  font-indie-flower text-xl">
-              en vidéo
-            </p>
+            <div className="flex flex-col items-center text-center mb-12">
+              <img
+                src={imgVideo}
+                alt="Vidéo découverte"
+                className="h-20 w-auto object-contain mb-4"
+              />
+            </div>
 
             <div className="max-w-4xl mx-auto">
               <div className="relative rounded-xl overflow-hidden shadow-lg">
@@ -482,7 +482,6 @@ function Index() {
                   Votre navigateur ne supporte pas la lecture de vidéos.
                 </video>
 
-                {/* Overlay de contrôle */}
                 {!isPlaying && (
                   <div className="absolute inset-0 flex items-center justify-center">
                     <button
@@ -498,42 +497,49 @@ function Index() {
           </div>
         </section>
 
-        {/* SECTION AVIS CLIENTS - MODIFIÉE */}
-        <section className="w-full py-16 bg-white">
+        {/* SECTION AVIS CLIENTS AVEC DÉFILEMENT AUTOMATIQUE */}
+        <section className="w-full py-20 bg-white">
           <div className="container mx-auto px-4">
-            <h2 className="text-3xl font-bold text-center text-black mb-2 font-waffle-soft">
-              VOS TEMOIGNAGES
-            </h2>
-            <p className="text-center text-black mb-12 font-indie-flower text-xl">
-              Nous motivent !
-            </p>
+            <div className="flex flex-col items-center text-center mb-12">
+              <img
+                src={imgAvis}
+                alt="Témoignages"
+                className="h-20 w-auto object-contain mb-4"
+              />
+            </div>
 
-            {/* Menu déroulant horizontal des témoignages */}
-            <div className="mb-8 overflow-x-auto">
-              <div className="flex space-x-4 pb-4">
-                {sampleReviews.map((review) => (
+            {/* Conteneur des avis avec défilement automatique */}
+            <div
+              ref={reviewsContainerRef}
+              className="relative mb-8 overflow-x-hidden"
+              onMouseEnter={() => setIsPaused(true)}
+              onMouseLeave={() => setIsPaused(false)}
+            >
+              <div className="flex space-x-6 pb-4 min-w-max">
+                {/* Dupliquer les avis pour un effet de boucle continu */}
+                {[...sampleReviews, ...sampleReviews].map((review, index) => (
                   <div
-                    key={review.id}
-                    className="flex-shrink-0 w-64 bg-white rounded-lg shadow-md p-4 border border-gray-200"
+                    key={`${review.id}-${index}`}
+                    className="flex-shrink-0 w-72 bg-white rounded-lg shadow-md p-6 border border-gray-200 hover:shadow-lg transition-shadow"
                   >
-                    <div className="flex items-center mb-3">
-                      <div className="w-10 h-10 bg-[#74C6C6] rounded-full flex items-center justify-center text-white font-bold mr-3">
+                    <div className="flex items-center mb-4">
+                      <div className="w-12 h-12 bg-[#74C6C6] rounded-full flex items-center justify-center text-white font-bold mr-4">
                         {review.author.charAt(0)}
                       </div>
                       <div>
-                        <h4 className="font-semibold text-sm">
+                        <h4 className="font-semibold text-base">
                           {review.author}
                         </h4>
-                        <p className="text-xs text-gray-500">
+                        <p className="text-sm text-gray-500">
                           {review.location}
                         </p>
                       </div>
                     </div>
-                    <div className="flex mb-2">
+                    <div className="flex mb-3">
                       {[1, 2, 3, 4, 5].map((star) => (
                         <Star
                           key={star}
-                          size={14}
+                          size={16}
                           className={
                             star <= review.rating
                               ? "text-yellow-400 fill-current mr-1"
@@ -542,15 +548,18 @@ function Index() {
                         />
                       ))}
                     </div>
-                    <p className="text-sm text-gray-700 line-clamp-3">
+                    <p className="text-sm text-gray-700 leading-relaxed">
                       {review.comment}
                     </p>
                   </div>
                 ))}
               </div>
+
+              {/* Overlay pour indiquer le défilement */}
+              <div className="absolute inset-y-0 left-0 w-8 bg-gradient-to-r from-white to-transparent pointer-events-none"></div>
+              <div className="absolute inset-y-0 right-0 w-8 bg-gradient-to-l from-white to-transparent pointer-events-none"></div>
             </div>
 
-            {/* Bouton Écrire un avis */}
             <div className="text-center">
               <button
                 onClick={() => setShowReviewForm(true)}
@@ -562,21 +571,22 @@ function Index() {
           </div>
         </section>
 
-        {/* SECTION NOS ENGAGEMENTS - AJOUTÉE */}
-        <section className="w-full py-16 bg-gray-50">
+        {/* SECTION NOS ENGAGEMENTS */}
+        <section className="w-full py-20 bg-gray-50">
           <div className="container mx-auto px-4">
-            <h2 className="text-3xl font-bold text-center text-black mb-2 font-waffle-soft">
-              NOS ENGAGEMENTS
-            </h2>
-            <p className="text-center text-black mb-12 font-indie-flower text-xl">
-              Toujours plus proche de vous
-            </p>
+            <div className="flex flex-col items-center text-center mb-12">
+              <img
+                src={imgEngagement}
+                alt="Nos Engagements"
+                className="h-20 w-auto object-contain mb-4"
+              />
+            </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
               {/* Engagement 1 */}
               <div className="text-center">
-                <div className="w-24 h-24 bg-[#D68E54] rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Truck size={40} className="text-black" />
+                <div className="w-20 h-20 bg-[#D68E54] rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Truck size={32} className="text-white" />
                 </div>
                 <h3 className="text-lg font-semibold mb-2">
                   Livraison partout <br />
@@ -586,51 +596,50 @@ function Index() {
 
               {/* Engagement 2 */}
               <div className="text-center">
-                <div className="w-24 h-24 bg-[#D68E54] rounded-full flex items-center justify-center mx-auto mb-4">
-                  <CreditCard size={40} className="text-black" />
+                <div className="w-20 h-20 bg-[#D68E54] rounded-full flex items-center justify-center mx-auto mb-4">
+                  <CreditCard size={32} className="text-white" />
                 </div>
-                <h3 className="text-lg font-semibold mb-2 ">
+                <h3 className="text-lg font-semibold mb-2">
                   Paiement sécurisé
                 </h3>
               </div>
 
               {/* Engagement 3 */}
-              <div className="text-center">
-                <div className="w-24 h-24 bg-[#D68E54] rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Store size={40} className="text-black" />
+              <a href="/salePoint" className="text-center block">
+                <div className="w-20 h-20 bg-[#D68E54] rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Store size={32} className="text-white" />
                 </div>
                 <h3 className="text-lg font-semibold mb-2">
                   Nos points de <br />
                   vente
                 </h3>
-              </div>
+              </a>
 
               {/* Engagement 4 */}
               <div className="text-center">
-                <div className="w-24 h-24 bg-[#D68E54] rounded-full flex items-center justify-center mx-auto mb-4">
-                  <MessageCircle size={40} className="text-black" />
+                <div className="w-20 h-20 bg-[#D68E54] rounded-full flex items-center justify-center mx-auto mb-4">
+                  <MessageCircle size={32} className="text-white" />
                 </div>
                 <h3 className="text-lg font-semibold mb-2">
                   Assistance client <br />
                   WhatsApp / Email
                 </h3>
-                <p className="text-gray-600"></p>
               </div>
             </div>
           </div>
         </section>
 
-        {/* SECTION TOPECI OPEN CLASSROOM - MODIFIÉE */}
-        <section className="w-full py-16 bg-white">
+        {/* SECTION TOPECI OPEN CLASSROOM */}
+        <section className="w-full py-20 bg-white">
           <div className="container mx-auto px-4 text-center">
-            <div className="max-w-2xl mx-auto bg-[#c2326c] rounded-3xl py-8 px-6">
-              <div className="text-xl font-bold  mb-3 font-waffle-soft">
+            <div className="max-w-2xl mx-auto bg-[#c2326c] rounded-3xl py-12 px-8">
+              <h2 className="text-2xl font-bold text-white mb-4 font-waffle-soft">
                 TOPECI Openclassroom arrive bientôt !
-              </div>
-              <div className="text-base mb-6 font-indie-flower">
+              </h2>
+              <p className="text-white mb-6 font-indie-flower text-lg">
                 Bientôt, une application pour apprendre de façon ludique
-              </div>
-              <Button className="inline-block bg-white text-[#74C6C6] hover:bg-gray-100 font-medium py-2 px-6 rounded-full transition duration-300 font-waffle-soft">
+              </p>
+              <Button className="bg-white text-[#c2326c] hover:bg-gray-100 font-medium py-3 px-8 rounded-full transition duration-300 font-waffle-soft">
                 En savoir plus
               </Button>
             </div>

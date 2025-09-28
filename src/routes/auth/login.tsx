@@ -4,7 +4,7 @@ import { Mail, Phone, Lock } from "lucide-react";
 import TopeciLogo from "../images/logotopeci.png";
 import { useState } from "react";
 
-export const Route = createFileRoute("/login")({
+export const Route = createFileRoute("/auth/login")({
   component: RouteComponent,
 });
 
@@ -182,7 +182,7 @@ function RouteComponent() {
             </>
           ) : (
             /* Étape 2: Code de vérification */
-            <div>
+            (<div>
               <label
                 htmlFor="verificationCode"
                 className="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-2 font-glacial-indifference"
@@ -215,7 +215,7 @@ function RouteComponent() {
                   Renvoyer
                 </button>
               </p>
-            </div>
+            </div>)
           )}
 
           {/* Bouton de soumission */}
@@ -238,5 +238,5 @@ function RouteComponent() {
         </form>
       </div>
     </div>
-  );
+  )
 }

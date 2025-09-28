@@ -24,7 +24,7 @@ import cindyOrnella from "../../images/ornella.jpg";
 import parisKid from "../../images/pariskid.jpg";
 import imgMotive from "../../images/imgMotive.png";
 
-export const Route = createFileRoute("/_home/a-propos")({
+export const Route = createFileRoute("/_home/about")({
   component: RouteComponent,
 });
 

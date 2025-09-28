@@ -10,33 +10,33 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as NewsletterRouteImport } from './routes/newsletter'
-import { Route as LoginRouteImport } from './routes/login'
 import { Route as CommandeRouteImport } from './routes/commande'
 import { Route as HomeRouteImport } from './routes/_home'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as HomeTermsRouteImport } from './routes/_home/terms'
+import { Route as DashboardSettingsRouteImport } from './routes/dashboard/settings'
+import { Route as DashboardProfileRouteImport } from './routes/dashboard/profile'
+import { Route as AuthLoginRouteImport } from './routes/auth/login'
+import { Route as AuthForgotPasswordRouteImport } from './routes/auth/forgot-password'
 import { Route as HomeSignupRouteImport } from './routes/_home/signup'
-import { Route as HomeSettingRouteImport } from './routes/_home/setting'
-import { Route as HomeProfilRouteImport } from './routes/_home/profil'
-import { Route as HomePrivacyRouteImport } from './routes/_home/privacy'
+import { Route as HomeSalePointRouteImport } from './routes/_home/salePoint'
 import { Route as HomePanierRouteImport } from './routes/_home/panier'
-import { Route as HomeMentionsLegalRouteImport } from './routes/_home/mentions-legal'
-import { Route as HomeLivresRouteImport } from './routes/_home/livres'
-import { Route as HomeCookiesRouteImport } from './routes/_home/cookies'
+import { Route as HomeFaqRouteImport } from './routes/_home/faq'
+import { Route as HomeEspaceProRouteImport } from './routes/_home/espace-pro'
 import { Route as HomeContactRouteImport } from './routes/_home/contact'
 import { Route as HomeBoutiqueRouteImport } from './routes/_home/boutique'
-import { Route as HomeAideFaqRouteImport } from './routes/_home/aide-faq'
-import { Route as HomeAProposRouteImport } from './routes/_home/a-propos'
+import { Route as HomeAboutRouteImport } from './routes/_home/about'
 import { Route as HomeProduitProductIdRouteImport } from './routes/_home/produit/$productId'
+import { Route as HomeLegalRemboursementRouteImport } from './routes/_home/legal/remboursement'
+import { Route as HomeLegalPrivacyRouteImport } from './routes/_home/legal/privacy'
+import { Route as HomeLegalMentionsLegalesRouteImport } from './routes/_home/legal/mentions-legales'
+import { Route as HomeLegalLivraisonRouteImport } from './routes/_home/legal/livraison'
+import { Route as HomeLegalCookiesRouteImport } from './routes/_home/legal/cookies'
+import { Route as HomeLegalCgvRouteImport } from './routes/_home/legal/cgv'
+import { Route as HomeLegalCguRouteImport } from './routes/_home/legal/cgu'
 
 const NewsletterRoute = NewsletterRouteImport.update({
   id: '/newsletter',
   path: '/newsletter',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const LoginRoute = LoginRouteImport.update({
-  id: '/login',
-  path: '/login',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CommandeRoute = CommandeRouteImport.update({
@@ -53,29 +53,34 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const HomeTermsRoute = HomeTermsRouteImport.update({
-  id: '/terms',
-  path: '/terms',
-  getParentRoute: () => HomeRoute,
+const DashboardSettingsRoute = DashboardSettingsRouteImport.update({
+  id: '/dashboard/settings',
+  path: '/dashboard/settings',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DashboardProfileRoute = DashboardProfileRouteImport.update({
+  id: '/dashboard/profile',
+  path: '/dashboard/profile',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthLoginRoute = AuthLoginRouteImport.update({
+  id: '/auth/login',
+  path: '/auth/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthForgotPasswordRoute = AuthForgotPasswordRouteImport.update({
+  id: '/auth/forgot-password',
+  path: '/auth/forgot-password',
+  getParentRoute: () => rootRouteImport,
 } as any)
 const HomeSignupRoute = HomeSignupRouteImport.update({
   id: '/signup',
   path: '/signup',
   getParentRoute: () => HomeRoute,
 } as any)
-const HomeSettingRoute = HomeSettingRouteImport.update({
-  id: '/setting',
-  path: '/setting',
-  getParentRoute: () => HomeRoute,
-} as any)
-const HomeProfilRoute = HomeProfilRouteImport.update({
-  id: '/profil',
-  path: '/profil',
-  getParentRoute: () => HomeRoute,
-} as any)
-const HomePrivacyRoute = HomePrivacyRouteImport.update({
-  id: '/privacy',
-  path: '/privacy',
+const HomeSalePointRoute = HomeSalePointRouteImport.update({
+  id: '/salePoint',
+  path: '/salePoint',
   getParentRoute: () => HomeRoute,
 } as any)
 const HomePanierRoute = HomePanierRouteImport.update({
@@ -83,19 +88,14 @@ const HomePanierRoute = HomePanierRouteImport.update({
   path: '/panier',
   getParentRoute: () => HomeRoute,
 } as any)
-const HomeMentionsLegalRoute = HomeMentionsLegalRouteImport.update({
-  id: '/mentions-legal',
-  path: '/mentions-legal',
+const HomeFaqRoute = HomeFaqRouteImport.update({
+  id: '/faq',
+  path: '/faq',
   getParentRoute: () => HomeRoute,
 } as any)
-const HomeLivresRoute = HomeLivresRouteImport.update({
-  id: '/livres',
-  path: '/livres',
-  getParentRoute: () => HomeRoute,
-} as any)
-const HomeCookiesRoute = HomeCookiesRouteImport.update({
-  id: '/cookies',
-  path: '/cookies',
+const HomeEspaceProRoute = HomeEspaceProRouteImport.update({
+  id: '/espace-pro',
+  path: '/espace-pro',
   getParentRoute: () => HomeRoute,
 } as any)
 const HomeContactRoute = HomeContactRouteImport.update({
@@ -108,14 +108,9 @@ const HomeBoutiqueRoute = HomeBoutiqueRouteImport.update({
   path: '/boutique',
   getParentRoute: () => HomeRoute,
 } as any)
-const HomeAideFaqRoute = HomeAideFaqRouteImport.update({
-  id: '/aide-faq',
-  path: '/aide-faq',
-  getParentRoute: () => HomeRoute,
-} as any)
-const HomeAProposRoute = HomeAProposRouteImport.update({
-  id: '/a-propos',
-  path: '/a-propos',
+const HomeAboutRoute = HomeAboutRouteImport.update({
+  id: '/about',
+  path: '/about',
   getParentRoute: () => HomeRoute,
 } as any)
 const HomeProduitProductIdRoute = HomeProduitProductIdRouteImport.update({
@@ -123,45 +118,91 @@ const HomeProduitProductIdRoute = HomeProduitProductIdRouteImport.update({
   path: '/produit/$productId',
   getParentRoute: () => HomeRoute,
 } as any)
+const HomeLegalRemboursementRoute = HomeLegalRemboursementRouteImport.update({
+  id: '/legal/remboursement',
+  path: '/legal/remboursement',
+  getParentRoute: () => HomeRoute,
+} as any)
+const HomeLegalPrivacyRoute = HomeLegalPrivacyRouteImport.update({
+  id: '/legal/privacy',
+  path: '/legal/privacy',
+  getParentRoute: () => HomeRoute,
+} as any)
+const HomeLegalMentionsLegalesRoute =
+  HomeLegalMentionsLegalesRouteImport.update({
+    id: '/legal/mentions-legales',
+    path: '/legal/mentions-legales',
+    getParentRoute: () => HomeRoute,
+  } as any)
+const HomeLegalLivraisonRoute = HomeLegalLivraisonRouteImport.update({
+  id: '/legal/livraison',
+  path: '/legal/livraison',
+  getParentRoute: () => HomeRoute,
+} as any)
+const HomeLegalCookiesRoute = HomeLegalCookiesRouteImport.update({
+  id: '/legal/cookies',
+  path: '/legal/cookies',
+  getParentRoute: () => HomeRoute,
+} as any)
+const HomeLegalCgvRoute = HomeLegalCgvRouteImport.update({
+  id: '/legal/cgv',
+  path: '/legal/cgv',
+  getParentRoute: () => HomeRoute,
+} as any)
+const HomeLegalCguRoute = HomeLegalCguRouteImport.update({
+  id: '/legal/cgu',
+  path: '/legal/cgu',
+  getParentRoute: () => HomeRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/commande': typeof CommandeRoute
-  '/login': typeof LoginRoute
   '/newsletter': typeof NewsletterRoute
-  '/a-propos': typeof HomeAProposRoute
-  '/aide-faq': typeof HomeAideFaqRoute
+  '/about': typeof HomeAboutRoute
   '/boutique': typeof HomeBoutiqueRoute
   '/contact': typeof HomeContactRoute
-  '/cookies': typeof HomeCookiesRoute
-  '/livres': typeof HomeLivresRoute
-  '/mentions-legal': typeof HomeMentionsLegalRoute
+  '/espace-pro': typeof HomeEspaceProRoute
+  '/faq': typeof HomeFaqRoute
   '/panier': typeof HomePanierRoute
-  '/privacy': typeof HomePrivacyRoute
-  '/profil': typeof HomeProfilRoute
-  '/setting': typeof HomeSettingRoute
+  '/salePoint': typeof HomeSalePointRoute
   '/signup': typeof HomeSignupRoute
-  '/terms': typeof HomeTermsRoute
+  '/auth/forgot-password': typeof AuthForgotPasswordRoute
+  '/auth/login': typeof AuthLoginRoute
+  '/dashboard/profile': typeof DashboardProfileRoute
+  '/dashboard/settings': typeof DashboardSettingsRoute
+  '/legal/cgu': typeof HomeLegalCguRoute
+  '/legal/cgv': typeof HomeLegalCgvRoute
+  '/legal/cookies': typeof HomeLegalCookiesRoute
+  '/legal/livraison': typeof HomeLegalLivraisonRoute
+  '/legal/mentions-legales': typeof HomeLegalMentionsLegalesRoute
+  '/legal/privacy': typeof HomeLegalPrivacyRoute
+  '/legal/remboursement': typeof HomeLegalRemboursementRoute
   '/produit/$productId': typeof HomeProduitProductIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/commande': typeof CommandeRoute
-  '/login': typeof LoginRoute
   '/newsletter': typeof NewsletterRoute
-  '/a-propos': typeof HomeAProposRoute
-  '/aide-faq': typeof HomeAideFaqRoute
+  '/about': typeof HomeAboutRoute
   '/boutique': typeof HomeBoutiqueRoute
   '/contact': typeof HomeContactRoute
-  '/cookies': typeof HomeCookiesRoute
-  '/livres': typeof HomeLivresRoute
-  '/mentions-legal': typeof HomeMentionsLegalRoute
+  '/espace-pro': typeof HomeEspaceProRoute
+  '/faq': typeof HomeFaqRoute
   '/panier': typeof HomePanierRoute
-  '/privacy': typeof HomePrivacyRoute
-  '/profil': typeof HomeProfilRoute
-  '/setting': typeof HomeSettingRoute
+  '/salePoint': typeof HomeSalePointRoute
   '/signup': typeof HomeSignupRoute
-  '/terms': typeof HomeTermsRoute
+  '/auth/forgot-password': typeof AuthForgotPasswordRoute
+  '/auth/login': typeof AuthLoginRoute
+  '/dashboard/profile': typeof DashboardProfileRoute
+  '/dashboard/settings': typeof DashboardSettingsRoute
+  '/legal/cgu': typeof HomeLegalCguRoute
+  '/legal/cgv': typeof HomeLegalCgvRoute
+  '/legal/cookies': typeof HomeLegalCookiesRoute
+  '/legal/livraison': typeof HomeLegalLivraisonRoute
+  '/legal/mentions-legales': typeof HomeLegalMentionsLegalesRoute
+  '/legal/privacy': typeof HomeLegalPrivacyRoute
+  '/legal/remboursement': typeof HomeLegalRemboursementRoute
   '/produit/$productId': typeof HomeProduitProductIdRoute
 }
 export interface FileRoutesById {
@@ -169,21 +210,26 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/_home': typeof HomeRouteWithChildren
   '/commande': typeof CommandeRoute
-  '/login': typeof LoginRoute
   '/newsletter': typeof NewsletterRoute
-  '/_home/a-propos': typeof HomeAProposRoute
-  '/_home/aide-faq': typeof HomeAideFaqRoute
+  '/_home/about': typeof HomeAboutRoute
   '/_home/boutique': typeof HomeBoutiqueRoute
   '/_home/contact': typeof HomeContactRoute
-  '/_home/cookies': typeof HomeCookiesRoute
-  '/_home/livres': typeof HomeLivresRoute
-  '/_home/mentions-legal': typeof HomeMentionsLegalRoute
+  '/_home/espace-pro': typeof HomeEspaceProRoute
+  '/_home/faq': typeof HomeFaqRoute
   '/_home/panier': typeof HomePanierRoute
-  '/_home/privacy': typeof HomePrivacyRoute
-  '/_home/profil': typeof HomeProfilRoute
-  '/_home/setting': typeof HomeSettingRoute
+  '/_home/salePoint': typeof HomeSalePointRoute
   '/_home/signup': typeof HomeSignupRoute
-  '/_home/terms': typeof HomeTermsRoute
+  '/auth/forgot-password': typeof AuthForgotPasswordRoute
+  '/auth/login': typeof AuthLoginRoute
+  '/dashboard/profile': typeof DashboardProfileRoute
+  '/dashboard/settings': typeof DashboardSettingsRoute
+  '/_home/legal/cgu': typeof HomeLegalCguRoute
+  '/_home/legal/cgv': typeof HomeLegalCgvRoute
+  '/_home/legal/cookies': typeof HomeLegalCookiesRoute
+  '/_home/legal/livraison': typeof HomeLegalLivraisonRoute
+  '/_home/legal/mentions-legales': typeof HomeLegalMentionsLegalesRoute
+  '/_home/legal/privacy': typeof HomeLegalPrivacyRoute
+  '/_home/legal/remboursement': typeof HomeLegalRemboursementRoute
   '/_home/produit/$productId': typeof HomeProduitProductIdRoute
 }
 export interface FileRouteTypes {
@@ -191,62 +237,77 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/commande'
-    | '/login'
     | '/newsletter'
-    | '/a-propos'
-    | '/aide-faq'
+    | '/about'
     | '/boutique'
     | '/contact'
-    | '/cookies'
-    | '/livres'
-    | '/mentions-legal'
+    | '/espace-pro'
+    | '/faq'
     | '/panier'
-    | '/privacy'
-    | '/profil'
-    | '/setting'
+    | '/salePoint'
     | '/signup'
-    | '/terms'
+    | '/auth/forgot-password'
+    | '/auth/login'
+    | '/dashboard/profile'
+    | '/dashboard/settings'
+    | '/legal/cgu'
+    | '/legal/cgv'
+    | '/legal/cookies'
+    | '/legal/livraison'
+    | '/legal/mentions-legales'
+    | '/legal/privacy'
+    | '/legal/remboursement'
     | '/produit/$productId'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/commande'
-    | '/login'
     | '/newsletter'
-    | '/a-propos'
-    | '/aide-faq'
+    | '/about'
     | '/boutique'
     | '/contact'
-    | '/cookies'
-    | '/livres'
-    | '/mentions-legal'
+    | '/espace-pro'
+    | '/faq'
     | '/panier'
-    | '/privacy'
-    | '/profil'
-    | '/setting'
+    | '/salePoint'
     | '/signup'
-    | '/terms'
+    | '/auth/forgot-password'
+    | '/auth/login'
+    | '/dashboard/profile'
+    | '/dashboard/settings'
+    | '/legal/cgu'
+    | '/legal/cgv'
+    | '/legal/cookies'
+    | '/legal/livraison'
+    | '/legal/mentions-legales'
+    | '/legal/privacy'
+    | '/legal/remboursement'
     | '/produit/$productId'
   id:
     | '__root__'
     | '/'
     | '/_home'
     | '/commande'
-    | '/login'
     | '/newsletter'
-    | '/_home/a-propos'
-    | '/_home/aide-faq'
+    | '/_home/about'
     | '/_home/boutique'
     | '/_home/contact'
-    | '/_home/cookies'
-    | '/_home/livres'
-    | '/_home/mentions-legal'
+    | '/_home/espace-pro'
+    | '/_home/faq'
     | '/_home/panier'
-    | '/_home/privacy'
-    | '/_home/profil'
-    | '/_home/setting'
+    | '/_home/salePoint'
     | '/_home/signup'
-    | '/_home/terms'
+    | '/auth/forgot-password'
+    | '/auth/login'
+    | '/dashboard/profile'
+    | '/dashboard/settings'
+    | '/_home/legal/cgu'
+    | '/_home/legal/cgv'
+    | '/_home/legal/cookies'
+    | '/_home/legal/livraison'
+    | '/_home/legal/mentions-legales'
+    | '/_home/legal/privacy'
+    | '/_home/legal/remboursement'
     | '/_home/produit/$productId'
   fileRoutesById: FileRoutesById
 }
@@ -254,8 +315,11 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   HomeRoute: typeof HomeRouteWithChildren
   CommandeRoute: typeof CommandeRoute
-  LoginRoute: typeof LoginRoute
   NewsletterRoute: typeof NewsletterRoute
+  AuthForgotPasswordRoute: typeof AuthForgotPasswordRoute
+  AuthLoginRoute: typeof AuthLoginRoute
+  DashboardProfileRoute: typeof DashboardProfileRoute
+  DashboardSettingsRoute: typeof DashboardSettingsRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -265,13 +329,6 @@ declare module '@tanstack/react-router' {
       path: '/newsletter'
       fullPath: '/newsletter'
       preLoaderRoute: typeof NewsletterRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/login': {
-      id: '/login'
-      path: '/login'
-      fullPath: '/login'
-      preLoaderRoute: typeof LoginRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/commande': {
@@ -295,12 +352,33 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/_home/terms': {
-      id: '/_home/terms'
-      path: '/terms'
-      fullPath: '/terms'
-      preLoaderRoute: typeof HomeTermsRouteImport
-      parentRoute: typeof HomeRoute
+    '/dashboard/settings': {
+      id: '/dashboard/settings'
+      path: '/dashboard/settings'
+      fullPath: '/dashboard/settings'
+      preLoaderRoute: typeof DashboardSettingsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/dashboard/profile': {
+      id: '/dashboard/profile'
+      path: '/dashboard/profile'
+      fullPath: '/dashboard/profile'
+      preLoaderRoute: typeof DashboardProfileRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/auth/login': {
+      id: '/auth/login'
+      path: '/auth/login'
+      fullPath: '/auth/login'
+      preLoaderRoute: typeof AuthLoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/auth/forgot-password': {
+      id: '/auth/forgot-password'
+      path: '/auth/forgot-password'
+      fullPath: '/auth/forgot-password'
+      preLoaderRoute: typeof AuthForgotPasswordRouteImport
+      parentRoute: typeof rootRouteImport
     }
     '/_home/signup': {
       id: '/_home/signup'
@@ -309,25 +387,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof HomeSignupRouteImport
       parentRoute: typeof HomeRoute
     }
-    '/_home/setting': {
-      id: '/_home/setting'
-      path: '/setting'
-      fullPath: '/setting'
-      preLoaderRoute: typeof HomeSettingRouteImport
-      parentRoute: typeof HomeRoute
-    }
-    '/_home/profil': {
-      id: '/_home/profil'
-      path: '/profil'
-      fullPath: '/profil'
-      preLoaderRoute: typeof HomeProfilRouteImport
-      parentRoute: typeof HomeRoute
-    }
-    '/_home/privacy': {
-      id: '/_home/privacy'
-      path: '/privacy'
-      fullPath: '/privacy'
-      preLoaderRoute: typeof HomePrivacyRouteImport
+    '/_home/salePoint': {
+      id: '/_home/salePoint'
+      path: '/salePoint'
+      fullPath: '/salePoint'
+      preLoaderRoute: typeof HomeSalePointRouteImport
       parentRoute: typeof HomeRoute
     }
     '/_home/panier': {
@@ -337,25 +401,18 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof HomePanierRouteImport
       parentRoute: typeof HomeRoute
     }
-    '/_home/mentions-legal': {
-      id: '/_home/mentions-legal'
-      path: '/mentions-legal'
-      fullPath: '/mentions-legal'
-      preLoaderRoute: typeof HomeMentionsLegalRouteImport
+    '/_home/faq': {
+      id: '/_home/faq'
+      path: '/faq'
+      fullPath: '/faq'
+      preLoaderRoute: typeof HomeFaqRouteImport
       parentRoute: typeof HomeRoute
     }
-    '/_home/livres': {
-      id: '/_home/livres'
-      path: '/livres'
-      fullPath: '/livres'
-      preLoaderRoute: typeof HomeLivresRouteImport
-      parentRoute: typeof HomeRoute
-    }
-    '/_home/cookies': {
-      id: '/_home/cookies'
-      path: '/cookies'
-      fullPath: '/cookies'
-      preLoaderRoute: typeof HomeCookiesRouteImport
+    '/_home/espace-pro': {
+      id: '/_home/espace-pro'
+      path: '/espace-pro'
+      fullPath: '/espace-pro'
+      preLoaderRoute: typeof HomeEspaceProRouteImport
       parentRoute: typeof HomeRoute
     }
     '/_home/contact': {
@@ -372,18 +429,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof HomeBoutiqueRouteImport
       parentRoute: typeof HomeRoute
     }
-    '/_home/aide-faq': {
-      id: '/_home/aide-faq'
-      path: '/aide-faq'
-      fullPath: '/aide-faq'
-      preLoaderRoute: typeof HomeAideFaqRouteImport
-      parentRoute: typeof HomeRoute
-    }
-    '/_home/a-propos': {
-      id: '/_home/a-propos'
-      path: '/a-propos'
-      fullPath: '/a-propos'
-      preLoaderRoute: typeof HomeAProposRouteImport
+    '/_home/about': {
+      id: '/_home/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof HomeAboutRouteImport
       parentRoute: typeof HomeRoute
     }
     '/_home/produit/$productId': {
@@ -393,40 +443,93 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof HomeProduitProductIdRouteImport
       parentRoute: typeof HomeRoute
     }
+    '/_home/legal/remboursement': {
+      id: '/_home/legal/remboursement'
+      path: '/legal/remboursement'
+      fullPath: '/legal/remboursement'
+      preLoaderRoute: typeof HomeLegalRemboursementRouteImport
+      parentRoute: typeof HomeRoute
+    }
+    '/_home/legal/privacy': {
+      id: '/_home/legal/privacy'
+      path: '/legal/privacy'
+      fullPath: '/legal/privacy'
+      preLoaderRoute: typeof HomeLegalPrivacyRouteImport
+      parentRoute: typeof HomeRoute
+    }
+    '/_home/legal/mentions-legales': {
+      id: '/_home/legal/mentions-legales'
+      path: '/legal/mentions-legales'
+      fullPath: '/legal/mentions-legales'
+      preLoaderRoute: typeof HomeLegalMentionsLegalesRouteImport
+      parentRoute: typeof HomeRoute
+    }
+    '/_home/legal/livraison': {
+      id: '/_home/legal/livraison'
+      path: '/legal/livraison'
+      fullPath: '/legal/livraison'
+      preLoaderRoute: typeof HomeLegalLivraisonRouteImport
+      parentRoute: typeof HomeRoute
+    }
+    '/_home/legal/cookies': {
+      id: '/_home/legal/cookies'
+      path: '/legal/cookies'
+      fullPath: '/legal/cookies'
+      preLoaderRoute: typeof HomeLegalCookiesRouteImport
+      parentRoute: typeof HomeRoute
+    }
+    '/_home/legal/cgv': {
+      id: '/_home/legal/cgv'
+      path: '/legal/cgv'
+      fullPath: '/legal/cgv'
+      preLoaderRoute: typeof HomeLegalCgvRouteImport
+      parentRoute: typeof HomeRoute
+    }
+    '/_home/legal/cgu': {
+      id: '/_home/legal/cgu'
+      path: '/legal/cgu'
+      fullPath: '/legal/cgu'
+      preLoaderRoute: typeof HomeLegalCguRouteImport
+      parentRoute: typeof HomeRoute
+    }
   }
 }
 
 interface HomeRouteChildren {
-  HomeAProposRoute: typeof HomeAProposRoute
-  HomeAideFaqRoute: typeof HomeAideFaqRoute
+  HomeAboutRoute: typeof HomeAboutRoute
   HomeBoutiqueRoute: typeof HomeBoutiqueRoute
   HomeContactRoute: typeof HomeContactRoute
-  HomeCookiesRoute: typeof HomeCookiesRoute
-  HomeLivresRoute: typeof HomeLivresRoute
-  HomeMentionsLegalRoute: typeof HomeMentionsLegalRoute
+  HomeEspaceProRoute: typeof HomeEspaceProRoute
+  HomeFaqRoute: typeof HomeFaqRoute
   HomePanierRoute: typeof HomePanierRoute
-  HomePrivacyRoute: typeof HomePrivacyRoute
-  HomeProfilRoute: typeof HomeProfilRoute
-  HomeSettingRoute: typeof HomeSettingRoute
+  HomeSalePointRoute: typeof HomeSalePointRoute
   HomeSignupRoute: typeof HomeSignupRoute
-  HomeTermsRoute: typeof HomeTermsRoute
+  HomeLegalCguRoute: typeof HomeLegalCguRoute
+  HomeLegalCgvRoute: typeof HomeLegalCgvRoute
+  HomeLegalCookiesRoute: typeof HomeLegalCookiesRoute
+  HomeLegalLivraisonRoute: typeof HomeLegalLivraisonRoute
+  HomeLegalMentionsLegalesRoute: typeof HomeLegalMentionsLegalesRoute
+  HomeLegalPrivacyRoute: typeof HomeLegalPrivacyRoute
+  HomeLegalRemboursementRoute: typeof HomeLegalRemboursementRoute
   HomeProduitProductIdRoute: typeof HomeProduitProductIdRoute
 }
 
 const HomeRouteChildren: HomeRouteChildren = {
-  HomeAProposRoute: HomeAProposRoute,
-  HomeAideFaqRoute: HomeAideFaqRoute,
+  HomeAboutRoute: HomeAboutRoute,
   HomeBoutiqueRoute: HomeBoutiqueRoute,
   HomeContactRoute: HomeContactRoute,
-  HomeCookiesRoute: HomeCookiesRoute,
-  HomeLivresRoute: HomeLivresRoute,
-  HomeMentionsLegalRoute: HomeMentionsLegalRoute,
+  HomeEspaceProRoute: HomeEspaceProRoute,
+  HomeFaqRoute: HomeFaqRoute,
   HomePanierRoute: HomePanierRoute,
-  HomePrivacyRoute: HomePrivacyRoute,
-  HomeProfilRoute: HomeProfilRoute,
-  HomeSettingRoute: HomeSettingRoute,
+  HomeSalePointRoute: HomeSalePointRoute,
   HomeSignupRoute: HomeSignupRoute,
-  HomeTermsRoute: HomeTermsRoute,
+  HomeLegalCguRoute: HomeLegalCguRoute,
+  HomeLegalCgvRoute: HomeLegalCgvRoute,
+  HomeLegalCookiesRoute: HomeLegalCookiesRoute,
+  HomeLegalLivraisonRoute: HomeLegalLivraisonRoute,
+  HomeLegalMentionsLegalesRoute: HomeLegalMentionsLegalesRoute,
+  HomeLegalPrivacyRoute: HomeLegalPrivacyRoute,
+  HomeLegalRemboursementRoute: HomeLegalRemboursementRoute,
   HomeProduitProductIdRoute: HomeProduitProductIdRoute,
 }
 
@@ -436,8 +539,11 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   HomeRoute: HomeRouteWithChildren,
   CommandeRoute: CommandeRoute,
-  LoginRoute: LoginRoute,
   NewsletterRoute: NewsletterRoute,
+  AuthForgotPasswordRoute: AuthForgotPasswordRoute,
+  AuthLoginRoute: AuthLoginRoute,
+  DashboardProfileRoute: DashboardProfileRoute,
+  DashboardSettingsRoute: DashboardSettingsRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

@@ -1,14 +1,20 @@
 import { createFileRoute } from "@tanstack/react-router";
 
-export const Route = createFileRoute("/_home/cookies")({
+export const Route = createFileRoute("/_home/legal/cookies")({
   component: RouteComponent,
 });
 
 function RouteComponent() {
   return (
     <div className="px-6 py-10 max-w-4xl mx-auto text-gray-800 leading-relaxed">
-      <h1 className="text-2xl font-bold mb-6">Cookies & Traceurs</h1>
-
+      <h1 className="text-2xl font-bold mb-6"></h1>
+      {/* En-tête */}
+      <div className="text-center mb-12">
+        <h1 className="text-4xl font-bold text-[#4E6FA7] font-waffle-soft mb-4">
+          Cookies & Traceurs
+        </h1>
+        <div className="w-24 h-1 bg-[#D68E54] mx-auto mb-6"></div>
+      </div>
       <p className="mb-4">
         Cette page explique comment <strong>TOPECI</strong> — une plateforme
         éducative et culturelle dédiée à la préservation et à la transmission
@@ -186,7 +192,7 @@ function RouteComponent() {
         </a>{" "}
         et notre{" "}
         <a
-          href="/politique-confidentialite"
+          href="/privacy"
           className="text-blue-600 underline"
         >
           Politique de confidentialité & RGPD

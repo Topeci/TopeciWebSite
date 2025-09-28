@@ -1,6 +1,6 @@
 import React from "react";
 import { Facebook, Linkedin, Instagram, Music2 } from "lucide-react";
-import TopeciLogo from "../images/logotopeci.png";
+import TopeciLogo from "../../assets/images/logoToeci.png";
 void React;
 
 export function Footer() {
@@ -36,48 +36,6 @@ export function Footer() {
                   className=" hover:text-[#D68E54] transition-colors text-base dark:text-pink-400 dark:hover:text-orange-300"
                 >
                   Espace pro
-                </a>
-              </li>
-            </ul>
-          </div>
-
-          {/* Colonne 2 : Légal */}
-          <div>
-            <h3 className="font-waffle-soft text-base font-bold mb-1 text-[#BE356A] dark:text-[#BE356A] ">
-              LEGAL
-            </h3>
-            <ul className="space-y-2 font-glacial-indifference">
-              <li>
-                <a
-                  href="cgv"
-                  className=" hover:underline transition-colors text-base dark:text-pink-400 dark:hover:underline"
-                >
-                  CGV
-                </a>
-              </li>
-              <li>
-                <a
-                  href="/cookies"
-                  className=" hover:text-[#D68E54] transition-colors text-base dark:text-pink-400 dark:hover:text-orange-300"
-                >
-                  Politique cookies
-                </a>
-              </li>
-              <li>
-                <a
-                  href="/mentions-legales"
-                  className=" hover:text-[#D68E54] transition-colors text-base dark:text-pink-400 dark:hover:text-orange-300"
-                >
-                  Mentions légales & CGU
-                </a>
-              </li>
-
-              <li>
-                <a
-                  href="/privacy"
-                  className=" hover:text-[#D68E54] transition-colors text-base dark:text-pink-400 dark:hover:text-orange-300"
-                >
-                  Politique de confidentialité
                 </a>
               </li>
             </ul>
@@ -121,6 +79,56 @@ export function Footer() {
                   className=" hover:text-[#D68E54] transition-colors text-base dark:text-gray-200 dark:hover:text-orange-300"
                 >
                   Politique remboursement & retour
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          {/* Colonne 2 : Légal */}
+          <div>
+            <h3 className="font-waffle-soft text-base font-bold mb-1 text-[#BE356A] dark:text-[#BE356A] ">
+              LEGAL
+            </h3>
+            <ul className="space-y-2 font-glacial-indifference">
+              <li>
+                <a
+                  href="/cgv"
+                  className=" hover:text-[#D68E54] transition-colors text-base dark:text-pink-400 dark:hover:text-orange-300"
+                >
+                  CGV
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/cgu"
+                  className=" hover:text-[#D68E54] transition-colors text-base dark:text-pink-400 dark:hover:text-orange-300"
+                >
+                  CGU
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/cookies"
+                  className=" hover:text-[#D68E54] transition-colors text-base dark:text-pink-400 dark:hover:text-orange-300"
+                >
+                  Politique cookies
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/mentions-legales"
+                  className=" hover:text-[#D68E54] transition-colors text-base dark:text-pink-400 dark:hover:text-orange-300"
+                >
+                  Mentions légales
+                </a>
+              </li>
+
+              <li>
+                <a
+                  href="/privacy"
+                  className=" hover:text-[#D68E54] transition-colors text-base dark:text-pink-400 dark:hover:text-orange-300"
+                >
+                  Politique de confidentialité
                 </a>
               </li>
             </ul>
