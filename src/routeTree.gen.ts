@@ -9,15 +9,13 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as NewsletterRouteImport } from './routes/newsletter'
-import { Route as CommandeRouteImport } from './routes/commande'
 import { Route as HomeRouteImport } from './routes/_home'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as DashboardSettingsRouteImport } from './routes/dashboard/settings'
 import { Route as DashboardProfileRouteImport } from './routes/dashboard/profile'
 import { Route as AuthLoginRouteImport } from './routes/auth/login'
 import { Route as AuthForgotPasswordRouteImport } from './routes/auth/forgot-password'
-import { Route as HomeSignupRouteImport } from './routes/_home/signup'
+import { Route as AuthCommandeRouteImport } from './routes/auth/commande'
 import { Route as HomeSalePointRouteImport } from './routes/_home/salePoint'
 import { Route as HomePanierRouteImport } from './routes/_home/panier'
 import { Route as HomeFaqRouteImport } from './routes/_home/faq'
@@ -34,16 +32,6 @@ import { Route as HomeLegalCookiesRouteImport } from './routes/_home/legal/cooki
 import { Route as HomeLegalCgvRouteImport } from './routes/_home/legal/cgv'
 import { Route as HomeLegalCguRouteImport } from './routes/_home/legal/cgu'
 
-const NewsletterRoute = NewsletterRouteImport.update({
-  id: '/newsletter',
-  path: '/newsletter',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const CommandeRoute = CommandeRouteImport.update({
-  id: '/commande',
-  path: '/commande',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const HomeRoute = HomeRouteImport.update({
   id: '/_home',
   getParentRoute: () => rootRouteImport,
@@ -73,10 +61,10 @@ const AuthForgotPasswordRoute = AuthForgotPasswordRouteImport.update({
   path: '/auth/forgot-password',
   getParentRoute: () => rootRouteImport,
 } as any)
-const HomeSignupRoute = HomeSignupRouteImport.update({
-  id: '/signup',
-  path: '/signup',
-  getParentRoute: () => HomeRoute,
+const AuthCommandeRoute = AuthCommandeRouteImport.update({
+  id: '/auth/commande',
+  path: '/auth/commande',
+  getParentRoute: () => rootRouteImport,
 } as any)
 const HomeSalePointRoute = HomeSalePointRouteImport.update({
   id: '/salePoint',
@@ -157,8 +145,6 @@ const HomeLegalCguRoute = HomeLegalCguRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/commande': typeof CommandeRoute
-  '/newsletter': typeof NewsletterRoute
   '/about': typeof HomeAboutRoute
   '/boutique': typeof HomeBoutiqueRoute
   '/contact': typeof HomeContactRoute
@@ -166,7 +152,7 @@ export interface FileRoutesByFullPath {
   '/faq': typeof HomeFaqRoute
   '/panier': typeof HomePanierRoute
   '/salePoint': typeof HomeSalePointRoute
-  '/signup': typeof HomeSignupRoute
+  '/auth/commande': typeof AuthCommandeRoute
   '/auth/forgot-password': typeof AuthForgotPasswordRoute
   '/auth/login': typeof AuthLoginRoute
   '/dashboard/profile': typeof DashboardProfileRoute
@@ -182,8 +168,6 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/commande': typeof CommandeRoute
-  '/newsletter': typeof NewsletterRoute
   '/about': typeof HomeAboutRoute
   '/boutique': typeof HomeBoutiqueRoute
   '/contact': typeof HomeContactRoute
@@ -191,7 +175,7 @@ export interface FileRoutesByTo {
   '/faq': typeof HomeFaqRoute
   '/panier': typeof HomePanierRoute
   '/salePoint': typeof HomeSalePointRoute
-  '/signup': typeof HomeSignupRoute
+  '/auth/commande': typeof AuthCommandeRoute
   '/auth/forgot-password': typeof AuthForgotPasswordRoute
   '/auth/login': typeof AuthLoginRoute
   '/dashboard/profile': typeof DashboardProfileRoute
@@ -209,8 +193,6 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/_home': typeof HomeRouteWithChildren
-  '/commande': typeof CommandeRoute
-  '/newsletter': typeof NewsletterRoute
   '/_home/about': typeof HomeAboutRoute
   '/_home/boutique': typeof HomeBoutiqueRoute
   '/_home/contact': typeof HomeContactRoute
@@ -218,7 +200,7 @@ export interface FileRoutesById {
   '/_home/faq': typeof HomeFaqRoute
   '/_home/panier': typeof HomePanierRoute
   '/_home/salePoint': typeof HomeSalePointRoute
-  '/_home/signup': typeof HomeSignupRoute
+  '/auth/commande': typeof AuthCommandeRoute
   '/auth/forgot-password': typeof AuthForgotPasswordRoute
   '/auth/login': typeof AuthLoginRoute
   '/dashboard/profile': typeof DashboardProfileRoute
@@ -236,8 +218,6 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
-    | '/commande'
-    | '/newsletter'
     | '/about'
     | '/boutique'
     | '/contact'
@@ -245,7 +225,7 @@ export interface FileRouteTypes {
     | '/faq'
     | '/panier'
     | '/salePoint'
-    | '/signup'
+    | '/auth/commande'
     | '/auth/forgot-password'
     | '/auth/login'
     | '/dashboard/profile'
@@ -261,8 +241,6 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
-    | '/commande'
-    | '/newsletter'
     | '/about'
     | '/boutique'
     | '/contact'
@@ -270,7 +248,7 @@ export interface FileRouteTypes {
     | '/faq'
     | '/panier'
     | '/salePoint'
-    | '/signup'
+    | '/auth/commande'
     | '/auth/forgot-password'
     | '/auth/login'
     | '/dashboard/profile'
@@ -287,8 +265,6 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/_home'
-    | '/commande'
-    | '/newsletter'
     | '/_home/about'
     | '/_home/boutique'
     | '/_home/contact'
@@ -296,7 +272,7 @@ export interface FileRouteTypes {
     | '/_home/faq'
     | '/_home/panier'
     | '/_home/salePoint'
-    | '/_home/signup'
+    | '/auth/commande'
     | '/auth/forgot-password'
     | '/auth/login'
     | '/dashboard/profile'
@@ -314,8 +290,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   HomeRoute: typeof HomeRouteWithChildren
-  CommandeRoute: typeof CommandeRoute
-  NewsletterRoute: typeof NewsletterRoute
+  AuthCommandeRoute: typeof AuthCommandeRoute
   AuthForgotPasswordRoute: typeof AuthForgotPasswordRoute
   AuthLoginRoute: typeof AuthLoginRoute
   DashboardProfileRoute: typeof DashboardProfileRoute
@@ -324,20 +299,6 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/newsletter': {
-      id: '/newsletter'
-      path: '/newsletter'
-      fullPath: '/newsletter'
-      preLoaderRoute: typeof NewsletterRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/commande': {
-      id: '/commande'
-      path: '/commande'
-      fullPath: '/commande'
-      preLoaderRoute: typeof CommandeRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/_home': {
       id: '/_home'
       path: ''
@@ -380,12 +341,12 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthForgotPasswordRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/_home/signup': {
-      id: '/_home/signup'
-      path: '/signup'
-      fullPath: '/signup'
-      preLoaderRoute: typeof HomeSignupRouteImport
-      parentRoute: typeof HomeRoute
+    '/auth/commande': {
+      id: '/auth/commande'
+      path: '/auth/commande'
+      fullPath: '/auth/commande'
+      preLoaderRoute: typeof AuthCommandeRouteImport
+      parentRoute: typeof rootRouteImport
     }
     '/_home/salePoint': {
       id: '/_home/salePoint'
@@ -503,7 +464,6 @@ interface HomeRouteChildren {
   HomeFaqRoute: typeof HomeFaqRoute
   HomePanierRoute: typeof HomePanierRoute
   HomeSalePointRoute: typeof HomeSalePointRoute
-  HomeSignupRoute: typeof HomeSignupRoute
   HomeLegalCguRoute: typeof HomeLegalCguRoute
   HomeLegalCgvRoute: typeof HomeLegalCgvRoute
   HomeLegalCookiesRoute: typeof HomeLegalCookiesRoute
@@ -522,7 +482,6 @@ const HomeRouteChildren: HomeRouteChildren = {
   HomeFaqRoute: HomeFaqRoute,
   HomePanierRoute: HomePanierRoute,
   HomeSalePointRoute: HomeSalePointRoute,
-  HomeSignupRoute: HomeSignupRoute,
   HomeLegalCguRoute: HomeLegalCguRoute,
   HomeLegalCgvRoute: HomeLegalCgvRoute,
   HomeLegalCookiesRoute: HomeLegalCookiesRoute,
@@ -538,8 +497,7 @@ const HomeRouteWithChildren = HomeRoute._addFileChildren(HomeRouteChildren)
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   HomeRoute: HomeRouteWithChildren,
-  CommandeRoute: CommandeRoute,
-  NewsletterRoute: NewsletterRoute,
+  AuthCommandeRoute: AuthCommandeRoute,
   AuthForgotPasswordRoute: AuthForgotPasswordRoute,
   AuthLoginRoute: AuthLoginRoute,
   DashboardProfileRoute: DashboardProfileRoute,
