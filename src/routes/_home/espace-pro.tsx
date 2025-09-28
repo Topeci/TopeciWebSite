@@ -1,3 +1,6 @@
+/**
+ * Page Espace Pro pour les professionnels
+ */
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import "../../index.css";

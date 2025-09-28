@@ -1,6 +1,10 @@
+/**
+ * En tête du site avec navigation responsive
+ */
+
 import React, { useState } from "react";
 import { Menu, X, CircleUser, ShoppingCart } from "lucide-react";
-import TopeciLogo from "../../images/logotopeci.png";
+import TopeciLogo from "../../assets/images/logoTopeci.png";
 
 void React;
 

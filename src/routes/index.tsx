@@ -1,3 +1,7 @@
+/**
+ * Page d'accueil du site TOPECI
+ */
+
 import { createFileRoute, Link } from "@tanstack/react-router";
 import "../index.css";
 
@@ -20,13 +24,14 @@ import {
 import { Button } from "../components/ui/button";
 import { useState, useRef, useEffect } from "react";
 
-import livreBaoule from "../images/livrebaoule.png";
-import livreDioula from "../images/livredioula.webp";
-import kidTopeci from "../images/kidtopeci.png";
-import jouetFiere from "../images/jouetFiere.png";
-import imgVideo from "../images/imgVideo.png";
-import imgAvis from "../images/imgavis.png";
-import imgEngagement from "../images/imgengagement.png";
+import livreBaoule from "../assets/images/livrebaoule.png";
+import livreDioula from "../assets/images/livredioula.webp";
+import kidTopeci from "../assets/images/kidtopeci.png";
+import jouetFiere from "../assets/images/jouetFiere.png";
+import imgVideo from "../assets/images/imgVideo.png";
+import imgAvis from "../assets/images/imgavis.png";
+import imgEngagement from "../assets/images/imgengagement.png";
+
 
 import VideoTopeci from "../videos/topeci_video.mp4";
 
@@ -288,7 +293,7 @@ function Index() {
               et seulement si nécessaire. En soumettant votre avis, vous
               acceptez les{" "}
               <Link
-                to="/terms"
+                to="/legal/cgu"
                 className="text-[#74C6C6] hover:text-[#5fb3b3] underline"
                 onClick={(e) => e.stopPropagation()}
               >
@@ -296,7 +301,7 @@ function Index() {
               </Link>{" "}
               et la{" "}
               <Link
-                to="/privacy"
+                to="/legal/privacy"
                 className="text-[#74C6C6] hover:text-[#5fb3b3] underline"
                 onClick={(e) => e.stopPropagation()}
               >

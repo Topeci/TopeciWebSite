@@ -1,6 +1,6 @@
 import React from "react";
 import { Facebook, Linkedin, Instagram, Music2 } from "lucide-react";
-import TopeciLogo from "../../assets/images/logoToeci.png";
+import TopeciLogo from "../../assets/images/logoTopeci.png";
 void React;
 
 export function Footer() {
@@ -16,7 +16,7 @@ export function Footer() {
             <ul className="space-y-2 font-glacial-indifference">
               <li>
                 <a
-                  href="/"
+                  href="/about"
                   className=" hover:text-[#D68E54] transition-colors text-base dark:text-pink-400 dark:hover:text-orange-300"
                 >
                   À propos
@@ -50,7 +50,7 @@ export function Footer() {
             <ul className="space-y-2 font-glacial-indifference">
               <li>
                 <a
-                  href="/aide-faq"
+                  href="/faq"
                   className=" hover:text-[#D68E54] transition-colors text-base dark:text-gray-200 dark:hover:text-orange-300"
                 >
                   FAQ
@@ -66,7 +66,7 @@ export function Footer() {
               </li>
               <li>
                 <a
-                  href="/shipping-policy"
+                  href="/legal/livraison"
                   className=" hover:text-[#D68E54] transition-colors text-base dark:text-gray-200 dark:hover:text-orange-300"
                 >
                   Politique de livraison
@@ -75,7 +75,7 @@ export function Footer() {
 
               <li>
                 <a
-                  href="/"
+                  href="/legal/remboursement"
                   className=" hover:text-[#D68E54] transition-colors text-base dark:text-gray-200 dark:hover:text-orange-300"
                 >
                   Politique remboursement & retour
@@ -92,7 +92,7 @@ export function Footer() {
             <ul className="space-y-2 font-glacial-indifference">
               <li>
                 <a
-                  href="/cgv"
+                  href="/legal/cgv"
                   className=" hover:text-[#D68E54] transition-colors text-base dark:text-pink-400 dark:hover:text-orange-300"
                 >
                   CGV
@@ -100,7 +100,7 @@ export function Footer() {
               </li>
               <li>
                 <a
-                  href="/cgu"
+                  href="/legal/cgu"
                   className=" hover:text-[#D68E54] transition-colors text-base dark:text-pink-400 dark:hover:text-orange-300"
                 >
                   CGU
@@ -108,7 +108,7 @@ export function Footer() {
               </li>
               <li>
                 <a
-                  href="/cookies"
+                  href="/legal/cookies"
                   className=" hover:text-[#D68E54] transition-colors text-base dark:text-pink-400 dark:hover:text-orange-300"
                 >
                   Politique cookies
@@ -116,7 +116,7 @@ export function Footer() {
               </li>
               <li>
                 <a
-                  href="/mentions-legales"
+                  href="/legal/mentions-legales"
                   className=" hover:text-[#D68E54] transition-colors text-base dark:text-pink-400 dark:hover:text-orange-300"
                 >
                   Mentions légales
@@ -125,7 +125,7 @@ export function Footer() {
 
               <li>
                 <a
-                  href="/privacy"
+                  href="/legal/privacy"
                   className=" hover:text-[#D68E54] transition-colors text-base dark:text-pink-400 dark:hover:text-orange-300"
                 >
                   Politique de confidentialité
