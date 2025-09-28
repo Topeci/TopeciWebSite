@@ -1,6 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
-import imgContact from "../../images/imgContact.png";
+import imgContact from "../../assets/images/imgContact.png";
+import React from "react";
 
+void React;
 export const Route = createFileRoute("/_home/contact")({
   component: RouteComponent,
 });
@@ -16,9 +18,7 @@ function RouteComponent() {
             className="mb-4 h-20 w-auto sm:h-32 md:h-40 lg:h-48 object-contain"
           />
         </div>
-        <p
-          className="text-center text-gray-600 max-w-2xl mx-auto mb-12 .font-glacial-indifference text-lg mt-[-36px]"
-        >
+        <p className="text-center text-gray-600 max-w-2xl mx-auto mb-12 .font-glacial-indifference text-lg mt-[-36px]">
           Une question ? Un besoin ? Notre équipe MON-TOPECI vous répond du
           lundi au vendredi, de 8 h à 18 h (UTC+0).
         </p>
@@ -28,7 +28,7 @@ function RouteComponent() {
           <div className="space-y-8">
             <div className="flex items-start gap-5 p-6 rounded-xl bg-[#F8FAFC] border border-gray-100 shadow-sm">
               <div className="text-blue flex-shrink-0 mt-1">
-                <span className="inline-block w-12 h-12 bg-[#74C6C6] bg-opacity-20 rounded-full flex items-center justify-center text-xl">
+                <span className="flex w-12 h-12 bg-[#74C6C6] bg-opacity-20 rounded-full items-center justify-center text-xl">
                   📍
                 </span>
               </div>
@@ -50,7 +50,7 @@ function RouteComponent() {
 
             <div className="flex items-start gap-5 p-6 rounded-xl bg-[#F8FAFC] border border-gray-100 shadow-sm">
               <div className="text-green flex-shrink-0 mt-1">
-                <span className="inline-block w-12 h-12 bg-[#D68E54] bg-opacity-20 rounded-full flex items-center justify-center text-xl">
+                <span className="flex w-12 h-12 bg-[#D68E54] bg-opacity-20 rounded-full items-center justify-center text-xl">
                   ✉️
                 </span>
               </div>
@@ -72,7 +72,7 @@ function RouteComponent() {
 
             <div className="flex items-start gap-5 p-6 rounded-xl bg-[#F8FAFC] border border-gray-100 shadow-sm">
               <div className="text-green-600 flex-shrink-0 mt-1">
-                <span className="inline-block w-12 h-12 bg-[#BE356A] bg-opacity-20 rounded-full flex items-center justify-center text-xl">
+                <span className="flex w-12 h-12 bg-[#BE356A] bg-opacity-20 rounded-full items-center justify-center text-xl">
                   📞
                 </span>
               </div>

@@ -11,7 +11,7 @@ void React;
 const navItems = [
   { label: "Accueil", href: "/" },
   { label: "Boutique", href: "/boutique" },
-  { label: "Notre Histoire", href: "/a-propos" },
+  { label: "Notre Histoire", href: "/about" },
   { label: "Contact", href: "/contact" },
 ];
 
@@ -71,7 +71,7 @@ export function Header() {
 
             {/* Icône utilisateur - lien direct vers la page de connexion */}
             <a
-              href="/login"
+              href="/auth/login"
               className="p-2.5 text-[#DCCC41] hover:text-[#BE356A] transition-all duration-300 hover:scale-105"
             >
               <CircleUser size={29} strokeWidth={2.5} />
@@ -118,7 +118,7 @@ export function Header() {
                 </a>
 
                 <a
-                  href="/login"
+                  href="/auth/login"
                   className="flex flex-col items-center p-2 text-[#4E6FA7] hover:text-[#D68E54] transition-colors duration-300"
                 >
                   <CircleUser size={20} />

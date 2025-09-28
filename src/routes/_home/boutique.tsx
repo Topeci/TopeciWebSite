@@ -26,9 +26,10 @@ import {
   ChevronDown,
 } from "lucide-react";
 
-import kid1 from "../../images/kid1.jpg";
-import LivreBaoule from "../../images/livrebaoule.png";
-import LivreDioula from "../../images/livredioula.webp";
+import kid1 from "../../assets/images/kid1.jpg";
+import LivreBaoule from "../../assets/images/livrebaoule.png";
+import LivreDioula from "../../assets/images/livredioula.webp";
+
 
 
 // Données de produits fictifs
@@ -168,7 +169,7 @@ function RouteComponent() {
         style={{ backgroundImage: `url(${kid1})` }}
       >
         {/* Overlay gradient */}
-        <div className="absolute inset-0 bg-gradient-to-br from-[#74C6C6]/40 via-[#4E6FA7]/40 to-[#3a5a8a]/40"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-[#74C6C6]/20 via-[#4E6FA7]/20 to-[#3a5a8a]/20"></div>
 
         {/* Contenu */}
         <div className="container mx-auto px-4 text-center text-white ">
@@ -388,7 +389,7 @@ function RouteComponent() {
             Profitez de la livraison gratuite sur toute la Côte d'Ivoire
           </p>
           <Link
-            to="/livres"
+            to="/boutique"
             className="bg-white text-[#4E6FA7] hover:bg-gray-100 font-semibold py-3 px-8 rounded-full transition duration-300 inline-block font-['Waffle_soft']"
           >
             Découvrir les livres

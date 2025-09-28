@@ -5,12 +5,13 @@
 
 import { createFileRoute } from "@tanstack/react-router";
 import { Heart, Users, BookOpen, Globe } from "lucide-react";
-import education from "../../images/education.jpg";
-import bookTopeci from "../../images/booktopeci.jpg";
-import jeanMarc from "../../images/jeanmarc.jpg";
-import cindyOrnella from "../../images/ornella.jpg";
-import parisKid from "../../images/pariskid.jpg";
-import imgMotive from "../../images/imgMotive.png";
+
+import education from "../../assets/images/education.jpg";
+import bookTopeci from "../../assets/images/booktopeci.jpg";
+import jeanMarc from "../../assets/images/jeanmarc.jpg";
+import cindyOrnella from "../../assets/images/ornella.jpg";
+import parisKid from "../../assets/images/pariskid.jpg";
+import imgMotive from "../../assets/images/imgMotive.png";
 
 export const Route = createFileRoute("/_home/about")({
   component: RouteComponent,
