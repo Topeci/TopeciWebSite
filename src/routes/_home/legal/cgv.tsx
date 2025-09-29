@@ -165,9 +165,9 @@ function RouteComponent() {
       </h2>
       <p>
         Les présentes CGV sont régies par le droit{" "}
-        <em>[français / ivoirien – à préciser]</em>. En cas de litige, et à
+        <em>ivoirien</em>. En cas de litige, et à
         défaut de solution amiable, les tribunaux compétents seront ceux du
-        ressort de <em>[ville à préciser]</em>.
+        ressort de <em>Abidjan</em>.
       </p>
     </div>
   );

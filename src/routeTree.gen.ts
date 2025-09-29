@@ -19,6 +19,7 @@ import { Route as AuthCommandeRouteImport } from './routes/auth/commande'
 import { Route as HomeSalePointRouteImport } from './routes/_home/salePoint'
 import { Route as HomePanierRouteImport } from './routes/_home/panier'
 import { Route as HomeFaqRouteImport } from './routes/_home/faq'
+import { Route as HomeEspaceRevRouteImport } from './routes/_home/espace-rev'
 import { Route as HomeEspaceProRouteImport } from './routes/_home/espace-pro'
 import { Route as HomeContactRouteImport } from './routes/_home/contact'
 import { Route as HomeBoutiqueRouteImport } from './routes/_home/boutique'
@@ -79,6 +80,11 @@ const HomePanierRoute = HomePanierRouteImport.update({
 const HomeFaqRoute = HomeFaqRouteImport.update({
   id: '/faq',
   path: '/faq',
+  getParentRoute: () => HomeRoute,
+} as any)
+const HomeEspaceRevRoute = HomeEspaceRevRouteImport.update({
+  id: '/espace-rev',
+  path: '/espace-rev',
   getParentRoute: () => HomeRoute,
 } as any)
 const HomeEspaceProRoute = HomeEspaceProRouteImport.update({
@@ -149,6 +155,7 @@ export interface FileRoutesByFullPath {
   '/boutique': typeof HomeBoutiqueRoute
   '/contact': typeof HomeContactRoute
   '/espace-pro': typeof HomeEspaceProRoute
+  '/espace-rev': typeof HomeEspaceRevRoute
   '/faq': typeof HomeFaqRoute
   '/panier': typeof HomePanierRoute
   '/salePoint': typeof HomeSalePointRoute
@@ -172,6 +179,7 @@ export interface FileRoutesByTo {
   '/boutique': typeof HomeBoutiqueRoute
   '/contact': typeof HomeContactRoute
   '/espace-pro': typeof HomeEspaceProRoute
+  '/espace-rev': typeof HomeEspaceRevRoute
   '/faq': typeof HomeFaqRoute
   '/panier': typeof HomePanierRoute
   '/salePoint': typeof HomeSalePointRoute
@@ -197,6 +205,7 @@ export interface FileRoutesById {
   '/_home/boutique': typeof HomeBoutiqueRoute
   '/_home/contact': typeof HomeContactRoute
   '/_home/espace-pro': typeof HomeEspaceProRoute
+  '/_home/espace-rev': typeof HomeEspaceRevRoute
   '/_home/faq': typeof HomeFaqRoute
   '/_home/panier': typeof HomePanierRoute
   '/_home/salePoint': typeof HomeSalePointRoute
@@ -222,6 +231,7 @@ export interface FileRouteTypes {
     | '/boutique'
     | '/contact'
     | '/espace-pro'
+    | '/espace-rev'
     | '/faq'
     | '/panier'
     | '/salePoint'
@@ -245,6 +255,7 @@ export interface FileRouteTypes {
     | '/boutique'
     | '/contact'
     | '/espace-pro'
+    | '/espace-rev'
     | '/faq'
     | '/panier'
     | '/salePoint'
@@ -269,6 +280,7 @@ export interface FileRouteTypes {
     | '/_home/boutique'
     | '/_home/contact'
     | '/_home/espace-pro'
+    | '/_home/espace-rev'
     | '/_home/faq'
     | '/_home/panier'
     | '/_home/salePoint'
@@ -369,6 +381,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof HomeFaqRouteImport
       parentRoute: typeof HomeRoute
     }
+    '/_home/espace-rev': {
+      id: '/_home/espace-rev'
+      path: '/espace-rev'
+      fullPath: '/espace-rev'
+      preLoaderRoute: typeof HomeEspaceRevRouteImport
+      parentRoute: typeof HomeRoute
+    }
     '/_home/espace-pro': {
       id: '/_home/espace-pro'
       path: '/espace-pro'
@@ -461,6 +480,7 @@ interface HomeRouteChildren {
   HomeBoutiqueRoute: typeof HomeBoutiqueRoute
   HomeContactRoute: typeof HomeContactRoute
   HomeEspaceProRoute: typeof HomeEspaceProRoute
+  HomeEspaceRevRoute: typeof HomeEspaceRevRoute
   HomeFaqRoute: typeof HomeFaqRoute
   HomePanierRoute: typeof HomePanierRoute
   HomeSalePointRoute: typeof HomeSalePointRoute
@@ -479,6 +499,7 @@ const HomeRouteChildren: HomeRouteChildren = {
   HomeBoutiqueRoute: HomeBoutiqueRoute,
   HomeContactRoute: HomeContactRoute,
   HomeEspaceProRoute: HomeEspaceProRoute,
+  HomeEspaceRevRoute: HomeEspaceRevRoute,
   HomeFaqRoute: HomeFaqRoute,
   HomePanierRoute: HomePanierRoute,
   HomeSalePointRoute: HomeSalePointRoute,

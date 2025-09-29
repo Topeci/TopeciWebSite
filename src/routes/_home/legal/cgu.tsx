@@ -179,9 +179,9 @@ function RouteComponent() {
       </h2>
       <p>
         Les présentes CGU sont régies par le droit{" "}
-        <em>[français / ivoirien – à préciser]</em>. En cas de litige, les
-        tribunaux compétents seront ceux du ressort de{" "}
-        <em>[ville à préciser]</em>.
+        <em>ivoirien</em>. En cas de litige, les
+        tribunaux compétents seront ceux du ressort d'{" "}
+        <em>Abidjan</em>.
       </p>
     </div>
   );

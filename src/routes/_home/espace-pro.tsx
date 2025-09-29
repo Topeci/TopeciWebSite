@@ -42,7 +42,7 @@ function RouteComponent() {
         {/* En-tête */}
         <div className="text-center mb-16">
           <h1 className="text-4xl font-bold text-[#4E6FA7] mb-4 font-waffle-soft">
-            Espace Professionnels
+            Espace Revendeur
           </h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             Écoles, associations, librairies & boutiques
@@ -97,11 +97,6 @@ function RouteComponent() {
                 <h4 className="font-semibold text-[#4E6FA7] mb-3">
                   Conditions d'accès à nos tarifs professionnels
                 </h4>
-                <p className="text-gray-700 text-sm mb-3">
-                  Nos conditions s'appliquent uniquement aux structures
-                  professionnelles et associations disposant d'un numéro
-                  d'immatriculation valide (SIRET, TVA, IDE, etc.).
-                </p>
                 <p className="text-gray-700 text-sm">
                   Le minimum de commande est fixé à 20 unités. Nous nous
                   réservons le droit de refuser toute demande ne correspondant
@@ -179,7 +174,7 @@ function RouteComponent() {
                   htmlFor="registrationNumber"
                   className="block text-sm font-medium text-gray-700 mb-2"
                 >
-                  Numéro d'immatriculation (SIRET, TVA, IDE, ou équivalent) *
+                  Numéro d'immatriculation (SIRET, TVA, IDE, ou équivalent) 
                 </label>
                 <input
                   type="text"

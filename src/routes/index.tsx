@@ -26,11 +26,12 @@ import { useState, useRef, useEffect } from "react";
 
 import livreBaoule from "../assets/images/livrebaoule.png";
 import livreDioula from "../assets/images/livredioula.webp";
-import kidTopeci from "../assets/images/kidtopeci.png";
+//import kidTopeci from "../assets/images/kidtopeci.png";
 import jouetFiere from "../assets/images/jouetFiere.png";
 import imgVideo from "../assets/images/imgVideo.png";
 import imgAvis from "../assets/images/imgavis.png";
 import imgEngagement from "../assets/images/imgengagement.png";
+import imghero from "../assets/images/imghero.jpg";
 
 
 import VideoTopeci from "../videos/topeci_video.mp4";
@@ -340,7 +341,7 @@ function Index() {
         {/* HERO SECTION */}
         <section
           className="w-full py-16 md:py-20 mt-0 relative bg-cover bg-center"
-          style={{ backgroundImage: `url(${kidTopeci})` }}
+          style={{ backgroundImage: `url(${imghero})` }}
         >
           <div className="absolute inset-0"></div>
           <div className="container mx-auto px-4 relative z-10">
