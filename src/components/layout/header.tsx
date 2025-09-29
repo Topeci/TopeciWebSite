@@ -4,7 +4,7 @@
 
 import React, { useState } from "react";
 import { Menu, X, CircleUser, ShoppingCart } from "lucide-react";
-import TopeciLogo from "../../assets/images/logoTopeci.png";
+import TopeciLogo from "../../assets/images/logotopeci.png";
 
 void React;
 

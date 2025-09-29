@@ -1,6 +1,6 @@
 import React from "react";
 import { Facebook, Linkedin, Instagram, Music2 } from "lucide-react";
-import TopeciLogo from "../../assets/images/logoTopeci.png";
+import TopeciLogo from "../../assets/images/logotopeci.png";
 void React;
 
 export function Footer() {
