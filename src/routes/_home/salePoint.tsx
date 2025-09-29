@@ -1,7 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
-import salePoint from "../../images/salePoint.png";
-import imgJumia from "../../images/imgjumia.png";
-import imgTepeci from "../../images/imgtepeci.png";
+
+import salePoint from "../../assets/images/salepoint.png";
+import imgJumia from "../../assets/images/imgjumia.png";
+import imgTepeci from "../../assets/images/imgtepeci.png";
+
 
 export const Route = createFileRoute("/_home/salePoint")({
   component: RouteComponent,
