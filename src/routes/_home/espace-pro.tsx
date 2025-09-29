@@ -174,7 +174,7 @@ function RouteComponent() {
                   htmlFor="registrationNumber"
                   className="block text-sm font-medium text-gray-700 mb-2"
                 >
-                  Numéro d'immatriculation (SIRET, TVA, IDE, ou équivalent) 
+                  Numéro d'immatriculation (RCCM, TVA, DFE, ou équivalent) 
                 </label>
                 <input
                   type="text"
@@ -277,7 +277,7 @@ function RouteComponent() {
                   Ce formulaire est sécurisé et protégé. Vos données sont
                   traitées conformément à notre
                   <a
-                    href="/_home/politique-confidentialite"
+                    href="/legal/privacy"
                     className="text-[#74C6C6] hover:text-[#5fb3b3] underline ml-1"
                   >
                     Politique de confidentialité

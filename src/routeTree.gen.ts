@@ -23,6 +23,7 @@ import { Route as HomeEspaceRevRouteImport } from './routes/_home/espace-rev'
 import { Route as HomeEspaceProRouteImport } from './routes/_home/espace-pro'
 import { Route as HomeContactRouteImport } from './routes/_home/contact'
 import { Route as HomeBoutiqueRouteImport } from './routes/_home/boutique'
+import { Route as HomeBlogRouteImport } from './routes/_home/blog'
 import { Route as HomeAboutRouteImport } from './routes/_home/about'
 import { Route as HomeProduitProductIdRouteImport } from './routes/_home/produit/$productId'
 import { Route as HomeLegalRemboursementRouteImport } from './routes/_home/legal/remboursement'
@@ -102,6 +103,11 @@ const HomeBoutiqueRoute = HomeBoutiqueRouteImport.update({
   path: '/boutique',
   getParentRoute: () => HomeRoute,
 } as any)
+const HomeBlogRoute = HomeBlogRouteImport.update({
+  id: '/blog',
+  path: '/blog',
+  getParentRoute: () => HomeRoute,
+} as any)
 const HomeAboutRoute = HomeAboutRouteImport.update({
   id: '/about',
   path: '/about',
@@ -152,6 +158,7 @@ const HomeLegalCguRoute = HomeLegalCguRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof HomeAboutRoute
+  '/blog': typeof HomeBlogRoute
   '/boutique': typeof HomeBoutiqueRoute
   '/contact': typeof HomeContactRoute
   '/espace-pro': typeof HomeEspaceProRoute
@@ -176,6 +183,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof HomeAboutRoute
+  '/blog': typeof HomeBlogRoute
   '/boutique': typeof HomeBoutiqueRoute
   '/contact': typeof HomeContactRoute
   '/espace-pro': typeof HomeEspaceProRoute
@@ -202,6 +210,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/_home': typeof HomeRouteWithChildren
   '/_home/about': typeof HomeAboutRoute
+  '/_home/blog': typeof HomeBlogRoute
   '/_home/boutique': typeof HomeBoutiqueRoute
   '/_home/contact': typeof HomeContactRoute
   '/_home/espace-pro': typeof HomeEspaceProRoute
@@ -228,6 +237,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/about'
+    | '/blog'
     | '/boutique'
     | '/contact'
     | '/espace-pro'
@@ -252,6 +262,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/about'
+    | '/blog'
     | '/boutique'
     | '/contact'
     | '/espace-pro'
@@ -277,6 +288,7 @@ export interface FileRouteTypes {
     | '/'
     | '/_home'
     | '/_home/about'
+    | '/_home/blog'
     | '/_home/boutique'
     | '/_home/contact'
     | '/_home/espace-pro'
@@ -409,6 +421,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof HomeBoutiqueRouteImport
       parentRoute: typeof HomeRoute
     }
+    '/_home/blog': {
+      id: '/_home/blog'
+      path: '/blog'
+      fullPath: '/blog'
+      preLoaderRoute: typeof HomeBlogRouteImport
+      parentRoute: typeof HomeRoute
+    }
     '/_home/about': {
       id: '/_home/about'
       path: '/about'
@@ -477,6 +496,7 @@ declare module '@tanstack/react-router' {
 
 interface HomeRouteChildren {
   HomeAboutRoute: typeof HomeAboutRoute
+  HomeBlogRoute: typeof HomeBlogRoute
   HomeBoutiqueRoute: typeof HomeBoutiqueRoute
   HomeContactRoute: typeof HomeContactRoute
   HomeEspaceProRoute: typeof HomeEspaceProRoute
@@ -496,6 +516,7 @@ interface HomeRouteChildren {
 
 const HomeRouteChildren: HomeRouteChildren = {
   HomeAboutRoute: HomeAboutRoute,
+  HomeBlogRoute: HomeBlogRoute,
   HomeBoutiqueRoute: HomeBoutiqueRoute,
   HomeContactRoute: HomeContactRoute,
   HomeEspaceProRoute: HomeEspaceProRoute,

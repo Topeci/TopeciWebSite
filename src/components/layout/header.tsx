@@ -13,6 +13,7 @@ const navItems = [
   { label: "Boutique", href: "/boutique" },
   { label: "Notre Histoire", href: "/about" },
   { label: "Contact", href: "/contact" },
+  { label: "Blog", href: "/blog" },
 ];
 
 export function Header() {
