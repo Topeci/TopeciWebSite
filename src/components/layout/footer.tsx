@@ -32,10 +32,10 @@ export function Footer() {
               </li>
               <li>
                 <a
-                  href="/espace-pro"
+                  href="/espace-rev"
                   className=" hover:text-[#D68E54] transition-colors text-base dark:text-pink-400 dark:hover:text-orange-300"
                 >
-                  Espace pro
+                  Partenaires & Distributeurs
                 </a>
               </li>
             </ul>
