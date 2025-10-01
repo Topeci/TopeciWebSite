@@ -161,7 +161,7 @@ function RouteComponent() {
                   onClick={handleDownloadCatalog}
                   className="bg-white text-[#D68E54] dark:text-orange-600 px-3 py-1 rounded-full font-semibold hover:bg-gray-100 dark:hover:bg-gray-200 transition-colors"
                 >
-                  Télécharger le catalogue
+                  Télécharger
                 </button>
                 <span>Ouverture des commandes dès le 1er Octobre 2025</span>
               </div>
