@@ -1,296 +1,468 @@
 /**
  * Page À propos de TOPECI
-
+ * Composant avec animations fluides et design créatif
  */
 
 import { createFileRoute } from "@tanstack/react-router";
-import { Heart, Users, BookOpen, Globe } from "lucide-react";
-
-import education from "../../assets/images/education.jpg";
-import bookTopeci from "../../assets/images/booktopeci.jpg";
-import jeanMarc from "../../assets/images/jeanmarc.jpg";
-import cindyOrnella from "../../assets/images/ornella.jpg";
-import parisKid from "../../assets/images/pariskid.jpg";
-import imgMotive from "../../assets/images/imgMotive.png";
+import { useState, useRef, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import imgAbout from "../../assets/images/imgAbout.png";
+import imgChildFondateur from "../../assets/images/imgChildFondateur.png";
+import imgOlduser from "../../assets/images/imgOlduser.png";
+import imgTwoAsso from "../../assets/images/imgTwoAsso.png";
+import imgFondateur from "../../assets/images/imgFondateur.png";
+import imgSchema from "../../assets/images/imgSchema.png";
 
 export const Route = createFileRoute("/_home/about")({
   component: RouteComponent,
 });
 
+// Animations réutilisables
+const fadeInUp = {
+  initial: { opacity: 0, y: 30 },
+  animate: { opacity: 1, y: 0 },
+  transition: { duration: 0.6, ease: "easeOut" },
+};
+
+const staggerContainer = {
+  animate: {
+    transition: {
+      staggerChildren: 0.2,
+    },
+  },
+};
+
+const scaleIn = {
+  initial: { opacity: 0, scale: 0.9 },
+  animate: { opacity: 1, scale: 1 },
+  transition: { duration: 0.5, ease: "easeOut" },
+};
+
+const floatingAnimation = {
+  animate: {
+    y: [-5, 5, -5],
+    transition: {
+      duration: 4,
+      repeat: Infinity,
+      ease: "easeInOut",
+    },
+  },
+};
+
 function RouteComponent() {
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [showAudioButton, setShowAudioButton] = useState(true);
+  const speechSynth = useRef<SpeechSynthesisUtterance | null>(null);
+  const isSpeechSupported =
+    typeof window !== "undefined" && "speechSynthesis" in window;
+
+  // Texte complet de la page à lire
+  const pageText = `
+    Notre histoire. TOPECI est né d'un rêve partagé : celui de transmettre, à travers les joutes, la beauté et la richesse des cultures africaines. 
+    Nous avons grandi entourés d'histoire, de chants, de proverbes, de repas et de traditions qui façonnent qui nous sommes.
+    
+    Avec le temps, installés à l'étranger, nous avons réalisé combien ces trésors de notre enfance disparaissent peu à peu, 
+    emportés par la modernité, la mondialisation et le manque de transmission.
+    
+    Cette prise de conscience s'est transformée en mission. Nous voulions créer un pont : entre les générations, entre les villages et les villes, 
+    entre le continent africain et la diaspora, entre les enfants et leurs racines.
+    
+    TOPECI est né de cette envie profonde, celle de redonner vie à nos langues, à nos symboles, à nos héros et à nos valeurs, 
+    à travers le jeu, le divertissement et l'apprentissage.
+    
+    Notre premier livre audio a marqué le début de cette belle aventure. En voyant nos ouvrages dans les mains des enfants — 
+    les entendre écouter, répéter, s'émerveiller — leurs sourires ont confirmé que nous étions sur la bonne voie.
+    
+    Depuis, notre mission résonne encore plus fort dans nos cœurs : éduquer, divertir et inspirer. Pour nous, TOPECI est bien plus qu'une marque. 
+    C'est une promesse — celle de célébrer notre identité, de la partager avec fierté et de la transmettre, un jeu à la fois.
+    
+    Notre vision: Un monde où la diversité culturelle et linguistique est célébrée et transmise de manière innovante et inclusive, 
+    tant à l'échelle nationale qu'internationale.
+    
+    Notre mission: Promouvoir et préserver les langues et cultures locales africaines, notamment en Côte d'Ivoire, 
+    à travers des outils éducatifs innovants. TOPECI vise à reconnecter les jeunes générations à leur patrimoine culturel 
+    et linguistique tout en les ouvrant au monde.
+  `;
+
+  const toggleSpeech = () => {
+    if (!isSpeechSupported) return;
+
+    if (isPlaying) {
+      // Arrêter la lecture
+      window.speechSynthesis.cancel();
+      setIsPlaying(false);
+    } else {
+      // Démarrer la lecture
+      speechSynth.current = new SpeechSynthesisUtterance(pageText);
+      speechSynth.current.lang = "fr-FR";
+      speechSynth.current.rate = 0.9;
+      speechSynth.current.pitch = 1;
+      speechSynth.current.volume = 1;
+
+      speechSynth.current.onstart = () => {
+        setIsPlaying(true);
+        setShowAudioButton(false);
+      };
+
+      speechSynth.current.onend = () => {
+        setIsPlaying(false);
+        setTimeout(() => setShowAudioButton(true), 1000);
+      };
+
+      speechSynth.current.onerror = () => {
+        setIsPlaying(false);
+        setShowAudioButton(true);
+      };
+
+      window.speechSynthesis.speak(speechSynth.current);
+    }
+  };
+
+  // Nettoyer la synthèse vocale quand le composant est démonté
+  useEffect(() => {
+    return () => {
+      if (isSpeechSupported) {
+        window.speechSynthesis.cancel();
+      }
+    };
+  }, []);
+
   return (
-    <div className="min-h-screen bg-white dark:bg-gray-900">
-      {/* Notre Histoire Section */}
-      <section className="py-16 bg-gray-50 dark:bg-gray-800">
-        <div className="flex flex-col items-center text-center px-3 mt-[-40px]">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 relative overflow-hidden">
+      {/* Bouton audio flottant créatif */}
+      <AnimatePresence>
+        {isSpeechSupported && showAudioButton && (
+          <motion.div
+            initial={{ opacity: 0, scale: 0, x: 100 }}
+            animate={{ opacity: 1, scale: 1, x: 0 }}
+            exit={{ opacity: 0, scale: 0, x: 100 }}
+            transition={{ type: "spring", stiffness: 300, damping: 25 }}
+            className="fixed bottom-8 right-8 z-50"
+          >
+            <motion.button
+              variants={floatingAnimation}
+              animate="animate"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+              onClick={toggleSpeech}
+              className="group relative"
+            >
+              {/* Effet de halo */}
+              <div className="absolute inset-0 bg-[#DCCC41] rounded-full blur-md opacity-50 group-hover:opacity-70 transition-opacity duration-300"></div>
+
+              {/* Bouton principal */}
+              <div className="relative bg-gradient-to-br from-[#DCCC41] to-[#D68E54] text-white p-4 rounded-full shadow-2xl border-2 border-white/20 backdrop-blur-sm">
+                <svg
+                  className="w-8 h-8 transform group-hover:scale-110 transition-transform duration-200"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M9.383 3.076A1 1 0 0110 4v12a1 1 0 01-1.707.707L4.586 13H2a1 1 0 01-1-1V8a1 1 0 011-1h2.586l3.707-3.707a1 1 0 011.09-.217zM14.657 2.929a1 1 0 011.414 0A9.972 9.972 0 0119 10a9.972 9.972 0 01-2.929 7.071 1 1 0 01-1.414-1.414A7.971 7.971 0 0017 10c0-2.21-.894-4.208-2.343-5.657a1 1 0 010-1.414zm-2.829 2.828a1 1 0 011.415 0A5.983 5.983 0 0115 10a5.984 5.984 0 01-1.757 4.243 1 1 0 01-1.415-1.415A3.984 3.984 0 0013 10a3.983 3.983 0 00-1.172-2.828 1 1 0 010-1.415z"
+                    clipRule="evenodd"
+                  />
+                </svg>
+
+                {/* Tooltip */}
+                <div className="absolute right-full mr-3 top-1/2 transform -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+                  <div className="bg-gray-900 dark:bg-white text-white dark:text-gray-900 text-sm font-medium px-3 py-2 rounded-lg whitespace-nowrap shadow-lg">
+                    Écouter la page
+                    <div className="absolute left-full top-1/2 transform -translate-y-1/2 border-4 border-transparent border-l-gray-900 dark:border-l-white"></div>
+                  </div>
+                </div>
+              </div>
+            </motion.button>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Indicateur de lecture en cours */}
+      <AnimatePresence>
+        {isPlaying && (
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 50 }}
+            className="fixed bottom-8 left-1/2 transform -translate-x-1/2 z-40"
+          >
+            <div className="bg-gray-900/90 dark:bg-white/90 text-white dark:text-gray-900 px-6 py-3 rounded-full shadow-2xl backdrop-blur-sm border border-white/20">
+              <div className="flex items-center space-x-3">
+                <div className="flex space-x-1">
+                  {[1, 2, 3].map((i) => (
+                    <motion.div
+                      key={i}
+                      animate={{
+                        scale: [1, 1.5, 1],
+                        opacity: [0.5, 1, 0.5],
+                      }}
+                      transition={{
+                        duration: 1,
+                        repeat: Infinity,
+                        delay: i * 0.2,
+                      }}
+                      className="w-2 h-2 bg-[#DCCC41] rounded-full"
+                    />
+                  ))}
+                </div>
+                <span className="font-medium text-sm">Lecture en cours...</span>
+                <motion.button
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.9 }}
+                  onClick={toggleSpeech}
+                  className="ml-2 p-1 hover:bg-white/10 dark:hover:bg-gray-900/10 rounded-full transition-colors"
+                >
+                  <svg
+                    className="w-4 h-4"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                      clipRule="evenodd"
+                    />
+                  </svg>
+                </motion.button>
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Conteneur principal avec marges latérales */}
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        {/* En-tête avec image */}
+        <motion.section
+          initial={{ opacity: 0, scale: 1.05 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8 }}
+          className="relative py-16 md:py-24 bg-cover bg-center min-h-[350px] md:min-h-[450px] mb-12 mt-5 rounded-2xl overflow-hidden shadow-xl"
+          style={{ backgroundImage: `url(${imgAbout})` }}
+        >
+          {/* Overlay avec titre */}
+          <div className="absolute inset-0 bg-black/20 flex items-end pb-12">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.5, duration: 0.6 }}
+              className="container mx-auto px-4 text-center"
+            >
+              
+            </motion.div>
+          </div>
+        </motion.section>
+
+        {/* Section NOTRE HISTOIRE */}
+        <motion.div
+          variants={staggerContainer}
+          initial="initial"
+          animate="animate"
+          className="grid md:grid-cols-2 gap-12 mb-16 items-center"
+        >
+          {/* Texte principal */}
+          <motion.div
+            variants={fadeInUp}
+            className="space-y-6 text-black dark:text-white leading-relaxed"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold text-black dark:text-white font-block-bold">
+              Notre histoire
+            </h2>
+            <p className="text-lg md:text-xl font-glacial-indifference">
+              TOPECI est né d'un rêve partagé : <br />
+              celui de transmettre, à travers les joutes, la beauté et la
+              richesse des cultures africaines. Nous avons grandi entourés
+              d'histoire, de chants, de proverbes, de repas et de traditions qui
+              façonnent qui nous sommes.
+            </p>
+          </motion.div>
+
+          {/* Image enfant fondateur */}
+          <motion.div
+            variants={scaleIn}
+            className="flex justify-center md:justify-end"
+          >
+            <img
+              src={imgChildFondateur}
+              alt="Enfants avec des jouets"
+              className="w-full max-w-[450px] h-[350px] object-cover "
+            />
+          </motion.div>
+        </motion.div>
+
+        {/* Texte continuation */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.3, duration: 0.6 }}
+          className="mb-16"
+        >
+          <p className="text-lg md:text-xl font-glacial-indifference text-black dark:text-white max-w-4xl mx-auto text-center">
+            Avec le temps, installés à l'étranger, nous avons réalisé combien
+            ces trésors de notre enfance disparaissent peu à peu, emportés par
+            la modernité, la mondialisation et le manque de transmission.
+          </p>
+        </motion.div>
+
+        {/* Section 2 - Image à gauche, texte à droite */}
+        <motion.div
+          variants={staggerContainer}
+          initial="initial"
+          animate="animate"
+          className="grid md:grid-cols-2 gap-12 mb-16 items-center"
+        >
+          {/* Image ancien utilisateur */}
+          <motion.div
+            variants={fadeInUp}
+            className="flex justify-center md:justify-start order-1 md:order-1"
+          >
+            <img
+              src={imgOlduser}
+              alt="Famille heureuse"
+              className="w-full max-w-[450px] h-[350px] object-cover "
+            />
+          </motion.div>
+
+          {/* Texte 2 */}
+          <motion.div
+            variants={fadeInUp}
+            className="font-glacial-indifference text-lg md:text-xl text-black dark:text-white order-2 md:order-2 space-y-4"
+          >
+            <p>
+              Cette prise de conscience s'est transformée en mission. Nous
+              voulions créer un pont : entre les générations, entre les villages
+              et les villes, entre le continent africain et la diaspora, entre
+              les enfants et leurs racines.
+            </p>
+          </motion.div>
+        </motion.div>
+
+        {/* Section 3 - Texte à gauche, image à droite */}
+        <motion.div
+          variants={staggerContainer}
+          initial="initial"
+          animate="animate"
+          className="grid md:grid-cols-2 gap-12 mb-16 items-center"
+        >
+          {/* Texte 3 */}
+          <motion.div
+            variants={fadeInUp}
+            className="leading-relaxed font-glacial-indifference text-lg md:text-xl text-black dark:text-white space-y-6"
+          >
+            <p>
+              TOPECI est né de cette envie profonde, celle de redonner vie à nos
+              langues, à nos symboles, à nos héros et à nos valeurs, à travers
+              le jeu, le divertissement et l'apprentissage.
+            </p>
+
+            <p>
+              Notre premier livre audio a marqué le début de cette belle
+              aventure. En voyant nos ouvrages dans les mains des enfants — les
+              entendre écouter, répéter, s'émerveiller — leurs sourires ont
+              confirmé que nous étions sur la bonne voie.
+            </p>
+          </motion.div>
+
+          {/* Image deux associations */}
+          <motion.div
+            variants={scaleIn}
+            className="flex justify-center md:justify-end"
+          >
+            <img
+              src={imgTwoAsso}
+              alt="Enfant souriant"
+              className="w-full max-w-[450px] h-[500px] object-cover rounded-2xl shadow-lg"
+            />
+          </motion.div>
+        </motion.div>
+
+        {/* Texte mission */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.4, duration: 0.6 }}
+          className="mb-16 max-w-4xl mx-auto"
+        >
+          <p className="text-lg md:text-xl font-glacial-indifference text-black dark:text-white text-center">
+            Depuis, notre mission résonne encore plus fort dans nos cœurs :
+            éduquer, divertir et inspirer. Pour nous, TOPECI est bien plus
+            qu'une marque.{" "}
+            <span className="font-bold text-[#D68E54] dark:text-[#DCCC41]">
+              C'est une promesse — celle de célébrer notre identité, de la
+              partager avec fierté et de la transmettre, un jeu à la fois.
+            </span>
+          </p>
+        </motion.div>
+
+        {/* Image fondateur centrée */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.5, duration: 0.7 }}
+          className="flex justify-center mb-16"
+        >
           <img
-            src={imgMotive}
-            alt="Jouet Fière"
-            className="mb-4 h-20 w-auto sm:h-32 md:h-40 lg:h-48 object-contain"
+            src={imgFondateur}
+            alt="Fondateur TOPECI"
+            className="w-full max-w-[500px] h-auto object-cover"
           />
-        </div>
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <h2 className="text-2xl md:text-3xl font-extrabold font-waffle-soft text-[#D68E54] mb-6 ">
-                NOTRE HISTOIRE
+        </motion.div>
+
+        {/* Section vision et mission */}
+        <motion.div
+          variants={staggerContainer}
+          initial="initial"
+          animate="animate"
+          className="grid md:grid-cols-2 gap-16 items-start mt-8 mb-20"
+        >
+          {/* Colonne texte */}
+          <motion.div variants={fadeInUp} className="space-y-12">
+            {/* Notre vision */}
+            <motion.div
+              variants={fadeInUp}
+              className="space-y-6 text-black dark:text-white leading-relaxed"
+            >
+              <h2 className="text-3xl md:text-4xl font-bold text-black dark:text-white font-block-bold">
+                Notre vision
               </h2>
-              <div className="space-y-6 text-black dark:text-gray-200 text-lg leading-relaxed font-glacial-indifference">
-                <p>
-                  Fondée en{" "}
-                  <span className="text-[#BE356A] font-bold">2024</span>, TOPECI
-                  est née de la volonté de combler un besoin crucial :
-                  reconnecter les enfants aux langues, aux coutumes et aux
-                  traditions de l'Afrique.
-                </p>
-                <p>
-                  Chez TOPECI, nous sommes passionnés par la préservation et la
-                  promotion de l'identité culturelle africaine à travers
-                  l'éducation ludique et immersive.
-                </p>
-                <div className="flex items-center space-x-4 pt-4">
-                  <div className="bg-[#74C6C6] p-3 rounded-full">
-                    <Heart className="text-white" size={24} />
-                  </div>
-                  <span className="text-[#4E6FA7] font-bold">
-                    Fondée avec passion en 2024
-                  </span>
-                </div>
-              </div>
-            </div>
-            <div className="bg-white dark:bg-gray-700 rounded-2xl shadow-lg p-6">
-              <div className="bg-gradient-to-br from-[#74C6C6] to-[#4E6FA7] h-64 rounded-xl flex items-center justify-center overflow-hidden">
-                <img
-                  src={education}
-                  alt="Image Ministre de l'éducation"
-                  className="object-cover w-full h-full rounded-xl"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Notre Mission Section */}
-      <section className="py-16 bg-white dark:bg-gray-900">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-[#D68E54] mb-6 font-waffle-soft ">
-              Notre Mission
-            </h2>
-            <p className="text-xl text-black dark:text-gray-200 font-indie-flower leading-relaxed">
-              Notre mission est de créer des outils éducatifs innovants qui
-              permettent aux plus jeunes de découvrir et d'apprécier la richesse
-              culturelle de la Côte d'Ivoire et du continent africain.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="text-center p-6">
-              <div className="bg-[#74C6C6] w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                <BookOpen className="text-white" size={32} />
-              </div>
-              <h3 className="text-xl font-bold text-[#BE356A] mb-3 font-waffle-soft">
-                Éducation Ludique
-              </h3>
-              <p className="text-black dark:text-gray-200 font-indie-flower">
-                Des livres audio interactifs pour apprendre en s'amusant
+              <p className="text-lg md:text-xl font-glacial-indifference">
+                Un monde où la diversité culturelle et linguistique est célébrée
+                et transmise de manière innovante et inclusive, tant à l'échelle
+                nationale qu'internationale.
               </p>
-            </div>
+            </motion.div>
 
-            <div className="text-center p-6">
-              <div className="bg-[#BE356A] w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Globe className="text-white" size={32} />
-              </div>
-              <h3 className="text-xl font-bold text-[#BE356A] mb-3 font-waffle-soft">
-                Culture Africaine
-              </h3>
-              <p className="text-black dark:text-gray-200 font-indie-flower">
-                Préservation des langues et traditions locales
-              </p>
-            </div>
-
-            <div className="text-center p-6">
-              <div className="bg-[#D68E54] w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Users className="text-white" size={32} />
-              </div>
-              <h3 className="text-xl font-bold text-[#BE356A] mb-3 font-waffle-soft">
-                Nouvelle Génération
-              </h3>
-              <p className="text-black dark:text-gray-200 font-indie-flower ">
-                Connecter les enfants à leurs racines culturelles
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Nos Produits Section */}
-      <section className="py-10 bg-gray-50 dark:bg-gray-800">
-        <div className="container mx-auto px-3">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div className="bg-white dark:bg-gray-700 rounded-2xl shadow-lg p-4">
-              <img
-                src={bookTopeci}
-                alt="Image Livre Topeci"
-                className="object-cover w-full h-80 rounded-xl"
-              />
-            </div>
-            <div>
-              <h2 className="text-3xl md:text-4xl font-extrabold text-black dark:text-gray-200 mb-6 font-waffle-soft">
-                Nos Produits
+            {/* Notre mission */}
+            <motion.div
+              variants={fadeInUp}
+              className="space-y-6 text-black dark:text-white leading-relaxed"
+            >
+              <h2 className="text-3xl md:text-4xl font-bold text-black dark:text-white font-block-bold">
+                Notre mission
               </h2>
-              <div className="space-y-6 text-black dark:text-gray-200 font-indie-flower text-lg leading-relaxed">
-                <p>
-                  À travers{" "}
-                  <span className="text-[#BE356A] font-bold">
-                    "mon premier livre audio"
-                  </span>
-                  , nous facilitons l'apprentissage des langues locales telles
-                  que le{" "}
-                  <span className="text-[#74C6C6] font-bold">Baoulé</span> et le{" "}
-                  <span className="text-[#74C6C6] font-bold">Dioula</span>.
-                </p>
-                <p>
-                  Nous offrons des histoires captivantes et des activités
-                  éducatives qui éveillent la curiosité et stimulent l'esprit
-                  créatif des enfants.
-                </p>
-                <div className="flex items-center space-x-4 pt-4">
-                  <div className="bg-[#DCCC41] p-3 rounded-full">
-                    <BookOpen className="text-white" size={24} />
-                  </div>
-                  <span className="text-[#4E6FA7] font-bold">
-                    Baoulé & Dioula
-                  </span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Nos Valeurs Section */}
-      <section className="py-16 bg-gray-50 dark:bg-gray-800">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <h2 className="text-2xl md:text-3xl font-bold font-waffle-soft text-[#D68E54] mb-6 ">
-                NOS VALEURS
-              </h2>
-              <div className="space-y-6 text-black dark:text-gray-200 text-lg leading-relaxed font-indie-flower">
-                <ul className="list-disc pl-6 space-y-3">
-                  <li>Sauvegarde des cultures africaines</li>
-                  <li>
-                    Respect des identités plurielles – pour que chaque enfant se
-                    sente vu, compris et valorisé.
-                  </li>
-                  <li>
-                    Transmission avec douceur et authenticité – parce
-                    qu’apprendre une langue, c’est aussi recevoir une histoire.
-                  </li>
-                  <li>
-                    Inclusion, fierté, éveil – pour nourrir l’estime de soi, la
-                    curiosité et le sentiment d’appartenance.
-                  </li>
-                </ul>
-              </div>
-            </div>
-            <div className="bg-white dark:bg-gray-700 rounded-2xl shadow-lg p-6">
-              <div className="bg-gradient-to-br from-[#74C6C6] to-[#4E6FA7] h-64 rounded-xl flex items-center justify-center overflow-hidden">
-                <img
-                  src={parisKid}
-                  alt="Image Enfant Akan"
-                  className="object-cover w-full h-full rounded-xl"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Nos Fondateurs Section */}
-      <section className="py-16 bg-white dark:bg-gray-900">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-[#D68E54] mb-4 font-waffle-soft">
-              Notre Équipe
-            </h2>
-            <p className="text-xl text-black dark:text-gray-200 font-indie-flower">
-              Les visionnaires derrière TOPECI
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            {/* Fondateur 1 */}
-            <div className="bg-gray-50 dark:bg-gray-800 rounded-2xl p-8 text-center">
-              <div className="w-40 h-40 mx-auto mb-6 rounded-full overflow-hidden border-4 border-[#74C6C6] shadow-md">
-                <img
-                  src={jeanMarc}
-                  alt="Jean-Marc Koffi"
-                  className="object-cover w-full h-full"
-                />
-              </div>
-              <h3 className="text-2xl font-bold text-[#BE356A] mb-2 font-waffle-soft">
-                Jean-Marc Koffi
-              </h3>
-              <p className="text-[#74C6C6] font-bold mb-4 font-glacial-indifference ">
-                Co-Fondateur
+              <p className="text-lg md:text-xl font-glacial-indifference">
+                Promouvoir et préserver les langues et cultures locales
+                africaines, notamment en Côte d'Ivoire, à travers des outils
+                éducatifs innovants. TOPECI vise à reconnecter les jeunes
+                générations à leur patrimoine culturel et linguistique tout en
+                les ouvrant au monde.
               </p>
-              <p className="text-black dark:text-gray-200 font-glacial-indifference ">
-                Passionné par l'éducation et la technologie, Jean-Marc apporte
-                son expertise pour créer des expériences d'apprentissage
-                innovantes.
-              </p>
-            </div>
+            </motion.div>
+          </motion.div>
 
-            {/* Fondateur 2 */}
-            <div className="bg-gray-50 dark:bg-gray-800 rounded-2xl p-8 text-center">
-              <div className="w-40 h-40 mx-auto mb-6 rounded-full overflow-hidden border-4 border-[#BE356A] shadow-md">
-                <img
-                  src={cindyOrnella}
-                  alt="Cindy-Ornella Kouakou"
-                  className="object-cover w-full h-full"
-                />
-              </div>
-              <h3 className="text-2xl font-bold text-[#BE356A] mb-2 font-waffle-soft">
-                Cindy-Ornella Kouakou
-              </h3>
-              <p className="text-[#74C6C6] font-bold mb-4 font-glacial-indifference ">
-                Co-Fondatrice
-              </p>
-              <p className="text-black dark:text-gray-200 font-glacial-indifference ">
-                Experte en culture africaine et en développement de contenu
-                éducatif, Cindy-Ornella guide notre mission culturelle.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Call to Action Section */}
-      <section className="py-16 bg-white dark:bg-gray-900">
-        <div className="container mx-auto px-4 text-center">
-          <div className="max-w-3xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-bold text-[#4E6FA7] mb-6 font-waffle-soft">
-              Rejoignez notre aventure
-            </h2>
-            <p className="text-xl text-gray-700 dark:text-gray-300 mb-8 font-glacial-indifference">
-              Rejoignez-nous dans cette aventure éducative et culturelle pour
-              préserver, partager et célébrer l'héritage africain avec les
-              générations futures.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="bg-[#74C6C6] hover:bg-[#5fb3b3] text-white font-bold py-3 px-8 rounded-full transition duration-300 font-waffle-soft">
-                Découvrir nos produits
-              </button>
-              <button className="border-2 border-[#74C6C6] text-[#74C6C6] hover:bg-[#74C6C6] hover:text-white font-bold py-3 px-8 rounded-full transition duration-300 font-waffle-soft">
-                Nous contacter
-              </button>
-            </div>
-          </div>
-        </div>
-      </section>
+          {/* Image schéma */}
+          <motion.div
+            variants={scaleIn}
+            className="flex justify-center md:justify-end"
+          >
+            <img
+              src={imgSchema}
+              alt="Schéma organisationnel TOPECI"
+              className="w-full max-w-[450px] h-auto object-contain "
+            />
+          </motion.div>
+        </motion.div>
+      </div>
     </div>
   );
 }

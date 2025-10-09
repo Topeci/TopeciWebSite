@@ -18,7 +18,6 @@ import { Route as AuthForgotPasswordRouteImport } from './routes/auth/forgot-pas
 import { Route as AuthCommandeRouteImport } from './routes/auth/commande'
 import { Route as HomeSalePointRouteImport } from './routes/_home/salePoint'
 import { Route as HomePanierRouteImport } from './routes/_home/panier'
-import { Route as HomeFaqRouteImport } from './routes/_home/faq'
 import { Route as HomeEspaceRevRouteImport } from './routes/_home/espace-rev'
 import { Route as HomeContactRouteImport } from './routes/_home/contact'
 import { Route as HomeBoutiqueRouteImport } from './routes/_home/boutique'
@@ -29,6 +28,7 @@ import { Route as HomeLegalRemboursementRouteImport } from './routes/_home/legal
 import { Route as HomeLegalPrivacyRouteImport } from './routes/_home/legal/privacy'
 import { Route as HomeLegalMentionsLegalesRouteImport } from './routes/_home/legal/mentions-legales'
 import { Route as HomeLegalLivraisonRouteImport } from './routes/_home/legal/livraison'
+import { Route as HomeLegalFaqRouteImport } from './routes/_home/legal/faq'
 import { Route as HomeLegalCookiesRouteImport } from './routes/_home/legal/cookies'
 import { Route as HomeLegalCgvRouteImport } from './routes/_home/legal/cgv'
 import { Route as HomeLegalCguRouteImport } from './routes/_home/legal/cgu'
@@ -75,11 +75,6 @@ const HomeSalePointRoute = HomeSalePointRouteImport.update({
 const HomePanierRoute = HomePanierRouteImport.update({
   id: '/panier',
   path: '/panier',
-  getParentRoute: () => HomeRoute,
-} as any)
-const HomeFaqRoute = HomeFaqRouteImport.update({
-  id: '/faq',
-  path: '/faq',
   getParentRoute: () => HomeRoute,
 } as any)
 const HomeEspaceRevRoute = HomeEspaceRevRouteImport.update({
@@ -133,6 +128,11 @@ const HomeLegalLivraisonRoute = HomeLegalLivraisonRouteImport.update({
   path: '/legal/livraison',
   getParentRoute: () => HomeRoute,
 } as any)
+const HomeLegalFaqRoute = HomeLegalFaqRouteImport.update({
+  id: '/legal/faq',
+  path: '/legal/faq',
+  getParentRoute: () => HomeRoute,
+} as any)
 const HomeLegalCookiesRoute = HomeLegalCookiesRouteImport.update({
   id: '/legal/cookies',
   path: '/legal/cookies',
@@ -156,7 +156,6 @@ export interface FileRoutesByFullPath {
   '/boutique': typeof HomeBoutiqueRoute
   '/contact': typeof HomeContactRoute
   '/espace-rev': typeof HomeEspaceRevRoute
-  '/faq': typeof HomeFaqRoute
   '/panier': typeof HomePanierRoute
   '/salePoint': typeof HomeSalePointRoute
   '/auth/commande': typeof AuthCommandeRoute
@@ -167,6 +166,7 @@ export interface FileRoutesByFullPath {
   '/legal/cgu': typeof HomeLegalCguRoute
   '/legal/cgv': typeof HomeLegalCgvRoute
   '/legal/cookies': typeof HomeLegalCookiesRoute
+  '/legal/faq': typeof HomeLegalFaqRoute
   '/legal/livraison': typeof HomeLegalLivraisonRoute
   '/legal/mentions-legales': typeof HomeLegalMentionsLegalesRoute
   '/legal/privacy': typeof HomeLegalPrivacyRoute
@@ -180,7 +180,6 @@ export interface FileRoutesByTo {
   '/boutique': typeof HomeBoutiqueRoute
   '/contact': typeof HomeContactRoute
   '/espace-rev': typeof HomeEspaceRevRoute
-  '/faq': typeof HomeFaqRoute
   '/panier': typeof HomePanierRoute
   '/salePoint': typeof HomeSalePointRoute
   '/auth/commande': typeof AuthCommandeRoute
@@ -191,6 +190,7 @@ export interface FileRoutesByTo {
   '/legal/cgu': typeof HomeLegalCguRoute
   '/legal/cgv': typeof HomeLegalCgvRoute
   '/legal/cookies': typeof HomeLegalCookiesRoute
+  '/legal/faq': typeof HomeLegalFaqRoute
   '/legal/livraison': typeof HomeLegalLivraisonRoute
   '/legal/mentions-legales': typeof HomeLegalMentionsLegalesRoute
   '/legal/privacy': typeof HomeLegalPrivacyRoute
@@ -206,7 +206,6 @@ export interface FileRoutesById {
   '/_home/boutique': typeof HomeBoutiqueRoute
   '/_home/contact': typeof HomeContactRoute
   '/_home/espace-rev': typeof HomeEspaceRevRoute
-  '/_home/faq': typeof HomeFaqRoute
   '/_home/panier': typeof HomePanierRoute
   '/_home/salePoint': typeof HomeSalePointRoute
   '/auth/commande': typeof AuthCommandeRoute
@@ -217,6 +216,7 @@ export interface FileRoutesById {
   '/_home/legal/cgu': typeof HomeLegalCguRoute
   '/_home/legal/cgv': typeof HomeLegalCgvRoute
   '/_home/legal/cookies': typeof HomeLegalCookiesRoute
+  '/_home/legal/faq': typeof HomeLegalFaqRoute
   '/_home/legal/livraison': typeof HomeLegalLivraisonRoute
   '/_home/legal/mentions-legales': typeof HomeLegalMentionsLegalesRoute
   '/_home/legal/privacy': typeof HomeLegalPrivacyRoute
@@ -232,7 +232,6 @@ export interface FileRouteTypes {
     | '/boutique'
     | '/contact'
     | '/espace-rev'
-    | '/faq'
     | '/panier'
     | '/salePoint'
     | '/auth/commande'
@@ -243,6 +242,7 @@ export interface FileRouteTypes {
     | '/legal/cgu'
     | '/legal/cgv'
     | '/legal/cookies'
+    | '/legal/faq'
     | '/legal/livraison'
     | '/legal/mentions-legales'
     | '/legal/privacy'
@@ -256,7 +256,6 @@ export interface FileRouteTypes {
     | '/boutique'
     | '/contact'
     | '/espace-rev'
-    | '/faq'
     | '/panier'
     | '/salePoint'
     | '/auth/commande'
@@ -267,6 +266,7 @@ export interface FileRouteTypes {
     | '/legal/cgu'
     | '/legal/cgv'
     | '/legal/cookies'
+    | '/legal/faq'
     | '/legal/livraison'
     | '/legal/mentions-legales'
     | '/legal/privacy'
@@ -281,7 +281,6 @@ export interface FileRouteTypes {
     | '/_home/boutique'
     | '/_home/contact'
     | '/_home/espace-rev'
-    | '/_home/faq'
     | '/_home/panier'
     | '/_home/salePoint'
     | '/auth/commande'
@@ -292,6 +291,7 @@ export interface FileRouteTypes {
     | '/_home/legal/cgu'
     | '/_home/legal/cgv'
     | '/_home/legal/cookies'
+    | '/_home/legal/faq'
     | '/_home/legal/livraison'
     | '/_home/legal/mentions-legales'
     | '/_home/legal/privacy'
@@ -374,13 +374,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof HomePanierRouteImport
       parentRoute: typeof HomeRoute
     }
-    '/_home/faq': {
-      id: '/_home/faq'
-      path: '/faq'
-      fullPath: '/faq'
-      preLoaderRoute: typeof HomeFaqRouteImport
-      parentRoute: typeof HomeRoute
-    }
     '/_home/espace-rev': {
       id: '/_home/espace-rev'
       path: '/espace-rev'
@@ -451,6 +444,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof HomeLegalLivraisonRouteImport
       parentRoute: typeof HomeRoute
     }
+    '/_home/legal/faq': {
+      id: '/_home/legal/faq'
+      path: '/legal/faq'
+      fullPath: '/legal/faq'
+      preLoaderRoute: typeof HomeLegalFaqRouteImport
+      parentRoute: typeof HomeRoute
+    }
     '/_home/legal/cookies': {
       id: '/_home/legal/cookies'
       path: '/legal/cookies'
@@ -481,12 +481,12 @@ interface HomeRouteChildren {
   HomeBoutiqueRoute: typeof HomeBoutiqueRoute
   HomeContactRoute: typeof HomeContactRoute
   HomeEspaceRevRoute: typeof HomeEspaceRevRoute
-  HomeFaqRoute: typeof HomeFaqRoute
   HomePanierRoute: typeof HomePanierRoute
   HomeSalePointRoute: typeof HomeSalePointRoute
   HomeLegalCguRoute: typeof HomeLegalCguRoute
   HomeLegalCgvRoute: typeof HomeLegalCgvRoute
   HomeLegalCookiesRoute: typeof HomeLegalCookiesRoute
+  HomeLegalFaqRoute: typeof HomeLegalFaqRoute
   HomeLegalLivraisonRoute: typeof HomeLegalLivraisonRoute
   HomeLegalMentionsLegalesRoute: typeof HomeLegalMentionsLegalesRoute
   HomeLegalPrivacyRoute: typeof HomeLegalPrivacyRoute
@@ -500,12 +500,12 @@ const HomeRouteChildren: HomeRouteChildren = {
   HomeBoutiqueRoute: HomeBoutiqueRoute,
   HomeContactRoute: HomeContactRoute,
   HomeEspaceRevRoute: HomeEspaceRevRoute,
-  HomeFaqRoute: HomeFaqRoute,
   HomePanierRoute: HomePanierRoute,
   HomeSalePointRoute: HomeSalePointRoute,
   HomeLegalCguRoute: HomeLegalCguRoute,
   HomeLegalCgvRoute: HomeLegalCgvRoute,
   HomeLegalCookiesRoute: HomeLegalCookiesRoute,
+  HomeLegalFaqRoute: HomeLegalFaqRoute,
   HomeLegalLivraisonRoute: HomeLegalLivraisonRoute,
   HomeLegalMentionsLegalesRoute: HomeLegalMentionsLegalesRoute,
   HomeLegalPrivacyRoute: HomeLegalPrivacyRoute,

@@ -50,7 +50,7 @@ export function Footer() {
             <ul className="space-y-2 font-glacial-indifference">
               <li>
                 <a
-                  href="/faq"
+                  href="/legal/faq"
                   className=" hover:text-[#D68E54] transition-colors text-base dark:text-gray-200 dark:hover:text-orange-300"
                 >
                   FAQ

@@ -1,5 +1,6 @@
 /**
  * Page d'accueil du site TOPECI
+ * Avec animations Framer Motion améliorées
  */
 
 import { createFileRoute, Link } from "@tanstack/react-router";
@@ -8,6 +9,7 @@ import "../index.css";
 import { Header } from "../components/layout/header";
 import { Footer } from "../components/layout/footer";
 import CookiesBanner from "../components/layout/CookieBanner";
+import FloatingGift from "../components/layout/FloatingGift";
 
 import {
   Play,
@@ -23,22 +25,70 @@ import {
 } from "lucide-react";
 import { Button } from "../components/ui/button";
 import { useState, useRef, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 import livreBaoule from "../assets/images/livrebaoule.png";
 import livreDioula from "../assets/images/livredioula.webp";
-//import kidTopeci from "../assets/images/kidtopeci.png";
 import jouetFiere from "../assets/images/jouetFiere.png";
 import imgVideo from "../assets/images/imgVideo.png";
 import imgAvis from "../assets/images/imgavis.png";
 import imgEngagement from "../assets/images/imgengagement.png";
-import imghero from "../assets/images/imghero.jpg";
-
+import kidtopeci from "../assets/images/kidtopeci.png";
 
 import VideoTopeci from "../videos/topeci_video.mp4";
 
 export const Route = createFileRoute("/")({
   component: Index,
 });
+
+// Animations réutilisables
+const fadeInUp = {
+  initial: { opacity: 0, y: 30 },
+  animate: { opacity: 1, y: 0 },
+  transition: { duration: 0.6, ease: "easeOut" },
+};
+
+const staggerContainer = {
+  animate: {
+    transition: {
+      staggerChildren: 0.2,
+    },
+  },
+};
+
+const scaleIn = {
+  initial: { opacity: 0, scale: 0.9 },
+  animate: { opacity: 1, scale: 1 },
+  transition: { duration: 0.5, ease: "easeOut" },
+};
+
+const slideInFromLeft = {
+  initial: { opacity: 0, x: -50 },
+  animate: { opacity: 1, x: 0 },
+  transition: { duration: 0.7, ease: "easeOut" },
+};
+
+const floatingAnimation = {
+  animate: {
+    y: [-5, 5, -5],
+    transition: {
+      duration: 3,
+      repeat: Infinity,
+      ease: "easeInOut",
+    },
+  },
+};
+
+const pulseAnimation = {
+  animate: {
+    scale: [1, 1.05, 1],
+    transition: {
+      duration: 2,
+      repeat: Infinity,
+      ease: "easeInOut",
+    },
+  },
+};
 
 function Index() {
   const [isPlaying, setIsPlaying] = useState(false);
@@ -339,55 +389,104 @@ function Index() {
 
       <main className="flex-1 w-full mx-auto">
         {/* HERO SECTION */}
-        <section
+        <motion.section
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8 }}
           className="w-full py-16 md:py-20 mt-0 relative bg-cover bg-center"
-          style={{ backgroundImage: `url(${imghero})` }}
+          style={{ backgroundImage: `url(${kidtopeci})` }}
         >
           <div className="absolute inset-0"></div>
           <div className="container mx-auto px-4 relative z-10">
             <div className="max-w-3xl">
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#4E6FA7] mb-6 font-waffle-soft">
+              <motion.h1
+                variants={slideInFromLeft}
+                initial="initial"
+                animate="animate"
+                className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#4E6FA7] mb-6 font-waffle-soft"
+              >
                 Apprendre, <br />
                 Jouer <br />
                 et grandir <br />
                 dans la culture africaine
-              </h1>
+              </motion.h1>
 
-              <ul className="hero-bullets space-y-3 mb-8">
-                <li className="flex items-center text-white font-bold font-glacial-indifference">
-                  <Sparkles size={20} className="mr-2 text-[#DCCC41]" />
-                  Livres audio interactifs en baoulé et dioula
-                </li>
-                <li className="flex items-center text-white font-bold font-glacial-indifference">
-                  <Sparkles size={20} className="mr-2 text-[#DCCC41]" />
-                  Enrichis avec voix, chants et illustrations animées
-                </li>
-              </ul>
-
-              <Link
-                to="/boutique"
-                className="inline-block bg-[#D68E54] hover:bg-[#c57f4a] text-white font-extrabold py-3 px-8 rounded-full transition duration-300 font-waffle-soft shadow-lg"
+              <motion.ul
+                variants={staggerContainer}
+                initial="initial"
+                animate="animate"
+                className="hero-bullets space-y-3 mb-8"
               >
-                Découvrir nos livres
-              </Link>
+                <motion.li
+                  variants={fadeInUp}
+                  className="flex items-center text-white font-bold font-glacial-indifference"
+                >
+                  <motion.div variants={pulseAnimation} animate="animate">
+                    <Sparkles size={20} className="mr-2 text-[#DCCC41]" />
+                  </motion.div>
+                  Livres audio interactifs en baoulé et dioula
+                </motion.li>
+                <motion.li
+                  variants={fadeInUp}
+                  className="flex items-center text-white font-bold font-glacial-indifference"
+                >
+                  <motion.div variants={pulseAnimation} animate="animate">
+                    <Sparkles size={20} className="mr-2 text-[#DCCC41]" />
+                  </motion.div>
+                  Enrichis avec voix, chants et illustrations animées
+                </motion.li>
+              </motion.ul>
+
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.6, duration: 0.5 }}
+              >
+                <Link
+                  to="/boutique"
+                  className="inline-block bg-[#D68E54] hover:bg-[#c57f4a] text-white font-extrabold py-3 px-8 rounded-full transition duration-300 font-waffle-soft shadow-lg"
+                >
+                  Découvrir nos livres
+                </Link>
+              </motion.div>
             </div>
           </div>
-        </section>
+        </motion.section>
 
         {/* BOUTIQUE SECTION */}
-        <section className="w-full py-16 bg-white">
+        <motion.section
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          className="w-full py-16 bg-white"
+        >
           <div className="container mx-auto px-4">
-            <div className="flex flex-col items-center text-center mb-12">
+            <motion.div
+              variants={floatingAnimation}
+              animate="animate"
+              className="flex flex-col items-center text-center mb-12"
+            >
               <img
                 src={jouetFiere}
                 alt="Jouet Fière"
                 className="mb-4 h-24 w-auto object-contain"
               />
-            </div>
+            </motion.div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <motion.div
+              variants={staggerContainer}
+              initial="initial"
+              whileInView="animate"
+              viewport={{ once: true }}
+              className="grid grid-cols-1 md:grid-cols-3 gap-8"
+            >
               {/* Card 1 */}
-              <div className="bg-white rounded-2xl overflow-hidden transition-transform duration-300 hover:scale-105 flex flex-col border border-gray-200 h-full">
+              <motion.div
+                variants={scaleIn}
+                whileHover={{ scale: 1.05, y: -5 }}
+                className="bg-white rounded-2xl overflow-hidden transition-transform duration-300 flex flex-col border border-gray-200 h-full shadow-lg hover:shadow-xl"
+              >
                 <div className="h-48 overflow-hidden">
                   <img
                     src={livreBaoule}
@@ -404,15 +503,23 @@ function Index() {
                     15 000 FCFA
                   </p>
                   <div className="mt-auto pt-2">
-                    <button className="w-full bg-[#DCCC41] hover:bg-[#c4b33c] text-black font-bold py-3 px-4 rounded-full transition duration-300 text-sm uppercase">
+                    <motion.button
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                      className="w-full bg-[#DCCC41] hover:bg-[#c4b33c] text-black font-bold py-3 px-4 rounded-full transition duration-300 text-sm uppercase"
+                    >
                       AJOUTER AU PANIER
-                    </button>
+                    </motion.button>
                   </div>
                 </div>
-              </div>
+              </motion.div>
 
               {/* Card 2 */}
-              <div className="bg-white rounded-2xl overflow-hidden transition-transform duration-300 hover:scale-105 flex flex-col border border-gray-200 h-full">
+              <motion.div
+                variants={scaleIn}
+                whileHover={{ scale: 1.05, y: -5 }}
+                className="bg-white rounded-2xl overflow-hidden transition-transform duration-300 flex flex-col border border-gray-200 h-full shadow-lg hover:shadow-xl"
+              >
                 <div className="h-48 overflow-hidden">
                   <img
                     src={livreDioula}
@@ -429,15 +536,23 @@ function Index() {
                     15 000 FCFA
                   </p>
                   <div className="mt-auto pt-2">
-                    <button className="w-full bg-[#DCCC41] hover:bg-[#c4b33c] text-black font-bold py-3 px-4 rounded-full transition duration-300 text-sm uppercase">
+                    <motion.button
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                      className="w-full bg-[#DCCC41] hover:bg-[#c4b33c] text-black font-bold py-3 px-4 rounded-full transition duration-300 text-sm uppercase"
+                    >
                       AJOUTER AU PANIER
-                    </button>
+                    </motion.button>
                   </div>
                 </div>
-              </div>
+              </motion.div>
 
               {/* Card 3 */}
-              <div className="bg-white rounded-2xl overflow-hidden transition-transform duration-300 hover:scale-105 flex flex-col border border-gray-200 h-full">
+              <motion.div
+                variants={scaleIn}
+                whileHover={{ scale: 1.05, y: -5 }}
+                className="bg-white rounded-2xl overflow-hidden transition-transform duration-300 flex flex-col border border-gray-200 h-full shadow-lg hover:shadow-xl"
+              >
                 <div className="h-48 overflow-hidden">
                   <img
                     src={livreBaoule}
@@ -454,29 +569,47 @@ function Index() {
                     10 000 FCFA
                   </p>
                   <div className="mt-auto pt-2">
-                    <button className="w-full bg-[#DCCC41] hover:bg-[#c4b33c] text-black font-bold py-3 px-4 rounded-full transition duration-300 text-sm uppercase">
+                    <motion.button
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                      className="w-full bg-[#DCCC41] hover:bg-[#c4b33c] text-black font-bold py-3 px-4 rounded-full transition duration-300 text-sm uppercase"
+                    >
                       AJOUTER AU PANIER
-                    </button>
+                    </motion.button>
                   </div>
                 </div>
-              </div>
-            </div>
+              </motion.div>
+            </motion.div>
           </div>
-        </section>
+        </motion.section>
 
         {/* SECTION VIDÉO */}
-        <section className="w-full py-20 bg-gray-50">
+        <motion.section
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          className="w-full py-20 bg-gray-50"
+        >
           <div className="container mx-auto px-4">
-            <div className="flex flex-col items-center text-center mb-12">
+            <motion.div
+              variants={floatingAnimation}
+              animate="animate"
+              className="flex flex-col items-center text-center mb-12"
+            >
               <img
                 src={imgVideo}
                 alt="Vidéo découverte"
                 className="h-20 w-auto object-contain mb-4"
               />
-            </div>
+            </motion.div>
 
             <div className="max-w-4xl mx-auto">
-              <div className="relative rounded-xl overflow-hidden shadow-lg">
+              <motion.div
+                whileHover={{ scale: 1.02 }}
+                transition={{ type: "spring", stiffness: 300 }}
+                className="relative rounded-xl overflow-hidden shadow-2xl"
+              >
                 <video
                   ref={videoRef}
                   className="w-full h-auto max-h-96 object-cover"
@@ -488,34 +621,53 @@ function Index() {
                   Votre navigateur ne supporte pas la lecture de vidéos.
                 </video>
 
-                {!isPlaying && (
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <button
-                      onClick={togglePlay}
-                      className="bg-white bg-opacity-90 w-20 h-20 rounded-full flex items-center justify-center shadow-2xl hover:scale-110 transition-transform duration-300"
+                <AnimatePresence>
+                  {!isPlaying && (
+                    <motion.div
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      className="absolute inset-0 flex items-center justify-center"
                     >
-                      <Play size={40} className="text-[#74C6C6] ml-2" />
-                    </button>
-                  </div>
-                )}
-              </div>
+                      <motion.button
+                        whileHover={{ scale: 1.1 }}
+                        whileTap={{ scale: 0.9 }}
+                        onClick={togglePlay}
+                        className="bg-white bg-opacity-90 w-20 h-20 rounded-full flex items-center justify-center shadow-2xl transition-transform duration-300"
+                      >
+                        <Play size={40} className="text-[#74C6C6] ml-2" />
+                      </motion.button>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </motion.div>
             </div>
           </div>
-        </section>
+        </motion.section>
 
         {/* SECTION AVIS CLIENTS AVEC DÉFILEMENT AUTOMATIQUE */}
-        <section className="w-full py-20 bg-white">
+        <motion.section
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          className="w-full py-20 bg-white"
+        >
           <div className="container mx-auto px-4">
-            <div className="flex flex-col items-center text-center mb-12">
+            <motion.div
+              variants={floatingAnimation}
+              animate="animate"
+              className="flex flex-col items-center text-center mb-12"
+            >
               <img
                 src={imgAvis}
                 alt="Témoignages"
                 className="h-20 w-auto object-contain mb-4"
               />
-            </div>
+            </motion.div>
 
             {/* Conteneur des avis avec défilement automatique */}
-            <div
+            <motion.div
               ref={reviewsContainerRef}
               className="relative mb-8 overflow-x-hidden"
               onMouseEnter={() => setIsPaused(true)}
@@ -524,9 +676,10 @@ function Index() {
               <div className="flex space-x-6 pb-4 min-w-max">
                 {/* Dupliquer les avis pour un effet de boucle continu */}
                 {[...sampleReviews, ...sampleReviews].map((review, index) => (
-                  <div
+                  <motion.div
                     key={`${review.id}-${index}`}
-                    className="flex-shrink-0 w-72 bg-white rounded-lg shadow-md p-6 border border-gray-200 hover:shadow-lg transition-shadow"
+                    whileHover={{ y: -5, scale: 1.02 }}
+                    className="flex-shrink-0 w-72 bg-white rounded-lg shadow-md p-6 border border-gray-200 hover:shadow-lg transition-all cursor-pointer"
                   >
                     <div className="flex items-center mb-4">
                       <div className="w-12 h-12 bg-[#74C6C6] rounded-full flex items-center justify-center text-white font-bold mr-4">
@@ -557,104 +710,185 @@ function Index() {
                     <p className="text-sm text-gray-700 leading-relaxed">
                       {review.comment}
                     </p>
-                  </div>
+                  </motion.div>
                 ))}
               </div>
 
               {/* Overlay pour indiquer le défilement */}
               <div className="absolute inset-y-0 left-0 w-8 bg-gradient-to-r from-white to-transparent pointer-events-none"></div>
               <div className="absolute inset-y-0 right-0 w-8 bg-gradient-to-l from-white to-transparent pointer-events-none"></div>
-            </div>
+            </motion.div>
 
-            <div className="text-center">
-              <button
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3 }}
+              viewport={{ once: true }}
+              className="text-center"
+            >
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
                 onClick={() => setShowReviewForm(true)}
-                className="bg-[#D68E54] hover:bg-[#c57f4a] text-white font-semibold py-3 px-8 rounded-full transition duration-300"
+                className="bg-[#D68E54] hover:bg-[#c57f4a] text-white font-semibold py-3 px-8 rounded-full transition duration-300 shadow-lg"
               >
                 Écrire un avis
-              </button>
-            </div>
+              </motion.button>
+            </motion.div>
           </div>
-        </section>
+        </motion.section>
 
         {/* SECTION NOS ENGAGEMENTS */}
-        <section className="w-full py-20 bg-gray-50">
+        <motion.section
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          className="w-full py-20 bg-gray-50"
+        >
           <div className="container mx-auto px-4">
-            <div className="flex flex-col items-center text-center mb-12">
+            <motion.div
+              variants={floatingAnimation}
+              animate="animate"
+              className="flex flex-col items-center text-center mb-12"
+            >
               <img
                 src={imgEngagement}
                 alt="Nos Engagements"
                 className="h-20 w-auto object-contain mb-4"
               />
-            </div>
+            </motion.div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <motion.div
+              variants={staggerContainer}
+              initial="initial"
+              whileInView="animate"
+              viewport={{ once: true }}
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
+            >
               {/* Engagement 1 */}
-              <div className="text-center">
-                <div className="w-20 h-20 bg-[#D68E54] rounded-full flex items-center justify-center mx-auto mb-4">
+              <motion.div
+                variants={fadeInUp}
+                whileHover={{ scale: 1.05 }}
+                className="text-center"
+              >
+                <motion.div
+                  whileHover={{ rotate: 360 }}
+                  transition={{ duration: 0.5 }}
+                  className="w-20 h-20 bg-[#D68E54] rounded-full flex items-center justify-center mx-auto mb-4"
+                >
                   <Truck size={32} className="text-white" />
-                </div>
+                </motion.div>
                 <h3 className="text-lg font-semibold mb-2">
                   Livraison partout <br />
                   dans le monde
                 </h3>
-              </div>
+              </motion.div>
 
               {/* Engagement 2 */}
-              <div className="text-center">
-                <div className="w-20 h-20 bg-[#D68E54] rounded-full flex items-center justify-center mx-auto mb-4">
+              <motion.div
+                variants={fadeInUp}
+                whileHover={{ scale: 1.05 }}
+                className="text-center"
+              >
+                <motion.div
+                  whileHover={{ rotate: 360 }}
+                  transition={{ duration: 0.5 }}
+                  className="w-20 h-20 bg-[#D68E54] rounded-full flex items-center justify-center mx-auto mb-4"
+                >
                   <CreditCard size={32} className="text-white" />
-                </div>
+                </motion.div>
                 <h3 className="text-lg font-semibold mb-2">
                   Paiement sécurisé
                 </h3>
-              </div>
+              </motion.div>
 
               {/* Engagement 3 */}
-              <a href="/salePoint" className="text-center block">
-                <div className="w-20 h-20 bg-[#D68E54] rounded-full flex items-center justify-center mx-auto mb-4">
+              <motion.a
+                variants={fadeInUp}
+                whileHover={{ scale: 1.05 }}
+                href="/salePoint"
+                className="text-center block"
+              >
+                <motion.div
+                  whileHover={{ rotate: 360 }}
+                  transition={{ duration: 0.5 }}
+                  className="w-20 h-20 bg-[#D68E54] rounded-full flex items-center justify-center mx-auto mb-4"
+                >
                   <Store size={32} className="text-white" />
-                </div>
+                </motion.div>
                 <h3 className="text-lg font-semibold mb-2">
                   Nos points de <br />
                   vente
                 </h3>
-              </a>
+              </motion.a>
 
               {/* Engagement 4 */}
-              <div className="text-center">
-                <div className="w-20 h-20 bg-[#D68E54] rounded-full flex items-center justify-center mx-auto mb-4">
+              <motion.div
+                variants={fadeInUp}
+                whileHover={{ scale: 1.05 }}
+                className="text-center"
+              >
+                <motion.div
+                  whileHover={{ rotate: 360 }}
+                  transition={{ duration: 0.5 }}
+                  className="w-20 h-20 bg-[#D68E54] rounded-full flex items-center justify-center mx-auto mb-4"
+                >
                   <MessageCircle size={32} className="text-white" />
-                </div>
+                </motion.div>
                 <h3 className="text-lg font-semibold mb-2">
                   Assistance client <br />
                   WhatsApp / Email
                 </h3>
-              </div>
-            </div>
+              </motion.div>
+            </motion.div>
           </div>
-        </section>
+        </motion.section>
 
         {/* SECTION TOPECI OPEN CLASSROOM */}
-        <section className="w-full py-20 bg-white">
+        <motion.section
+          initial={{ opacity: 0, scale: 0.9 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="w-full py-20 bg-white"
+        >
           <div className="container mx-auto px-4 text-center">
-            <div className="max-w-2xl mx-auto bg-[#c2326c] rounded-3xl py-12 px-8">
-              <h2 className="text-2xl font-bold text-white mb-4 font-waffle-soft">
+            <motion.div
+              whileHover={{ scale: 1.02 }}
+              className="max-w-2xl mx-auto bg-[#c2326c] rounded-3xl py-12 px-8 shadow-2xl"
+            >
+              <motion.h2
+                variants={pulseAnimation}
+                animate="animate"
+                className="text-2xl font-bold text-white mb-4 font-waffle-soft"
+              >
                 TOPECI Openclassroom arrive bientôt !
-              </h2>
-              <p className="text-white mb-6 font-indie-flower text-lg">
+              </motion.h2>
+              <motion.p
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.3 }}
+                className="text-white mb-6 font-indie-flower text-lg"
+              >
                 Bientôt, une application pour apprendre de façon ludique
-              </p>
-              <Button className="bg-white text-[#c2326c] hover:bg-gray-100 font-medium py-3 px-8 rounded-full transition duration-300 font-waffle-soft">
-                En savoir plus
-              </Button>
-            </div>
+              </motion.p>
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <Button className="bg-white text-[#c2326c] hover:bg-gray-100 font-medium py-3 px-8 rounded-full transition duration-300 font-waffle-soft shadow-lg">
+                  En savoir plus
+                </Button>
+              </motion.div>
+            </motion.div>
           </div>
-        </section>
+        </motion.section>
       </main>
 
       {showReviewForm && <ReviewForm />}
       <CookiesBanner />
+      <FloatingGift />
       <Footer />
     </div>
   );

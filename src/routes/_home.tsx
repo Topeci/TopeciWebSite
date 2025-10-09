@@ -1,4 +1,5 @@
 import { createFileRoute, Outlet } from "@tanstack/react-router";
+import FloatingGift from "../components/layout/FloatingGift";
 
 import { Header } from "../components/layout/header";
 import { Footer } from "../components/layout/footer";
@@ -14,6 +15,7 @@ function RouteComponent() {
       <Header />
       <Outlet />
       <CookiesBanner />
+      <FloatingGift />
       <Footer />
     </div>
   );
