@@ -7,11 +7,12 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import imgAbout from "../../assets/images/imgAbout.png";
-import imgChildFondateur from "../../assets/images/imgChildFondateur.png";
-import imgOlduser from "../../assets/images/imgOlduser.png";
-import imgTwoAsso from "../../assets/images/imgTwoAsso.png";
-import imgFondateur from "../../assets/images/imgFondateur.png";
-import imgSchema from "../../assets/images/imgSchema.png";
+import imgChildFondateur from "../../assets/images/imgChildFondateur.jpg";
+import imgOlduser from "../../assets/images/imgOlduser.jpg";
+import imgTwoAsso from "../../assets/images/imgTwoAsso.jpg";
+import imgFondateur from "../../assets/images/imgFondateur.jpg";
+import imgSchema from "../../assets/images/imgSchema.jpg";
+import imgValeur from "../../assets/images/imgValeur.png";
 
 export const Route = createFileRoute("/_home/about")({
   component: RouteComponent,
@@ -128,7 +129,7 @@ function RouteComponent() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 relative overflow-hidden">
+    <div className="min-h-screen bg-white dark:bg-gray-900 relative overflow-hidden">
       {/* Bouton audio flottant créatif */}
       <AnimatePresence>
         {isSpeechSupported && showAudioButton && (
@@ -237,7 +238,7 @@ function RouteComponent() {
           initial={{ opacity: 0, scale: 1.05 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8 }}
-          className="relative py-16 md:py-24 bg-cover bg-center min-h-[350px] md:min-h-[450px] mb-12 mt-5 rounded-2xl overflow-hidden shadow-xl"
+          className="relative py-16 md:py-24 bg-cover bg-center min-h-[350px] md:min-h-[450px] mb-12 mt-5  overflow-hidden "
           style={{ backgroundImage: `url(${imgAbout})` }}
         >
           {/* Overlay avec titre */}
@@ -247,9 +248,7 @@ function RouteComponent() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5, duration: 0.6 }}
               className="container mx-auto px-4 text-center"
-            >
-              
-            </motion.div>
+            ></motion.div>
           </div>
         </motion.section>
 
@@ -265,10 +264,10 @@ function RouteComponent() {
             variants={fadeInUp}
             className="space-y-6 text-black dark:text-white leading-relaxed"
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-black dark:text-white font-block-bold">
+            <h2 className="text-4xl md:text-5xl font-bold text-black dark:text-white font-block-bold">
               Notre histoire
             </h2>
-            <p className="text-lg md:text-xl font-glacial-indifference">
+            <p className="text-xl md:text-2xl font-glacial-indifference">
               TOPECI est né d'un rêve partagé : <br />
               celui de transmettre, à travers les joutes, la beauté et la
               richesse des cultures africaines. Nous avons grandi entourés
@@ -285,7 +284,7 @@ function RouteComponent() {
             <img
               src={imgChildFondateur}
               alt="Enfants avec des jouets"
-              className="w-full max-w-[450px] h-[350px] object-cover "
+              className="w-full max-w-[500px] h-[400px] object-cover "
             />
           </motion.div>
         </motion.div>
@@ -297,7 +296,7 @@ function RouteComponent() {
           transition={{ delay: 0.3, duration: 0.6 }}
           className="mb-16"
         >
-          <p className="text-lg md:text-xl font-glacial-indifference text-black dark:text-white max-w-4xl mx-auto text-center">
+          <p className="text-xl md:text-2xl font-glacial-indifference text-black dark:text-white max-w-5xl mt-[-55px] leading-relaxed">
             Avec le temps, installés à l'étranger, nous avons réalisé combien
             ces trésors de notre enfance disparaissent peu à peu, emportés par
             la modernité, la mondialisation et le manque de transmission.
@@ -319,14 +318,14 @@ function RouteComponent() {
             <img
               src={imgOlduser}
               alt="Famille heureuse"
-              className="w-full max-w-[450px] h-[350px] object-cover "
+              className="w-full max-w-[500px] h-[400px] object-cover"
             />
           </motion.div>
 
           {/* Texte 2 */}
           <motion.div
             variants={fadeInUp}
-            className="font-glacial-indifference text-lg md:text-xl text-black dark:text-white order-2 md:order-2 space-y-4"
+            className="font-glacial-indifference text-xl md:text-2xl text-black dark:text-white order-2 md:order-2 space-y-6 leading-relaxed"
           >
             <p>
               Cette prise de conscience s'est transformée en mission. Nous
@@ -347,7 +346,7 @@ function RouteComponent() {
           {/* Texte 3 */}
           <motion.div
             variants={fadeInUp}
-            className="leading-relaxed font-glacial-indifference text-lg md:text-xl text-black dark:text-white space-y-6"
+            className="leading-relaxed font-glacial-indifference text-xl md:text-2xl text-black dark:text-white space-y-6"
           >
             <p>
               TOPECI est né de cette envie profonde, celle de redonner vie à nos
@@ -371,7 +370,7 @@ function RouteComponent() {
             <img
               src={imgTwoAsso}
               alt="Enfant souriant"
-              className="w-full max-w-[450px] h-[500px] object-cover rounded-2xl shadow-lg"
+              className="w-full max-w-[500px] h-[550px] object-cover "
             />
           </motion.div>
         </motion.div>
@@ -381,9 +380,9 @@ function RouteComponent() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4, duration: 0.6 }}
-          className="mb-16 max-w-4xl mx-auto"
+          className="mb-16 max-w-5xl"
         >
-          <p className="text-lg md:text-xl font-glacial-indifference text-black dark:text-white text-center">
+          <p className="text-xl md:text-2xl font-glacial-indifference text-black dark:text-white  leading-relaxed">
             Depuis, notre mission résonne encore plus fort dans nos cœurs :
             éduquer, divertir et inspirer. Pour nous, TOPECI est bien plus
             qu'une marque.{" "}
@@ -399,13 +398,18 @@ function RouteComponent() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.5, duration: 0.7 }}
-          className="flex justify-center mb-16"
+          className="flex justify-center mb-20"
         >
-          <img
-            src={imgFondateur}
-            alt="Fondateur TOPECI"
-            className="w-full max-w-[500px] h-auto object-cover"
-          />
+          <div className="text-center">
+            <img
+              src={imgFondateur}
+              alt="Fondateur TOPECI"
+              className="w-full max-w-[550px] h-auto object-cover  mx-auto"
+            />
+            <p className="font-glacial-indifference font-bold text-xl mt-0 text-black dark:text-white">
+              Jean-Marc KOFFI et Cindy Ornella KOUAKOU
+            </p>
+          </div>
         </motion.div>
 
         {/* Section vision et mission */}
@@ -422,10 +426,10 @@ function RouteComponent() {
               variants={fadeInUp}
               className="space-y-6 text-black dark:text-white leading-relaxed"
             >
-              <h2 className="text-3xl md:text-4xl font-bold text-black dark:text-white font-block-bold">
+              <h2 className="text-4xl md:text-5xl font-bold text-black dark:text-white font-block-bold">
                 Notre vision
               </h2>
-              <p className="text-lg md:text-xl font-glacial-indifference">
+              <p className="text-xl md:text-2xl font-glacial-indifference">
                 Un monde où la diversité culturelle et linguistique est célébrée
                 et transmise de manière innovante et inclusive, tant à l'échelle
                 nationale qu'internationale.
@@ -437,10 +441,10 @@ function RouteComponent() {
               variants={fadeInUp}
               className="space-y-6 text-black dark:text-white leading-relaxed"
             >
-              <h2 className="text-3xl md:text-4xl font-bold text-black dark:text-white font-block-bold">
+              <h2 className="text-4xl md:text-5xl font-bold text-black dark:text-white font-block-bold">
                 Notre mission
               </h2>
-              <p className="text-lg md:text-xl font-glacial-indifference">
+              <p className="text-xl md:text-2xl font-glacial-indifference">
                 Promouvoir et préserver les langues et cultures locales
                 africaines, notamment en Côte d'Ivoire, à travers des outils
                 éducatifs innovants. TOPECI vise à reconnecter les jeunes
@@ -450,16 +454,30 @@ function RouteComponent() {
             </motion.div>
           </motion.div>
 
-          {/* Image schéma */}
-          <motion.div
-            variants={scaleIn}
-            className="flex justify-center md:justify-end"
-          >
-            <img
-              src={imgSchema}
-              alt="Schéma organisationnel TOPECI"
-              className="w-full max-w-[450px] h-auto object-contain "
-            />
+          {/* Colonne images - imgSchema en premier, imgValeur en dessous comme titre */}
+          <motion.div variants={fadeInUp} className="space-y-8">
+            {/* Image Valeur - comme titre/description en dessous */}
+            <motion.div
+              variants={scaleIn}
+              className="flex justify-center md:justify-end"
+            >
+              <img
+                src={imgValeur}
+                alt="Valeurs et principes TOPECI"
+                className="w-full max-w-[500px] h-auto object-contain transform hover:scale-105 transition-transform duration-300"
+              />
+            </motion.div>
+            {/* Image Schema - principale */}
+            <motion.div
+              variants={scaleIn}
+              className="flex justify-center md:justify-end p-6"
+            >
+              <img
+                src={imgSchema}
+                alt="Schéma organisationnel TOPECI"
+                className="w-full max-w-[500px] h-auto object-contain mt-[-65px]"
+              />
+            </motion.div>
           </motion.div>
         </motion.div>
       </div>

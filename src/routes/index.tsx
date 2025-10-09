@@ -27,15 +27,15 @@ import { Button } from "../components/ui/button";
 import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-import livreBaoule from "../assets/images/livrebaoule.png";
-import livreDioula from "../assets/images/livredioula.webp";
-import jouetFiere from "../assets/images/jouetFiere.png";
-import imgVideo from "../assets/images/imgVideo.png";
-import imgAvis from "../assets/images/imgavis.png";
-import imgEngagement from "../assets/images/imgengagement.png";
-import kidtopeci from "../assets/images/kidtopeci.png";
+import livreBaoule from "../../assets/images/livrebaoule.png";
+import livreDioula from "../../assets/images/livredioula.webp";
+import jouetFiere from "../../assets/images/jouetFiere.png";
+import imgVideo from "../../assets/images/imgVideo.png";
+import imgAvis from "../../assets/images/imgavis.png";
+import imgEngagement from "../../assets/images/imgengagement.png";
+import kidtopeci from "../../assets/images/kidtopeci.png";
 
-import VideoTopeci from "../videos/topeci_video.mp4";
+import VideoTopeci from "../../videos/topeci_video.mp4";
 
 export const Route = createFileRoute("/")({
   component: Index,
