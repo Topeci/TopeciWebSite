@@ -38,18 +38,20 @@ import kidtopeci from "../assets/images/kidtopeci.png";
 
 import VideoTopeci from "../videos/topeci_video.mp4";
 
-
 export const Route = createFileRoute("/")({
   component: Index,
 });
 
-// Animations réutilisables
+// Ease definitions compatibles TypeScript (cubic-bezier arrays)
+const easeOut = [0.22, 1, 0.36, 1];
+const easeInOut = [0.42, 0, 0.58, 1];
 
+// Animations réutilisables
 
 const fadeInUp = {
   initial: { opacity: 0, y: 30 },
   animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.6, ease: "easeOut" },
+  transition: { duration: 0.6, ease: easeOut },
 };
 
 const staggerContainer = {
@@ -63,13 +65,13 @@ const staggerContainer = {
 const scaleIn = {
   initial: { opacity: 0, scale: 0.9 },
   animate: { opacity: 1, scale: 1 },
-  transition: { duration: 0.5, ease: "easeOut" },
+  transition: { duration: 0.5, ease: easeOut },
 };
 
 const slideInFromLeft = {
   initial: { opacity: 0, x: -50 },
   animate: { opacity: 1, x: 0 },
-  transition: { duration: 0.7, ease: "easeOut" },
+  transition: { duration: 0.7, ease: easeOut },
 };
 
 const floatingAnimation = {
@@ -78,7 +80,7 @@ const floatingAnimation = {
     transition: {
       duration: 3,
       repeat: Infinity,
-      ease: "easeInOut",
+      ease: easeInOut,
     },
   },
 };
@@ -89,7 +91,7 @@ const pulseAnimation = {
     transition: {
       duration: 2,
       repeat: Infinity,
-      ease: "easeInOut",
+      ease: easeInOut,
     },
   },
 };
@@ -489,7 +491,7 @@ function Index() {
               <motion.div
                 variants={scaleIn}
                 whileHover={{ scale: 1.05, y: -5 }}
-                className="bg-white rounded-2xl overflow-hidden transition-transform duration-300 flex flex-col border border-gray-200 h-full shadow-lg hover:shadow-xl"
+                className="bg-white dark:bg-gray-800 rounded-2xl overflow-hidden transition-transform duration-300 flex flex-col border border-gray-200 dark:border-gray-700 h-full shadow-lg hover:shadow-xl"
               >
                 <div className="h-48 overflow-hidden">
                   <img
@@ -499,11 +501,11 @@ function Index() {
                   />
                 </div>
                 <div className="p-6 flex flex-col flex-grow text-center">
-                  <h3 className="text-lg font-semibold text-black mb-3">
+                  <h3 className="text-lg font-semibold text-black dark:text-white mb-3">
                     Mon Premier Livre Audio <br />
                     Baoulé - Français
                   </h3>
-                  <p className="text-black mb-4 font-bold text-lg">
+                  <p className="text-black dark:text-white mb-4 font-bold text-lg">
                     15 000 FCFA
                   </p>
                   <div className="mt-auto pt-2">
@@ -522,7 +524,7 @@ function Index() {
               <motion.div
                 variants={scaleIn}
                 whileHover={{ scale: 1.05, y: -5 }}
-                className="bg-white rounded-2xl overflow-hidden transition-transform duration-300 flex flex-col border border-gray-200 h-full shadow-lg hover:shadow-xl"
+                className="bg-white dark:bg-gray-800 rounded-2xl overflow-hidden transition-transform duration-300 flex flex-col border border-gray-200 dark:border-gray-700 h-full shadow-lg hover:shadow-xl"
               >
                 <div className="h-48 overflow-hidden">
                   <img
@@ -532,11 +534,11 @@ function Index() {
                   />
                 </div>
                 <div className="p-6 flex flex-col flex-grow text-center">
-                  <h3 className="text-lg font-semibold text-black mb-3">
+                  <h3 className="text-lg font-semibold text-black dark:text-white mb-3">
                     Mon Premier Livre Audio <br />
                     Dioula - Français
                   </h3>
-                  <p className="text-black mb-4 font-bold text-lg">
+                  <p className="text-black dark:text-white mb-4 font-bold text-lg">
                     15 000 FCFA
                   </p>
                   <div className="mt-auto pt-2">
@@ -555,7 +557,7 @@ function Index() {
               <motion.div
                 variants={scaleIn}
                 whileHover={{ scale: 1.05, y: -5 }}
-                className="bg-white rounded-2xl overflow-hidden transition-transform duration-300 flex flex-col border border-gray-200 h-full shadow-lg hover:shadow-xl"
+                className="bg-white dark:bg-gray-800 rounded-2xl overflow-hidden transition-transform duration-300 flex flex-col border border-gray-200 dark:border-gray-700 h-full shadow-lg hover:shadow-xl"
               >
                 <div className="h-48 overflow-hidden">
                   <img
@@ -565,11 +567,11 @@ function Index() {
                   />
                 </div>
                 <div className="p-6 flex flex-col flex-grow text-center">
-                  <h3 className="text-lg font-semibold text-black mb-3">
+                  <h3 className="text-lg font-semibold text-black dark:text-white mb-3">
                     Mes cartes parlantes <br />
                     Bété - Français
                   </h3>
-                  <p className="text-black mb-4 font-bold text-lg">
+                  <p className="text-black dark:text-white mb-4 font-bold text-lg">
                     10 000 FCFA
                   </p>
                   <div className="mt-auto pt-2">
@@ -683,17 +685,17 @@ function Index() {
                   <motion.div
                     key={`${review.id}-${index}`}
                     whileHover={{ y: -5, scale: 1.02 }}
-                    className="flex-shrink-0 w-72 bg-white rounded-lg shadow-md p-6 border border-gray-200 hover:shadow-lg transition-all cursor-pointer"
+                    className="flex-shrink-0 w-72 bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-all cursor-pointer"
                   >
                     <div className="flex items-center mb-4">
                       <div className="w-12 h-12 bg-[#74C6C6] rounded-full flex items-center justify-center text-white font-bold mr-4">
                         {review.author.charAt(0)}
                       </div>
                       <div>
-                        <h4 className="font-semibold text-base">
+                        <h4 className="font-semibold text-base text-black dark:text-white">
                           {review.author}
                         </h4>
-                        <p className="text-sm text-gray-500">
+                        <p className="text-sm text-gray-500 dark:text-gray-300">
                           {review.location}
                         </p>
                       </div>
@@ -711,7 +713,7 @@ function Index() {
                         />
                       ))}
                     </div>
-                    <p className="text-sm text-gray-700 leading-relaxed">
+                    <p className="text-sm text-gray-700 dark:text-gray-200 leading-relaxed">
                       {review.comment}
                     </p>
                   </motion.div>
@@ -719,8 +721,8 @@ function Index() {
               </div>
 
               {/* Overlay pour indiquer le défilement */}
-              <div className="absolute inset-y-0 left-0 w-8 bg-gradient-to-r from-white to-transparent pointer-events-none"></div>
-              <div className="absolute inset-y-0 right-0 w-8 bg-gradient-to-l from-white to-transparent pointer-events-none"></div>
+              <div className="absolute inset-y-0 left-0 w-8 bg-gradient-to-r from-white to-transparent pointer-events-none dark:from-gray-900"></div>
+              <div className="absolute inset-y-0 right-0 w-8 bg-gradient-to-l from-white to-transparent pointer-events-none dark:from-gray-900"></div>
             </motion.div>
 
             <motion.div
@@ -897,3 +899,5 @@ function Index() {
     </div>
   );
 }
+
+export default Index;
