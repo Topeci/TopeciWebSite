@@ -27,21 +27,25 @@ import { Button } from "../components/ui/button";
 import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-import livreBaoule from "../../assets/images/livrebaoule.png";
-import livreDioula from "../../assets/images/livredioula.webp";
-import jouetFiere from "../../assets/images/jouetFiere.png";
-import imgVideo from "../../assets/images/imgVideo.png";
-import imgAvis from "../../assets/images/imgavis.png";
-import imgEngagement from "../../assets/images/imgengagement.png";
-import kidtopeci from "../../assets/images/kidtopeci.png";
+import livreBaoule from "../assets/images/livrebaoule.png";
+import livreDioula from "../assets/images/livredioula.webp";
+import jouetFiere from "../assets/images/imgJouetFiere.png";
+import imgVideo from "../assets/images/imgVideo.png";
+import imgAvis from "../assets/images/imgAvis.png";
+import imgEngagement from "../assets/images/imgEngagement.png";
 
-import VideoTopeci from "../../videos/topeci_video.mp4";
+import kidtopeci from "../assets/images/kidtopeci.png";
+
+import VideoTopeci from "../videos/topeci_video.mp4";
+
 
 export const Route = createFileRoute("/")({
   component: Index,
 });
 
 // Animations réutilisables
+
+
 const fadeInUp = {
   initial: { opacity: 0, y: 30 },
   animate: { opacity: 1, y: 0 },
@@ -459,13 +463,13 @@ function Index() {
           whileInView={{ opacity: 1 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="w-full py-16 bg-white"
+          className="w-full py-16 bg-white "
         >
-          <div className="container mx-auto px-4">
+          <div className="container mx-auto px-4 mt-[-30px] mb-[-40px]">
             <motion.div
               variants={floatingAnimation}
               animate="animate"
-              className="flex flex-col items-center text-center mb-12"
+              className="flex flex-col items-center text-center mb-5"
             >
               <img
                 src={jouetFiere}
@@ -595,7 +599,7 @@ function Index() {
             <motion.div
               variants={floatingAnimation}
               animate="animate"
-              className="flex flex-col items-center text-center mb-12"
+              className="flex flex-col items-center text-center mt-[-50px] mb-5"
             >
               <img
                 src={imgVideo}
@@ -657,7 +661,7 @@ function Index() {
             <motion.div
               variants={floatingAnimation}
               animate="animate"
-              className="flex flex-col items-center text-center mb-12"
+              className="flex flex-col items-center text-center mb-5 mt-[-30px]"
             >
               <img
                 src={imgAvis}
@@ -750,7 +754,7 @@ function Index() {
             <motion.div
               variants={floatingAnimation}
               animate="animate"
-              className="flex flex-col items-center text-center mb-12"
+              className="flex flex-col items-center text-center mt-[-30px] mb-5"
             >
               <img
                 src={imgEngagement}

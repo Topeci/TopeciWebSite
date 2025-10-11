@@ -13,9 +13,9 @@ import { Route as HomeRouteImport } from './routes/_home'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as DashboardSettingsRouteImport } from './routes/dashboard/settings'
 import { Route as DashboardProfileRouteImport } from './routes/dashboard/profile'
+import { Route as DashboardCommandeRouteImport } from './routes/dashboard/commande'
 import { Route as AuthLoginRouteImport } from './routes/auth/login'
 import { Route as AuthForgotPasswordRouteImport } from './routes/auth/forgot-password'
-import { Route as AuthCommandeRouteImport } from './routes/auth/commande'
 import { Route as HomeSalePointRouteImport } from './routes/_home/salePoint'
 import { Route as HomePanierRouteImport } from './routes/_home/panier'
 import { Route as HomeEspaceRevRouteImport } from './routes/_home/espace-rev'
@@ -52,6 +52,11 @@ const DashboardProfileRoute = DashboardProfileRouteImport.update({
   path: '/dashboard/profile',
   getParentRoute: () => rootRouteImport,
 } as any)
+const DashboardCommandeRoute = DashboardCommandeRouteImport.update({
+  id: '/dashboard/commande',
+  path: '/dashboard/commande',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AuthLoginRoute = AuthLoginRouteImport.update({
   id: '/auth/login',
   path: '/auth/login',
@@ -60,11 +65,6 @@ const AuthLoginRoute = AuthLoginRouteImport.update({
 const AuthForgotPasswordRoute = AuthForgotPasswordRouteImport.update({
   id: '/auth/forgot-password',
   path: '/auth/forgot-password',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const AuthCommandeRoute = AuthCommandeRouteImport.update({
-  id: '/auth/commande',
-  path: '/auth/commande',
   getParentRoute: () => rootRouteImport,
 } as any)
 const HomeSalePointRoute = HomeSalePointRouteImport.update({
@@ -158,9 +158,9 @@ export interface FileRoutesByFullPath {
   '/espace-rev': typeof HomeEspaceRevRoute
   '/panier': typeof HomePanierRoute
   '/salePoint': typeof HomeSalePointRoute
-  '/auth/commande': typeof AuthCommandeRoute
   '/auth/forgot-password': typeof AuthForgotPasswordRoute
   '/auth/login': typeof AuthLoginRoute
+  '/dashboard/commande': typeof DashboardCommandeRoute
   '/dashboard/profile': typeof DashboardProfileRoute
   '/dashboard/settings': typeof DashboardSettingsRoute
   '/legal/cgu': typeof HomeLegalCguRoute
@@ -182,9 +182,9 @@ export interface FileRoutesByTo {
   '/espace-rev': typeof HomeEspaceRevRoute
   '/panier': typeof HomePanierRoute
   '/salePoint': typeof HomeSalePointRoute
-  '/auth/commande': typeof AuthCommandeRoute
   '/auth/forgot-password': typeof AuthForgotPasswordRoute
   '/auth/login': typeof AuthLoginRoute
+  '/dashboard/commande': typeof DashboardCommandeRoute
   '/dashboard/profile': typeof DashboardProfileRoute
   '/dashboard/settings': typeof DashboardSettingsRoute
   '/legal/cgu': typeof HomeLegalCguRoute
@@ -208,9 +208,9 @@ export interface FileRoutesById {
   '/_home/espace-rev': typeof HomeEspaceRevRoute
   '/_home/panier': typeof HomePanierRoute
   '/_home/salePoint': typeof HomeSalePointRoute
-  '/auth/commande': typeof AuthCommandeRoute
   '/auth/forgot-password': typeof AuthForgotPasswordRoute
   '/auth/login': typeof AuthLoginRoute
+  '/dashboard/commande': typeof DashboardCommandeRoute
   '/dashboard/profile': typeof DashboardProfileRoute
   '/dashboard/settings': typeof DashboardSettingsRoute
   '/_home/legal/cgu': typeof HomeLegalCguRoute
@@ -234,9 +234,9 @@ export interface FileRouteTypes {
     | '/espace-rev'
     | '/panier'
     | '/salePoint'
-    | '/auth/commande'
     | '/auth/forgot-password'
     | '/auth/login'
+    | '/dashboard/commande'
     | '/dashboard/profile'
     | '/dashboard/settings'
     | '/legal/cgu'
@@ -258,9 +258,9 @@ export interface FileRouteTypes {
     | '/espace-rev'
     | '/panier'
     | '/salePoint'
-    | '/auth/commande'
     | '/auth/forgot-password'
     | '/auth/login'
+    | '/dashboard/commande'
     | '/dashboard/profile'
     | '/dashboard/settings'
     | '/legal/cgu'
@@ -283,9 +283,9 @@ export interface FileRouteTypes {
     | '/_home/espace-rev'
     | '/_home/panier'
     | '/_home/salePoint'
-    | '/auth/commande'
     | '/auth/forgot-password'
     | '/auth/login'
+    | '/dashboard/commande'
     | '/dashboard/profile'
     | '/dashboard/settings'
     | '/_home/legal/cgu'
@@ -302,9 +302,9 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   HomeRoute: typeof HomeRouteWithChildren
-  AuthCommandeRoute: typeof AuthCommandeRoute
   AuthForgotPasswordRoute: typeof AuthForgotPasswordRoute
   AuthLoginRoute: typeof AuthLoginRoute
+  DashboardCommandeRoute: typeof DashboardCommandeRoute
   DashboardProfileRoute: typeof DashboardProfileRoute
   DashboardSettingsRoute: typeof DashboardSettingsRoute
 }
@@ -339,6 +339,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DashboardProfileRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/dashboard/commande': {
+      id: '/dashboard/commande'
+      path: '/dashboard/commande'
+      fullPath: '/dashboard/commande'
+      preLoaderRoute: typeof DashboardCommandeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/auth/login': {
       id: '/auth/login'
       path: '/auth/login'
@@ -351,13 +358,6 @@ declare module '@tanstack/react-router' {
       path: '/auth/forgot-password'
       fullPath: '/auth/forgot-password'
       preLoaderRoute: typeof AuthForgotPasswordRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/auth/commande': {
-      id: '/auth/commande'
-      path: '/auth/commande'
-      fullPath: '/auth/commande'
-      preLoaderRoute: typeof AuthCommandeRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/_home/salePoint': {
@@ -518,9 +518,9 @@ const HomeRouteWithChildren = HomeRoute._addFileChildren(HomeRouteChildren)
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   HomeRoute: HomeRouteWithChildren,
-  AuthCommandeRoute: AuthCommandeRoute,
   AuthForgotPasswordRoute: AuthForgotPasswordRoute,
   AuthLoginRoute: AuthLoginRoute,
+  DashboardCommandeRoute: DashboardCommandeRoute,
   DashboardProfileRoute: DashboardProfileRoute,
   DashboardSettingsRoute: DashboardSettingsRoute,
 }

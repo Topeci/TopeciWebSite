@@ -23,9 +23,7 @@ Police d'écriture : Indie flower, Waffle soft, Glacial Indifference
   font-family: "Indie Flower", cursive;
   font-weight: 300;
   font-style: normal;
-  letter-spacing: 0.5px; /* léger espacement, plus lisible et aéré */
-  line-height: 1.4; /* plus vivant que le standard */
-  font-size: 1.2em; /* un peu plus grand par défaut */
+  
 }
 
 .font-block-bold {
@@ -133,8 +131,8 @@ h1 {
 }
 
 button {
-  border-radius: 10px;
-  border: 1px solid transparent;
+  /*border-radius: 10px;
+  border: 1px solid transparent;*/
   padding: 0.6em 1.2em;
   font-size: 1em;
   font-weight: 500;
@@ -142,13 +140,14 @@ button {
   cursor: pointer;
   transition: border-color 0.25s;
 }
+/*
 button:hover {
   border-color: #646cff;
 }
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
-}
+}*/
 
 @media (prefers-color-scheme: light) {
   :root {
