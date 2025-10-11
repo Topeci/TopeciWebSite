@@ -378,7 +378,7 @@ function RouteComponent() {
 
               {/* Bouton de validation */}
               <Link
-                to="/auth/commande"
+                to="/dashboard/commande"
                 className="w-full bg-[#D68E54] hover:bg-[#c57f4a] text-white font-semibold py-3 px-6 rounded-lg transition duration-300 flex items-center justify-center"
               >
                 Procéder au paiement
