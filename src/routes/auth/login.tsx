@@ -168,7 +168,7 @@ function RouteComponent() {
                     to="/legal/cgu"
                     className="text-[#4E6FA7] hover:text-[#74C6C6]"
                   >
-                    conditions d'utilisation
+                    Conditions d'utilisation
                   </Link>{" "}
                   et la{" "}
                   <Link

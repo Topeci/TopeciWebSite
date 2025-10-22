@@ -1,8 +1,19 @@
+/**
+ * Page des points de vente
+ * Points de vente en ligne et physiques :
+ * Librairie France (Toutes la Côte d'Ivoire)
+ * Sococe (Abidjan)
+ * FNAC (Cap Sud Abidjan, Cap Nord Abidjan)
+ * Amazon (Livraison internationale)
+ */
+
+
 import { createFileRoute } from "@tanstack/react-router";
 
 import salePoint from "../../assets/images/salepoint.png";
 import imgJumia from "../../assets/images/imgjumia.png";
 import imgTepeci from "../../assets/images/imgtepeci.png";
+//import librairieFrance from "../../../assets/images/librairieFrance.jpg";
 
 
 export const Route = createFileRoute("/_home/salePoint")({
@@ -91,67 +102,7 @@ function RouteComponent() {
           <h2 className="text-2xl font-bold text-center text-[#D68E54] mb-8 font-waffle-soft">
             Points de vente physiques
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
-            {/* Point de vente 1 */}
-            <div className="bg-white rounded-xl shadow-md p-6">
-              <h3 className="text-lg font-semibold text-gray-800 mb-3">
-                Abidjan, Plateau
-              </h3>
-              <p className="text-gray-600 mb-2">Centre commercial Plateau</p>
-              <p className="text-gray-500 text-sm">Lun - Sam: 8h - 18h</p>
-              <p className="text-gray-500 text-sm">Dimanche: 9h - 13h</p>
-            </div>
-
-            {/* Point de vente 2 */}
-            <div className="bg-white rounded-xl shadow-md p-6">
-              <h3 className="text-lg font-semibold text-gray-800 mb-3">
-                Abidjan, Cocody
-              </h3>
-              <p className="text-gray-600 mb-2">Marché de Cocody</p>
-              <p className="text-gray-500 text-sm">Lun - Sam: 7h - 19h</p>
-              <p className="text-gray-500 text-sm">Dimanche: Fermé</p>
-            </div>
-
-            {/* Point de vente 3 */}
-            <div className="bg-white rounded-xl shadow-md p-6">
-              <h3 className="text-lg font-semibold text-gray-800 mb-3">
-                Bouaké
-              </h3>
-              <p className="text-gray-600 mb-2">Grand marché</p>
-              <p className="text-gray-500 text-sm">Lun - Sam: 7h - 18h</p>
-              <p className="text-gray-500 text-sm">Dimanche: Fermé</p>
-            </div>
-
-            {/* Point de vente 4 */}
-            <div className="bg-white rounded-xl shadow-md p-6">
-              <h3 className="text-lg font-semibold text-gray-800 mb-3">
-                Yamoussoukro
-              </h3>
-              <p className="text-gray-600 mb-2">Centre ville</p>
-              <p className="text-gray-500 text-sm">Lun - Sam: 8h - 17h</p>
-              <p className="text-gray-500 text-sm">Dimanche: Fermé</p>
-            </div>
-
-            {/* Point de vente 5 */}
-            <div className="bg-white rounded-xl shadow-md p-6">
-              <h3 className="text-lg font-semibold text-gray-800 mb-3">
-                San Pedro
-              </h3>
-              <p className="text-gray-600 mb-2">Port de San Pedro</p>
-              <p className="text-gray-500 text-sm">Lun - Sam: 8h - 17h</p>
-              <p className="text-gray-500 text-sm">Dimanche: Fermé</p>
-            </div>
-
-            {/* Point de vente 6 */}
-            <div className="bg-white rounded-xl shadow-md p-6">
-              <h3 className="text-lg font-semibold text-gray-800 mb-3">
-                Korhogo
-              </h3>
-              <p className="text-gray-600 mb-2">Marché central</p>
-              <p className="text-gray-500 text-sm">Lun - Sam: 7h - 18h</p>
-              <p className="text-gray-500 text-sm">Dimanche: Fermé</p>
-            </div>
-          </div>
+          
         </div>
 
         

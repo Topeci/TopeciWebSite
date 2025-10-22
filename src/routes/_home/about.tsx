@@ -59,7 +59,7 @@ function RouteComponent() {
 
   // Texte complet de la page à lire
   const pageText = `
-    Notre histoire. TOPECI est né d'un rêve partagé : celui de transmettre, à travers les joutes, la beauté et la richesse des cultures africaines. 
+    Notre histoire. TOPECI est né d'un rêve partagé : celui de transmettre, à travers les jouets, la beauté et la richesse des cultures africaines. 
     Nous avons grandi entourés d'histoire, de chants, de proverbes, de repas et de traditions qui façonnent qui nous sommes.
     
     Avec le temps, installés à l'étranger, nous avons réalisé combien ces trésors de notre enfance disparaissent peu à peu, 
@@ -269,7 +269,7 @@ function RouteComponent() {
             </h2>
             <p className="text-xl md:text-2xl font-glacial-indifference">
               TOPECI est né d'un rêve partagé : <br />
-              celui de transmettre, à travers les joutes, la beauté et la
+              celui de transmettre, à travers les jouets, la beauté et la
               richesse des cultures africaines. Nous avons grandi entourés
               d'histoire, de chants, de proverbes, de repas et de traditions qui
               façonnent qui nous sommes.
@@ -355,7 +355,7 @@ function RouteComponent() {
             </p>
 
             <p>
-              Notre premier livre audio a marqué le début de cette belle
+              <span className="italic">Mon premier livre audio</span>  a marqué le début de cette belle
               aventure. En voyant nos ouvrages dans les mains des enfants — les
               entendre écouter, répéter, s'émerveiller — leurs sourires ont
               confirmé que nous étions sur la bonne voie.
