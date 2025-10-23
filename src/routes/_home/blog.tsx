@@ -1,6 +1,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion } from "framer-motion";
-import parisKid from "../../assets/images/pariskid.jpg";
+
+
+//import parisKid from "../../assets/images/pariskid.jpg";
 import jeanMarc from "../../assets/images/jeanMarc.jpg";
 import imgJournal from "../../assets/images/imgjournal.png";
 import imgMedi1TV from "../../assets/images/imgMedi1TV.png";
