@@ -12,14 +12,11 @@ Orange #D68E54
 Police d'écriture : Indie flower, Waffle soft, Glacial Indifference
  */
 
-/* ✅ Import Google Fonts en premier */
-@import url("https://fonts.googleapis.com/css2?family=Indie+Flower:wght@600&display=swap");
-
-/* ✅ Puis Tailwind */
 @import "tailwindcss";
-
-/* ✅ Puis tw-animate */
 @import "tw-animate-css";
+
+/* Import des polices Google Fonts si nécessaire */
+@import url("https://fonts.googleapis.com/css2?family=Indie+Flower:wght@600&display=swap");
 
 /* Styles pour les polices personnalisées - vous devrez ajuster selon vos polices */
 .font-indie-flower {
