@@ -22,7 +22,7 @@ export const Route = createFileRoute("/_home/about")({
 const fadeInUp = {
   initial: { opacity: 0, y: 30 },
   animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.6, ease: "easeOut" as any },
+  transition: { duration: 0.6, ease: "easeOut" },
 };
 
 const staggerContainer = {
@@ -36,7 +36,7 @@ const staggerContainer = {
 const scaleIn = {
   initial: { opacity: 0, scale: 0.9 },
   animate: { opacity: 1, scale: 1 },
-  transition: { duration: 0.5, ease: "easeOut" as any },
+  transition: { duration: 0.5, ease: "easeOut" },
 };
 
 const floatingAnimation = {
@@ -45,7 +45,7 @@ const floatingAnimation = {
     transition: {
       duration: 4,
       repeat: Infinity,
-      ease: "easeInOut" as any,
+      ease: "easeInOut",
     },
   },
 };
@@ -160,9 +160,18 @@ function RouteComponent() {
                 >
                   <path
                     fillRule="evenodd"
-                    d="M9.383 3.076A1 1 0 0110 4v12a1 1 0 01-1.707.707L4.586 13H2a1 1 0 01-1-1V8a1 1 0 011-1h2.586l3.707-3.707a1 1 0 011.09-.217zM14.657 2.929a1 1 0 011.414 0A9.972 9.972 0 0119 10a9.972 9.972 0 01-2.929 7.071 1 1 0 01-1.414-1.414A7.971 7.971 0 0017 10c0-2.21-.894-4.208-2.343-5.657a1 1 0 010-1.414zm-2.829 2.828a1 1 0 011.415 0A5.983 5.983 0 01115 10a5.984 5.984 0 01-1.757 4.243 1 1 0 01-1.415-1.415A3.984 3.984 0 0013 10a3.983 3.983 0 00-121172-2.828 1 1 0 010-1.415z"
+                    d="M9.383 3.076A1 1 0 0110 4v12a1 1 0 01-1.707.707L4.586 13H2a1 1 0 01-1-1V8a1 1 0 011-1h2.586l3.707-3.707a1 1 0 011.09-.217zM14.657 2.929a1 1 0 011.414 0A9.972 9.972 0 0119 10a9.972 9.972 0 01-2.929 7.071 1 1 0 01-1.414-1.414A7.971 7.971 0 0017 10c0-2.21-.894-4.208-2.343-5.657a1 1 0 010-1.414zm-2.829 2.828a1 1 0 011.415 0A5.983 5.983 0 0115 10a5.984 5.984 0 01-1.757 4.243 1 1 0 01-1.415-1.415A3.984 3.984 0 0013 10a3.983 3.983 0 00-1.172-2.828 1 1 0 010-1.415z"
+                    clipRule="evenodd"
                   />
                 </svg>
+
+                {/* Tooltip */}
+                <div className="absolute right-full mr-3 top-1/2 transform -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+                  <div className="bg-gray-900 dark:bg-white text-white dark:text-gray-900 text-sm font-medium px-3 py-2 rounded-lg whitespace-nowrap shadow-lg">
+                    Écouter la page
+                    <div className="absolute left-full top-1/2 transform -translate-y-1/2 border-4 border-transparent border-l-gray-900 dark:border-l-white"></div>
+                  </div>
+                </div>
               </div>
             </motion.button>
           </motion.div>
@@ -211,7 +220,7 @@ function RouteComponent() {
                   >
                     <path
                       fillRule="evenodd"
-                      d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 51107a1 1 0 010-1.414z"
+                      d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
                       clipRule="evenodd"
                     />
                   </svg>
@@ -224,15 +233,15 @@ function RouteComponent() {
 
       {/* Conteneur principal avec marges latérales */}
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-
         {/* En-tête avec image */}
         <motion.section
           initial={{ opacity: 0, scale: 1.05 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8 }}
-          className="relative py-16 md:py-24 bg-cover bg-center min-h-[350px] md:min-h-[450px] mb-12 mt-5 overflow-hidden"
+          className="relative py-16 md:py-24 bg-cover bg-center min-h-[350px] md:min-h-[450px] mb-12 mt-5  overflow-hidden "
           style={{ backgroundImage: `url(${imgAbout})` }}
         >
+          {/* Overlay avec titre */}
           <div className="absolute inset-0 bg-black/20 flex items-end pb-12">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
@@ -250,6 +259,7 @@ function RouteComponent() {
           animate="animate"
           className="grid md:grid-cols-2 gap-12 mb-16 items-center"
         >
+          {/* Texte principal */}
           <motion.div
             variants={fadeInUp}
             className="space-y-6 text-black dark:text-white leading-relaxed"
@@ -266,6 +276,7 @@ function RouteComponent() {
             </p>
           </motion.div>
 
+          {/* Image enfant fondateur */}
           <motion.div
             variants={scaleIn}
             className="flex justify-center md:justify-end"
@@ -273,7 +284,7 @@ function RouteComponent() {
             <img
               src={imgChildFondateur}
               alt="Enfants avec des jouets"
-              className="w-full max-w-[500px] h-[400px] object-cover rounded-xl"
+              className="w-full max-w-[500px] h-[400px] object-cover "
             />
           </motion.div>
         </motion.div>
@@ -292,24 +303,29 @@ function RouteComponent() {
           </p>
         </motion.div>
 
-        {/* Section 2 */}
+        {/* Section 2 - Image à gauche, texte à droite */}
         <motion.div
           variants={staggerContainer}
           initial="initial"
           animate="animate"
           className="grid md:grid-cols-2 gap-12 mb-16 items-center"
         >
-          <motion.div variants={fadeInUp} className="flex justify-center md:justify-start order-1">
+          {/* Image ancien utilisateur */}
+          <motion.div
+            variants={fadeInUp}
+            className="flex justify-center md:justify-start order-1 md:order-1"
+          >
             <img
               src={imgOlduser}
               alt="Famille heureuse"
-              className="w-full max-w-[500px] h-[400px] object-cover rounded-xl"
+              className="w-full max-w-[500px] h-[400px] object-cover"
             />
           </motion.div>
 
+          {/* Texte 2 */}
           <motion.div
             variants={fadeInUp}
-            className="font-glacial-indifference text-xl md:text-2xl text-black dark:text-white order-2 space-y-6 leading-relaxed"
+            className="font-glacial-indifference text-xl md:text-2xl text-black dark:text-white order-2 md:order-2 space-y-6 leading-relaxed"
           >
             <p>
               Cette prise de conscience s'est transformée en mission. Nous
@@ -320,13 +336,14 @@ function RouteComponent() {
           </motion.div>
         </motion.div>
 
-        {/* Section 3 */}
+        {/* Section 3 - Texte à gauche, image à droite */}
         <motion.div
           variants={staggerContainer}
           initial="initial"
           animate="animate"
           className="grid md:grid-cols-2 gap-12 mb-16 items-center"
         >
+          {/* Texte 3 */}
           <motion.div
             variants={fadeInUp}
             className="leading-relaxed font-glacial-indifference text-xl md:text-2xl text-black dark:text-white space-y-6"
@@ -338,18 +355,22 @@ function RouteComponent() {
             </p>
 
             <p>
-              <span className="italic">Mon premier livre audio</span> a marqué le
-              début de cette belle aventure. En voyant nos ouvrages dans les
-              mains des enfants — les entendre écouter, répéter, s'émerveiller —
-              leurs sourires ont confirmé que nous étions sur la bonne voie.
+              <span className="italic">Mon premier livre audio</span>  a marqué le début de cette belle
+              aventure. En voyant nos ouvrages dans les mains des enfants — les
+              entendre écouter, répéter, s'émerveiller — leurs sourires ont
+              confirmé que nous étions sur la bonne voie.
             </p>
           </motion.div>
 
-          <motion.div variants={scaleIn} className="flex justify-center md:justify-end">
+          {/* Image deux associations */}
+          <motion.div
+            variants={scaleIn}
+            className="flex justify-center md:justify-end"
+          >
             <img
               src={imgTwoAsso}
               alt="Enfant souriant"
-              className="w-full max-w-[500px] h-[550px] object-cover rounded-xl"
+              className="w-full max-w-[500px] h-[550px] object-cover "
             />
           </motion.div>
         </motion.div>
@@ -361,7 +382,7 @@ function RouteComponent() {
           transition={{ delay: 0.4, duration: 0.6 }}
           className="mb-16 max-w-5xl"
         >
-          <p className="text-xl md:text-2xl font-glacial-indifference text-black dark:text-white leading-relaxed">
+          <p className="text-xl md:text-2xl font-glacial-indifference text-black dark:text-white  leading-relaxed">
             Depuis, notre mission résonne encore plus fort dans nos cœurs :
             éduquer, divertir et inspirer. Pour nous, TOPECI est bien plus
             qu'une marque.{" "}
@@ -372,7 +393,7 @@ function RouteComponent() {
           </p>
         </motion.div>
 
-        {/* Image fondateur */}
+        {/* Image fondateur centrée */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -383,7 +404,7 @@ function RouteComponent() {
             <img
               src={imgFondateur}
               alt="Fondateur TOPECI"
-              className="w-full max-w-[550px] h-auto object-cover rounded-xl mx-auto"
+              className="w-full max-w-[550px] h-auto object-cover  mx-auto"
             />
             <p className="font-glacial-indifference font-bold text-xl mt-0 text-black dark:text-white">
               Jean-Marc KOFFI et Cindy Ornella KOUAKOU
@@ -391,15 +412,20 @@ function RouteComponent() {
           </div>
         </motion.div>
 
-        {/* Vision & Mission */}
+        {/* Section vision et mission */}
         <motion.div
           variants={staggerContainer}
           initial="initial"
           animate="animate"
           className="grid md:grid-cols-2 gap-16 items-start mt-8 mb-20"
         >
+          {/* Colonne texte */}
           <motion.div variants={fadeInUp} className="space-y-12">
-            <motion.div variants={fadeInUp} className="space-y-6 text-black dark:text-white leading-relaxed">
+            {/* Notre vision */}
+            <motion.div
+              variants={fadeInUp}
+              className="space-y-6 text-black dark:text-white leading-relaxed"
+            >
               <h2 className="text-4xl md:text-5xl font-bold text-black dark:text-white font-block-bold">
                 Notre vision
               </h2>
@@ -410,7 +436,11 @@ function RouteComponent() {
               </p>
             </motion.div>
 
-            <motion.div variants={fadeInUp} className="space-y-6 text-black dark:text-white leading-relaxed">
+            {/* Notre mission */}
+            <motion.div
+              variants={fadeInUp}
+              className="space-y-6 text-black dark:text-white leading-relaxed"
+            >
               <h2 className="text-4xl md:text-5xl font-bold text-black dark:text-white font-block-bold">
                 Notre mission
               </h2>
@@ -424,21 +454,28 @@ function RouteComponent() {
             </motion.div>
           </motion.div>
 
-          {/* Images */}
+          {/* Colonne images - imgSchema en premier, imgValeur en dessous comme titre */}
           <motion.div variants={fadeInUp} className="space-y-8">
-            <motion.div variants={scaleIn} className="flex justify-center md:justify-end">
+            {/* Image Valeur - comme titre/description en dessous */}
+            <motion.div
+              variants={scaleIn}
+              className="flex justify-center md:justify-end"
+            >
               <img
                 src={imgValeur}
                 alt="Valeurs et principes TOPECI"
-                className="w-full max-w-[500px] object-contain rounded-xl"
+                className="w-full max-w-[500px] h-auto object-contain transform hover:scale-105 transition-transform duration-300"
               />
             </motion.div>
-
-            <motion.div variants={scaleIn} className="flex justify-center md:justify-end p-6">
+            {/* Image Schema - principale */}
+            <motion.div
+              variants={scaleIn}
+              className="flex justify-center md:justify-end p-6"
+            >
               <img
                 src={imgSchema}
                 alt="Schéma organisationnel TOPECI"
-                className="w-full max-w-[500px] object-contain mt-[-65px] rounded-xl"
+                className="w-full max-w-[500px] h-auto object-contain mt-[-65px]"
               />
             </motion.div>
           </motion.div>
@@ -447,5 +484,3 @@ function RouteComponent() {
     </div>
   );
 }
-
-export default RouteComponent;
