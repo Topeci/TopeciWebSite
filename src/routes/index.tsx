@@ -28,8 +28,9 @@ import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 import livreBaoule from "../assets/images/livrebaoule.png";
-import livreDioula from "../assets/images/livredioula.webp";
+import livreDioula from "../assets/images/livredioula.png";
 import jouetFiere from "../assets/images/imgJouetFiere.png";
+import carteBete from "../assets/images/cartebete.png";
 import imgVideo from "../assets/images/imgVideo.png";
 import imgAvis from "../assets/images/imgAvis.png";
 import imgEngagement from "../assets/images/imgEngagement.png";
@@ -467,7 +468,7 @@ function Index() {
           viewport={{ once: true }}
           className="w-full py-16 bg-white "
         >
-          <div className="container mx-auto px-4 mt-[-30px] mb-[-40px]">
+          <div className="container mx-auto px-4 mt-[-30px] mb-[-60px]">
             <motion.div
               variants={floatingAnimation}
               animate="animate"
@@ -485,15 +486,15 @@ function Index() {
               initial="initial"
               whileInView="animate"
               viewport={{ once: true }}
-              className="grid grid-cols-1 md:grid-cols-3 gap-8"
+              className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-[-60px]"
             >
               {/* Card 1 */}
               <motion.div
                 variants={scaleIn}
                 whileHover={{ scale: 1.05, y: -5 }}
-                className="bg-white dark:bg-gray-800 rounded-2xl overflow-hidden transition-transform duration-300 flex flex-col border border-gray-200 dark:border-gray-700 h-full shadow-lg hover:shadow-xl"
+                className=" "
               >
-                <div className="h-68 overflow-hidden">
+                <div className="h-80 overflow-hidden">
                   <img
                     src={livreBaoule}
                     alt="Mon Premier Livre Audio Baoulé"
@@ -501,18 +502,18 @@ function Index() {
                   />
                 </div>
                 <div className="p-6 flex flex-col flex-grow text-center">
-                  <h3 className="text-lg font-semibold text-black dark:text-white mb-3">
+                  <h3 className="text-lg text-black dark:text-white mb-1 font-glacial-indifference">
                     Mon Premier Livre Audio <br />
                     Baoulé - Français
                   </h3>
-                  <p className="text-black dark:text-white mb-4 font-bold text-lg">
+                  <p className="text-black dark:text-white mb-2 font-bold text-lg">
                     15 000 FCFA
                   </p>
-                  <div className="mt-auto pt-2">
+                  <div className="mt-[-5px] pt-1">
                     <motion.button
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
-                      className="w-full bg-[#DCCC41] hover:bg-[#c4b33c] text-black font-bold py-3 px-4 rounded-full transition duration-300 text-sm uppercase"
+                      className="w-full bg-[#DCCC41] hover:bg-[#c4b33c] text-black font-bold font-waffle-soft py-3 px-4 rounded-full transition duration-300 text-sm uppercase"
                     >
                       AJOUTER AU PANIER
                     </motion.button>
@@ -524,9 +525,9 @@ function Index() {
               <motion.div
                 variants={scaleIn}
                 whileHover={{ scale: 1.05, y: -5 }}
-                className="bg-white dark:bg-gray-800 rounded-2xl overflow-hidden transition-transform duration-300 flex flex-col border border-gray-200 dark:border-gray-700 h-full shadow-lg hover:shadow-xl"
+                className=""
               >
-                <div className="h-68 overflow-hidden">
+                <div className="h-80 overflow-hidden">
                   <img
                     src={livreDioula}
                     alt="Mon Premier Livre Audio Dioula"
@@ -534,18 +535,18 @@ function Index() {
                   />
                 </div>
                 <div className="p-6 flex flex-col flex-grow text-center">
-                  <h3 className="text-lg font-semibold text-black dark:text-white mb-3">
+                  <h3 className="text-lg text-black dark:text-white mb-1 font-glacial-indifference">
                     Mon Premier Livre Audio <br />
                     Dioula - Français
                   </h3>
-                  <p className="text-black dark:text-white mb-4 font-bold text-lg">
+                  <p className="text-black dark:text-white mb-2 font-bold text-lg">
                     15 000 FCFA
                   </p>
-                  <div className="mt-auto pt-2">
+                  <div className="mt-[-5px] pt-1">
                     <motion.button
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
-                      className="w-full bg-[#DCCC41] hover:bg-[#c4b33c] text-black font-bold py-3 px-4 rounded-full transition duration-300 text-sm uppercase"
+                      className="w-full bg-[#DCCC41] hover:bg-[#c4b33c] text-black font-bold font-waffle-soft py-3 px-4 rounded-full transition duration-300 text-sm uppercase"
                     >
                       AJOUTER AU PANIER
                     </motion.button>
@@ -557,28 +558,29 @@ function Index() {
               <motion.div
                 variants={scaleIn}
                 whileHover={{ scale: 1.05, y: -5 }}
-                className="bg-white dark:bg-gray-800 rounded-2xl overflow-hidden transition-transform duration-300 flex flex-col border border-gray-200 dark:border-gray-700 h-full shadow-lg hover:shadow-xl"
+                className=""
               >
-                <div className="h-68 overflow-hidden">
+                <div className="h-80 overflow-hidden">
                   <img
-                    src={livreBaoule}
+                    src={carteBete}
                     alt="Mes cartes parlantes Bété"
                     className="w-full h-full object-cover"
                   />
                 </div>
+
                 <div className="p-6 flex flex-col flex-grow text-center">
-                  <h3 className="text-lg font-semibold text-black dark:text-white mb-3">
-                    Mes cartes parlantes <br />
-                    Bété - Français
+                  <h3 className="text-lg text-black dark:text-white mb-1 font-glacial-indifference">
+                    Mon Premier Livre Audio <br />
+                    Dioula - Français
                   </h3>
-                  <p className="text-black dark:text-white mb-4 font-bold text-lg">
-                    10 000 FCFA
+                  <p className="text-black dark:text-white mb-2 font-bold text-lg">
+                    15 000 FCFA
                   </p>
-                  <div className="mt-auto pt-2">
+                  <div className="mt-[-5px] pt-1">
                     <motion.button
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
-                      className="w-full bg-[#DCCC41] hover:bg-[#c4b33c] text-black font-bold py-3 px-4 rounded-full transition duration-300 text-sm uppercase"
+                      className="w-full bg-[#DCCC41] hover:bg-[#c4b33c] text-black font-bold font-waffle-soft py-3 px-4 rounded-full transition duration-300 text-sm uppercase"
                     >
                       AJOUTER AU PANIER
                     </motion.button>
