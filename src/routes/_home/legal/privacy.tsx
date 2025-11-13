@@ -32,9 +32,9 @@ function RouteComponent() {
         <p>
           Le responsable du traitement des données personnelles est :
           <br />
-          TOPECI [Forme juridique : SAS, SARL, Association…] <br />
-          Siège social : [Adresse complète] <br />
-          Email : [email de contact RGPD]
+          TOPECI Forme juridique : SAS <br />
+          Siège social : Siège faya Jule verne <br />
+          Email : Montopeci@gmail.com <br />
         </p>
 
         <h2 className="text-xl font-semibold">3. Données collectées</h2>
@@ -89,7 +89,8 @@ function RouteComponent() {
         <h2 className="text-xl font-semibold">8. Droits des utilisateurs</h2>
         <p>
           Vous disposez de droits d’accès, rectification, effacement,
-          limitation, portabilité et opposition. Contactez-nous à [email RGPD].
+          limitation, portabilité et opposition. Contactez-nous à
+          Montopeci@gmail.com .
         </p>
 
         <h2 className="text-xl font-semibold">9. Sécurité des données</h2>
@@ -116,8 +117,8 @@ function RouteComponent() {
           Pour toute question relative à la gestion de vos données personnelles
           :
           <br />
-          📧 Email : [adresse email RGPD] <br />
-          📍 Adresse : [adresse siège TOPECI]
+          📧 Email : Montopeci@gmail.com <br />
+          📍 Adresse : Siège faya Jule verne <br />
         </p>
       </div>
     </div>

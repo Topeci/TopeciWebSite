@@ -452,7 +452,7 @@ function Index() {
                   to="/boutique"
                   className="inline-block bg-[#D68E54] hover:bg-[#c57f4a] text-white font-extrabold py-3 px-8 rounded-full transition duration-300 font-waffle-soft shadow-lg"
                 >
-                  Découvrir nos livres
+                  Découvrez nos jouets
                 </Link>
               </motion.div>
             </div>
@@ -493,7 +493,7 @@ function Index() {
                 whileHover={{ scale: 1.05, y: -5 }}
                 className="bg-white dark:bg-gray-800 rounded-2xl overflow-hidden transition-transform duration-300 flex flex-col border border-gray-200 dark:border-gray-700 h-full shadow-lg hover:shadow-xl"
               >
-                <div className="h-48 overflow-hidden">
+                <div className="h-68 overflow-hidden">
                   <img
                     src={livreBaoule}
                     alt="Mon Premier Livre Audio Baoulé"
@@ -526,7 +526,7 @@ function Index() {
                 whileHover={{ scale: 1.05, y: -5 }}
                 className="bg-white dark:bg-gray-800 rounded-2xl overflow-hidden transition-transform duration-300 flex flex-col border border-gray-200 dark:border-gray-700 h-full shadow-lg hover:shadow-xl"
               >
-                <div className="h-48 overflow-hidden">
+                <div className="h-68 overflow-hidden">
                   <img
                     src={livreDioula}
                     alt="Mon Premier Livre Audio Dioula"
@@ -559,7 +559,7 @@ function Index() {
                 whileHover={{ scale: 1.05, y: -5 }}
                 className="bg-white dark:bg-gray-800 rounded-2xl overflow-hidden transition-transform duration-300 flex flex-col border border-gray-200 dark:border-gray-700 h-full shadow-lg hover:shadow-xl"
               >
-                <div className="h-48 overflow-hidden">
+                <div className="h-68 overflow-hidden">
                   <img
                     src={livreBaoule}
                     alt="Mes cartes parlantes Bété"

@@ -13,6 +13,7 @@ import { Route as HomeRouteImport } from './routes/_home'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as DashboardSettingsRouteImport } from './routes/dashboard/settings'
 import { Route as DashboardProfileRouteImport } from './routes/dashboard/profile'
+import { Route as DashboardLivraisonRouteImport } from './routes/dashboard/livraison'
 import { Route as DashboardCommandeRouteImport } from './routes/dashboard/commande'
 import { Route as AuthLoginRouteImport } from './routes/auth/login'
 import { Route as AuthForgotPasswordRouteImport } from './routes/auth/forgot-password'
@@ -50,6 +51,11 @@ const DashboardSettingsRoute = DashboardSettingsRouteImport.update({
 const DashboardProfileRoute = DashboardProfileRouteImport.update({
   id: '/dashboard/profile',
   path: '/dashboard/profile',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DashboardLivraisonRoute = DashboardLivraisonRouteImport.update({
+  id: '/dashboard/livraison',
+  path: '/dashboard/livraison',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DashboardCommandeRoute = DashboardCommandeRouteImport.update({
@@ -161,6 +167,7 @@ export interface FileRoutesByFullPath {
   '/auth/forgot-password': typeof AuthForgotPasswordRoute
   '/auth/login': typeof AuthLoginRoute
   '/dashboard/commande': typeof DashboardCommandeRoute
+  '/dashboard/livraison': typeof DashboardLivraisonRoute
   '/dashboard/profile': typeof DashboardProfileRoute
   '/dashboard/settings': typeof DashboardSettingsRoute
   '/legal/cgu': typeof HomeLegalCguRoute
@@ -185,6 +192,7 @@ export interface FileRoutesByTo {
   '/auth/forgot-password': typeof AuthForgotPasswordRoute
   '/auth/login': typeof AuthLoginRoute
   '/dashboard/commande': typeof DashboardCommandeRoute
+  '/dashboard/livraison': typeof DashboardLivraisonRoute
   '/dashboard/profile': typeof DashboardProfileRoute
   '/dashboard/settings': typeof DashboardSettingsRoute
   '/legal/cgu': typeof HomeLegalCguRoute
@@ -211,6 +219,7 @@ export interface FileRoutesById {
   '/auth/forgot-password': typeof AuthForgotPasswordRoute
   '/auth/login': typeof AuthLoginRoute
   '/dashboard/commande': typeof DashboardCommandeRoute
+  '/dashboard/livraison': typeof DashboardLivraisonRoute
   '/dashboard/profile': typeof DashboardProfileRoute
   '/dashboard/settings': typeof DashboardSettingsRoute
   '/_home/legal/cgu': typeof HomeLegalCguRoute
@@ -237,6 +246,7 @@ export interface FileRouteTypes {
     | '/auth/forgot-password'
     | '/auth/login'
     | '/dashboard/commande'
+    | '/dashboard/livraison'
     | '/dashboard/profile'
     | '/dashboard/settings'
     | '/legal/cgu'
@@ -261,6 +271,7 @@ export interface FileRouteTypes {
     | '/auth/forgot-password'
     | '/auth/login'
     | '/dashboard/commande'
+    | '/dashboard/livraison'
     | '/dashboard/profile'
     | '/dashboard/settings'
     | '/legal/cgu'
@@ -286,6 +297,7 @@ export interface FileRouteTypes {
     | '/auth/forgot-password'
     | '/auth/login'
     | '/dashboard/commande'
+    | '/dashboard/livraison'
     | '/dashboard/profile'
     | '/dashboard/settings'
     | '/_home/legal/cgu'
@@ -305,6 +317,7 @@ export interface RootRouteChildren {
   AuthForgotPasswordRoute: typeof AuthForgotPasswordRoute
   AuthLoginRoute: typeof AuthLoginRoute
   DashboardCommandeRoute: typeof DashboardCommandeRoute
+  DashboardLivraisonRoute: typeof DashboardLivraisonRoute
   DashboardProfileRoute: typeof DashboardProfileRoute
   DashboardSettingsRoute: typeof DashboardSettingsRoute
 }
@@ -337,6 +350,13 @@ declare module '@tanstack/react-router' {
       path: '/dashboard/profile'
       fullPath: '/dashboard/profile'
       preLoaderRoute: typeof DashboardProfileRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/dashboard/livraison': {
+      id: '/dashboard/livraison'
+      path: '/dashboard/livraison'
+      fullPath: '/dashboard/livraison'
+      preLoaderRoute: typeof DashboardLivraisonRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/dashboard/commande': {
@@ -521,6 +541,7 @@ const rootRouteChildren: RootRouteChildren = {
   AuthForgotPasswordRoute: AuthForgotPasswordRoute,
   AuthLoginRoute: AuthLoginRoute,
   DashboardCommandeRoute: DashboardCommandeRoute,
+  DashboardLivraisonRoute: DashboardLivraisonRoute,
   DashboardProfileRoute: DashboardProfileRoute,
   DashboardSettingsRoute: DashboardSettingsRoute,
 }

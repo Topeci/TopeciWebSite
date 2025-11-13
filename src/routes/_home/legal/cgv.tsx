@@ -59,7 +59,7 @@ function RouteComponent() {
       {/* Section 4 */}
       <h2 className="text-xl font-semibold mt-8 mb-2">4. Prix</h2>
       <p>
-        Les prix sont indiqués en <em>[FCFA / € – à préciser]</em>, toutes taxes
+        Les prix sont indiqués en FCFA, toutes taxes
         comprises (TTC). TOPECI se réserve le droit de modifier ses tarifs, mais
         le prix applicable est celui en vigueur lors de la commande.
       </p>
