@@ -1,19 +1,3 @@
-/**
- * La page "Boutique" de l'application.
- * Affiche le contenu de la boutique.
- * Bannière ou section “Produits populaires / Nouveautés / Promotions”.
- * Filtres & tri (optionnel mais pratique)
-
-Trier par prix, par nouveauté, par catégorie.
-  Grille de cartes (4 colonnes ).
-
-Chaque carte = image du produit, titre, prix, petite description.
-
-Bouton “Voir plus” 
-
-
- */
-
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
 import {
@@ -24,106 +8,55 @@ import {
   ShoppingCart,
   Eye,
   ChevronDown,
+  CheckCircle,
 } from "lucide-react";
+import { useCart } from "../../context/CartContext";
 
-import kid1 from "../../assets/images/kid1.jpg";
 import LivreBaoule from "../../assets/images/livrebaoule.png";
-import LivreDioula from "../../assets/images/livredioula.webp";
+import LivreDioula from "../../assets/images/livredioula.png";
+import carteBete from "../../assets/images/cartebete.png";
 
-
-
-// Données de produits fictifs
+// Données de produits
 const products = [
   {
     id: 1,
-    name: "Livre Audio Baoulé",
-    description: "Livre interactif avec audio pour apprendre le baoulé",
-    price: "8000 CFA",
-    image: LivreBaoule,
-    category: "livre-audio",
+    name: "Cartes Parlantes Bété - Français",
+    description: "Cartes éducatives pour apprendre le bété de façon ludique",
+    price: 20000,
+    priceDisplay: "20 000 FCFA",
+    image: carteBete,
+    category: "carte",
     isNew: true,
-    rating: 4.8,
+    rating: 4.9,
   },
   {
     id: 2,
-    name: "Livre Audio Dioula",
-    description: "Livre interactif avec audio pour apprendre le dioula",
-    price: "8000 CFA",
-    image: LivreDioula,
+    name: "Livre Audio Baoulé - Français",
+    description: "Livre interactif avec audio pour apprendre le baoulé",
+    price: 16500,
+    priceDisplay: "16 500 FCFA",
+    image: LivreBaoule,
     category: "livre-audio",
-    isNew: true,
-    rating: 4.7,
+    isNew: false,
+    rating: 4.8,
   },
   {
     id: 3,
-    name: "Coffret Découverte",
-    description: "Pack contenant 3 livres audio et un guide d'apprentissage",
-    price: "20000 CFA",
-    image: "https://placehold.co/300x400/BE356A/white?text=Coffret",
-    category: "coffret",
+    name: "Livre Audio Dioula - Français",
+    description: "Livre interactif avec audio pour apprendre le dioula",
+    price: 16500,
+    priceDisplay: "16 500 FCFA",
+    image: LivreDioula,
+    category: "livre-audio",
     isNew: false,
-    rating: 4.9,
-    promotion: "-15%",
-  },
-  {
-    id: 4,
-    name: "Posters Éducatifs",
-    description: "Set de 5 posters colorés avec vocabulaire de base",
-    price: "5000 CFA",
-    image: "https://placehold.co/300x400/D68E54/white?text=Posters",
-    category: "accessoire",
-    isNew: false,
-    rating: 4.5,
-  },
-  {
-    id: 5,
-    name: "Livre de Contes",
-    description: "Recueil de contes traditionnels africains illustrés",
-    price: "6000 CFA",
-    image: "https://placehold.co/300x400/DCCC41/white?text=Contes",
-    category: "livre",
-    isNew: true,
-    rating: 4.6,
-  },
-  {
-    id: 6,
-    name: "Cahier d'Exercices",
-    description: "Cahier d'activités pour pratiquer l'écriture",
-    price: "3500 CFA",
-    image: "https://placehold.co/300x400/74C6C6/white?text=Cahier",
-    category: "accessoire",
-    isNew: false,
-    rating: 4.4,
-  },
-  {
-    id: 7,
-    name: "Pack Famille",
-    description: "4 livres audio + 2 cahiers d'activités",
-    price: "25000 CFA",
-    image: "https://placehold.co/300x400/4E6FA7/white?text=Pack+Famille",
-    category: "coffret",
-    isNew: false,
-    rating: 4.8,
-    promotion: "-20%",
-  },
-  {
-    id: 8,
-    name: "Cartes Mémoire",
-    description: "Jeu de cartes pour mémoriser le vocabulaire",
-    price: "4500 CFA",
-    image: "https://placehold.co/300x400/BE356A/white?text=Cartes",
-    category: "accessoire",
-    isNew: true,
-    rating: 4.3,
+    rating: 4.7,
   },
 ];
 
 const categories = [
   { id: "all", name: "Tous les produits" },
   { id: "livre-audio", name: "Livres Audio" },
-  { id: "livre", name: "Livres" },
-  { id: "coffret", name: "Coffrets" },
-  { id: "accessoire", name: "Accessoires" },
+  { id: "carte", name: "Cartes Parlantes" },
 ];
 
 const sortOptions = [
@@ -142,6 +75,9 @@ function RouteComponent() {
   const [sortBy, setSortBy] = useState("newest");
   const [viewMode, setViewMode] = useState("grid");
   const [showFilters, setShowFilters] = useState(false);
+  const [addedProductId, setAddedProductId] = useState<number | null>(null);
+
+  const { addToCart } = useCart();
 
   const filteredProducts = products
     .filter(
@@ -151,37 +87,54 @@ function RouteComponent() {
     .sort((a, b) => {
       switch (sortBy) {
         case "price-asc":
-          return parseInt(a.price) - parseInt(b.price);
+          return a.price - b.price;
         case "price-desc":
-          return parseInt(b.price) - parseInt(a.price);
+          return b.price - a.price;
         case "popular":
           return b.rating - a.rating;
+        case "newest":
+          return b.isNew ? 1 : -1;
         default:
           return a.id - b.id;
       }
     });
 
+  const handleAddToCart = (product: (typeof products)[0]) => {
+    addToCart(
+      {
+        id: product.id,
+        name: product.name,
+        price: product.price,
+        priceDisplay: product.priceDisplay,
+        image: product.image,
+      },
+      1
+    );
+
+    // Afficher l'animation de confirmation
+    setAddedProductId(product.id);
+    setTimeout(() => {
+      setAddedProductId(null);
+    }, 2000);
+  };
+
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Bannière */}
-      <section
-        className="relative py-16 md:py-24 bg-cover bg-center"
-        style={{ backgroundImage: `url(${kid1})` }}
-      >
-        {/* Overlay gradient */}
-        <div className="absolute inset-0 bg-gradient-to-br from-[#74C6C6]/20 via-[#4E6FA7]/20 to-[#3a5a8a]/20"></div>
-
-        {/* Contenu */}
-        <div className="container mx-auto px-4 text-center text-white ">
-          <h1 className="text-4xl font-bold mb-4 font-waffle-soft text-white">
-            Notre Boutique
-          </h1>
-          <p className="text-xl max-w-2xl mx-auto font-glacial-indifference text-white">
-            Découvrez tous nos produits pour apprendre les langues africaines de
-            façon ludique et interactive
-          </p>
+      {/* Message de succès global */}
+      {addedProductId && (
+        <div className="fixed top-4 right-4 z-50 bg-[#D68E54] text-white px-6 py-4 rounded-lg shadow-lg flex items-center gap-3 animate-slide-in">
+          <CheckCircle size={24} />
+          <div>
+            <p className="font-bold">Produit ajouté au panier !</p>
+            <Link
+              to="/panier"
+              className="text-sm underline hover:text-green-100"
+            >
+              Voir le panier
+            </Link>
+          </div>
         </div>
-      </section>
+      )}
 
       {/* Filtres et tri */}
       <section className="container mx-auto px-4 py-8">
@@ -198,7 +151,7 @@ function RouteComponent() {
               </span>
               <ChevronDown
                 size={18}
-                className={`transform ${showFilters ? "rotate-180" : ""}`}
+                className={`transform transition-transform ${showFilters ? "rotate-180" : ""}`}
               />
             </button>
           </div>
@@ -211,8 +164,11 @@ function RouteComponent() {
                 {categories.map((category) => (
                   <button
                     key={category.id}
-                    onClick={() => setSelectedCategory(category.id)}
-                    className={`px-3 py-2 rounded-full text-sm ${
+                    onClick={() => {
+                      setSelectedCategory(category.id);
+                      setShowFilters(false);
+                    }}
+                    className={`px-3 py-2 rounded-full text-sm transition-colors ${
                       selectedCategory === category.id
                         ? "bg-[#74C6C6] text-white"
                         : "bg-gray-100 text-gray-700 hover:bg-gray-200"
@@ -231,11 +187,12 @@ function RouteComponent() {
               <button
                 key={category.id}
                 onClick={() => setSelectedCategory(category.id)}
-                className={`px-4 py-2 rounded-full font-['Glacial_Indifference'] ${
+                className={`px-4 py-2 rounded-full transition-colors ${
                   selectedCategory === category.id
                     ? "bg-[#74C6C6] text-white"
                     : "bg-white text-gray-700 hover:bg-gray-100 border border-gray-200"
                 }`}
+                style={{ fontFamily: "Glacial Indifference" }}
               >
                 {category.name}
               </button>
@@ -243,12 +200,13 @@ function RouteComponent() {
           </div>
 
           {/* Contrôles de tri et vue */}
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-4 w-full lg:w-auto">
             {/* Sélecteur de tri */}
             <select
               value={sortBy}
               onChange={(e) => setSortBy(e.target.value)}
-              className="bg-white border border-gray-200 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-[#74C6C6] font-['Glacial_Indifference']"
+              className="flex-1 lg:flex-none bg-white border border-gray-200 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-[#74C6C6]"
+              style={{ fontFamily: "Glacial Indifference" }}
             >
               {sortOptions.map((option) => (
                 <option key={option.id} value={option.id}>
@@ -261,13 +219,15 @@ function RouteComponent() {
             <div className="flex bg-white border border-gray-200 rounded-lg overflow-hidden">
               <button
                 onClick={() => setViewMode("grid")}
-                className={`p-2 ${viewMode === "grid" ? "bg-[#74C6C6] text-white" : "text-gray-600"}`}
+                className={`p-2 transition-colors ${viewMode === "grid" ? "bg-[#74C6C6] text-white" : "text-gray-600 hover:bg-gray-100"}`}
+                aria-label="Vue grille"
               >
                 <Grid size={20} />
               </button>
               <button
                 onClick={() => setViewMode("list")}
-                className={`p-2 ${viewMode === "list" ? "bg-[#74C6C6] text-white" : "text-gray-600"}`}
+                className={`p-2 transition-colors ${viewMode === "list" ? "bg-[#74C6C6] text-white" : "text-gray-600 hover:bg-gray-100"}`}
+                aria-label="Vue liste"
               >
                 <List size={20} />
               </button>
@@ -279,41 +239,41 @@ function RouteComponent() {
         <div
           className={
             viewMode === "grid"
-              ? "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
+              ? "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
               : "space-y-4"
           }
         >
           {filteredProducts.map((product) => (
             <div
               key={product.id}
-              className={`bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 ${
-                viewMode === "list" ? "flex" : ""
+              className={`bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 ${
+                viewMode === "list" ? "flex flex-col md:flex-row" : ""
               }`}
             >
               {/* Image du produit */}
               <div
-                className={`relative ${viewMode === "list" ? "w-1/3" : "w-full h-48"}`}
+                className={`relative ${viewMode === "list" ? "md:w-1/3" : "w-full h-64"} overflow-hidden group`}
               >
-                <img
-                  src={product.image}
-                  alt={product.name}
-                  className={`w-full h-full object-cover ${viewMode === "list" ? "rounded-l-xl" : ""}`}
-                />
+                <Link
+                  to="/produit/$productId"
+                  params={{ productId: product.id.toString() }}
+                >
+                  <img
+                    src={product.image}
+                    alt={product.name}
+                    className={`w-full h-full object-cover group-hover:scale-110 transition-transform duration-300`}
+                  />
+                </Link>
                 {/* Badges */}
-                <div className="absolute top-2 left-2 space-y-1">
+                <div className="absolute top-3 left-3 space-y-2">
                   {product.isNew && (
-                    <span className="bg-[#D68E54] text-white px-2 py-1 rounded-full text-xs font-semibold">
+                    <span className="bg-[#D68E54] text-white px-3 py-1 rounded-full text-xs font-semibold shadow-md">
                       Nouveau
-                    </span>
-                  )}
-                  {product.promotion && (
-                    <span className="bg-[#BE356A] text-white px-2 py-1 rounded-full text-xs font-semibold">
-                      {product.promotion}
                     </span>
                   )}
                 </div>
                 {/* Rating */}
-                <div className="absolute top-2 right-2 bg-white bg-opacity-90 px-2 py-1 rounded-full flex items-center">
+                <div className="absolute top-3 right-3 bg-white bg-opacity-95 px-2 py-1 rounded-full flex items-center shadow-md">
                   <Star
                     size={14}
                     className="text-yellow-400 fill-current mr-1"
@@ -322,80 +282,113 @@ function RouteComponent() {
                     {product.rating}
                   </span>
                 </div>
+
+                {/* Animation ajout panier */}
+                {addedProductId === product.id && (
+                  <div className="absolute inset-0 bg-opacity-90 flex items-center justify-center animate-fade-in">
+                    <div className="text-[#BE356A] text-center">
+                      <CheckCircle size={48} className="mx-auto mb-2" />
+                      <p className="font-bold">Ajouté !</p>
+                    </div>
+                  </div>
+                )}
               </div>
 
               {/* Contenu du produit */}
-              <div className={`p-4 ${viewMode === "list" ? "w-2/3" : ""}`}>
-                <h3 className="font-semibold text-lg mb-2 font-['Waffle_soft']">
-                  {product.name}
-                </h3>
-                <p className="text-gray-600 text-sm mb-3 font-['Glacial_Indifference']">
-                  {product.description}
-                </p>
-                <div className="flex items-center justify-between mb-4">
-                  <span className="text-[#4E6FA7] font-bold text-lg">
-                    {product.price}
-                  </span>
-                  {product.promotion && (
-                    <span className="text-gray-400 text-sm line-through">
-                      {product.promotion === "-15%" ? "9400 CFA" : "31200 CFA"}
-                    </span>
-                  )}
-                </div>
-                <div className="flex space-x-2">
-                  <button className="flex-1 bg-[#74C6C6] hover:bg-[#5fb3b3] text-white py-2 px-4 rounded-lg transition-colors duration-300 flex items-center justify-center">
-                    <ShoppingCart size={16} className="mr-2" />
-                    Ajouter
-                  </button>
+              <div
+                className={`p-5 ${viewMode === "list" ? "md:w-2/3 flex flex-col justify-between" : ""}`}
+              >
+                <div>
                   <Link
                     to="/produit/$productId"
                     params={{ productId: product.id.toString() }}
-                    className="bg-gray-100 hover:bg-gray-200 text-gray-700 py-2 px-4 rounded-lg transition-colors duration-300 flex items-center justify-center"
+                    className="hover:text-[#74C6C6] transition-colors"
                   >
-                    <Eye size={16} />
+                    <h3
+                      className="font-bold text-lg mb-2 text-gray-800"
+                      style={{ fontFamily: "WAFFLE-SOFT" }}
+                    >
+                      {product.name}
+                    </h3>
                   </Link>
+                  <p
+                    className="text-gray-600 text-sm mb-4"
+                    style={{ fontFamily: "Glacial Indifference" }}
+                  >
+                    {product.description}
+                  </p>
+                </div>
+                <div>
+                  <div className="mb-4">
+                    <span className="text-[#4E6FA7] font-bold text-xl">
+                      {product.priceDisplay}
+                    </span>
+                  </div>
+                  <div className="flex gap-2">
+                    <button
+                      onClick={() => handleAddToCart(product)}
+                      className="flex-1 bg-[#DCCC41] hover:bg-[#c9bb3a] text-gray-800 py-2.5 px-4 rounded-lg transition-colors duration-300 flex items-center justify-center font-medium shadow-md hover:shadow-lg"
+                      style={{ fontFamily: "Glacial Indifference" }}
+                    >
+                      <ShoppingCart size={18} className="mr-2" />
+                      Ajouter
+                    </button>
+                    <Link
+                      to="/produit/$productId"
+                      params={{ productId: product.id.toString() }}
+                      className="bg-gray-100 hover:bg-gray-200 text-gray-700 py-2.5 px-4 rounded-lg transition-colors duration-300 flex items-center justify-center"
+                      aria-label={`Voir détails de ${product.name}`}
+                    >
+                      <Eye size={18} />
+                    </Link>
+                  </div>
                 </div>
               </div>
             </div>
           ))}
         </div>
 
-        {/* Pagination (optionnelle) */}
+        {/* Message si aucun produit */}
         {filteredProducts.length === 0 && (
-          <div className="text-center py-12">
-            <p className="text-gray-500 font-['Glacial_Indifference']">
+          <div className="text-center py-16">
+            <p
+              className="text-gray-500 text-lg"
+              style={{ fontFamily: "Glacial Indifference" }}
+            >
               Aucun produit trouvé dans cette catégorie.
             </p>
           </div>
         )}
-
-        {/* Bouton Voir plus */}
-        {filteredProducts.length > 0 && (
-          <div className="text-center mt-12">
-            <button className="bg-[#D68E54] hover:bg-[#c57f4a] text-white font-semibold py-3 px-8 rounded-full transition duration-300 font-['Waffle_soft']">
-              Voir plus de produits
-            </button>
-          </div>
-        )}
-      </section>
-
-      {/* Section promotionnelle */}
-      <section className="bg-gradient-to-r from-[#DCCC41] to-[#D68E54] py-12 text-white">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-2xl font-bold mb-4 font-['Waffle_soft']">
-            Livraison Offerte dès 25000 CFA d'achat !
-          </h2>
-          <p className="text-lg mb-6 font-['Glacial_Indifference']">
-            Profitez de la livraison gratuite sur toute la Côte d'Ivoire
-          </p>
-          <Link
-            to="/boutique"
-            className="bg-white text-[#4E6FA7] hover:bg-gray-100 font-semibold py-3 px-8 rounded-full transition duration-300 inline-block font-['Waffle_soft']"
-          >
-            Découvrir les livres
-          </Link>
-        </div>
       </section>
     </div>
   );
 }
+
+// Ajoutez ces styles dans votre fichier CSS global
+// @keyframes slide-in {
+//   from {
+//     transform: translateX(100%);
+//     opacity: 0;
+//   }
+//   to {
+//     transform: translateX(0);
+//     opacity: 1;
+//   }
+// }
+//
+// @keyframes fade-in {
+//   from {
+//     opacity: 0;
+//   }
+//   to {
+//     opacity: 1;
+//   }
+// }
+//
+// .animate-slide-in {
+//   animation: slide-in 0.3s ease-out;
+// }
+//
+// .animate-fade-in {
+//   animation: fade-in 0.3s ease-out;
+// }

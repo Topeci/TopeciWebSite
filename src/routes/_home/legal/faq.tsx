@@ -70,7 +70,7 @@ function RouteComponent() {
             id="about-1"
             question="Qu'est-ce que TOPECI ?"
             answer={
-              <div className="space-y-3">
+              <div className="space-y-3 font-glacial-indifference">
                 <p>
                   TOPECI est une entreprise ivoirienne. Chez TOPECI, nous
                   croyons qu'apprendre sa langue maternelle, c'est s'ancrer dans
@@ -87,7 +87,7 @@ function RouteComponent() {
             id="about-2"
             question="Quelle est votre mission ?"
             answer={
-              <p>
+              <p className="font-glacial-indifference">
                 Nous voulons préserver les langues africaines, transmettre la
                 beauté de nos cultures et permettre à chaque enfant de grandir
                 fier de ses origines.
@@ -99,7 +99,7 @@ function RouteComponent() {
             id="about-3"
             question="Pourquoi choisir TOPECI ?"
             answer={
-              <p>
+              <p className="font-glacial-indifference">
                 Parce que nous proposons des produits 100 % africains, pensés
                 par des passionnés de culture et d'éducation. Chaque livre ou
                 jeu audio combine tradition, technologie et apprentissage
@@ -112,7 +112,7 @@ function RouteComponent() {
             id="about-4"
             question="Quels types de produits proposez-vous ?"
             answer={
-              <div className="space-y-2">
+              <div className="space-y-2 font-glacial-indifference">
                 <p>• Mon premier livre audio (Baoulé, Dioula)</p>
                 <p>• Mes premières cartes audio Bété–Français</p>
                 <p className="mt-3">
@@ -128,7 +128,7 @@ function RouteComponent() {
             id="about-5"
             question="Comment ça fonctionne ?"
             answer={
-              <div className="space-y-3">
+              <div className="space-y-3 font-glacial-indifference">
                 <p>
                   Il suffit d'appuyer sur le bouton audio pour écouter la
                   prononciation des mots, des phrases, des chansons ou des
@@ -140,6 +140,7 @@ function RouteComponent() {
                     Combien de cartes contient le coffret Bété–Français ?
                   </strong>
                   <br />
+                  <br />
                   Le coffret comprend plus de 100 cartes illustrées avec des
                   mots traduits en Bété et en Français, ainsi que des histoires
                   et chansons audio.
@@ -150,7 +151,7 @@ function RouteComponent() {
         </div>
 
         {/* Section 2 : Apprentissage & langue */}
-        <div className="mb-12">
+        <div className="mb-6">
           <h2
             className="text-2xl font-bold text-[#D68E54] mb-6"
             style={{ fontFamily: "WAFFLE-SOFT" }}
@@ -162,13 +163,14 @@ function RouteComponent() {
             id="learning-1"
             question="À partir de quel âge peut-on l'utiliser ?"
             answer={
-              <div className="space-y-3">
+              <div className="space-y-3 font-glacial-indifference">
                 <p>
                   Dès 3 ans. Les enfants peuvent écouter, répéter et apprendre
                   seuls ou avec leurs parents.
                 </p>
                 <p>
                   <strong>Est-ce utile si je ne parle pas la langue ?</strong>
+                  <br />
                   <br />
                   Oui ! L'audio permet à l'enfant (et même au parent)
                   d'apprendre la prononciation correcte. Vous pouvez apprendre
@@ -177,12 +179,14 @@ function RouteComponent() {
                 <p>
                   <strong>Est-ce uniquement en Bété ?</strong>
                   <br />
+                  <br />
                   Non, chaque produit existe dans une langue spécifique :
                   Baoulé, Dioula, Bété… et chaque version comprend toujours la
                   traduction en Français.
                 </p>
                 <p>
                   <strong>Les grands enfants peuvent-ils aussi jouer ?</strong>
+                  <br />
                   <br />
                   Absolument. Nos produits sont conçus pour les enfants de 2 à
                   10 ans, mais les plus âgés y trouvent aussi un plaisir
@@ -192,6 +196,7 @@ function RouteComponent() {
                   <strong>
                     Ce jeu ou livre aide-t-il vraiment à parler la langue ?
                   </strong>
+                  <br />
                   <br />
                   Oui, nos supports associent l'écoute, la répétition et
                   l'image, ce qui renforce la mémoire auditive et visuelle de
@@ -214,19 +219,34 @@ function RouteComponent() {
           <FAQItem
             id="tech-1"
             question="Faut-il une application ?"
-            answer="Non, tout est intégré dans le produit. Pas besoin d'Internet ni de téléphone."
+            answer={
+              <p className="font-glacial-indifference">
+                Non, tout est intégré dans le produit. Pas besoin d'Internet ni
+                de téléphone.
+              </p>
+            }
           />
 
           <FAQItem
             id="tech-2"
             question="Comment le recharger ?"
-            answer="Chaque produit fonctionne avec des piles, mais les cartes audio Bété sont hybrides : elles possèdent en plus une batterie rechargeable via le câble USB inclus."
+            answer={
+              <p className="font-glacial-indifference">
+                Chaque produit fonctionne avec des piles, mais les cartes audio
+                Bété sont hybrides : elles possèdent en plus une batterie
+                rechargeable via le câble USB inclus.
+              </p>
+            }
           />
 
           <FAQItem
             id="tech-3"
             question="Quelle est l'autonomie ?"
-            answer="Jusqu'à 5 à 6 heures d'écoute continue après une charge complète."
+            answer={
+              <p className="font-glacial-indifference">
+                Jusqu'à 5 à 6 heures d'écoute continue après une charge complète.
+              </p>
+            }
           />
         </div>
 
@@ -243,7 +263,7 @@ function RouteComponent() {
             id="delivery-1"
             question="Quels sont les délais de livraison ?"
             answer={
-              <div className="space-y-2">
+              <div className="space-y-2 font-glacial-indifference">
                 <p>• En Côte d'Ivoire : 1 à 2 jours ouvrés</p>
                 <p>• À l'international : 3 à 7 jours ouvrés</p>
               </div>
@@ -253,7 +273,11 @@ function RouteComponent() {
           <FAQItem
             id="delivery-2"
             question="Livrez-vous à l'étranger ?"
-            answer="Oui, TOPECI livre partout dans le monde via des partenaires fiables."
+            answer={
+              <p className="font-glacial-indifference">
+                Oui, TOPECI livre partout dans le monde via des partenaires fiables.
+              </p>
+            }
           />
         </div>
 
@@ -270,7 +294,7 @@ function RouteComponent() {
             id="payment-1"
             question="Comment passer une commande ?"
             answer={
-              <div className="space-y-3">
+              <div className="space-y-3 font-glacial-indifference">
                 <p>
                   Directement sur ce site www.montopeci.com, dans nos boutiques
                   partenaires ou lors d'événements.
@@ -306,7 +330,7 @@ function RouteComponent() {
             id="return-1"
             question="Puis-je changer d'avis après l'achat ?"
             answer={
-              <div className="space-y-3">
+              <div className="space-y-3 font-glacial-indifference">
                 <p>
                   Oui, vous disposez de 7 jours pour retourner un produit non
                   ouvert et obtenir un échange ou un remboursement.

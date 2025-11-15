@@ -134,7 +134,7 @@ const FloatingGift = () => {
 
                       <p className="text-xs text-gray-500 text-center font-glacial-indifference">
                         En cliquant ci-dessus, vous acceptez de recevoir des
-                        e-mails de notre part. Vous pourrez vous désinscrire à
+                        messages élèctronique de notre part. Vous pourrez vous désinscrire à
                         tout moment.
                       </p>
                     </motion.form>

@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import salePoint from "../../assets/images/salepoint.png";
 import imgJumia from "../../assets/images/imgjumia.png";
 import librairieFrance from "../../assets/images/librairieFrance.jpg";
+import amazon from "../../assets/images/amazon.png";
 
 export const Route = createFileRoute("/_home/salePoint")({
   component: RouteComponent,
@@ -9,10 +10,10 @@ export const Route = createFileRoute("/_home/salePoint")({
 
 function RouteComponent() {
   const physicalStores = [
-    { name: "Libar", location: "Abidjan" },
-    { name: "Sococe", location: "Abidjan" },
-    { name: "FNAC Cap Sud", location: "Abidjan" },
-    { name: "FNAC Cap Nord", location: "Abidjan" },
+    { name: "Librairie de France", location: "Abidjan Plateau" },
+    { name: "Sococe", location: "Abidjan 2 Plateaux" },
+    { name: "FNAC Cap Sud", location: "Abidjan Marcory" },
+    { name: "FNAC Cap Nord", location: "Abidjan Riviera Cocody" },
   ];
 
   return (
@@ -25,16 +26,6 @@ function RouteComponent() {
             alt="Points de vente"
             className="mb-6 h-24 w-auto object-contain"
           />
-          <h1
-            className="text-4xl font-bold text-[#4E6FA7] mb-4"
-            style={{ fontFamily: "WAFFLE-SOFT" }}
-          >
-            Nos Points de Vente
-          </h1>
-          <p className="text-gray-600 max-w-2xl">
-            Retrouvez les produits TOPECI en ligne et dans nos boutiques
-            partenaires
-          </p>
         </div>
 
         {/* Section Boutique en ligne */}
@@ -76,7 +67,7 @@ function RouteComponent() {
 
             {/* Carte Librairie de France */}
             <a
-              href="https://www.librairie-de-france.fr"
+              href="https://www.librairiedefrance.net"
               target="_blank"
               rel="noopener noreferrer"
               className="block bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden group"
@@ -111,9 +102,11 @@ function RouteComponent() {
             >
               <div className="p-6">
                 <div className="flex justify-center mb-4">
-                  <div className="text-6xl group-hover:scale-105 transition-transform duration-300">
-                    📦
-                  </div>
+                  <img
+                    src={amazon}
+                    alt="amazon"
+                    className="h-16 w-auto object-contain group-hover:scale-105 transition-transform duration-300"
+                  />
                 </div>
                 <h3 className="text-xl font-semibold text-gray-800 mb-3">
                   Amazon

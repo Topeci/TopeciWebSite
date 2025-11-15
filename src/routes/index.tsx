@@ -1,6 +1,5 @@
 /**
- * Page d'accueil du site TOPECI
- * Avec animations Framer Motion améliorées
+ * Page d'accueil du site TOPECI avec fonctionnalité panier
  */
 
 import { createFileRoute, Link } from "@tanstack/react-router";
@@ -10,6 +9,7 @@ import { Header } from "../components/layout/header";
 import { Footer } from "../components/layout/footer";
 import CookiesBanner from "../components/layout/CookieBanner";
 import FloatingGift from "../components/layout/FloatingGift";
+import { useCart } from "../context/CartContext";
 
 import {
   Play,
@@ -22,6 +22,7 @@ import {
   CreditCard,
   Store,
   MessageCircle,
+  CheckCircle,
 } from "lucide-react";
 import { Button } from "../components/ui/button";
 import { useState, useRef, useEffect } from "react";
@@ -34,21 +35,44 @@ import carteBete from "../assets/images/cartebete.png";
 import imgVideo from "../assets/images/imgVideo.png";
 import imgAvis from "../assets/images/imgAvis.png";
 import imgEngagement from "../assets/images/imgEngagement.png";
-
-import kidtopeci from "../assets/images/kidtopeci.png";
-
+//import kidtopeci from "../assets/images/kidtopeci.png";
+import banniereTopeci from "../assets/images/banniereTopeci.jpg";
 import VideoTopeci from "../videos/topeci_video.mp4";
 
 export const Route = createFileRoute("/")({
   component: Index,
 });
 
-// Ease definitions compatibles TypeScript (cubic-bezier arrays)
+// Produits de la page d'accueil
+const homeProducts = [
+  {
+    id: 2,
+    name: "Mon Premier Livre Audio Baoulé - Français",
+    price: 8000,
+    priceDisplay: "16 500 FCFA",
+    image: livreBaoule,
+  },
+  {
+    id: 3,
+    name: "Mon Premier Livre Audio Dioula - Français",
+    price: 8000,
+    priceDisplay: "16 500 FCFA",
+    image: livreDioula,
+  },
+  {
+    id: 1,
+    name: "Cartes Parlantes Bété - Français",
+    price: 20000,
+    priceDisplay: "20 000 FCFA",
+    image: carteBete,
+  },
+];
+
+// Ease definitions
 const easeOut = [0.22, 1, 0.36, 1];
 const easeInOut = [0.42, 0, 0.58, 1];
 
 // Animations réutilisables
-
 const fadeInUp = {
   initial: { opacity: 0, y: 30 },
   animate: { opacity: 1, y: 0 },
@@ -102,10 +126,13 @@ function Index() {
   const [showReviewForm, setShowReviewForm] = useState(false);
   const [rating, setRating] = useState(0);
   const [hoverRating, setHoverRating] = useState(0);
+  const [addedProductId, setAddedProductId] = useState<number | null>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
   const formRef = useRef<HTMLDivElement>(null);
   const reviewsContainerRef = useRef<HTMLDivElement>(null);
   const [isPaused, setIsPaused] = useState(false);
+
+  const { addToCart } = useCart();
 
   const togglePlay = () => {
     if (videoRef.current) {
@@ -116,6 +143,25 @@ function Index() {
       }
       setIsPlaying(!isPlaying);
     }
+  };
+
+  const handleAddToCart = (product: (typeof homeProducts)[0]) => {
+    addToCart(
+      {
+        id: product.id,
+        name: product.name,
+        price: product.price,
+        priceDisplay: product.priceDisplay,
+        image: product.image,
+      },
+      1
+    );
+
+    // Afficher la confirmation
+    setAddedProductId(product.id);
+    setTimeout(() => {
+      setAddedProductId(null);
+    }, 2000);
   };
 
   // Fermer le formulaire en cliquant à l'extérieur
@@ -147,15 +193,14 @@ function Index() {
     if (maxScroll <= 0) return;
 
     let scrollPosition = 0;
-    let direction = 1; // 1 pour droite, -1 pour gauche
-    const scrollSpeed = 0.5; // pixels par frame
+    let direction = 1;
+    const scrollSpeed = 0.5;
 
     const scroll = () => {
       if (!container || isPaused) return;
 
       scrollPosition += scrollSpeed * direction;
 
-      // Changement de direction si on atteint les bords
       if (scrollPosition >= maxScroll) {
         scrollPosition = maxScroll;
         direction = -1;
@@ -165,7 +210,6 @@ function Index() {
       }
 
       container.scrollLeft = scrollPosition;
-
       requestAnimationFrame(scroll);
     };
 
@@ -394,6 +438,22 @@ function Index() {
     <div className="flex flex-col min-h-screen w-full mx-0 text-brown-800">
       <Header />
 
+      {/* Message de succès ajout panier */}
+      {addedProductId && (
+        <div className="fixed top-20 right-4 z-50 bg-[#D68E54] text-white px-6 py-4 rounded-lg shadow-lg flex items-center gap-3 animate-slide-in">
+          <CheckCircle size={24} />
+          <div>
+            <p className="font-bold">Produit ajouté au panier !</p>
+            <Link
+              to="/panier"
+              className="text-sm underline hover:text-green-100"
+            >
+              Voir le panier
+            </Link>
+          </div>
+        </div>
+      )}
+
       <main className="flex-1 w-full mx-auto">
         {/* HERO SECTION */}
         <motion.section
@@ -401,7 +461,7 @@ function Index() {
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8 }}
           className="w-full py-16 md:py-20 mt-0 relative bg-cover bg-center"
-          style={{ backgroundImage: `url(${kidtopeci})` }}
+          style={{ backgroundImage: `url(${banniereTopeci})` }}
         >
           <div className="absolute inset-0"></div>
           <div className="container mx-auto px-4 relative z-10">
@@ -428,7 +488,7 @@ function Index() {
                   variants={fadeInUp}
                   className="flex items-center text-white font-bold font-glacial-indifference"
                 >
-                  <motion.div variants={pulseAnimation} animate="animate">
+                  <motion.div animate="animate">
                     <Sparkles size={20} className="mr-2 text-[#DCCC41]" />
                   </motion.div>
                   Livres audio interactifs en baoulé et dioula
@@ -437,7 +497,7 @@ function Index() {
                   variants={fadeInUp}
                   className="flex items-center text-white font-bold font-glacial-indifference"
                 >
-                  <motion.div variants={pulseAnimation} animate="animate">
+                  <motion.div animate="animate">
                     <Sparkles size={20} className="mr-2 text-[#DCCC41]" />
                   </motion.div>
                   Enrichis avec voix, chants et illustrations animées
@@ -466,11 +526,10 @@ function Index() {
           whileInView={{ opacity: 1 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="w-full py-16 bg-white "
+          className="w-full py-16 bg-white"
         >
           <div className="container mx-auto px-4 mt-[-30px] mb-[-60px]">
             <motion.div
-              variants={floatingAnimation}
               animate="animate"
               className="flex flex-col items-center text-center mb-5"
             >
@@ -488,105 +547,59 @@ function Index() {
               viewport={{ once: true }}
               className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-[-60px]"
             >
-              {/* Card 1 */}
-              <motion.div
-                variants={scaleIn}
-                whileHover={{ scale: 1.05, y: -5 }}
-                className=" "
-              >
-                <div className="h-80 overflow-hidden">
-                  <img
-                    src={livreBaoule}
-                    alt="Mon Premier Livre Audio Baoulé"
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <div className="p-6 flex flex-col flex-grow text-center">
-                  <h3 className="text-lg text-black dark:text-white mb-1 font-glacial-indifference">
-                    Mon Premier Livre Audio <br />
-                    Baoulé - Français
-                  </h3>
-                  <p className="text-black dark:text-white mb-2 font-bold text-lg">
-                    15 000 FCFA
-                  </p>
-                  <div className="mt-[-5px] pt-1">
-                    <motion.button
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                      className="w-full bg-[#DCCC41] hover:bg-[#c4b33c] text-black font-bold font-waffle-soft py-3 px-4 rounded-full transition duration-300 text-sm uppercase"
-                    >
-                      AJOUTER AU PANIER
-                    </motion.button>
-                  </div>
-                </div>
-              </motion.div>
+              {homeProducts.map((product, index) => (
+                <motion.div
+                  key={product.id}
+                  variants={scaleIn}
+                  whileHover={{ scale: 1.05, y: -5 }}
+                  className="relative"
+                >
+                  <Link to={`/produit/${product.id}`}>
+                    <div className="h-80 overflow-hidden">
+                      <img
+                        src={product.image}
+                        alt={product.name}
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                  </Link>
 
-              {/* Card 2 */}
-              <motion.div
-                variants={scaleIn}
-                whileHover={{ scale: 1.05, y: -5 }}
-                className=""
-              >
-                <div className="h-80 overflow-hidden">
-                  <img
-                    src={livreDioula}
-                    alt="Mon Premier Livre Audio Dioula"
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <div className="p-6 flex flex-col flex-grow text-center">
-                  <h3 className="text-lg text-black dark:text-white mb-1 font-glacial-indifference">
-                    Mon Premier Livre Audio <br />
-                    Dioula - Français
-                  </h3>
-                  <p className="text-black dark:text-white mb-2 font-bold text-lg">
-                    15 000 FCFA
-                  </p>
-                  <div className="mt-[-5px] pt-1">
-                    <motion.button
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                      className="w-full bg-[#DCCC41] hover:bg-[#c4b33c] text-black font-bold font-waffle-soft py-3 px-4 rounded-full transition duration-300 text-sm uppercase"
-                    >
-                      AJOUTER AU PANIER
-                    </motion.button>
-                  </div>
-                </div>
-              </motion.div>
+                  {/* Animation ajout panier */}
+                  {addedProductId === product.id && (
+                    <div className="absolute inset-0  bg-opacity-90 flex items-center justify-center animate-fade-in">
+                      <div className="text-[#BE356A] text-center">
+                        <CheckCircle size={48} className="mx-auto mb-2" />
+                        <p className="font-bold">Ajouté !</p>
+                      </div>
+                    </div>
+                  )}
 
-              {/* Card 3 */}
-              <motion.div
-                variants={scaleIn}
-                whileHover={{ scale: 1.05, y: -5 }}
-                className=""
-              >
-                <div className="h-80 overflow-hidden">
-                  <img
-                    src={carteBete}
-                    alt="Mes cartes parlantes Bété"
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-
-                <div className="p-6 flex flex-col flex-grow text-center">
-                  <h3 className="text-lg text-black dark:text-white mb-1 font-glacial-indifference">
-                    Mon Premier Livre Audio <br />
-                    Dioula - Français
-                  </h3>
-                  <p className="text-black dark:text-white mb-2 font-bold text-lg">
-                    15 000 FCFA
-                  </p>
-                  <div className="mt-[-5px] pt-1">
-                    <motion.button
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                      className="w-full bg-[#DCCC41] hover:bg-[#c4b33c] text-black font-bold font-waffle-soft py-3 px-4 rounded-full transition duration-300 text-sm uppercase"
+                  <div className="p-6 flex flex-col flex-grow text-center">
+                    <Link
+                      to={`/produit/${product.id}`}
+                      className="hover:text-[#74C6C6] transition-colors"
                     >
-                      AJOUTER AU PANIER
-                    </motion.button>
+                      <h3 className="text-lg text-black dark:text-white mb-1 font-glacial-indifference">
+                        {product.name.split(" - ")[0]} <br />
+                        {product.name.split(" - ")[1] || ""}
+                      </h3>
+                    </Link>
+                    <p className="text-black dark:text-white mb-2 font-bold text-lg">
+                      {product.priceDisplay}
+                    </p>
+                    <div className="mt-[-5px] pt-1">
+                      <motion.button
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                        onClick={() => handleAddToCart(product)}
+                        className="w-full bg-[#DCCC41] hover:bg-[#c4b33c] text-black font-bold font-waffle-soft py-3 px-4 rounded-full transition duration-300 text-sm uppercase"
+                      >
+                        AJOUTER AU PANIER
+                      </motion.button>
+                    </div>
                   </div>
-                </div>
-              </motion.div>
+                </motion.div>
+              ))}
             </motion.div>
           </div>
         </motion.section>
@@ -653,7 +666,7 @@ function Index() {
           </div>
         </motion.section>
 
-        {/* SECTION AVIS CLIENTS AVEC DÉFILEMENT AUTOMATIQUE */}
+        {/* SECTION AVIS CLIENTS */}
         <motion.section
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
@@ -674,7 +687,6 @@ function Index() {
               />
             </motion.div>
 
-            {/* Conteneur des avis avec défilement automatique */}
             <motion.div
               ref={reviewsContainerRef}
               className="relative mb-8 overflow-x-hidden"
@@ -682,7 +694,6 @@ function Index() {
               onMouseLeave={() => setIsPaused(false)}
             >
               <div className="flex space-x-6 pb-4 min-w-max">
-                {/* Dupliquer les avis pour un effet de boucle continu */}
                 {[...sampleReviews, ...sampleReviews].map((review, index) => (
                   <motion.div
                     key={`${review.id}-${index}`}
@@ -722,7 +733,6 @@ function Index() {
                 ))}
               </div>
 
-              {/* Overlay pour indiquer le défilement */}
               <div className="absolute inset-y-0 left-0 w-8 bg-gradient-to-r from-white to-transparent pointer-events-none dark:from-gray-900"></div>
               <div className="absolute inset-y-0 right-0 w-8 bg-gradient-to-l from-white to-transparent pointer-events-none dark:from-gray-900"></div>
             </motion.div>
@@ -774,7 +784,6 @@ function Index() {
               viewport={{ once: true }}
               className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
             >
-              {/* Engagement 1 */}
               <motion.div
                 variants={fadeInUp}
                 whileHover={{ scale: 1.05 }}
@@ -793,7 +802,6 @@ function Index() {
                 </h3>
               </motion.div>
 
-              {/* Engagement 2 */}
               <motion.div
                 variants={fadeInUp}
                 whileHover={{ scale: 1.05 }}
@@ -811,7 +819,6 @@ function Index() {
                 </h3>
               </motion.div>
 
-              {/* Engagement 3 */}
               <motion.a
                 variants={fadeInUp}
                 whileHover={{ scale: 1.05 }}
@@ -831,11 +838,11 @@ function Index() {
                 </h3>
               </motion.a>
 
-              {/* Engagement 4 */}
-              <motion.div
+              <motion.a
                 variants={fadeInUp}
                 whileHover={{ scale: 1.05 }}
-                className="text-center"
+                href="/contact"
+                className="text-center block"
               >
                 <motion.div
                   whileHover={{ rotate: 360 }}
@@ -848,7 +855,7 @@ function Index() {
                   Assistance client <br />
                   WhatsApp / Email
                 </h3>
-              </motion.div>
+              </motion.a>
             </motion.div>
           </div>
         </motion.section>

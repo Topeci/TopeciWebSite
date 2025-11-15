@@ -9,6 +9,7 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as PaiementRouteImport } from './routes/paiement'
 import { Route as HomeRouteImport } from './routes/_home'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as DashboardSettingsRouteImport } from './routes/dashboard/settings'
@@ -34,6 +35,11 @@ import { Route as HomeLegalCookiesRouteImport } from './routes/_home/legal/cooki
 import { Route as HomeLegalCgvRouteImport } from './routes/_home/legal/cgv'
 import { Route as HomeLegalCguRouteImport } from './routes/_home/legal/cgu'
 
+const PaiementRoute = PaiementRouteImport.update({
+  id: '/paiement',
+  path: '/paiement',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const HomeRoute = HomeRouteImport.update({
   id: '/_home',
   getParentRoute: () => rootRouteImport,
@@ -157,6 +163,7 @@ const HomeLegalCguRoute = HomeLegalCguRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/paiement': typeof PaiementRoute
   '/about': typeof HomeAboutRoute
   '/blog': typeof HomeBlogRoute
   '/boutique': typeof HomeBoutiqueRoute
@@ -182,6 +189,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/paiement': typeof PaiementRoute
   '/about': typeof HomeAboutRoute
   '/blog': typeof HomeBlogRoute
   '/boutique': typeof HomeBoutiqueRoute
@@ -209,6 +217,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/_home': typeof HomeRouteWithChildren
+  '/paiement': typeof PaiementRoute
   '/_home/about': typeof HomeAboutRoute
   '/_home/blog': typeof HomeBlogRoute
   '/_home/boutique': typeof HomeBoutiqueRoute
@@ -236,6 +245,7 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/paiement'
     | '/about'
     | '/blog'
     | '/boutique'
@@ -261,6 +271,7 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/paiement'
     | '/about'
     | '/blog'
     | '/boutique'
@@ -287,6 +298,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/_home'
+    | '/paiement'
     | '/_home/about'
     | '/_home/blog'
     | '/_home/boutique'
@@ -314,6 +326,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   HomeRoute: typeof HomeRouteWithChildren
+  PaiementRoute: typeof PaiementRoute
   AuthForgotPasswordRoute: typeof AuthForgotPasswordRoute
   AuthLoginRoute: typeof AuthLoginRoute
   DashboardCommandeRoute: typeof DashboardCommandeRoute
@@ -324,6 +337,13 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/paiement': {
+      id: '/paiement'
+      path: '/paiement'
+      fullPath: '/paiement'
+      preLoaderRoute: typeof PaiementRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/_home': {
       id: '/_home'
       path: ''
@@ -538,6 +558,7 @@ const HomeRouteWithChildren = HomeRoute._addFileChildren(HomeRouteChildren)
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   HomeRoute: HomeRouteWithChildren,
+  PaiementRoute: PaiementRoute,
   AuthForgotPasswordRoute: AuthForgotPasswordRoute,
   AuthLoginRoute: AuthLoginRoute,
   DashboardCommandeRoute: DashboardCommandeRoute,
